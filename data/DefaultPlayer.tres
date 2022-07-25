@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/PlayerStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+health = 7
+max_health = 10
+honey = 1
+max_honey = 5

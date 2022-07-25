@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "PlayerSpells",
 "language": "GDScript",
 "path": "res://data/PlayerSpells.gd"
+}, {
+"base": "Resource",
+"class": "PlayerStats",
+"language": "GDScript",
+"path": "res://data/PlayerStats.gd"
 } ]
 _global_script_class_icons={
-"PlayerSpells": ""
+"PlayerSpells": "",
+"PlayerStats": ""
 }
 
 [application]

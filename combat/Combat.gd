@@ -8,8 +8,16 @@ extends Node2D
 #MAJOR TODO: Handle keyboard input for dispelling!
 #Idea: Delegate tasks?
 
+#TODO: load stats dynamically - won't necessarily be the same file in the future
+export var player_ref : Resource
+
 onready var player_spell_box = $GUI/PSContainer/PSpellText
 onready var enemy_spell_box = $GUI/ESContainer/ESpellText
+
+onready var player_stats = $Player/CombatStats
+
+onready var player_health = $GUI/PlayerHealth
+onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 
 onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made
@@ -25,6 +33,13 @@ var player_text_tags = "[center][wave]"
 signal dispelled()
 
 func _ready():
+	#TODO: is it better to just handle this all from the resource? consult.
+	player_stats.health = player_ref.health
+	player_stats.max_health = player_ref.max_health
+	player_stats.honey = player_ref.honey
+	player_stats.max_honey = player_ref.max_honey
+	player_health.max_value = player_stats.max_health
+	player_health.value = player_stats.health
 	next_spell()
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?
@@ -48,7 +63,7 @@ func next_spell() -> void:
 		enemy_spell_box.bbcode_text = "[center]"+enemy_spells.list[next_spell_count]["Text"]
 	else:
 		next_spell_count = 0
-		if range(enemy_spells.list.size()).has(next_spell_count):
+		if not range(enemy_spells.list.size()).has(next_spell_count):
 			#bad! array is not set in enemy spells.
 			print("Empty array in enemy spell list. Whoopsie.")
 		enemy_spell_box.bbcode_text = "[center]"+enemy_spells.list[next_spell_count]["Text"]
@@ -62,11 +77,17 @@ func spell(input:String) -> void:
 	var e_spell = current_enemy_spell["Solve"]
 	var p_spell = input.to_lower()
 	if p_spell == e_spell:
+		player_stats.change_honey(current_enemy_spell["Drain"])
 		next_spell()
 	player_spell = ""
 	player_spell_box.bbcode_text = player_text_tags + player_spell
 
 
 func _on_Timer_timeout():
-	#TODO: Update with damage and so on
+	#TODO: Update with damage and so on - subject to change!
+	player_stats.damage(current_enemy_spell["Damage"])
 	next_spell()
+
+
+func _on_CombatStats_health_changed(old_value, new_value):
+	player_health.value = new_value
