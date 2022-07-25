@@ -10,7 +10,9 @@ extends Node2D
 
 onready var player_spell_box = $GUI/PSContainer/PSpellText
 onready var enemy_spell_box = $GUI/ESContainer/ESpellText
-onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from enemy after behavior is made
+onready var spell_timer = $GUI/SpellTimer
+
+onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made
 
 var next_spell_count = 0 #TEMPORARY! Behavior will be coded later
 var current_enemy_spell = ""
@@ -51,10 +53,11 @@ func next_spell() -> void:
 			print("Empty array in enemy spell list. Whoopsie.")
 		enemy_spell_box.bbcode_text = "[center]"+enemy_spells.list[next_spell_count]["Text"]
 	current_enemy_spell = enemy_spells.list[next_spell_count]
+	spell_timer.set_timer(float(current_enemy_spell["Speed"]))
 	next_spell_count += 1
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
-#update in the future to compare against loaded player spells!
+#TODO: update in the future to compare against loaded player spells!
 func spell(input:String) -> void:
 	var e_spell = current_enemy_spell["Solve"]
 	var p_spell = input.to_lower()
@@ -62,3 +65,8 @@ func spell(input:String) -> void:
 		next_spell()
 	player_spell = ""
 	player_spell_box.bbcode_text = player_text_tags + player_spell
+
+
+func _on_Timer_timeout():
+	#TODO: Update with damage and so on
+	next_spell()
