@@ -11,21 +11,26 @@ extends Node2D
 #TODO: load stats dynamically - won't necessarily be the same file in the future
 export var player_ref : Resource
 
+#player nodes
 onready var player_spell_box = $GUI/PSContainer/PSpellText
-onready var enemy_spell_box = $GUI/ESContainer/ESpellText
-
 onready var player_stats = $Player/CombatStats
-
 onready var player_health = $GUI/PlayerHealth
+onready var player_honey_count = $GUI/HoneyCounter
+
+#enemy nodes
+onready var enemy_spell_box = $GUI/ESContainer/ESpellText
 onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 
+#temp nodes for protoyping
 onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made
 
 var next_spell_count = 0 #TEMPORARY! Behavior will be coded later
-var current_enemy_spell = ""
+var current_enemy_spell = "" #saves key to access current spell in enemy spell dictionary
 
-var player_spell = ""
+var player_spell = "" #current string input from player
+#TODO: handle unhandled input from symbols not supported by fonts
+
 #TODO: pass reformatted enemy spell (with punct. rules and reverse)
 
 var player_text_tags = "[center][wave]"
@@ -40,6 +45,7 @@ func _ready():
 	player_stats.max_honey = player_ref.max_honey
 	player_health.max_value = player_stats.max_health
 	player_health.value = player_stats.health
+	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
 	next_spell()
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?
@@ -90,4 +96,5 @@ func _on_Timer_timeout():
 
 
 func _on_CombatStats_health_changed(old_value, new_value):
+	#TODO: might just incept this into a script for the health bar instead of clogging this up
 	player_health.value = new_value
