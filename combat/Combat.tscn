@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
-[ext_resource path="res://combat/Enemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/EmptyTimer.png" type="Texture" id=4]
 [ext_resource path="res://GUI/TimerFill.png" type="Texture" id=5]
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=6]
@@ -120,10 +119,6 @@ margin_left = 111.0
 [node name="EnemyLoad" type="Position2D" parent="."]
 
 [node name="DefaultWizard" parent="EnemyLoad" instance=ExtResource( 11 )]
-
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 1410, 492 )
 
 [node name="Player" type="Node2D" parent="."]
 

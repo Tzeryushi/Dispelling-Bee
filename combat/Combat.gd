@@ -24,15 +24,9 @@ onready var spell_timer = $GUI/SpellTimer
 
 #temp nodes for protoyping
 onready var enemy = $EnemyLoad.get_child(0) #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
-#onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made DEPRECATED
-
-var next_spell_count = 0 #TEMPORARY! Behavior will be coded later
-#var current_enemy_spell = "" #saves key to access current spell in enemy spell dictionary DEPRECATED
 
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
-
-#TODO: pass reformatted enemy spell (with punct. rules and reverse)
 
 var player_text_tags = "[center][wave]"
 
@@ -68,9 +62,7 @@ func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
 	enemy.next_spell()
 	enemy_spell_box.bbcode_text = "[center]"+enemy.get_text()
-	#current_enemy_spell = enemy_spells.list[next_spell_count]
 	spell_timer.set_timer(float(enemy.get_speed()))
-	next_spell_count += 1
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
 #TODO: update in the future to compare against loaded player spells!
