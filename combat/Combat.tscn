@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://combat/CombatStats.gd" type="Script" id=8]
 [ext_resource path="res://data/DefaultPlayer.tres" type="Resource" id=9]
 [ext_resource path="res://combat/HoneyCounter.gd" type="Script" id=10]
+[ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=11]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -116,7 +117,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 111.0
 
+[node name="EnemyLoad" type="Position2D" parent="."]
+
+[node name="DefaultWizard" parent="EnemyLoad" instance=ExtResource( 11 )]
+
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 1410, 492 )
 
 [node name="Player" type="Node2D" parent="."]

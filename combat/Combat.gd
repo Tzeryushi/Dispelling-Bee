@@ -23,10 +23,11 @@ onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 
 #temp nodes for protoyping
-onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made
+onready var enemy = $EnemyLoad.get_child(0) #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
+#onready var enemy_spells = $Enemy/EnemySpells #TEMPORARY! will pull from Enemy node after behavior is made DEPRECATED
 
 var next_spell_count = 0 #TEMPORARY! Behavior will be coded later
-var current_enemy_spell = "" #saves key to access current spell in enemy spell dictionary
+#var current_enemy_spell = "" #saves key to access current spell in enemy spell dictionary DEPRECATED
 
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
@@ -65,25 +66,19 @@ func _unhandled_input(event) -> void:
 		
 func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
-	if range(enemy_spells.list.size()).has(next_spell_count):
-		enemy_spell_box.bbcode_text = "[center]"+enemy_spells.list[next_spell_count]["Text"]
-	else:
-		next_spell_count = 0
-		if not range(enemy_spells.list.size()).has(next_spell_count):
-			#bad! array is not set in enemy spells.
-			print("Empty array in enemy spell list. Whoopsie.")
-		enemy_spell_box.bbcode_text = "[center]"+enemy_spells.list[next_spell_count]["Text"]
-	current_enemy_spell = enemy_spells.list[next_spell_count]
-	spell_timer.set_timer(float(current_enemy_spell["Speed"]))
+	enemy.next_spell()
+	enemy_spell_box.bbcode_text = "[center]"+enemy.get_text()
+	#current_enemy_spell = enemy_spells.list[next_spell_count]
+	spell_timer.set_timer(float(enemy.get_speed()))
 	next_spell_count += 1
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
 #TODO: update in the future to compare against loaded player spells!
 func spell(input:String) -> void:
-	var e_spell = current_enemy_spell["Solve"]
+	var e_spell = enemy.get_solve()
 	var p_spell = input.to_lower()
 	if p_spell == e_spell:
-		player_stats.change_honey(current_enemy_spell["Drain"])
+		player_stats.change_honey(enemy.get_drain())
 		next_spell()
 	player_spell = ""
 	player_spell_box.bbcode_text = player_text_tags + player_spell
@@ -91,7 +86,7 @@ func spell(input:String) -> void:
 
 func _on_Timer_timeout():
 	#TODO: Update with damage and so on - subject to change!
-	player_stats.damage(current_enemy_spell["Damage"])
+	player_stats.damage(enemy.get_damage())
 	next_spell()
 
 
