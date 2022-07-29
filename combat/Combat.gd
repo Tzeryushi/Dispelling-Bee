@@ -12,7 +12,7 @@ extends Node2D
 export var player_ref : Resource
 
 #player nodes
-onready var player_spell_box = $GUI/PSContainer/PSpellText
+onready var player_spell_box = $GUI/PSContainer
 onready var player_stats = $Player/CombatStats
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
@@ -29,6 +29,8 @@ var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer.
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
 
+export var normal_color : Color = Color(1,1,1,1)
+export var correct_color : Color = Color (0,1,0,1)
 var player_text_tags = "[center][wave]"
 
 signal dispelled()
@@ -59,11 +61,13 @@ func _unhandled_input(event) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if player_spell != null and not player_spell.empty() and event.scancode == KEY_BACKSPACE:
 			player_spell.erase(player_spell.length() - 1, 1)
+			color_spells(player_spell)
 		else:
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			player_spell = player_spell + key_typed
+			color_spells(player_spell)
 		if player_spell != null:
-			player_spell_box.text = player_spell #player_text_tags
+			player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
 		if event.is_action_pressed("ui_accept"):
 			spell(player_spell)
 		#handle spell cast - should send a signal to player node? depends.
@@ -89,15 +93,30 @@ func spell(input:String) -> void:
 		player_stats.change_honey(enemy.get_drain())
 		next_spell()
 	player_spell = ""
-	player_spell_box.text = player_spell #player_text_tags
+	player_spell_box.set_text(player_text_tags + player_spell)
 
+func color_spells(input:String) -> void:
+	var e_spell = enemy.get_solve()
+	var p_spell = input.to_lower()
+	var digit = 0
+	for i in p_spell:
+		print(i)
+		print(e_spell.substr(digit, 1))
+		if i != e_spell.substr(digit, 1):
+			print("test")
+			player_spell_box.change_text_color(normal_color)
+			return
+		digit += 1
+	print("called?")
+	player_spell_box.change_text_color(correct_color)
+	
 
-func _on_Timer_timeout():
+func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	player_stats.damage(enemy.get_damage())
 	next_spell()
 
 
-func _on_CombatStats_health_changed(old_value, new_value):
+func _on_CombatStats_health_changed(old_value, new_value) -> void:
 	#TODO: might just incept this into a script for the health bar instead of clogging this up
 	player_health.value = new_value

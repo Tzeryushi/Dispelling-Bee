@@ -6,7 +6,7 @@ onready var count = $Count
 var current_count = 0
 var max_count = 0 #for setting font red when count is full
 
-export var normal_color : Color = Color(0,0,0,1)
+export var normal_color : Color = Color(1,1,1,1)
 export var full_color : Color = Color (1,0,0,1)
 
 func update_count(new_count) -> void:

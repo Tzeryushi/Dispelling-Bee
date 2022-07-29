@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://data/DefaultPlayer.tres" type="Resource" id=9]
 [ext_resource path="res://combat/HoneyCounter.gd" type="Script" id=10]
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://combat/PSContainer.gd" type="Script" id=12]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -42,41 +43,22 @@ value = 40.0
 rounded = true
 
 [node name="ESContainer" type="PanelContainer" parent="GUI"]
-margin_left = 400.0
-margin_top = 200.0
-margin_right = 1030.0
-margin_bottom = 442.0
+margin_left = 407.0
+margin_top = 207.0
+margin_right = 1023.0
+margin_bottom = 435.0
 script = ExtResource( 3 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 623.0
-margin_bottom = 235.0
+margin_right = 609.0
+margin_bottom = 221.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][wave]FirebooM!"
 text = "FirebooM!"
 fit_content_height = true
-scroll_active = false
-
-[node name="PSContainer3" type="PanelContainer" parent="GUI"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1026.0
-margin_top = -443.0
-margin_right = -400.0
-margin_bottom = -200.0
-
-[node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer3"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 619.0
-margin_bottom = 236.0
-theme = ExtResource( 6 )
-bbcode_enabled = true
 scroll_active = false
 
 [node name="PSContainer" type="PanelContainer" parent="GUI"]
@@ -88,23 +70,22 @@ margin_left = -1026.0
 margin_top = -443.0
 margin_right = -400.0
 margin_bottom = -200.0
+script = ExtResource( 12 )
 
-[node name="PSpellText" type="Label" parent="GUI/PSContainer"]
+[node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 619.0
 margin_bottom = 236.0
-size_flags_vertical = 1
 theme = ExtResource( 6 )
-align = 1
-valign = 1
-autowrap = true
+bbcode_enabled = true
+scroll_active = false
 
 [node name="SpellTimer" type="TextureProgress" parent="GUI"]
-margin_left = 928.0
-margin_top = 103.0
-margin_right = 2928.0
-margin_bottom = 2103.0
+margin_left = 929.0
+margin_top = 33.0
+margin_right = 2929.0
+margin_bottom = 2033.0
 rect_scale = Vector2( 0.1, 0.1 )
 max_value = 1000.0
 texture_under = ExtResource( 4 )
