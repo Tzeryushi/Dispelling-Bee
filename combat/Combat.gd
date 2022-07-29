@@ -51,8 +51,6 @@ func _exit_tree():
 func setup(new_enemy:PackedScene) -> void:
 	enemy = new_enemy.instance()
 	enemy_pos.add_child(enemy)
-	print (enemy_pos.get_child_count())
-	enemy.position = enemy_pos.position
 	enemy.show()
 	next_spell()
 
