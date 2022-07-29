@@ -117,8 +117,7 @@ anchor_bottom = 1.0
 margin_left = 111.0
 
 [node name="EnemyLoad" type="Position2D" parent="."]
-
-[node name="DefaultWizard" parent="EnemyLoad" instance=ExtResource( 11 )]
+position = Vector2( 1371, 502 )
 
 [node name="Player" type="Node2D" parent="."]
 
@@ -136,6 +135,10 @@ scale = Vector2( 0.371986, 0.371986 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Pos"]
+
+[node name="DefaultWizard" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 1692, 79 )
 
 [connection signal="timeout" from="GUI/SpellTimer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]

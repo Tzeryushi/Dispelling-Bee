@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://combat/Combat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerData.gd" type="Script" id=2]
 [ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://TempMenu.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
+combat = NodePath("Combat")
+temp_menu = NodePath("TempMenu")
 
 [node name="PlayerData" type="Node" parent="."]
 script = ExtResource( 2 )
 
 [node name="Combat" parent="." instance=ExtResource( 1 )]
+
+[node name="TempMenu" parent="." instance=ExtResource( 4 )]
+
+[connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button" to="." method="_on_Button_button_combat"]
+[connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button2" to="." method="_on_Button_button_combat"]
+[connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button3" to="." method="_on_Button_button_combat"]
+
+[editable path="TempMenu"]

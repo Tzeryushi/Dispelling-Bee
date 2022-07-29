@@ -21,9 +21,10 @@ onready var player_honey_count = $GUI/HoneyCounter
 onready var enemy_spell_box = $GUI/ESContainer/ESpellText
 onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
+onready var enemy_pos = $EnemyLoad
 
 #temp nodes for protoyping
-onready var enemy = $EnemyLoad.get_child(0) #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
+var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
 
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
@@ -41,6 +42,18 @@ func _ready():
 	player_health.max_value = player_stats.max_health
 	player_health.value = player_stats.health
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
+
+func _exit_tree():
+	if not enemy == null:	
+		enemy.queue_free()
+	pass
+
+func setup(new_enemy:PackedScene) -> void:
+	enemy = new_enemy.instance()
+	enemy_pos.add_child(enemy)
+	print (enemy_pos.get_child_count())
+	enemy.position = enemy_pos.position
+	enemy.show()
 	next_spell()
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?

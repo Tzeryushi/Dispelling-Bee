@@ -18,15 +18,6 @@ var default_spell = {"Text":"[tornado]Oops...", "Solve":"spoo...", "Damage":1, "
 #Additionally, this allows us to create individualized dictionaries
 #based on enemy behavior without the risk of breaking coupled code.
 
-func dict_pull(key:String) -> String:
-	#returns value of a key in the current spell
-	#yeah this isn't a great name but it's funny leave me alone
-	if not range(enemy_spells.list.size()).has(current_spell) or current_spell == null:
-		return default_spell[key]
-		print("Enemy spells not loaded, or spell list is empty")
-	else:
-		return enemy_spells.list[current_spell][key]
-
 func get_text() -> String:
 	return "Not implemented"
 
