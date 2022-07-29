@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
+[ext_resource path="res://combat/ESContainer.gd" type="Script" id=3]
 [ext_resource path="res://GUI/EmptyTimer.png" type="Texture" id=4]
 [ext_resource path="res://GUI/TimerFill.png" type="Texture" id=5]
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=6]
@@ -45,13 +46,13 @@ margin_left = 400.0
 margin_top = 200.0
 margin_right = 1030.0
 margin_bottom = 442.0
+script = ExtResource( 3 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
 margin_left = 7.0
-margin_top = 89.0
+margin_top = 7.0
 margin_right = 623.0
-margin_bottom = 152.0
-size_flags_vertical = 4
+margin_bottom = 235.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][wave]FirebooM!"

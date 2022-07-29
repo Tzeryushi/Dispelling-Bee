@@ -18,7 +18,7 @@ onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
 
 #enemy nodes
-onready var enemy_spell_box = $GUI/ESContainer/ESpellText
+onready var enemy_spell_box = $GUI/ESContainer
 onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 onready var enemy_pos = $EnemyLoad
@@ -72,7 +72,12 @@ func _unhandled_input(event) -> void:
 func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
 	enemy.next_spell()
-	enemy_spell_box.set_bbcode("[center]"+enemy.get_text())
+	enemy_spell_box.set_text("[center]"+enemy.get_text())
+#	yield(get_tree(), "idle_frame")
+#	var height = enemy_spell_box.get_content_height()
+#	print(height)
+#	enemy_spell_box.rect_size = Vector2(enemy_spell_box.rect_size.x, height)
+#	print(enemy_spell_box.rect_size)
 	spell_timer.set_timer(float(enemy.get_speed()))
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
