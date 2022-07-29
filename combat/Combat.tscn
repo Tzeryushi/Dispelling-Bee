@@ -59,6 +59,25 @@ text = "FirebooM!"
 fit_content_height = true
 scroll_active = false
 
+[node name="PSContainer3" type="PanelContainer" parent="GUI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1026.0
+margin_top = -443.0
+margin_right = -400.0
+margin_bottom = -200.0
+
+[node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 619.0
+margin_bottom = 236.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
 [node name="PSContainer" type="PanelContainer" parent="GUI"]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -69,16 +88,16 @@ margin_top = -443.0
 margin_right = -400.0
 margin_bottom = -200.0
 
-[node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
+[node name="PSpellText" type="Label" parent="GUI/PSContainer"]
 margin_left = 7.0
-margin_top = 90.0
+margin_top = 7.0
 margin_right = 619.0
-margin_bottom = 153.0
-size_flags_vertical = 4
+margin_bottom = 236.0
+size_flags_vertical = 1
 theme = ExtResource( 6 )
-bbcode_enabled = true
-fit_content_height = true
-scroll_active = false
+align = 1
+valign = 1
+autowrap = true
 
 [node name="SpellTimer" type="TextureProgress" parent="GUI"]
 margin_left = 928.0

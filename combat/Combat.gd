@@ -63,7 +63,7 @@ func _unhandled_input(event) -> void:
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			player_spell = player_spell + key_typed
 		if player_spell != null:
-			player_spell_box.bbcode_text = player_text_tags + player_spell
+			player_spell_box.text = player_spell #player_text_tags
 		if event.is_action_pressed("ui_accept"):
 			spell(player_spell)
 		#handle spell cast - should send a signal to player node? depends.
@@ -72,7 +72,7 @@ func _unhandled_input(event) -> void:
 func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
 	enemy.next_spell()
-	enemy_spell_box.bbcode_text = "[center]"+enemy.get_text()
+	enemy_spell_box.set_bbcode("[center]"+enemy.get_text())
 	spell_timer.set_timer(float(enemy.get_speed()))
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
@@ -84,7 +84,7 @@ func spell(input:String) -> void:
 		player_stats.change_honey(enemy.get_drain())
 		next_spell()
 	player_spell = ""
-	player_spell_box.bbcode_text = player_text_tags + player_spell
+	player_spell_box.text = player_spell #player_text_tags
 
 
 func _on_Timer_timeout():
