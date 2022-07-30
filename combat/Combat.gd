@@ -36,6 +36,7 @@ export var correct_color : Color = Color (0,1,0,1)
 var player_text_tags = "[center][wave]"
 
 signal dispelled()
+signal enemy_defeated()
 
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
@@ -101,6 +102,7 @@ func spell(input:String) -> void:
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
 			damage_enemy(player_spell_ref.get_damage(p_spell))
+			if enemy_health.value <= 0: return
 		else:
 			print("Not implemented, not enough honey")
 			#TODO: add effects for inability - shake and flash honey counter?
@@ -129,6 +131,8 @@ func damage_enemy(value:int) -> void:
 	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
 	enemy.damage(value)
 	enemy_health.value = enemy.get_health()
+	if enemy_health.value <= 0:
+		emit_signal("enemy_defeated")
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!

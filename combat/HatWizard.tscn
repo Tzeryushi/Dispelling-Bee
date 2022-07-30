@@ -6,6 +6,9 @@
 
 [node name="HatWizard" instance=ExtResource( 2 )]
 
+[node name="EnemyStats" parent="." index="0"]
+health = 8
+
 [node name="EnemySpells" parent="." index="1"]
 script = ExtResource( 3 )
 

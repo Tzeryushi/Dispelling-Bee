@@ -18,3 +18,7 @@ func _on_Button_button_combat(enemy):
 	remove_child(temp_menu)
 	add_child(combat)
 	combat.setup(enemy)
+
+func _on_Combat_enemy_defeated():
+	remove_child(combat)
+	add_child(temp_menu)
