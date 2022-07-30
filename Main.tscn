@@ -18,6 +18,7 @@ script = ExtResource( 2 )
 [node name="TempMenu" parent="." instance=ExtResource( 4 )]
 
 [connection signal="enemy_defeated" from="Combat" to="." method="_on_Combat_enemy_defeated"]
+[connection signal="player_defeated" from="Combat" to="." method="_on_Combat_player_defeated"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button2" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button3" to="." method="_on_Button_button_combat"]

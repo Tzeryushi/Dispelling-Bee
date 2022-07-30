@@ -37,6 +37,7 @@ var player_text_tags = "[center][wave]"
 
 signal dispelled()
 signal enemy_defeated()
+signal player_defeated()
 
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
@@ -137,6 +138,9 @@ func damage_enemy(value:int) -> void:
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	player_stats.damage(enemy.get_damage())
+	if player_stats.health <= 0:
+		emit_signal("player_defeated")
+		return
 	next_spell()
 
 func _on_CombatStats_health_changed(old_value, new_value) -> void:
