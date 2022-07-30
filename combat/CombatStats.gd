@@ -8,6 +8,11 @@ var max_health : int = 10
 var honey : int = 1
 var max_honey : int = 5
 
+func can_afford(cost:int) -> bool:
+	if honey - cost >= 0:
+		return true
+	return false
+
 func change_honey(value) -> void:
 	var old = honey
 	if honey + value > max_honey:

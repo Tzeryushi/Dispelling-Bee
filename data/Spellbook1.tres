@@ -5,8 +5,9 @@
 [resource]
 script = ExtResource( 1 )
 list = {
-"PEW-PEW": {
+"pew-pew": {
 "Damage": 1,
-"Honey": 3
+"Honey": 3,
+"Name": "Pew-pew"
 }
 }

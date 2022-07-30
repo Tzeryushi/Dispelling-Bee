@@ -1,13 +1,7 @@
-extends Resource
+extends Node
 
-class_name PlayerSpells
+var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
 
-#Spellbooks in the future?
-#This is just an idea for a way to keep track of spells.
-#As spells are simply referenced and not changed, and they can only
-#be added to a player*, it makes sense to have them globally accessible.
-
-export var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
 
 func add_spell(solve:String, damage:int, cost:int, name:String) -> void:
 	list[solve]["Damage"] = damage

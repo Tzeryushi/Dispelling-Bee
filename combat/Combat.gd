@@ -10,10 +10,12 @@ extends Node2D
 
 #TODO: load stats dynamically - won't necessarily be the same file in the future
 export var player_ref : Resource
+export var player_spell_ref : Resource
 
 #player nodes
 onready var player_spell_box = $GUI/PSContainer
 onready var player_stats = $Player/CombatStats
+onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
 
@@ -87,11 +89,21 @@ func next_spell() -> void:
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
 #TODO: update in the future to compare against loaded player spells!
 func spell(input:String) -> void:
-	var e_spell = enemy.get_solve()
 	var p_spell = input.to_lower()
-	if p_spell == e_spell:
-		player_stats.change_honey(enemy.get_drain())
-		next_spell()
+	if player_spell_ref.has_spell(p_spell):
+		#check if player has enough honey
+		var cost = player_spell_ref.get_cost(p_spell)
+		if player_stats.can_afford(cost):
+			#charge player and damage enemy
+			player_stats.change_honey(-cost)
+		else:
+			print("Not implemented, not enough honey")
+			#TODO: add effects for inability - shake and flash honey counter?
+	else:
+		var e_spell = enemy.get_solve()
+		if p_spell == e_spell:
+			player_stats.change_honey(enemy.get_drain())
+			next_spell()
 	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
 
@@ -109,7 +121,6 @@ func color_spells(input:String) -> void:
 		digit += 1
 	print("called?")
 	player_spell_box.change_text_color(correct_color)
-	
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
