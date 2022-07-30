@@ -43,6 +43,7 @@ func _ready():
 	player_stats.max_health = player_ref.max_health
 	player_stats.honey = player_ref.honey
 	player_stats.max_honey = player_ref.max_honey
+	
 	player_health.max_value = player_stats.max_health
 	player_health.value = player_stats.health
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
@@ -56,6 +57,8 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy = new_enemy.instance()
 	enemy_pos.add_child(enemy)
 	enemy.show()
+	enemy_health.max_value = enemy.get_max_health()
+	enemy_health.value = enemy.get_health()
 	next_spell()
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?
@@ -71,6 +74,7 @@ func _unhandled_input(event) -> void:
 		if player_spell != null:
 			player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
 		if event.is_action_pressed("ui_accept"):
+			#TODO: Animation for casts, and backfires.
 			spell(player_spell)
 		#handle spell cast - should send a signal to player node? depends.
 		#TODO: handle spell/dispell based on player spell list
@@ -96,6 +100,7 @@ func spell(input:String) -> void:
 		if player_stats.can_afford(cost):
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
+			damage_enemy(player_spell_ref.get_damage(p_spell))
 		else:
 			print("Not implemented, not enough honey")
 			#TODO: add effects for inability - shake and flash honey counter?
@@ -112,21 +117,23 @@ func color_spells(input:String) -> void:
 	var p_spell = input.to_lower()
 	var digit = 0
 	for i in p_spell:
-		print(i)
-		print(e_spell.substr(digit, 1))
 		if i != e_spell.substr(digit, 1):
-			print("test")
 			player_spell_box.change_text_color(normal_color)
 			return
 		digit += 1
-	print("called?")
 	player_spell_box.change_text_color(correct_color)
+
+func damage_enemy(value:int) -> void:
+	#damages and receives changed value back from enemy
+	#could have probably passed back new health through damage function, huh?
+	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
+	enemy.damage(value)
+	enemy_health.value = enemy.get_health()
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	player_stats.damage(enemy.get_damage())
 	next_spell()
-
 
 func _on_CombatStats_health_changed(old_value, new_value) -> void:
 	#TODO: might just incept this into a script for the health bar instead of clogging this up

@@ -2,6 +2,7 @@ extends Node2D
 
 #Implement spell cycle and damagers here
 #Extend this script on child nodes to specify behavior
+onready var enemy_stats = $EnemyStats
 onready var enemy_spells = $EnemySpells
 
 var current_spell = 0
@@ -37,3 +38,14 @@ func next_spell() -> void:
 	#implement specific behavior to get the next spell
 	#should I pass a reference to player stats in here? Food for thought.
 	pass
+
+func damage(value:int) -> void:
+	enemy_stats.damage(value)
+	pass
+
+func get_health() -> int:
+	return enemy_stats.get_health()
+func get_max_health() -> int:
+	return enemy_stats.get_max_health()
+func get_cast_speed() -> float:
+	return enemy_stats.get_cast_speed()
