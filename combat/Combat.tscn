@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -14,6 +14,63 @@
 [ext_resource path="res://combat/PSContainer.gd" type="Script" id=12]
 [ext_resource path="res://combat/CombatSpells.gd" type="Script" id=13]
 [ext_resource path="res://data/Spellbook1.tres" type="Resource" id=14]
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=5]
+states/Idle/node = SubResource( 10 )
+states/Idle/position = Vector2( 539, 72.3333 )
+states/Shake/node = SubResource( 11 )
+states/Shake/position = Vector2( 703.667, 167.667 )
+transitions = [ "Idle", "Shake", SubResource( 12 ), "Shake", "Idle", SubResource( 13 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[sub_resource type="Animation" id=7]
+resource_name = "Idle"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Count:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -7, -10 ), Vector2( 3, 10 ), Vector2( -6, 2 ), Vector2( 7, -9 ), Vector2( -3, 1 ), Vector2( -4, -2 ), Vector2( 2, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Count:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "idle"
+loop = true
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -119,6 +176,18 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 111.0
+
+[node name="AnimationTree" type="AnimationTree" parent="GUI/HoneyCounter"]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/HoneyCounter"]
+autoplay = "idle"
+anims/Idle = SubResource( 7 )
+anims/RESET = SubResource( 8 )
+anims/idle = SubResource( 9 )
 
 [node name="EnemyLoad" type="Position2D" parent="."]
 position = Vector2( 1371, 502 )
