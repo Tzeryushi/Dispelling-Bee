@@ -217,3 +217,5 @@ position = Vector2( 1692, 79 )
 [connection signal="timeout" from="GUI/SpellTimer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]
+[connection signal="honey_not_enough" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_not_enough"]
+[connection signal="honey_overfill" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_overfill"]

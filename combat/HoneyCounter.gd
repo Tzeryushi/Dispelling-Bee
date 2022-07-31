@@ -31,11 +31,18 @@ func update_max(new_max_count) -> void:
 func full_check() -> void:
 	if current_count >= max_count:
 		count.add_color_override("font_color", full_color)
-		animation_state.travel("Shake")
 	else:
 		count.add_color_override("font_color", normal_color)
 
+func shake() -> void:
+	animation_state.travel("Shake")
 
 func _on_CombatStats_honey_changed(_old_value, new_value):
 	#received from CombatStats
 	update_count(new_value)
+
+func _on_CombatStats_honey_not_enough():
+	shake()
+
+func _on_CombatStats_honey_overfill():
+	shake()
