@@ -91,6 +91,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Particles2D:one_shot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Idle"
@@ -109,6 +121,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:one_shot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -125,7 +149,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.765094, 244.991 ), 0.0, 0.
 [sub_resource type="CurveTexture" id=8]
 curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=11]
 emission_shape = 1
 emission_sphere_radius = 200.0
 flag_disable_z = true
@@ -145,7 +169,6 @@ script = ExtResource( 5 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="EffectSound" type="AudioStreamPlayer" parent="."]
@@ -169,7 +192,6 @@ shape = SubResource( 2 )
 [node name="Particles2D" type="Particles2D" parent="."]
 scale = Vector2( 0.0743922, 0.0743922 )
 amount = 32
-one_shot = true
 explosiveness = 0.82
-process_material = SubResource( 9 )
+process_material = SubResource( 11 )
 texture = ExtResource( 2 )
