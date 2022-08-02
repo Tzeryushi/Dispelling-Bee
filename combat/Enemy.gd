@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Enemy
+
 #Implement spell cycle and damagers here
 #Extend this script on child nodes to specify behavior
 onready var enemy_stats = $EnemyStats

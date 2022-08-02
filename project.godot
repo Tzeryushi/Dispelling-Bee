@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://combat/Enemy.gd"
+}, {
+"base": "Node",
+"class": "EnemySpells",
+"language": "GDScript",
+"path": "res://combat/EnemySpells.gd"
+}, {
+"base": "Node",
+"class": "EnemyStats",
+"language": "GDScript",
+"path": "res://combat/EnemyStats.gd"
+}, {
 "base": "Resource",
 "class": "PlayerSpells",
 "language": "GDScript",
@@ -18,10 +33,25 @@ _global_script_classes=[ {
 "class": "PlayerStats",
 "language": "GDScript",
 "path": "res://data/PlayerStats.gd"
+}, {
+"base": "Node",
+"class": "SpellAnimation",
+"language": "GDScript",
+"path": "res://spells/SpellAnimation.gd"
+}, {
+"base": "Resource",
+"class": "SpellModel",
+"language": "GDScript",
+"path": "res://spells/SpellModel.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
+"EnemySpells": "",
+"EnemyStats": "",
 "PlayerSpells": "",
-"PlayerStats": ""
+"PlayerStats": "",
+"SpellAnimation": "",
+"SpellModel": ""
 }
 
 [application]

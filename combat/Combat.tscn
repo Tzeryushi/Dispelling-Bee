@@ -169,8 +169,8 @@ script = ExtResource( 10 )
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1191.0
-margin_bottom = 570.0
+margin_right = 1409.0
+margin_bottom = 665.0
 theme = ExtResource( 6 )
 text = "1"
 align = 1
@@ -205,9 +205,6 @@ shape = SubResource( 14 )
 
 [node name="SpellEffect" parent="." instance=ExtResource( 15 )]
 position = Vector2( 742, 879 )
-
-[node name="Sprite" parent="SpellEffect" index="0"]
-frame = 1
 
 [node name="Player" type="Node2D" parent="."]
 

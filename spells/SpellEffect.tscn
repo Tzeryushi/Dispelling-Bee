@@ -169,6 +169,7 @@ script = ExtResource( 5 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 1 )
+frame = 3
 playing = true
 
 [node name="EffectSound" type="AudioStreamPlayer" parent="."]

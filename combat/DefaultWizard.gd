@@ -1,4 +1,4 @@
-extends "res://combat/Enemy.gd"
+extends Enemy
 
 func dict_pull(key:String) -> String:
 	#returns value of a key in the current spell

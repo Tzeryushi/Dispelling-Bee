@@ -1,4 +1,4 @@
-extends "res://combat/EnemySpells.gd"
+extends EnemySpells
 
 func _ready() -> void:
 	list.append({"Text":"[shake]Firebang!", "Solve":"gnaberif!", "Damage":1, "Drain":1, "Speed":15})
