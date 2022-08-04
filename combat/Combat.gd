@@ -78,6 +78,7 @@ func _unhandled_input(event) -> void:
 		if event.is_action_pressed("ui_accept"):
 			#TODO: Animation for casts, and backfires.
 			spell(player_spell)
+			$AnimatedSprite.play_inter($EnemyLoad.position)
 		#handle spell cast - should send a signal to player node? depends.
 		#TODO: handle spell/dispell based on player spell list
 		

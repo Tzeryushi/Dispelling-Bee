@@ -11,4 +11,4 @@ func play(attacker:Node2D, defender:Node2D):
 	$AnimatedSprite.position = attacker.position
 	var tween = Tween.new()
 	add_child(tween)
-	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_QUAD)

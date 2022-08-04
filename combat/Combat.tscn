@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -14,6 +14,11 @@
 [ext_resource path="res://combat/PSContainer.gd" type="Script" id=12]
 [ext_resource path="res://combat/CombatSpells.gd" type="Script" id=13]
 [ext_resource path="res://data/Spellbook1.tres" type="Resource" id=14]
+[ext_resource path="res://spells/pewpew/pewpew3.png" type="Texture" id=15]
+[ext_resource path="res://spells/pewpew/pewpew1.png" type="Texture" id=16]
+[ext_resource path="res://spells/pewpew/pewpew4.png" type="Texture" id=17]
+[ext_resource path="res://spells/pewpew/pewpew2.png" type="Texture" id=18]
+[ext_resource path="res://combat/TestingScrap.gd" type="Script" id=19]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -71,6 +76,14 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "idle"
 loop = true
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -166,8 +179,8 @@ script = ExtResource( 10 )
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -169.0
-margin_bottom = -17.0
+margin_right = 49.0
+margin_bottom = 78.0
 theme = ExtResource( 6 )
 text = "1"
 align = 1
@@ -214,6 +227,14 @@ texture = ExtResource( 2 )
 [node name="DefaultWizard" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 1692, 79 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 14 )
+frame = 2
+playing = true
+script = ExtResource( 19 )
+
+[node name="Tween" type="Tween" parent="AnimatedSprite"]
 
 [connection signal="timeout" from="GUI/SpellTimer/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
