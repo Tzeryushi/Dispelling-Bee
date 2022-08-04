@@ -22,4 +22,5 @@ script = ExtResource( 1 )
 [node name="hit" type="AudioStreamPlayer" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 7.64, 7.64 )
 frames = SubResource( 1 )

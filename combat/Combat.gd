@@ -103,6 +103,10 @@ func spell(input:String) -> void:
 		if player_stats.can_afford(cost):
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
+			#player_spell_ref.play_spell(spell_index, $Player, $EnemyLoad)
+			var anim = player_spell_ref.spell_list[spell_index].animation.instance()
+			anim.play($Player, $EnemyLoad)
+			anim.queue_free()
 			damage_enemy(player_spell_ref.get_damage(spell_index))
 			if enemy_health.value <= 0: return
 		else:

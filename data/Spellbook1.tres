@@ -6,10 +6,3 @@
 [resource]
 script = ExtResource( 1 )
 spell_list = [ ExtResource( 2 ) ]
-list = {
-"pew-pew": {
-"Damage": 1,
-"Honey": 3,
-"Name": "Pew-pew"
-}
-}

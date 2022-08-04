@@ -8,12 +8,18 @@ class_name PlayerSpells
 #be added to a player*, it makes sense to have them globally accessible.
 
 export(Array, Resource) var spell_list
-export var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
+#export var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
 
-func add_spell(solve:String, damage:int, cost:int, name:String) -> void:
-	list[solve]["Damage"] = damage
-	list[solve]["Honey"] = cost
-	list[solve]["Name"] = name
+#func add_spell(solve:String, damage:int, cost:int, name:String) -> void:
+#	list[solve]["Damage"] = damage
+#	list[solve]["Honey"] = cost
+#	list[solve]["Name"] = name
+
+func play_spell(index:int, attacker:Node2D, defender:Node2D) -> void:
+	#TODO: implement yield signals to stall calling process
+	var anim = spell_list[index].animation.instance()
+	anim.play(attacker, defender)
+	anim.queue_free()
 
 func has_spell(key:String) -> int:
 	for i in range(spell_list.size()):

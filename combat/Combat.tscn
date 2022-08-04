@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -71,8 +71,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "idle"
 loop = true
-
-[sub_resource type="CapsuleShape2D" id=14]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
@@ -168,8 +166,8 @@ script = ExtResource( 10 )
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -206.0
-margin_bottom = -25.0
+margin_right = -169.0
+margin_bottom = -17.0
 theme = ExtResource( 6 )
 text = "1"
 align = 1
@@ -194,13 +192,6 @@ anims/idle = SubResource( 9 )
 
 [node name="EnemyLoad" type="Position2D" parent="."]
 position = Vector2( 1371, 502 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="EnemyLoad"]
-position = Vector2( 3, -221 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyLoad/StaticBody2D"]
-scale = Vector2( 8.17797, 8.17797 )
-shape = SubResource( 14 )
 
 [node name="Player" type="Node2D" parent="."]
 
