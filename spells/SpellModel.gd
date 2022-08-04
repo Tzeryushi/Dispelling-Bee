@@ -4,6 +4,7 @@ class_name SpellModel
 
 export var name : String
 export var solve : String
-export var damage : 1
-export var cost : 3
+export var damage : int = 1
+export var cost : int = 3
 export var animation : PackedScene
+

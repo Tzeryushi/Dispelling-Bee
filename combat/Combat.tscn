@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://combat/PSContainer.gd" type="Script" id=12]
 [ext_resource path="res://combat/CombatSpells.gd" type="Script" id=13]
 [ext_resource path="res://data/Spellbook1.tres" type="Resource" id=14]
-[ext_resource path="res://spells/SpellEffect.tscn" type="PackedScene" id=15]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -169,8 +168,8 @@ script = ExtResource( 10 )
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1409.0
-margin_bottom = 665.0
+margin_right = -206.0
+margin_bottom = -25.0
 theme = ExtResource( 6 )
 text = "1"
 align = 1
@@ -203,9 +202,6 @@ position = Vector2( 3, -221 )
 scale = Vector2( 8.17797, 8.17797 )
 shape = SubResource( 14 )
 
-[node name="SpellEffect" parent="." instance=ExtResource( 15 )]
-position = Vector2( 742, 879 )
-
 [node name="Player" type="Node2D" parent="."]
 
 [node name="CombatStats" type="Node" parent="Player"]
@@ -233,5 +229,3 @@ position = Vector2( 1692, 79 )
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]
 [connection signal="honey_not_enough" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_not_enough"]
 [connection signal="honey_overfill" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_overfill"]
-
-[editable path="SpellEffect"]

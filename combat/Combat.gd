@@ -96,13 +96,14 @@ func next_spell() -> void:
 #TODO: update in the future to compare against loaded player spells!
 func spell(input:String) -> void:
 	var p_spell = input.to_lower()
-	if player_spell_ref.has_spell(p_spell):
+	var spell_index = player_spell_ref.has_spell(p_spell)
+	if spell_index >= 0:
 		#check if player has enough honey
-		var cost = player_spell_ref.get_cost(p_spell)
+		var cost = player_spell_ref.get_cost(spell_index)
 		if player_stats.can_afford(cost):
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
-			damage_enemy(player_spell_ref.get_damage(p_spell))
+			damage_enemy(player_spell_ref.get_damage(spell_index))
 			if enemy_health.value <= 0: return
 		else:
 			print("Not implemented, not enough honey")
