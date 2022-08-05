@@ -1,6 +1,11 @@
 extends SpellAnimation
 
-#onready var sprite = $AnimatedSprite
+var tween : Tween
+
+func _ready() -> void:
+	print("how")
+	tween = Tween.new()
+	add_child(tween)
 
 func play(attacker:Node2D, defender:Node2D):
 	#the idea is to grab the position of the attacking node, and
@@ -9,6 +14,7 @@ func play(attacker:Node2D, defender:Node2D):
 	#can know when to continue
 	$AnimatedSprite.visible = true
 	$AnimatedSprite.position = attacker.position
-	var tween = Tween.new()
-	add_child(tween)
+#	var tween = Tween.new()
+#	add_child(tween)
 	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_QUAD)
+	tween.start()

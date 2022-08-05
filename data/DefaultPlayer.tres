@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-health = 1
+health = 4
 max_health = 10
-honey = 1
+honey = 3
 max_honey = 5

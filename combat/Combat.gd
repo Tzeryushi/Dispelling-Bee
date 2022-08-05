@@ -78,7 +78,6 @@ func _unhandled_input(event) -> void:
 		if event.is_action_pressed("ui_accept"):
 			#TODO: Animation for casts, and backfires.
 			spell(player_spell)
-			$AnimatedSprite.play_inter($EnemyLoad.position)
 		#handle spell cast - should send a signal to player node? depends.
 		#TODO: handle spell/dispell based on player spell list
 		
@@ -106,8 +105,10 @@ func spell(input:String) -> void:
 			player_stats.change_honey(-cost)
 			#player_spell_ref.play_spell(spell_index, $Player, $EnemyLoad)
 			var anim = player_spell_ref.spell_list[spell_index].animation.instance()
-			anim.play($Player, $EnemyLoad)
-			anim.queue_free()
+			add_child(anim)
+			anim.play($Player/Pos, $EnemyLoad)
+			#TODO: add yield to signal for end of animation
+			#anim.queue_free()
 			damage_enemy(player_spell_ref.get_damage(spell_index))
 			if enemy_health.value <= 0: return
 		else:
