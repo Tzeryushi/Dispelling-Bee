@@ -106,9 +106,11 @@ func spell(input:String) -> void:
 			#player_spell_ref.play_spell(spell_index, $Player, $EnemyLoad)
 			var anim = player_spell_ref.spell_list[spell_index].animation.instance()
 			add_child(anim)
-			anim.play($Player/Pos, $EnemyLoad)
 			#TODO: add yield to signal for end of animation
-			#anim.queue_free()
+			anim.play($Player/Pos, $EnemyLoad)
+			yield(anim, "finished")
+			anim.queue_free()
+			print("donedone")
 			damage_enemy(player_spell_ref.get_damage(spell_index))
 			if enemy_health.value <= 0: return
 		else:

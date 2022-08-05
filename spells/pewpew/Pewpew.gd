@@ -1,13 +1,6 @@
 extends SpellAnimation
 
-var tween : Tween
-
-func _ready() -> void:
-	print("how")
-	tween = Tween.new()
-	add_child(tween)
-
-func play(attacker:Node2D, defender:Node2D):
+func _play(attacker:Node2D, defender:Node2D) -> void:
 	#the idea is to grab the position of the attacking node, and
 	#animate the graphic over to the defending node
 	#we'll emit a signal when we finish so that a class that is yielding for the animation
@@ -18,3 +11,5 @@ func play(attacker:Node2D, defender:Node2D):
 #	add_child(tween)
 	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_QUAD)
 	tween.start()
+	yield(get_tree().create_timer(0.5), "timeout")
+	emit_signal("finished")
