@@ -9,7 +9,12 @@ func _play(attacker:Node2D, defender:Node2D) -> void:
 	$AnimatedSprite.position = attacker.position
 #	var tween = Tween.new()
 #	add_child(tween)
-	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_QUAD)
-	tween.start()
-	yield(get_tree().create_timer(0.5), "timeout")
+	var tween := create_tween()
+#	tween.interpolate_property($AnimatedSprite, "position", attacker.position, defender.position, 0.5, Tween.TRANS_QUAD)
+#	tween.start()
+	tween.tween_property($AnimatedSprite, "position", Vector2(100,200), 1)
+	tween.tween_property($AnimatedSprite, "position", Vector2(300,500), 1)
+	
+	#TODO: make functionality of time yield endemic to spellanimation?
+	yield(get_tree().create_timer(2), "timeout")
 	emit_signal("finished")

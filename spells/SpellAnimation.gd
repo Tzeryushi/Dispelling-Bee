@@ -4,11 +4,8 @@ class_name SpellAnimation
 
 signal finished
 
-var tween : Tween
-
 func _ready() -> void:
-	tween = Tween.new()
-	add_child(tween)
+	pass
 
 func _play(attacker:Node2D, defender:Node2D) -> void:
 	pass
