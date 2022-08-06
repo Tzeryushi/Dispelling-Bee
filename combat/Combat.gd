@@ -28,6 +28,7 @@ onready var enemy_pos = $EnemyLoad
 #temp nodes for protoyping
 var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
 
+var is_casting : bool = false
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
 
@@ -65,6 +66,8 @@ func setup(new_enemy:PackedScene) -> void:
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?
 func _unhandled_input(event) -> void:
+	if is_casting:
+		return
 	if event is InputEventKey and event.is_pressed():
 		if player_spell != null and not player_spell.empty() and event.scancode == KEY_BACKSPACE:
 			player_spell.erase(player_spell.length() - 1, 1)
@@ -101,6 +104,7 @@ func spell(input:String) -> void:
 		#check if player has enough honey
 		var cost = player_spell_ref.get_cost(spell_index)
 		if player_stats.can_afford(cost):
+			is_casting = true
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
 			#player_spell_ref.play_spell(spell_index, $Player, $EnemyLoad)
