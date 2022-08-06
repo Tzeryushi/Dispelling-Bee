@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://combat/CombatSpells.gd" type="Script" id=13]
 [ext_resource path="res://data/Spellbook1.tres" type="Resource" id=14]
 [ext_resource path="res://GUI/bar_empty.png" type="Texture" id=15]
+[ext_resource path="res://combat/PlayerHealth.gd" type="Script" id=16]
+[ext_resource path="res://combat/EnemyHealth.gd" type="Script" id=17]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -96,6 +98,7 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture_under = ExtResource( 15 )
 texture_progress = ExtResource( 11 )
 fill_mode = 3
+script = ExtResource( 17 )
 
 [node name="PlayerHealth" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
@@ -110,6 +113,7 @@ rounded = true
 texture_under = ExtResource( 15 )
 texture_progress = ExtResource( 11 )
 fill_mode = 3
+script = ExtResource( 16 )
 
 [node name="ESContainer" type="PanelContainer" parent="GUI"]
 margin_left = 407.0

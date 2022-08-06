@@ -47,8 +47,9 @@ func _ready():
 	player_stats.honey = player_ref.honey
 	player_stats.max_honey = player_ref.max_honey
 	
-	player_health.max_value = player_stats.max_health
-	player_health.value = player_stats.health
+	player_health.max_value = 1000
+	player_health.value = int(float(player_stats.health)/float(player_stats.max_health)*float(player_health.max_value))
+	print(player_health.value)
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
 
 func _exit_tree():
@@ -60,8 +61,8 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy = new_enemy.instance()
 	enemy_pos.add_child(enemy)
 	enemy.show()
-	enemy_health.max_value = enemy.get_max_health()
-	enemy_health.value = enemy.get_health()
+	enemy_health.max_value = 1000
+	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
 	next_spell()
 
 #handle the keyboard input. Subject to change. Restrict keys with hash?
@@ -116,6 +117,7 @@ func spell(input:String) -> void:
 			anim.queue_free()
 			print("donedone")
 			damage_enemy(player_spell_ref.get_damage(spell_index))
+			is_casting = false
 			if enemy_health.value <= 0: return
 		else:
 			print("Not implemented, not enough honey")
@@ -144,8 +146,10 @@ func damage_enemy(value:int) -> void:
 	#could have probably passed back new health through damage function, huh?
 	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
 	enemy.damage(value)
-	enemy_health.value = enemy.get_health()
-	if enemy_health.value <= 0:
+	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	#enemy_health.value = enemy.get_health()
+	enemy_health.animate_value(bar_value, 1.0)
+	if enemy.get_health() <= 0:
 		emit_signal("enemy_defeated")
 
 func _on_Timer_timeout() -> void:
@@ -158,4 +162,6 @@ func _on_Timer_timeout() -> void:
 
 func _on_CombatStats_health_changed(old_value, new_value) -> void:
 	#TODO: might just incept this into a script for the health bar instead of clogging this up
-	player_health.value = new_value
+	var bar_value = int((float(new_value)/float(player_stats.max_health))*player_health.max_value)
+	player_health.animate_value(bar_value, 1.0)
+	#player_health.value = new_value
