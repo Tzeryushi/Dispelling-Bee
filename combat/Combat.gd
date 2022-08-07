@@ -149,6 +149,7 @@ func damage_enemy(value:int) -> void:
 	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
+	#TODO: win condition checking must sanitize any yields for animations and field updates first
 	if enemy.get_health() <= 0:
 		emit_signal("enemy_defeated")
 

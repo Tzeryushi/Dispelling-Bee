@@ -6,7 +6,8 @@ var cached_text : String
 
 func set_text(text:String) -> void:
 	text_box.bbcode_text = text
-	yield(get_tree(), "idle_frame")
+	if not get_tree() == null:
+		yield(get_tree(), "idle_frame")
 	var height = text_box.get_content_height()
 	rect_size.y = height + 8
 
