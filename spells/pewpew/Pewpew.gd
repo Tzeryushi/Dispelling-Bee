@@ -18,6 +18,13 @@ func _play(attacker:Node2D, defender:Node2D) -> void:
 	#tween.tween_property($AnimatedSprite, "position", Vector2(300,500), 1)
 	#TODO: make functionality of time yield endemic to spellanimation?
 	yield(tween.tween_property($AnimatedSprite, "position", defender.position, 1), "finished")
+	$AnimatedSprite.visible = false
+	emit_signal("hit")
 	if !$hit.is_playing():
 		$hit.play()
-	emit_signal("finished")
+		yield($hit, "finished")
+		print("passed")
+		emit_signal("finished")
+	else:
+		print("output")
+		emit_signal("finished")

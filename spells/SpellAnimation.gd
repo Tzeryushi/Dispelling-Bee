@@ -2,6 +2,7 @@ extends Node
 
 class_name SpellAnimation
 
+signal hit
 signal finished
 
 func _ready() -> void:

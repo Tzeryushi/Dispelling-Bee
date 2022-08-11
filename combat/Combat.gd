@@ -113,22 +113,31 @@ func spell(input:String) -> void:
 			add_child(anim)
 			#TODO: add yield to signal for end of animation
 			anim.play($Player/Pos, $EnemyLoad)
-			yield(anim, "finished")
-			anim.queue_free()
-			print("donedone")
+			yield(anim, "hit")
 			damage_enemy(player_spell_ref.get_damage(spell_index))
 			is_casting = false
-			if enemy_health.value <= 0: return
+			if enemy_health.value <= 0:
+				#TODO: this is only so that fields that are deleted upon scene swap are not set
+				#Delete this once transitions are in place.
+				anim.queue_free()
+				return
+			else:
+				player_spell = ""
+				player_spell_box.set_text(player_text_tags + player_spell)
+				yield(anim, "finished")
+				anim.queue_free()
 		else:
 			print("Not implemented, not enough honey")
 			#TODO: add effects for inability - shake and flash honey counter?
+			player_spell = ""
+			player_spell_box.set_text(player_text_tags + player_spell)
 	else:
 		var e_spell = enemy.get_solve()
 		if p_spell == e_spell:
 			player_stats.change_honey(enemy.get_drain())
 			next_spell()
-	player_spell = ""
-	player_spell_box.set_text(player_text_tags + player_spell)
+		player_spell = ""
+		player_spell_box.set_text(player_text_tags + player_spell)
 
 func color_spells(input:String) -> void:
 	var e_spell = enemy.get_solve()
