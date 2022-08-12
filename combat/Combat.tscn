@@ -116,17 +116,15 @@ texture_progress = ExtResource( 11 )
 fill_mode = 3
 script = ExtResource( 16 )
 
-[node name="ESContainer" type="PanelContainer" parent="GUI"]
-margin_left = 407.0
-margin_top = 207.0
-margin_right = 1023.0
-margin_bottom = 341.0
-theme = ExtResource( 6 )
+[node name="ESContainer" type="Node2D" parent="GUI"]
+position = Vector2( 397, 149 )
 script = ExtResource( 3 )
-bg_color = Color( 1, 0.603922, 0.603922, 1 )
+bg_color = Color( 1, 0.647059, 0.647059, 1 )
+bubble_min = 200.0
 
 [node name="Bubble" type="NinePatchRect" parent="GUI/ESContainer"]
-margin_right = 616.0
+margin_left = -30.0
+margin_right = 656.0
 margin_bottom = 134.0
 theme = ExtResource( 6 )
 texture = ExtResource( 18 )
@@ -137,7 +135,8 @@ patch_margin_bottom = 67
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
 margin_right = 616.0
-margin_bottom = 134.0
+margin_bottom = 63.0
+size_flags_vertical = 0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][wave]FirebooM!"
@@ -145,21 +144,15 @@ text = "FirebooM!"
 fit_content_height = true
 scroll_active = false
 
-[node name="PSContainer" type="PanelContainer" parent="GUI"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1026.0
-margin_top = -443.0
-margin_right = -400.0
-margin_bottom = -309.0
-theme = ExtResource( 6 )
+[node name="PSContainer" type="Node2D" parent="GUI"]
+position = Vector2( 863, 709 )
 script = ExtResource( 12 )
-bg_color = Color( 0.592157, 0.592157, 1, 1 )
+bg_color = Color( 0.65098, 0.65098, 1, 1 )
+bubble_min = 200.0
 
 [node name="Bubble" type="NinePatchRect" parent="GUI/PSContainer"]
-margin_right = 626.0
+margin_left = -30.0
+margin_right = 656.0
 margin_bottom = 134.0
 texture = ExtResource( 18 )
 patch_margin_left = 67
@@ -169,9 +162,11 @@ patch_margin_bottom = 67
 
 [node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
 margin_right = 626.0
-margin_bottom = 134.0
+margin_bottom = 63.0
+size_flags_vertical = 0
 theme = ExtResource( 6 )
 bbcode_enabled = true
+fit_content_height = true
 scroll_active = false
 
 [node name="SpellTimer" type="TextureProgress" parent="GUI"]
