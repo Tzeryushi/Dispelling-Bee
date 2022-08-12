@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/PrototypeBee.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://GUI/bar_empty.png" type="Texture" id=15]
 [ext_resource path="res://combat/PlayerHealth.gd" type="Script" id=16]
 [ext_resource path="res://combat/EnemyHealth.gd" type="Script" id=17]
+[ext_resource path="res://GUI/spell_bubble.png" type="Texture" id=18]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -119,13 +120,24 @@ script = ExtResource( 16 )
 margin_left = 407.0
 margin_top = 207.0
 margin_right = 1023.0
-margin_bottom = 435.0
+margin_bottom = 341.0
 theme = ExtResource( 6 )
 script = ExtResource( 3 )
+bg_color = Color( 1, 0.603922, 0.603922, 1 )
+
+[node name="Bubble" type="NinePatchRect" parent="GUI/ESContainer"]
+margin_right = 616.0
+margin_bottom = 134.0
+theme = ExtResource( 6 )
+texture = ExtResource( 18 )
+patch_margin_left = 67
+patch_margin_top = 67
+patch_margin_right = 67
+patch_margin_bottom = 67
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
 margin_right = 616.0
-margin_bottom = 228.0
+margin_bottom = 134.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][wave]FirebooM!"
@@ -141,13 +153,23 @@ anchor_bottom = 1.0
 margin_left = -1026.0
 margin_top = -443.0
 margin_right = -400.0
-margin_bottom = -200.0
+margin_bottom = -309.0
 theme = ExtResource( 6 )
 script = ExtResource( 12 )
+bg_color = Color( 0.592157, 0.592157, 1, 1 )
+
+[node name="Bubble" type="NinePatchRect" parent="GUI/PSContainer"]
+margin_right = 626.0
+margin_bottom = 134.0
+texture = ExtResource( 18 )
+patch_margin_left = 67
+patch_margin_top = 67
+patch_margin_right = 67
+patch_margin_bottom = 67
 
 [node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
 margin_right = 626.0
-margin_bottom = 243.0
+margin_bottom = 134.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 scroll_active = false
