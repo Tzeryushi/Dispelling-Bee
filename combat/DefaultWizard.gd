@@ -1,5 +1,8 @@
 extends Enemy
 
+var first_spell = true
+var first_spell_index = 2
+
 func dict_pull(key:String) -> String:
 	#returns value of a key in the current spell
 	#yeah this isn't a great name but it's funny leave me alone
@@ -27,4 +30,11 @@ func get_speed() -> int:
 func next_spell() -> void:
 	#implement specific behavior to get the next spell
 	#should I pass a reference to player stats in here? Food for thought.
-	current_spell = randi() % enemy_spells.list.size()
+	if first_spell:
+		current_spell = first_spell_index
+		first_spell = false
+		return
+	var next_spell = current_spell
+	while current_spell == next_spell:
+		next_spell = randi() % enemy_spells.list.size()
+	current_spell = next_spell

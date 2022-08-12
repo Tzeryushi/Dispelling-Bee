@@ -71,7 +71,7 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
 	next_spell()
 
-#handle the keyboard input. Subject to change. Restrict keys with hash?
+#handle the keyboard input.
 func _unhandled_input(event) -> void:
 	if is_casting:
 		return
@@ -81,8 +81,7 @@ func _unhandled_input(event) -> void:
 			color_spells(player_spell)
 			if player_spell != null:
 				player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
-		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()):
-			#TODO: only allow certain keys
+		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()): #checking list of allowed keys
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			player_spell = player_spell + key_typed
 			color_spells(player_spell)
@@ -104,6 +103,8 @@ func next_spell() -> void:
 #	enemy_spell_box.rect_size = Vector2(enemy_spell_box.rect_size.x, height)
 #	print(enemy_spell_box.rect_size)
 	spell_timer.set_timer(float(enemy.get_speed()))
+	color_spells(player_spell)
+	player_spell_box.set_text(player_text_tags + player_spell)
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
 #TODO: update in the future to compare against loaded player spells!
@@ -151,15 +152,23 @@ func spell(input:String) -> void:
 		player_spell_box.set_text(player_text_tags + player_spell)
 
 func color_spells(input:String) -> void:
+	#color the spell text if it lines up with enemy spells
+	#TODO: set a different color when it lines up with player spells
 	var e_spell = enemy.get_solve()
 	var p_spell = input.to_lower()
 	var digit = 0
 	for i in p_spell:
 		if i != e_spell.substr(digit, 1):
 			player_spell_box.change_text_color(normal_color)
+			player_text_tags = player_text_tags.replace("[rainbow]","")
 			return
 		digit += 1
-	player_spell_box.change_text_color(correct_color)
+	if p_spell.length() == e_spell.length():
+		player_spell_box.change_text_color(normal_color)
+		player_text_tags += "[rainbow]"
+	else:
+		player_spell_box.change_text_color(correct_color)
+		player_text_tags = player_text_tags.replace("[rainbow]","")
 
 func damage_enemy(value:int) -> void:
 	#damages and receives changed value back from enemy
