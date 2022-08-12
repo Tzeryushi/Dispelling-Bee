@@ -31,6 +31,12 @@ var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer.
 var is_casting : bool = false
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
+var allowed_chars = {" ":" ","q":"q","w":"w","e":"e","r":"r","t":"t","y":"y","u":"u","i":"i","o":"o","p":"p",
+"a":"a","s":"s","d":"d","f":"f","g":"g","h":"h","j":"j","k":"k","l":"l","z":"z","x":"x","c":"c","v":"v",
+"b":"b","n":"n","m":"m",",":",",".":".","/":"/",";":";",":":":","'":"'","!":"!","?":"?","-":"-","_":"_",
+"Q":"Q","W":"W","E":"E","R":"R","T":"T","Y":"Y","U":"U","I":"I","O":"O","P":"P","A":"A","S":"S","D":"D",
+"F":"F","G":"G","H":"H","J":"J","K":"K","L":"L","Z":"Z","X":"X","C":"C","V":"V","B":"B","N":"N","M":"M",
+"1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","0":"0"}
 
 export var normal_color : Color = Color(1,1,1,1)
 export var correct_color : Color = Color (0,1,0,1)
@@ -73,12 +79,15 @@ func _unhandled_input(event) -> void:
 		if player_spell != null and not player_spell.empty() and event.scancode == KEY_BACKSPACE:
 			player_spell.erase(player_spell.length() - 1, 1)
 			color_spells(player_spell)
-		else:
+			if player_spell != null:
+				player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
+		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()):
+			#TODO: only allow certain keys
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			player_spell = player_spell + key_typed
 			color_spells(player_spell)
-		if player_spell != null:
-			player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
+			if player_spell != null:
+				player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
 		if event.is_action_pressed("ui_accept"):
 			#TODO: Animation for casts, and backfires.
 			spell(player_spell)
