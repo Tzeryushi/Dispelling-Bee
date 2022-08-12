@@ -120,13 +120,12 @@ margin_left = 407.0
 margin_top = 207.0
 margin_right = 1023.0
 margin_bottom = 435.0
+theme = ExtResource( 6 )
 script = ExtResource( 3 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 609.0
-margin_bottom = 221.0
+margin_right = 616.0
+margin_bottom = 228.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 bbcode_text = "[center][wave]FirebooM!"
@@ -143,13 +142,12 @@ margin_left = -1026.0
 margin_top = -443.0
 margin_right = -400.0
 margin_bottom = -200.0
+theme = ExtResource( 6 )
 script = ExtResource( 12 )
 
 [node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 619.0
-margin_bottom = 236.0
+margin_right = 626.0
+margin_bottom = 243.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
 scroll_active = false

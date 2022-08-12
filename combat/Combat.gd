@@ -122,6 +122,8 @@ func spell(input:String) -> void:
 				anim.queue_free()
 				return
 			else:
+				#this is a dirty audio buffer for sounds that continue to play after a spell "hits"
+				#consider refactoring in the future
 				player_spell = ""
 				player_spell_box.set_text(player_text_tags + player_spell)
 				yield(anim, "finished")

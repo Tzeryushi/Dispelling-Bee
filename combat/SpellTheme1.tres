@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://fonts/kirbyss.ttf" type="DynamicFontData" id=1]
 
@@ -8,6 +8,8 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxEmpty" id=3]
+
 [sub_resource type="DynamicFont" id=1]
 size = 70
 use_mipmaps = true
@@ -16,4 +18,5 @@ font_data = ExtResource( 1 )
 
 [resource]
 Label/fonts/font = SubResource( 2 )
+PanelContainer/styles/panel = SubResource( 3 )
 RichTextLabel/fonts/normal_font = SubResource( 1 )
