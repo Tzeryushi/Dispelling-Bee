@@ -1,5 +1,4 @@
-extends NinePatchRect
-
+extends Control
 #shouldn't need to send signals from here
 
 onready var count = $Count

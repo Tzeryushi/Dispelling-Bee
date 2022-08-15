@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://data/PlayerSpells.gd" type="Script" id=1]
-[ext_resource path="res://spells/pewpew/PewpewSpell.tres" type="Resource" id=2]
+[ext_resource path="res://spells/easy/Fizzio.tres" type="Resource" id=2]
+[ext_resource path="res://spells/easy/PewpewSpell.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )
-spell_list = [ ExtResource( 2 ) ]
+spell_list = [ ExtResource( 2 ), ExtResource( 3 ) ]

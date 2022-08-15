@@ -18,7 +18,7 @@ onready var player_stats = $Player/CombatStats
 onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
-onready var honey_timer = $GUI/HoneyTimer
+onready var honey_timer = $GUI/HoneyProgress/HoneyTimer
 
 #enemy nodes
 onready var enemy_spell_box = $GUI/ESContainer
@@ -122,14 +122,14 @@ func spell(input:String) -> void:
 			is_casting = true
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
-			#player_spell_ref.play_spell(spell_index, $Player, $EnemyLoad)
 			var anim = player_spell_ref.spell_list[spell_index].animation.instance()
 			add_child(anim)
-			#TODO: add yield to signal for end of animation
+			player_spell = ""
+			player_spell_box.set_text(player_text_tags + player_spell)
 			anim.play($Player/Pos, $EnemyLoad)
+			is_casting = false
 			yield(anim, "hit")
 			damage_enemy(player_spell_ref.get_damage(spell_index))
-			is_casting = false
 			if enemy_health.value <= 0:
 				#TODO: this is only so that fields that are deleted upon scene swap are not set
 				#Delete this once transitions are in place.
@@ -138,8 +138,6 @@ func spell(input:String) -> void:
 			else:
 				#this is a dirty audio buffer for sounds that continue to play after a spell "hits"
 				#consider refactoring in the future
-				player_spell = ""
-				player_spell_box.set_text(player_text_tags + player_spell)
 				yield(anim, "finished")
 				anim.queue_free()
 		else:
