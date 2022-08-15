@@ -18,12 +18,14 @@ onready var player_stats = $Player/CombatStats
 onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
+onready var honey_timer = $GUI/HoneyTimer
 
 #enemy nodes
 onready var enemy_spell_box = $GUI/ESContainer
 onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 onready var enemy_pos = $EnemyLoad
+
 
 #temp nodes for protoyping
 var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
@@ -57,6 +59,8 @@ func _ready():
 	player_health.value = int(float(player_stats.health)/float(player_stats.max_health)*float(player_health.max_value))
 	print(player_health.value)
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
+	
+	honey_timer.start()
 
 func _exit_tree():
 	if not enemy == null:	
@@ -195,3 +199,7 @@ func _on_CombatStats_health_changed(old_value, new_value) -> void:
 	var bar_value = int((float(new_value)/float(player_stats.max_health))*player_health.max_value)
 	player_health.animate_value(bar_value, 1.0)
 	#player_health.value = new_value
+
+
+func _on_HoneyTimer_timeout():
+	player_stats.change_honey(1)

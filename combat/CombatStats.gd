@@ -19,23 +19,14 @@ func can_afford(cost:int) -> bool:
 
 func change_honey(value) -> void:
 	var old = honey
+	honey = clamp((honey + value), 0, max_honey)
 	if honey + value > max_honey:
-		honey = max_honey
 		emit_signal("honey_overfill")
-	elif honey + value < 0:
-		honey = 0
-	else:
-		honey += value
 	emit_signal("honey_changed", old, honey)
 
 func change_health(value) -> void:
 	var old = health
-	if health + value > max_health:
-		health = max_health
-	elif health + value < 0:
-		health = 0
-	else:
-		health += value
+	health = clamp((health+value), 0, max_health)
 	emit_signal("health_changed", old, health)
 
 func damage(value) -> void:
