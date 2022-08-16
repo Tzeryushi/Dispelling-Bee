@@ -21,3 +21,6 @@ func set_text(text:String) -> void:
 	rect_size = max(spellbook_min, rect_size)
 	spellbook.rect_size.y = rect_size
 	text_box.margin_top = (rect_size/2) - (height/2)
+
+func change_text_color(color:Color) -> void:
+	text_box.add_color_override("default_color", color)

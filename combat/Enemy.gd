@@ -8,7 +8,7 @@ onready var enemy_stats = $EnemyStats
 onready var enemy_spells = $EnemySpells
 
 var current_spell = 0
-var default_spell = {"Text":"[tornado]Oops...", "Solve":"spoo...", "Damage":1, "Drain":1, "Speed":15}
+var default_spell = {"Text":"Oops...", "Tags":"[tornado]", "Solve":"spoo...", "Damage":1, "Drain":1, "Speed":15}
 #we need functions for the following:
 #current spell text
 #current spell solve
@@ -22,6 +22,9 @@ var default_spell = {"Text":"[tornado]Oops...", "Solve":"spoo...", "Damage":1, "
 #based on enemy behavior without the risk of breaking coupled code.
 
 func get_text() -> String:
+	return "Not implemented"
+
+func get_tags() -> String:
 	return "Not implemented"
 
 func get_solve() -> String:

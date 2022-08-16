@@ -37,6 +37,9 @@ func has_spell(key:String) -> int:
 			return i
 	return -1
 
+func get_solve() -> String:
+	return spell_list[spell_index].solve
+
 func get_damage() -> int:
 	return spell_list[spell_index].damage
 

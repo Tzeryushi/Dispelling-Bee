@@ -15,6 +15,9 @@ func dict_pull(key:String) -> String:
 func get_text() -> String:
 	return dict_pull("Text")
 
+func get_tags() -> String:
+	return dict_pull("Tags")
+
 func get_solve() -> String:
 	return dict_pull("Solve")
 

@@ -18,7 +18,7 @@ onready var player_stats = $Player/CombatStats
 onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
-onready var honey_timer = $GUI/HoneyProgress/HoneyTimer
+onready var honey_timer = $GUI/HoneyCounter/HoneyProgress/HoneyTimer
 onready var spellbook = $GUI/SpellbookContainer
 
 #enemy nodes
@@ -43,7 +43,10 @@ var allowed_chars = {" ":" ","q":"q","w":"w","e":"e","r":"r","t":"t","y":"y","u"
 
 export var normal_color : Color = Color(1,1,1,1)
 export var correct_color : Color = Color (0,1,0,1)
-var player_text_tags = "[center][wave]"
+export var b_correct_color : Color = Color (1,0,1,1)
+var player_text_tags = "[center][shake]"
+var enemy_text_tags = "[center]"
+var spellbook_tags = "[center]"
 
 signal dispelled()
 signal enemy_defeated()
@@ -58,7 +61,6 @@ func _ready():
 	
 	player_health.max_value = 1000
 	player_health.value = int(float(player_stats.health)/float(player_stats.max_health)*float(player_health.max_value))
-	print(player_health.value)
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
 	
 	honey_timer.start()
@@ -102,19 +104,14 @@ func _unhandled_input(event) -> void:
 func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
 	enemy.next_spell()
-	enemy_spell_box.set_text("[center]"+enemy.get_text())
-#	yield(get_tree(), "idle_frame")
-#	var height = enemy_spell_box.get_content_height()
-#	print(height)
-#	enemy_spell_box.rect_size = Vector2(enemy_spell_box.rect_size.x, height)
-#	print(enemy_spell_box.rect_size)
+	enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
 	spell_timer.set_timer(float(enemy.get_speed()))
 	color_spells(player_spell)
 	player_spell_box.set_text(player_text_tags + player_spell)
 	
 func next_player_spell() -> void:
 	player_spell_ref.next_spell()
-	spellbook.set_text("[center]"+player_spell_ref.get_spell_name())
+	spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
 	color_spells(player_spell)
 	player_spell_box.set_text(player_text_tags + player_spell)
 
@@ -164,21 +161,48 @@ func spell(input:String) -> void:
 
 func color_spells(input:String) -> void:
 	#color the spell text if it lines up with enemy spells
-	#TODO: set a different color when it lines up with player spells
 	var e_spell = enemy.get_solve()
+	var book_spell = player_spell_ref.get_solve()
 	var p_spell = input.to_lower()
+	if p_spell.length() == 0:
+		enemy_spell_box.change_text_color(normal_color)
+		spellbook.change_text_color(normal_color)
+		player_spell_box.change_text_color(normal_color)
+		player_text_tags = player_text_tags.replace("[rainbow]","")
+		return
 	var digit = 0
+	var e_match = true
+	var b_match = true
 	for i in p_spell:
 		if i != e_spell.substr(digit, 1):
-			player_spell_box.change_text_color(normal_color)
-			player_text_tags = player_text_tags.replace("[rainbow]","")
-			return
+			e_match = false
+		if i != book_spell.substr(digit, 1):
+			b_match = false
 		digit += 1
-	if p_spell.length() == e_spell.length():
+	if e_match:
+		#enemy_spell_box.change_text_color(correct_color)
+		enemy_spell_box.set_text(enemy_text_tags + enemy.get_tags() + enemy.get_text().insert(e_spell.length()-p_spell.length(), "[color=#"+correct_color.to_html()+"]") + "[/color]")
+		if p_spell.length() == e_spell.length():
+			player_spell_box.change_text_color(normal_color)
+			player_text_tags += "[rainbow]"
+		else:
+			player_spell_box.change_text_color(correct_color)
+			player_text_tags = player_text_tags.replace("[rainbow]","")
+	if b_match:
+		#spellbook.change_text_color(b_correct_color)
+		spellbook.set_text(spellbook_tags + "[color=#"+b_correct_color.to_html()+"]" + player_spell_ref.get_spell_name().insert(p_spell.length(),"[/color]"))
+		if p_spell.length() == book_spell.length():
+			player_spell_box.change_text_color(normal_color)
+			player_text_tags += "[rainbow]"
+		else:
+			player_spell_box.change_text_color(b_correct_color)
+			player_text_tags = player_text_tags.replace("[rainbow]","")
+	if !e_match and !b_match:
+		enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
+		enemy_spell_box.change_text_color(normal_color)
+		spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
+		spellbook.change_text_color(normal_color)
 		player_spell_box.change_text_color(normal_color)
-		player_text_tags += "[rainbow]"
-	else:
-		player_spell_box.change_text_color(correct_color)
 		player_text_tags = player_text_tags.replace("[rainbow]","")
 
 func damage_enemy(value:int) -> void:
@@ -192,6 +216,14 @@ func damage_enemy(value:int) -> void:
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
 	if enemy.get_health() <= 0:
 		emit_signal("enemy_defeated")
+		
+func reverse_string(text:String) -> String:
+	var rev_array = ""
+	var digit = text.length() - 1
+	for i in text:
+		rev_array += text.substr(digit, 1)
+		digit -= 1
+	return rev_array
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
@@ -206,7 +238,6 @@ func _on_CombatStats_health_changed(old_value, new_value) -> void:
 	var bar_value = int((float(new_value)/float(player_stats.max_health))*player_health.max_value)
 	player_health.animate_value(bar_value, 1.0)
 	#player_health.value = new_value
-
 
 func _on_HoneyTimer_timeout():
 	player_stats.change_honey(1)
