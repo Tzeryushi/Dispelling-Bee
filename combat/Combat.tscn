@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://GUI/HoneyOverlay.png" type="Texture" id=19]
 [ext_resource path="res://GUI/HoneyBG.png" type="Texture" id=20]
 [ext_resource path="res://GUI/HoneyFill.png" type="Texture" id=21]
+[ext_resource path="res://combat/HoneyProgress.gd" type="Script" id=22]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -138,8 +139,9 @@ patch_margin_right = 67
 patch_margin_bottom = 67
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
+margin_top = 64.0
 margin_right = 616.0
-margin_bottom = 63.0
+margin_bottom = 127.0
 size_flags_vertical = 0
 theme = ExtResource( 6 )
 bbcode_enabled = true
@@ -196,9 +198,9 @@ margin_bottom = 1029.0
 
 [node name="HoneyProgress" type="TextureProgress" parent="GUI"]
 margin_left = 609.0
-margin_top = 888.0
+margin_top = 902.0
 margin_right = 1109.0
-margin_bottom = 1388.0
+margin_bottom = 1335.0
 rect_scale = Vector2( 0.387998, 0.387998 )
 max_value = 1000.0
 value = 450.0
@@ -206,9 +208,10 @@ texture_under = ExtResource( 20 )
 texture_over = ExtResource( 19 )
 texture_progress = ExtResource( 21 )
 fill_mode = 3
+script = ExtResource( 22 )
 
 [node name="HoneyTimer" type="Timer" parent="GUI/HoneyProgress"]
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="HoneyCounter" type="Control" parent="GUI"]
 margin_left = 638.0
