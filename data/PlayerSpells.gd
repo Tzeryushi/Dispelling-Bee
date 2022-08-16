@@ -3,9 +3,9 @@ extends Resource
 class_name PlayerSpells
 
 #Spellbooks in the future?
-#This is just an idea for a way to keep track of spells.
-#As spells are simply referenced and not changed, and they can only
-#be added to a player*, it makes sense to have them globally accessible.
+var spell_index : int = 0
+var first_spell : bool = true
+export var first_spell_index : int = 2
 
 export(Array, Resource) var spell_list
 #export var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
@@ -15,43 +15,48 @@ export(Array, Resource) var spell_list
 #	list[solve]["Honey"] = cost
 #	list[solve]["Name"] = name
 
-func play_spell(index:int, attacker:Node2D, defender:Node2D) -> void:
-	#TODO: implement yield signals to stall calling process
-	var anim = spell_list[index].animation.instance()
-	anim.play(attacker, defender)
-	anim.queue_free()
+func next_spell() -> void:
+	if first_spell:
+		spell_index = first_spell_index
+		first_spell = false
+		return
+	var next_spell = spell_index
+	while spell_index == next_spell:
+		next_spell = randi() % spell_list.size()
+	spell_index = next_spell
+
+func validate(key:String) -> bool:
+	if key == spell_list[spell_index].solve:
+		return true
+	else:
+		return false
 
 func has_spell(key:String) -> int:
 	for i in range(spell_list.size()):
 		if spell_list[i].solve == key:
 			return i
-#	if list.has(key):
-#		return true
 	return -1
 
-func get_damage(index:int) -> int:
+func get_damage() -> int:
+	return spell_list[spell_index].damage
+
+func get_index_damage(index:int) -> int:
 	if index >= 0 and index < spell_list.size():
 		return spell_list[index].damage
 	return -1
-#	if not list.has(key):
-#		print("Key not in dictionary. Uh-oh!")
-#		return -1
-#	return list[key]["Damage"]
 
-func get_cost(index:int) -> int:
+func get_cost() -> int:
+	return spell_list[spell_index].cost
+
+func get_index_cost(index:int) -> int:
 	if index >= 0 and index < spell_list.size():
 		return spell_list[index].cost
 	return -1
-#	if not list.has(key):
-#		print("Key not in dictionary. Uh-oh!")
-#		return -1
-#	return list[key]["Honey"]
 
-func get_spell_name(index:int) -> String:
+func get_spell_name() -> String:
+	return spell_list[spell_index].name
+
+func get_index_spell_name(index:int) -> String:
 	if index >= 0 and index < spell_list.size():
 		return spell_list[index].name
 	return "nope"
-#	if not list.has(key):
-#		print("Key not in dictionary. Uh-oh!")
-#		return "nope"
-#	return list[key]["Name"]

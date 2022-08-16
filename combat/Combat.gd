@@ -19,6 +19,7 @@ onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
 onready var honey_timer = $GUI/HoneyProgress/HoneyTimer
+onready var spellbook = $GUI/SpellbookContainer
 
 #enemy nodes
 onready var enemy_spell_box = $GUI/ESContainer
@@ -74,6 +75,7 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy_health.max_value = 1000
 	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
 	next_spell()
+	next_player_spell()
 
 #handle the keyboard input.
 func _unhandled_input(event) -> void:
@@ -109,27 +111,34 @@ func next_spell() -> void:
 	spell_timer.set_timer(float(enemy.get_speed()))
 	color_spells(player_spell)
 	player_spell_box.set_text(player_text_tags + player_spell)
+	
+func next_player_spell() -> void:
+	player_spell_ref.next_spell()
+	spellbook.set_text("[center]"+player_spell_ref.get_spell_name())
+	color_spells(player_spell)
+	player_spell_box.set_text(player_text_tags + player_spell)
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
 #TODO: update in the future to compare against loaded player spells!
 func spell(input:String) -> void:
 	var p_spell = input.to_lower()
-	var spell_index = player_spell_ref.has_spell(p_spell)
-	if spell_index >= 0:
+	#var spell_index = player_spell_ref.has_spell(p_spell)
+	if player_spell_ref.validate(p_spell):
 		#check if player has enough honey
-		var cost = player_spell_ref.get_cost(spell_index)
+		var cost = player_spell_ref.get_cost()
 		if player_stats.can_afford(cost):
 			is_casting = true
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
-			var anim = player_spell_ref.spell_list[spell_index].animation.instance()
+			var anim = player_spell_ref.spell_list[player_spell_ref.has_spell(p_spell)].animation.instance()
 			add_child(anim)
 			player_spell = ""
 			player_spell_box.set_text(player_text_tags + player_spell)
+			next_player_spell()
 			anim.play($Player/Pos, $EnemyLoad)
 			is_casting = false
 			yield(anim, "hit")
-			damage_enemy(player_spell_ref.get_damage(spell_index))
+			damage_enemy(player_spell_ref.get_damage())
 			if enemy_health.value <= 0:
 				#TODO: this is only so that fields that are deleted upon scene swap are not set
 				#Delete this once transitions are in place.

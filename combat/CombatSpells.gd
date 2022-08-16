@@ -3,11 +3,6 @@ extends Node
 var list = {"pew-pew":{"Damage":1,"Honey":3, "Name": "Pew-pew"}}
 
 
-func add_spell(solve:String, damage:int, cost:int, name:String) -> void:
-	list[solve]["Damage"] = damage
-	list[solve]["Honey"] = cost
-	list[solve]["Name"] = name
-
 func has_spell(key:String) -> bool:
 	if list.has(key):
 		return true
