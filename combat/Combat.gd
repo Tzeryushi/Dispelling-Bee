@@ -47,6 +47,8 @@ export var b_correct_color : Color = Color (1,0,1,1)
 var player_text_tags = "[center][shake]"
 var enemy_text_tags = "[center]"
 var spellbook_tags = "[center]"
+var e_spell_matching = false	#if the current player spell matches a portion of the enemy spell
+var b_spell_matching = false	#if the current player spell matches a portion of the book spell
 
 signal dispelled()
 signal enemy_defeated()
@@ -165,8 +167,12 @@ func color_spells(input:String) -> void:
 	var book_spell = player_spell_ref.get_solve()
 	var p_spell = input.to_lower()
 	if p_spell.length() == 0:
-		enemy_spell_box.change_text_color(normal_color)
-		spellbook.change_text_color(normal_color)
+		if e_spell_matching:
+			enemy_spell_box.change_text_color(normal_color)
+			e_spell_matching = false
+		if b_spell_matching:
+			spellbook.change_text_color(normal_color)
+			b_spell_matching = false
 		player_spell_box.change_text_color(normal_color)
 		player_text_tags = player_text_tags.replace("[rainbow]","")
 		return
@@ -180,28 +186,36 @@ func color_spells(input:String) -> void:
 			b_match = false
 		digit += 1
 	if e_match:
-		#enemy_spell_box.change_text_color(correct_color)
-		enemy_spell_box.set_text(enemy_text_tags + enemy.get_tags() + enemy.get_text().insert(e_spell.length()-p_spell.length(), "[color=#"+correct_color.to_html()+"]") + "[/color]")
+		if !e_spell_matching:
+			enemy_spell_box.change_text_color(correct_color)
+		#enemy_spell_box.set_text(enemy_text_tags + enemy.get_tags() + enemy.get_text().insert(e_spell.length()-p_spell.length(), "[color=#"+correct_color.to_html()+"]") + "[/color]")
 		if p_spell.length() == e_spell.length():
 			player_spell_box.change_text_color(normal_color)
 			player_text_tags += "[rainbow]"
 		else:
 			player_spell_box.change_text_color(correct_color)
 			player_text_tags = player_text_tags.replace("[rainbow]","")
+		e_spell_matching = true
 	if b_match:
-		#spellbook.change_text_color(b_correct_color)
-		spellbook.set_text(spellbook_tags + "[color=#"+b_correct_color.to_html()+"]" + player_spell_ref.get_spell_name().insert(p_spell.length(),"[/color]"))
+		if !b_spell_matching:
+			spellbook.change_text_color(b_correct_color)
+		#spellbook.set_text(spellbook_tags + "[color=#"+b_correct_color.to_html()+"]" + player_spell_ref.get_spell_name().insert(p_spell.length(),"[/color]"))
 		if p_spell.length() == book_spell.length():
 			player_spell_box.change_text_color(normal_color)
 			player_text_tags += "[rainbow]"
 		else:
 			player_spell_box.change_text_color(b_correct_color)
 			player_text_tags = player_text_tags.replace("[rainbow]","")
-	if !e_match and !b_match:
-		enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
+		b_spell_matching = true
+	if !e_match and e_spell_matching:
+		#enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
 		enemy_spell_box.change_text_color(normal_color)
-		spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
+		e_spell_matching = false
+	elif !b_match and b_spell_matching:
+		#spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
 		spellbook.change_text_color(normal_color)
+		b_spell_matching = false
+	if !e_match and !b_match:
 		player_spell_box.change_text_color(normal_color)
 		player_text_tags = player_text_tags.replace("[rainbow]","")
 
