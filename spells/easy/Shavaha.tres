@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 name = "Shavaha"
 solve = "shavaha"
 damage = 1
-cost = 3
+cost = 2
 animation = ExtResource( 2 )

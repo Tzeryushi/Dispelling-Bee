@@ -3,6 +3,8 @@ extends Control
 
 onready var count = $Count
 onready var anim_tree = $AnimationTree
+onready var honey_bar = $HoneyBar
+
 var current_count = 0
 var max_count = 0 #for setting font red when count is full
 var animation_state
@@ -17,6 +19,9 @@ func update_count(new_count) -> void:
 	current_count = new_count
 	full_check()
 	count.text = String(new_count)
+	var tween := create_tween()
+	var target = (float(new_count)/float(max_count))*honey_bar.max_value
+	tween.parallel().tween_property(honey_bar, "value", target, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 func setup(new_max_count, new_count) -> void:
 	current_count = new_count

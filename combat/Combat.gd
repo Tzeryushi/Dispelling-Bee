@@ -114,6 +114,8 @@ func next_spell() -> void:
 func next_player_spell() -> void:
 	player_spell_ref.next_spell()
 	spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
+	var holdstr = "[center]"+String(player_spell_ref.get_cost())
+	spellbook.set_cost(holdstr)
 	color_spells(player_spell)
 	player_spell_box.set_text(player_text_tags + player_spell)
 

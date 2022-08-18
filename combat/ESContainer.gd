@@ -18,7 +18,6 @@ func _ready() -> void:
 	#bubble.rect_size.y = bubble_min
 
 func set_text(text:String) -> void:
-	print(bubble_height)
 	text_box.bbcode_text = text
 	if not get_tree() == null:
 		yield(get_tree(), "idle_frame")
