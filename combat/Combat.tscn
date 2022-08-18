@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -10,17 +10,17 @@
 [ext_resource path="res://combat/CombatStats.gd" type="Script" id=8]
 [ext_resource path="res://data/DefaultPlayer.tres" type="Resource" id=9]
 [ext_resource path="res://combat/HoneyCounter.gd" type="Script" id=10]
-[ext_resource path="res://GUI/bar_fill.png" type="Texture" id=11]
+[ext_resource path="res://GUI/playerGUI/PlayerHealthBarEmpty.png" type="Texture" id=11]
 [ext_resource path="res://combat/PSContainer.gd" type="Script" id=12]
 [ext_resource path="res://combat/CombatSpells.gd" type="Script" id=13]
 [ext_resource path="res://data/Spellbook1.tres" type="Resource" id=14]
-[ext_resource path="res://GUI/bar_empty.png" type="Texture" id=15]
+[ext_resource path="res://GUI/playerGUI/HoneyCounterEmpty.png" type="Texture" id=15]
 [ext_resource path="res://combat/PlayerHealth.gd" type="Script" id=16]
 [ext_resource path="res://combat/EnemyHealth.gd" type="Script" id=17]
-[ext_resource path="res://GUI/spell_bubble.png" type="Texture" id=18]
-[ext_resource path="res://GUI/HoneyOverlay.png" type="Texture" id=19]
-[ext_resource path="res://GUI/HoneyBG.png" type="Texture" id=20]
-[ext_resource path="res://GUI/HoneyFill.png" type="Texture" id=21]
+[ext_resource path="res://GUI/playerGUI/LittleShadow.png" type="Texture" id=18]
+[ext_resource path="res://GUI/playerGUI/PlayerHoneyBarOverlay.png" type="Texture" id=19]
+[ext_resource path="res://GUI/playerGUI/SpellbookClosed.png" type="Texture" id=20]
+[ext_resource path="res://GUI/playerGUI/PlayerHPMarker.png" type="Texture" id=21]
 [ext_resource path="res://combat/HoneyProgress.gd" type="Script" id=22]
 [ext_resource path="res://fonts/kirbyss.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://combat/SpelbookContainer.gd" type="Script" id=24]
@@ -28,8 +28,18 @@
 [ext_resource path="res://GUI/enemyGUI/EnemyHealthOverlay.png" type="Texture" id=26]
 [ext_resource path="res://GUI/enemyGUI/EnemyTimerFill.png" type="Texture" id=27]
 [ext_resource path="res://GUI/enemyGUI/EnemyHealthFill.png" type="Texture" id=28]
-[ext_resource path="res://GUI/enemyGUI/EnemyTimerEmpty.png" type="Texture" id=29]
+[ext_resource path="res://GUI/enemyGUI/EnemyTimerEmptyOP.png" type="Texture" id=29]
 [ext_resource path="res://GUI/enemyGUI/GUI Mockup.png" type="Texture" id=30]
+[ext_resource path="res://GUI/playerGUI/PlayerSpellBubble.png" type="Texture" id=31]
+[ext_resource path="res://GUI/playerGUI/HoneyCounterFill.png" type="Texture" id=32]
+[ext_resource path="res://GUI/playerGUI/PlayerHoneyBarEmpty.png" type="Texture" id=33]
+[ext_resource path="res://GUI/playerGUI/HoneyCounterOverlay.png" type="Texture" id=34]
+[ext_resource path="res://GUI/playerGUI/PlayerHealthBarOverlay.png" type="Texture" id=35]
+[ext_resource path="res://GUI/playerGUI/PlayerHealthBarFill.png" type="Texture" id=36]
+[ext_resource path="res://GUI/playerGUI/PlayerHoneyBarFill.png" type="Texture" id=37]
+[ext_resource path="res://GUI/playerGUI/SpellbookOpen.png" type="Texture" id=38]
+[ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=39]
+[ext_resource path="res://GUI/BigShadow.png" type="Texture" id=40]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -88,9 +98,33 @@ tracks/0/keys = {
 resource_name = "idle"
 loop = true
 
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "slamming",
+"speed": 5.0
+} ]
+
 [sub_resource type="DynamicFont" id=14]
-size = 40
-outline_size = 2
+size = 50
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 70
+outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 23 )
 
@@ -115,9 +149,9 @@ script = ExtResource( 13 )
 [node name="Pos" type="Position2D" parent="Player"]
 position = Vector2( 600, 1080 )
 
-[node name="Image" type="Sprite" parent="Player/Pos"]
-position = Vector2( -245, -352 )
-scale = Vector2( -0.704688, 0.704688 )
+[node name="PlayerShadow" type="Sprite" parent="Player/Pos"]
+position = Vector2( -223, -281 )
+scale = Vector2( -0.741754, 0.741754 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Pos"]
@@ -135,8 +169,16 @@ data = {
 } ]
 }
 
+[node name="BigShadow" type="Sprite" parent="Player/Pos"]
+position = Vector2( -237, -24 )
+texture = ExtResource( 40 )
+
 [node name="EnemyLoad" type="Position2D" parent="."]
-position = Vector2( 1365, 502 )
+position = Vector2( 1510, 542 )
+
+[node name="BigShadow" type="Sprite" parent="EnemyLoad"]
+scale = Vector2( 0.619048, 0.619048 )
+texture = ExtResource( 40 )
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
@@ -165,18 +207,20 @@ texture = ExtResource( 5 )
 [node name="PlayerHealth" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 554.0
-margin_top = -139.0
-margin_right = 754.0
-margin_bottom = 861.0
-rect_rotation = 89.9999
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = 874.0
+margin_top = -176.0
+margin_right = 1382.0
+margin_bottom = -76.0
 value = 40.0
 rounded = true
-texture_under = ExtResource( 15 )
-texture_progress = ExtResource( 11 )
-fill_mode = 3
+texture_under = ExtResource( 11 )
+texture_over = ExtResource( 35 )
+texture_progress = ExtResource( 36 )
 script = ExtResource( 16 )
+
+[node name="PlayerHpMarker" type="Sprite" parent="GUI/PlayerHealth"]
+position = Vector2( -35, 50 )
+texture = ExtResource( 21 )
 
 [node name="ESContainer" type="Node2D" parent="GUI"]
 position = Vector2( 378, 107 )
@@ -203,24 +247,20 @@ fit_content_height = true
 scroll_active = false
 
 [node name="PSContainer" type="Node2D" parent="GUI"]
-position = Vector2( 767, 642 )
+position = Vector2( 628, 622 )
 script = ExtResource( 12 )
 bg_color = Color( 0.65098, 0.65098, 1, 1 )
 bubble_min = 200.0
 
-[node name="Bubble" type="NinePatchRect" parent="GUI/PSContainer"]
-margin_left = -30.0
-margin_right = 656.0
-margin_bottom = 200.0
-texture = ExtResource( 18 )
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+[node name="Bubble" type="Sprite" parent="GUI/PSContainer"]
+position = Vector2( 375, 135.5 )
+texture = ExtResource( 31 )
 
 [node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
-margin_right = 626.0
-margin_bottom = 63.0
+margin_left = 153.0
+margin_top = 107.0
+margin_right = 718.0
+margin_bottom = 170.0
 rect_clip_content = false
 size_flags_vertical = 0
 theme = ExtResource( 6 )
@@ -243,30 +283,23 @@ script = ExtResource( 7 )
 [node name="Timer" type="Timer" parent="GUI/SpellTimer"]
 autostart = true
 
-[node name="HoneyCountBar" type="ProgressBar" parent="GUI"]
-margin_left = 777.0
-margin_top = 942.0
-margin_right = 1862.0
-margin_bottom = 1029.0
-
 [node name="HoneyCounter" type="Control" parent="GUI"]
-margin_left = 638.0
-margin_top = 919.0
-margin_right = 772.0
-margin_bottom = 1053.0
+margin_left = 674.0
+margin_top = 923.0
+margin_right = 808.0
+margin_bottom = 1057.0
 script = ExtResource( 10 )
 
 [node name="HoneyProgress" type="TextureProgress" parent="GUI/HoneyCounter"]
 margin_left = -29.0
 margin_top = -17.0
-margin_right = 471.0
-margin_bottom = 416.0
-rect_scale = Vector2( 0.387998, 0.387998 )
+margin_right = 156.0
+margin_bottom = 143.0
 max_value = 1000.0
 value = 450.0
-texture_under = ExtResource( 20 )
-texture_over = ExtResource( 19 )
-texture_progress = ExtResource( 21 )
+texture_under = ExtResource( 15 )
+texture_over = ExtResource( 34 )
+texture_progress = ExtResource( 32 )
 fill_mode = 3
 script = ExtResource( 22 )
 
@@ -281,11 +314,6 @@ text = "3"
 align = 1
 valign = 1
 
-[node name="HoneyIcon" type="TextureRect" parent="GUI/HoneyCounter"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 111.0
-
 [node name="AnimationTree" type="AnimationTree" parent="GUI/HoneyCounter"]
 tree_root = SubResource( 5 )
 anim_player = NodePath("../AnimationPlayer")
@@ -298,26 +326,41 @@ anims/Idle = SubResource( 7 )
 anims/RESET = SubResource( 8 )
 anims/idle = SubResource( 9 )
 
+[node name="TextureProgress" type="TextureProgress" parent="GUI/HoneyCounter"]
+margin_left = 93.0
+margin_top = 45.0
+margin_right = 671.0
+margin_bottom = 145.0
+max_value = 1000.0
+value = 300.0
+texture_under = ExtResource( 33 )
+texture_over = ExtResource( 19 )
+texture_progress = ExtResource( 37 )
+
 [node name="SpellbookContainer" type="Node2D" parent="GUI"]
 position = Vector2( 1469, 584 )
 script = ExtResource( 24 )
 
-[node name="Spellbook" type="NinePatchRect" parent="GUI/SpellbookContainer"]
-margin_left = -1.0
-margin_top = -2.0
-margin_right = 389.0
-margin_bottom = 326.0
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GUI/SpellbookContainer"]
+position = Vector2( 165, 334 )
+frames = SubResource( 15 )
+animation = "open"
+
+[node name="LittleHoneyShadow" type="Sprite" parent="GUI/SpellbookContainer"]
+position = Vector2( 87.5, 342.5 )
+scale = Vector2( 0.84375, 0.84375 )
 texture = ExtResource( 18 )
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+
+[node name="LittleHoney" type="Sprite" parent="GUI/SpellbookContainer"]
+position = Vector2( 87.5, 274.5 )
+texture = ExtResource( 39 )
 
 [node name="SpellbookText" type="RichTextLabel" parent="GUI/SpellbookContainer"]
-margin_left = 21.0
-margin_top = 45.0
-margin_right = 365.0
-margin_bottom = 82.0
+margin_left = -7.0
+margin_top = 100.0
+margin_right = 337.0
+margin_bottom = 146.0
+rect_pivot_offset = Vector2( 92, 65 )
 rect_clip_content = false
 size_flags_vertical = 0
 theme = ExtResource( 6 )
@@ -326,6 +369,24 @@ bbcode_enabled = true
 bbcode_text = "[center]SpellText"
 text = "SpellText"
 fit_content_height = true
+scroll_active = false
+
+[node name="LittleShadow" type="Sprite" parent="GUI/SpellbookContainer"]
+position = Vector2( 239, 342 )
+scale = Vector2( 0.750001, 0.750001 )
+texture = ExtResource( 18 )
+
+[node name="SpellCost" type="RichTextLabel" parent="GUI/SpellbookContainer"]
+margin_left = 188.0
+margin_top = 246.0
+margin_right = 289.0
+margin_bottom = 312.0
+rect_clip_content = false
+size_flags_vertical = 0
+custom_fonts/normal_font = SubResource( 16 )
+bbcode_enabled = true
+bbcode_text = "[center]3"
+text = "3"
 scroll_active = false
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]

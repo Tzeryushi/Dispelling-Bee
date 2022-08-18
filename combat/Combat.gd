@@ -46,7 +46,7 @@ export var correct_color : Color = Color (0,1,0,1)
 export var b_correct_color : Color = Color (1,0,1,1)
 var player_text_tags = "[center][shake]"
 var enemy_text_tags = "[center]"
-var spellbook_tags = "[center]"
+var spellbook_tags = "[center][wave amp=100 freq=2]"
 var e_spell_matching = false	#if the current player spell matches a portion of the enemy spell
 var b_spell_matching = false	#if the current player spell matches a portion of the book spell
 
