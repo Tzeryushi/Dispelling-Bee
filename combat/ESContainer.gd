@@ -6,21 +6,31 @@ onready var bubble = $Bubble
 export var bg_color : Color = Color (0,0,1,1)
 export var bubble_min = 100.0
 
+var bubble_height
+var bubble_width
+var bubble_pos
 var cached_text : String
 
 func _ready() -> void:
 	bubble.modulate = bg_color
-	bubble.rect_size.y = bubble_min
+	bubble_height = bubble.texture.get_height()
+	bubble_width = bubble.texture.get_width()
+	bubble_pos = bubble.get_position()
+	#bubble.rect_size.y = bubble_min
 
 func set_text(text:String) -> void:
+	print(bubble_height)
 	text_box.bbcode_text = text
 	if not get_tree() == null:
 		yield(get_tree(), "idle_frame")
 	var height = text_box.get_content_height()
-	var rect_size = height + 80.0
-	rect_size = max(bubble_min, rect_size)
-	bubble.rect_size.y = rect_size
-	text_box.margin_top = (rect_size/2) - (height/2)
+	#var rect_size = height + 80.0
+	#rect_size = max(bubble_min, rect_size)
+	#bubble.rect_size.y = rect_size
+	bubble.position = Vector2(get_parent().get_position().x + (bubble_width/2), get_parent().get_position().y+(bubble_height/2))
+	text_box.set_position(Vector2(text_box.get_position().x, (bubble_height/2) - (height/2)))
+	print((bubble_height/2) - (height/2))
+	print(text_box.get_position())
 
 func change_text_color(color:Color) -> void:
 	text_box.add_color_override("default_color", color)

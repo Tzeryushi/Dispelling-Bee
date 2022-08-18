@@ -1,10 +1,10 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
 [ext_resource path="res://combat/ESContainer.gd" type="Script" id=3]
-[ext_resource path="res://GUI/EmptyTimer.png" type="Texture" id=4]
-[ext_resource path="res://GUI/TimerFill.png" type="Texture" id=5]
+[ext_resource path="res://GUI/enemyGUI/EnemyHealthEmpty.png" type="Texture" id=4]
+[ext_resource path="res://GUI/enemyGUI/EnemyHPMarker.png" type="Texture" id=5]
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=6]
 [ext_resource path="res://combat/SpellTimer.gd" type="Script" id=7]
 [ext_resource path="res://combat/CombatStats.gd" type="Script" id=8]
@@ -24,6 +24,12 @@
 [ext_resource path="res://combat/HoneyProgress.gd" type="Script" id=22]
 [ext_resource path="res://fonts/kirbyss.ttf" type="DynamicFontData" id=23]
 [ext_resource path="res://combat/SpelbookContainer.gd" type="Script" id=24]
+[ext_resource path="res://GUI/enemyGUI/EnemySpellBubble.png" type="Texture" id=25]
+[ext_resource path="res://GUI/enemyGUI/EnemyHealthOverlay.png" type="Texture" id=26]
+[ext_resource path="res://GUI/enemyGUI/EnemyTimerFill.png" type="Texture" id=27]
+[ext_resource path="res://GUI/enemyGUI/EnemyHealthFill.png" type="Texture" id=28]
+[ext_resource path="res://GUI/enemyGUI/EnemyTimerEmpty.png" type="Texture" id=29]
+[ext_resource path="res://GUI/enemyGUI/GUI Mockup.png" type="Texture" id=30]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -93,6 +99,11 @@ script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
 
+[node name="GuiMockup" type="Sprite" parent="."]
+visible = false
+position = Vector2( 960, 540 )
+texture = ExtResource( 30 )
+
 [node name="Player" type="Node2D" parent="."]
 
 [node name="CombatStats" type="Node" parent="Player"]
@@ -137,15 +148,19 @@ margin_bottom = 1080.0
 [node name="EnemyHealth" type="TextureProgress" parent="GUI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -170.0
-margin_top = 49.0
-margin_right = 30.0
-margin_bottom = 1049.0
-rect_scale = Vector2( 0.5, 0.5 )
-texture_under = ExtResource( 15 )
-texture_progress = ExtResource( 11 )
-fill_mode = 3
+margin_left = -1393.0
+margin_top = 34.0
+margin_right = -864.0
+margin_bottom = 134.0
+value = 10.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 26 )
+texture_progress = ExtResource( 28 )
 script = ExtResource( 17 )
+
+[node name="EnemyHpMarker" type="Sprite" parent="GUI/EnemyHealth"]
+position = Vector2( -31, 50 )
+texture = ExtResource( 5 )
 
 [node name="PlayerHealth" type="TextureProgress" parent="GUI"]
 anchor_top = 1.0
@@ -164,26 +179,20 @@ fill_mode = 3
 script = ExtResource( 16 )
 
 [node name="ESContainer" type="Node2D" parent="GUI"]
-position = Vector2( 327, 168 )
+position = Vector2( 378, 107 )
 script = ExtResource( 3 )
-bg_color = Color( 1, 0.647059, 0.647059, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 bubble_min = 200.0
 
-[node name="Bubble" type="NinePatchRect" parent="GUI/ESContainer"]
-margin_left = -30.0
-margin_right = 656.0
-margin_bottom = 200.0
-theme = ExtResource( 6 )
-texture = ExtResource( 18 )
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+[node name="Bubble" type="Sprite" parent="GUI/ESContainer"]
+position = Vector2( 414, 147 )
+texture = ExtResource( 25 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
-margin_top = 64.0
-margin_right = 616.0
-margin_bottom = 127.0
+margin_left = 31.0
+margin_top = 114.0
+margin_right = 666.0
+margin_bottom = 177.0
 rect_clip_content = false
 size_flags_vertical = 0
 theme = ExtResource( 6 )
@@ -220,14 +229,14 @@ fit_content_height = true
 scroll_active = false
 
 [node name="SpellTimer" type="TextureProgress" parent="GUI"]
-margin_left = 878.0
-margin_top = 74.0
-margin_right = 2878.0
-margin_bottom = 2074.0
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 295.0
+margin_top = 24.0
+margin_right = 479.0
+margin_bottom = 208.0
 max_value = 1000.0
-texture_under = ExtResource( 4 )
-texture_progress = ExtResource( 5 )
+value = 405.0
+texture_under = ExtResource( 29 )
+texture_progress = ExtResource( 27 )
 fill_mode = 4
 script = ExtResource( 7 )
 
