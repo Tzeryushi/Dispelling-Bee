@@ -14,7 +14,7 @@ func _ready() -> void:
 	bubble.modulate = bg_color
 	bubble_height = bubble.texture.get_height()
 	bubble_width = bubble.texture.get_width()
-	bubble.position = Vector2(get_parent().get_position().x + (bubble_width/2), get_parent().get_position().y+(bubble_height/2))
+	#bubble.position = Vector2(get_parent().get_position().x + (bubble_width/2), get_parent().get_position().y+(bubble_height/2))
 	#bubble.rect_size.y = bubble_min
 
 func set_text(text:String) -> void:
