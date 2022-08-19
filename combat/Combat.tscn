@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://GUI/playerGUI/SpellbookOpen.png" type="Texture" id=38]
 [ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=39]
 [ext_resource path="res://GUI/BigShadow.png" type="Texture" id=40]
+[ext_resource path="res://GUI/playerGUI/HoneyNotice.tscn" type="PackedScene" id=41]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -355,6 +356,7 @@ position = Vector2( 628, 622 )
 script = ExtResource( 12 )
 bg_color = Color( 0.65098, 0.65098, 1, 1 )
 bubble_min = 200.0
+honey_notice = ExtResource( 41 )
 
 [node name="Bubble" type="Sprite" parent="GUI/PSContainer"]
 position = Vector2( 375, 135.5 )

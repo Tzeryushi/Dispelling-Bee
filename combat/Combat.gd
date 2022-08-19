@@ -151,8 +151,8 @@ func spell(input:String) -> void:
 				yield(anim, "finished")
 				anim.queue_free()
 		else:
-			print("Not implemented, not enough honey")
-			#TODO: add effects for inability - shake and flash honey counter?
+			#no honey
+			player_spell_box.flash_honey_notice()
 			player_spell = ""
 			player_spell_box.set_text(player_text_tags + player_spell)
 	else:

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=1]
+[ext_resource path="res://fonts/kirbyss.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=19]
+size = 50
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="HoneyNotice" type="RichTextLabel"]
+margin_left = 131.0
+margin_top = 25.0
+margin_right = 738.0
+margin_bottom = 82.0
+rect_clip_content = false
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+custom_fonts/normal_font = SubResource( 19 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=75 freq=10][color=#ff0000]Not enough honey!"
+text = "Not enough honey!"
+fit_content_height = true
+scroll_active = false
