@@ -278,12 +278,18 @@ data = {
 position = Vector2( -237, -24 )
 texture = ExtResource( 40 )
 
+[node name="SpellPos" type="Position2D" parent="Player"]
+position = Vector2( 715, 700 )
+
 [node name="EnemyLoad" type="Position2D" parent="."]
 position = Vector2( 1510, 542 )
 
 [node name="BigShadow" type="Sprite" parent="EnemyLoad"]
 scale = Vector2( 0.619048, 0.619048 )
 texture = ExtResource( 40 )
+
+[node name="SpellTarget" type="Position2D" parent="EnemyLoad"]
+position = Vector2( 0, -149 )
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0

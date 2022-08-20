@@ -20,13 +20,14 @@ onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
 onready var honey_timer = $GUI/HoneyCounter/HoneyProgress/HoneyTimer
 onready var spellbook = $GUI/SpellbookContainer
+onready var spell_position = $Player/SpellPos
 
 #enemy nodes
 onready var enemy_spell_box = $GUI/ESContainer
 onready var enemy_health = $GUI/EnemyHealth
 onready var spell_timer = $GUI/SpellTimer
 onready var enemy_pos = $EnemyLoad
-
+onready var enemy_target = $EnemyLoad/SpellTarget
 
 #temp nodes for protoyping
 var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
@@ -136,7 +137,7 @@ func spell(input:String) -> void:
 			player_spell = ""
 			player_spell_box.set_text(player_text_tags + player_spell)
 			next_player_spell()
-			anim.play($Player/Pos, $EnemyLoad)
+			anim.play(spell_position, enemy_target)
 			is_casting = false
 			yield(anim, "hit")
 			damage_enemy(player_spell_ref.get_damage())
