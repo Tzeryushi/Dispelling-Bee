@@ -3,9 +3,10 @@ extends SpellAnimation
 onready var projectile = $Projectile
 onready var enemy = $EnemyCollision
 
-export var spell_speed : float = 700.0
-export var rotation_force : float = 100
-export var max_speed : float = 100000.0
+
+export var spell_speed : float = 500.0
+export var rotation_force : float = 50
+export var max_speed : float = 1000.0
 
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -25,8 +26,12 @@ func _play(attacker, defender) -> void:
 	var direction = (enemy.position - projectile.position).normalized()
 	#var rng = RandomNumberGenerator.new()
 	#rng.randomize()
-	direction = Vector2(direction.x*cos(rand_range(-PI/4,PI/4))-direction.y*sin(rand_range(-PI/4,PI/4)), direction.x*sin(rand_range(-PI/4,PI/4))+direction.y*cos(rand_range(-PI/4,PI/4)))
-	velocity = direction * max_speed
+	var dir_choice = randi()%2
+	if dir_choice == 0:
+		direction = Vector2(direction.x*cos(rand_range(-PI/3,-PI/6))-direction.y*sin(rand_range(-PI/3,-PI/6)), direction.x*sin(rand_range(-PI/3,-PI/6))+direction.y*cos(rand_range(-PI/3,-PI/6)))
+	else:
+		direction = Vector2(direction.x*cos(rand_range(PI/6,PI/3))-direction.y*sin(rand_range(PI/6,PI/3)), direction.x*sin(rand_range(PI/6,PI/3))+direction.y*cos(rand_range(PI/6,PI/3)))
+	velocity = direction * spell_speed*2
 	play_through = true
 	
 func accel() -> Vector2:
