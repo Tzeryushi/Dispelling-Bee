@@ -58,9 +58,9 @@ func _play(attacker, defender) -> void:
 	var direction = (enemy.position - projectile.position).normalized()
 	var dir_choice = randi()%2
 	if dir_choice == 0:
-		direction = Vector2(direction.x*cos(rand_range(-PI/3,-PI/6))-direction.y*sin(rand_range(-PI/3,-PI/6)), direction.x*sin(rand_range(-PI/3,-PI/6))+direction.y*cos(rand_range(-PI/3,-PI/6)))
+		direction = Vector2(direction.x*cos(rand_range(-PI/4,-PI/6))-direction.y*sin(rand_range(-PI/3,-PI/6)), direction.x*sin(rand_range(-PI/3,-PI/6))+direction.y*cos(rand_range(-PI/3,-PI/6)))
 	else:
-		direction = Vector2(direction.x*cos(rand_range(PI/6,PI/3))-direction.y*sin(rand_range(PI/6,PI/3)), direction.x*sin(rand_range(PI/6,PI/3))+direction.y*cos(rand_range(PI/6,PI/3)))
+		direction = Vector2(direction.x*cos(rand_range(PI/6,PI/4))-direction.y*sin(rand_range(PI/6,PI/3)), direction.x*sin(rand_range(PI/6,PI/3))+direction.y*cos(rand_range(PI/6,PI/3)))
 	start_vector = direction.normalized()
 	velocity = direction * start_speed
 	float_out = true

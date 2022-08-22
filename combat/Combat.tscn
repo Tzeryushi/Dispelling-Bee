@@ -419,10 +419,9 @@ script = ExtResource( 22 )
 wait_time = 5.0
 
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
-margin_right = 134.0
+margin_right = 124.0
 margin_bottom = 134.0
 theme = ExtResource( 6 )
-text = "3"
 align = 1
 valign = 1
 
