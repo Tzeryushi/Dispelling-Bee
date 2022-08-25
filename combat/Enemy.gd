@@ -6,6 +6,7 @@ class_name Enemy
 #Extend this script on child nodes to specify behavior
 onready var enemy_stats = $EnemyStats
 onready var enemy_spells = $EnemySpells
+onready var image = $Sprite
 
 var current_spell = 0
 var default_spell = {"Text":"Oops...", "Tags":"[tornado]", "Solve":"spoo...", "Damage":1, "Drain":1, "Speed":15}
@@ -54,3 +55,10 @@ func get_max_health() -> int:
 	return enemy_stats.get_max_health()
 func get_cast_speed() -> float:
 	return enemy_stats.get_cast_speed()
+	
+func flash_color(color:Color, flash_time = 0.5, flashes = 2) -> void:
+	var tween = create_tween()
+	for i in range(0, flashes):
+		print("loop")
+		tween.tween_property(image, "modulate", color, 0.05).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
+		tween.tween_property(image, "modulate", Color(1,1,1,1), 0.05).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)

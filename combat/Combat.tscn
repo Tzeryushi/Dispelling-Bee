@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://GUI/playerGUI/HoneyNotice.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=42]
 [ext_resource path="res://combat/Pause.gd" type="Script" id=43]
+[ext_resource path="res://combat/Player.gd" type="Script" id=44]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -246,6 +247,7 @@ position = Vector2( 960, 540 )
 texture = ExtResource( 30 )
 
 [node name="Player" type="Node2D" parent="."]
+script = ExtResource( 44 )
 
 [node name="CombatStats" type="Node" parent="Player"]
 script = ExtResource( 8 )
@@ -256,7 +258,7 @@ script = ExtResource( 13 )
 [node name="Pos" type="Position2D" parent="Player"]
 position = Vector2( 600, 1080 )
 
-[node name="PlayerShadow" type="Sprite" parent="Player/Pos"]
+[node name="PlayerImage" type="Sprite" parent="Player/Pos"]
 position = Vector2( -223, -281 )
 scale = Vector2( -0.741754, 0.741754 )
 texture = ExtResource( 2 )

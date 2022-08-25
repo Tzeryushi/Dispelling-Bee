@@ -13,6 +13,7 @@ export var player_ref : Resource
 export var player_spell_ref : Resource
 
 #player nodes
+onready var player = $Player
 onready var player_spell_box = $GUI/PSContainer
 onready var player_stats = $Player/CombatStats
 onready var player_slist = $Player/CombatSpells
@@ -140,6 +141,7 @@ func spell(input:String) -> void:
 			anim.play(spell_position, enemy_target)
 			is_casting = false
 			yield(anim, "hit")
+			enemy.flash_color(Color(1,0.1,0.1,1), 0.04, 2)
 			Globals.camera.shake(300, 0.1)
 			damage_enemy(player_spell_ref.get_damage())
 			if enemy_health.value <= 0:
@@ -246,6 +248,7 @@ func reverse_string(text:String) -> String:
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	player_stats.damage(enemy.get_damage())
+	player.flash_color(Color(1,0,0,1))
 	Globals.camera.shake(500, 0.3)
 	if player_stats.health <= 0:
 		emit_signal("player_defeated")
