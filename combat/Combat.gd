@@ -246,6 +246,7 @@ func reverse_string(text:String) -> String:
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	player_stats.damage(enemy.get_damage())
+	Globals.camera.shake(500, 0.3)
 	if player_stats.health <= 0:
 		emit_signal("player_defeated")
 		return

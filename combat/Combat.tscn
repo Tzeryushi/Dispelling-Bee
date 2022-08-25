@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://GUI/BigShadow.png" type="Texture" id=40]
 [ext_resource path="res://GUI/playerGUI/HoneyNotice.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=42]
+[ext_resource path="res://combat/Pause.gd" type="Script" id=43]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -509,6 +510,20 @@ anims/RESET = SubResource( 18 )
 
 [node name="Camera" parent="." instance=ExtResource( 42 )]
 current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 43 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]
