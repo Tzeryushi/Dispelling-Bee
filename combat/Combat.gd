@@ -140,6 +140,7 @@ func spell(input:String) -> void:
 			anim.play(spell_position, enemy_target)
 			is_casting = false
 			yield(anim, "hit")
+			Globals.camera.shake(300, 0.1)
 			damage_enemy(player_spell_ref.get_damage())
 			if enemy_health.value <= 0:
 				#TODO: this is only so that fields that are deleted upon scene swap are not set

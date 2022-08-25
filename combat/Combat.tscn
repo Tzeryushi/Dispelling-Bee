@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=39]
 [ext_resource path="res://GUI/BigShadow.png" type="Texture" id=40]
 [ext_resource path="res://GUI/playerGUI/HoneyNotice.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Camera.tscn" type="PackedScene" id=42]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -505,6 +506,9 @@ scroll_active = false
 autoplay = "HoneyFloat"
 anims/HoneyFloat = SubResource( 17 )
 anims/RESET = SubResource( 18 )
+
+[node name="Camera" parent="." instance=ExtResource( 42 )]
+current = true
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]
