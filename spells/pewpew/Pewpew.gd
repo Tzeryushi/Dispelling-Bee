@@ -23,8 +23,6 @@ func _play(attacker:Node2D, defender:Node2D) -> void:
 	if !$hit.is_playing():
 		$hit.play()
 		yield($hit, "finished")
-		print("passed")
 		emit_signal("finished")
 	else:
-		print("output")
 		emit_signal("finished")
