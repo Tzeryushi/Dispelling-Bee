@@ -55,7 +55,7 @@ func get_max_health() -> int:
 	return enemy_stats.get_max_health()
 func get_cast_speed() -> float:
 	return enemy_stats.get_cast_speed()
-	
+
 func flash_color(color:Color, flash_time = 0.5, flashes = 2) -> void:
 	var tween = create_tween()
 	for i in range(0, flashes):

@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/SpellRing.png-06cb8857e067e6e4bce1e95bbfc2bdaa.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://spells/enemy/Handarth/SpellRing.png"
+dest_files=[ "res://.import/SpellRing.png-06cb8857e067e6e4bce1e95bbfc2bdaa.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
