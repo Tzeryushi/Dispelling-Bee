@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=2]
+[ext_resource path="res://characters/Handarth/HandarthHand.PNG" type="Texture" id=3]
+[ext_resource path="res://characters/Handarth/HandarthSpells.gd" type="Script" id=4]
+
+[node name="Handarth" instance=ExtResource( 1 )]
+
+[node name="EnemyStats" parent="." index="0"]
+health = 10
+cast_speed = 1.5
+
+[node name="EnemySpells" parent="." index="1"]
+script = ExtResource( 4 )
+
+[node name="Image" parent="Sprite/Pos" index="0"]
+position = Vector2( 18, -258 )
+scale = Vector2( 0.870906, 0.870906 )
+texture = ExtResource( 2 )
+
+[node name="Hand1" type="Sprite" parent="Sprite/Pos/Image" index="0"]
+position = Vector2( -179.124, 60 )
+texture = ExtResource( 3 )
+
+[node name="Hand2" type="Sprite" parent="Sprite/Pos/Image" index="1"]
+position = Vector2( 129.75, 57.7035 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 3 )
