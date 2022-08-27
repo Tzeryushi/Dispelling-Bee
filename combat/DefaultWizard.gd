@@ -29,6 +29,9 @@ func get_damage() -> int:
 	
 func get_speed() -> int:
 	return int(dict_pull("Speed"))
+	
+func get_anim_index() -> int:
+	return int(dict_pull("Animation"))
 
 func next_spell() -> void:
 	#implement specific behavior to get the next spell
@@ -41,3 +44,6 @@ func next_spell() -> void:
 	while current_spell == next_spell:
 		next_spell = randi() % enemy_spells.list.size()
 	current_spell = next_spell
+
+func get_spell_animation() -> PackedScene:
+	return enemy_spells.anim_list[get_anim_index()]

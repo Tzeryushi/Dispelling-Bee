@@ -139,6 +139,7 @@ func spell(input:String) -> void:
 			player_spell_box.set_text(player_text_tags + player_spell)
 			next_player_spell()
 			anim.play(spell_position, enemy_target)
+			print(enemy_target.position)
 			is_casting = false
 			yield(anim, "hit")
 			enemy.flash_color(Color(1,0.1,0.1,1), 0.04, 2)
@@ -247,9 +248,24 @@ func reverse_string(text:String) -> String:
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
+	var anim = enemy.get_spell_animation().instance()
+	add_child(anim)
+	anim.play(enemy_target, spell_position)
+	print(enemy_target.position)
+	yield(anim, "hit")
 	player_stats.damage(enemy.get_damage())
 	player.flash_color(Color(1,0,0,1))
 	Globals.camera.shake(500, 0.3)
+	if player_stats.health <= 0:
+		#TODO: this is only so that fields that are deleted upon scene swap are not set
+		#Delete this once transitions are in place.
+		anim.queue_free()
+		return
+	else:
+		#this is a dirty audio buffer for sounds that continue to play after a spell "hits"
+		#consider refactoring in the future
+		yield(anim, "finished")
+		anim.queue_free()
 	if player_stats.health <= 0:
 		emit_signal("player_defeated")
 		return

@@ -14,16 +14,16 @@ func _play(attacker, defender) -> void:
 	var tween_2 = create_tween()
 	var ring_1 = spell_ring.instance()
 	add_child(ring_1)
-	ring_1.position = (attacker.position - Vector2(135, 40))
+	ring_1.position = (attacker.get_global_position() - Vector2(135, 40))
 	ring_1.scale = small_ring_size
 	var ring_2 = spell_ring.instance()
 	add_child(ring_2)
-	ring_2.position = (attacker.position + Vector2(135, 40))
+	ring_2.position = (attacker.get_global_position() + Vector2(135, 40))
 	ring_2.scale = small_ring_size
 	ring_2.visible = false
 	var ring_3 = spell_ring.instance()
 	add_child(ring_3)
-	ring_3.position = (attacker.position)
+	ring_3.position = (attacker.get_global_position())
 	ring_3.scale = Vector2(0.0001, 0.0001)
 	ring_3.visible = false
 	tween_1.tween_property(ring_1, "scale", (small_ring_size+small_ring_tiny)/2, small_time/2)

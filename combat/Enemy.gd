@@ -24,19 +24,14 @@ var default_spell = {"Text":"Oops...", "Tags":"[tornado]", "Solve":"spoo...", "D
 
 func get_text() -> String:
 	return "Not implemented"
-
 func get_tags() -> String:
 	return "Not implemented"
-
 func get_solve() -> String:
 	return "Not implemented"
-
 func get_drain() -> int:
 	return -1
-	
 func get_damage() -> int:
 	return -1
-	
 func get_speed() -> int:
 	return -1
 
@@ -55,6 +50,9 @@ func get_max_health() -> int:
 	return enemy_stats.get_max_health()
 func get_cast_speed() -> float:
 	return enemy_stats.get_cast_speed()
+
+func get_spell_animation() -> PackedScene:
+	return null
 
 func flash_color(color:Color, flash_time = 0.5, flashes = 2) -> void:
 	var tween = create_tween()
