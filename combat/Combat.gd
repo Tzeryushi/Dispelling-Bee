@@ -30,8 +30,9 @@ onready var spell_timer = $GUI/SpellTimer
 onready var enemy_pos = $EnemyLoad
 onready var enemy_target = $EnemyLoad/SpellTarget
 
-#temp nodes for protoyping
-var enemy #TODO: MUST CHANGE! Needs a proper load in after pass from Main layer. Also error checking.
+var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
+
+enum State {LOADING, PLAYING, VICTORY, DEFEAT, TRANSITION}
 
 var is_casting : bool = false
 var player_spell = "" #current string input from player
@@ -109,7 +110,7 @@ func next_spell() -> void:
 	#in the future, this will run a method from the enemy, which will determine the next spell based on individual factors.
 	enemy.next_spell()
 	enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
-	spell_timer.set_timer(float(enemy.get_speed()))
+	spell_timer.set_timer(enemy.get_speed())
 	color_spells(player_spell)
 	player_spell_box.set_text(player_text_tags + player_spell)
 	
@@ -131,6 +132,7 @@ func spell(input:String) -> void:
 		var cost = player_spell_ref.get_cost()
 		if player_stats.can_afford(cost):
 			is_casting = true
+			player_spell_box.pop_up_text()
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
 			var anim = player_spell_ref.spell_list[player_spell_ref.has_spell(p_spell)].animation.instance()
@@ -163,6 +165,8 @@ func spell(input:String) -> void:
 	else:
 		var e_spell = enemy.get_solve()
 		if p_spell == e_spell:
+			player_spell_box.pop_up_text()
+			enemy_spell_box.dead_down_text()
 			player_stats.change_honey(enemy.get_drain())
 			next_spell()
 		player_spell = ""

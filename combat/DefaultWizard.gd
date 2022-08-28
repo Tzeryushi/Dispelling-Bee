@@ -27,8 +27,8 @@ func get_drain() -> int:
 func get_damage() -> int:
 	return int(dict_pull("Damage"))
 	
-func get_speed() -> int:
-	return int(dict_pull("Speed"))
+func get_speed() -> float:
+	return float(dict_pull("Speed"))/get_cast_speed()
 	
 func get_anim_index() -> int:
 	return int(dict_pull("Animation"))

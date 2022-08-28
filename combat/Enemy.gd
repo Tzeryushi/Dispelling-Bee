@@ -32,8 +32,8 @@ func get_drain() -> int:
 	return -1
 func get_damage() -> int:
 	return -1
-func get_speed() -> int:
-	return -1
+func get_speed() -> float:
+	return -1.0
 
 func next_spell() -> void:
 	#implement specific behavior to get the next spell

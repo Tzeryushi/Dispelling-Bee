@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=1]
+[ext_resource path="res://GUI/DeadText.gd" type="Script" id=2]
+
+[node name="DeadText" type="RichTextLabel"]
+margin_left = 31.0
+margin_top = 114.0
+margin_right = 666.0
+margin_bottom = 177.0
+rect_clip_content = false
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -44,6 +44,8 @@
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=42]
 [ext_resource path="res://combat/Pause.gd" type="Script" id=43]
 [ext_resource path="res://combat/Player.gd" type="Script" id=44]
+[ext_resource path="res://GUI/PopText.tscn" type="PackedScene" id=45]
+[ext_resource path="res://GUI/DeadText.tscn" type="PackedScene" id=46]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -342,6 +344,8 @@ position = Vector2( 378, 107 )
 script = ExtResource( 3 )
 bg_color = Color( 1, 1, 1, 1 )
 bubble_min = 200.0
+pop_text = ExtResource( 45 )
+dead_text = ExtResource( 46 )
 
 [node name="Bubble" type="Sprite" parent="GUI/ESContainer"]
 position = Vector2( 414, 147 )
@@ -367,6 +371,7 @@ script = ExtResource( 12 )
 bg_color = Color( 0.65098, 0.65098, 1, 1 )
 bubble_min = 200.0
 honey_notice = ExtResource( 41 )
+pop_text = ExtResource( 45 )
 
 [node name="Bubble" type="Sprite" parent="GUI/PSContainer"]
 position = Vector2( 375, 135.5 )
