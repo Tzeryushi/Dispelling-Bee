@@ -1,9 +1,91 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=2]
 [ext_resource path="res://characters/Handarth/HandarthHand.PNG" type="Texture" id=3]
 [ext_resource path="res://characters/Handarth/HandarthSpells.gd" type="Script" id=4]
+[ext_resource path="res://characters/Handarth/HandPivot.gd" type="Script" id=5]
+[ext_resource path="res://characters/Handarth/HandPivot2.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 18, -258 ), Vector2( 18, -285 ), Vector2( 18, -258 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image/HandPivot1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -117.119, 59.708 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/HandPivot2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73.4867, 56.2633 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 18, -258 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image/HandPivot1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -117.119, 59.708 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/HandPivot2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73.4867, 56.2633 ) ]
+}
 
 [node name="Handarth" instance=ExtResource( 1 )]
 
@@ -19,11 +101,25 @@ position = Vector2( 18, -258 )
 scale = Vector2( 0.870906, 0.870906 )
 texture = ExtResource( 2 )
 
-[node name="Hand1" type="Sprite" parent="Sprite/Pos/Image" index="0"]
-position = Vector2( -179.124, 60 )
+[node name="HandPivot1" type="Position2D" parent="Sprite/Pos/Image" index="0"]
+position = Vector2( -117.119, 59.708 )
+script = ExtResource( 5 )
+
+[node name="Hand1" type="Sprite" parent="Sprite/Pos/Image/HandPivot1" index="0"]
+position = Vector2( 0, -70 )
 texture = ExtResource( 3 )
 
-[node name="Hand2" type="Sprite" parent="Sprite/Pos/Image" index="1"]
-position = Vector2( 129.75, 57.7035 )
-scale = Vector2( -1, 1 )
+[node name="HandPivot2" type="Position2D" parent="Sprite/Pos/Image" index="1"]
+position = Vector2( 73.4867, 56.2633 )
+script = ExtResource( 6 )
+
+[node name="Hand2" type="Sprite" parent="Sprite/Pos/Image/HandPivot2" index="0"]
+position = Vector2( -70, 0 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
 texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" parent="Sprite/Pos" index="1"]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+anims/RESET = SubResource( 2 )
