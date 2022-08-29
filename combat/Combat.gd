@@ -32,7 +32,7 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 
 var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
-enum State {LOADING, PLAYING, VICTORY, DEFEAT, TRANSITION}
+enum CombatState {LOADING, PLAYING, VICTORY, DEFEAT, TRANSITION}
 
 var is_casting : bool = false
 var player_spell = "" #current string input from player
@@ -81,7 +81,9 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy.show()
 	enemy_health.max_value = 1000
 	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	yield(get_tree().create_timer(2.0), "timeout")
 	next_spell()
+	spell_timer.start_timer()
 	next_player_spell()
 
 #handle the keyboard input.
@@ -116,7 +118,8 @@ func next_spell() -> void:
 	
 func next_player_spell() -> void:
 	player_spell_ref.next_spell()
-	spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
+	spellbook.new_spell(spellbook_tags+player_spell_ref.get_spell_name())
+	#spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
 	var holdstr = "[center]"+String(player_spell_ref.get_cost())
 	spellbook.set_cost(holdstr)
 	color_spells(player_spell)
