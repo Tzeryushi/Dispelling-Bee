@@ -260,6 +260,10 @@ script = ExtResource( 13 )
 [node name="Pos" type="Position2D" parent="Player"]
 position = Vector2( 600, 1080 )
 
+[node name="BigShadow" type="Sprite" parent="Player/Pos"]
+position = Vector2( -237, -24 )
+texture = ExtResource( 40 )
+
 [node name="PlayerImage" type="Sprite" parent="Player/Pos"]
 position = Vector2( -223, -281 )
 scale = Vector2( -0.741754, 0.741754 )
@@ -279,10 +283,6 @@ data = {
 "type": "output"
 } ]
 }
-
-[node name="BigShadow" type="Sprite" parent="Player/Pos"]
-position = Vector2( -237, -24 )
-texture = ExtResource( 40 )
 
 [node name="SpellPos" type="Position2D" parent="Player"]
 position = Vector2( 715, 700 )
