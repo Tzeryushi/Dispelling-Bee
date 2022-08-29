@@ -311,7 +311,6 @@ margin_left = -1393.0
 margin_top = 34.0
 margin_right = -864.0
 margin_bottom = 134.0
-min_value = 100.0
 value = 100.0
 texture_under = ExtResource( 4 )
 texture_over = ExtResource( 26 )

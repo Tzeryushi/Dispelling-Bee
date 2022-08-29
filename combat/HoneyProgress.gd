@@ -14,3 +14,12 @@ func set_timer(time:float) -> void:
 
 func start_timer() -> void:
 	timer.start()
+	
+func pause_timer() -> void:
+	timer.paused = true
+
+func unpause_timer() -> void:
+	timer.paused = false
+		
+func stop_timer() -> void:
+	timer.stop()

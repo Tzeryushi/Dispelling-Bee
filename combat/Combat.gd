@@ -19,7 +19,7 @@ onready var player_stats = $Player/CombatStats
 onready var player_slist = $Player/CombatSpells
 onready var player_health = $GUI/PlayerHealth
 onready var player_honey_count = $GUI/HoneyCounter
-onready var honey_timer = $GUI/HoneyCounter/HoneyProgress/HoneyTimer
+onready var honey_timer = $GUI/HoneyCounter/HoneyProgress
 onready var spellbook = $GUI/SpellbookContainer
 onready var spell_position = $Player/SpellPos
 
@@ -62,7 +62,13 @@ signal player_defeated()
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
 	current_state = CombatState.LOADING
-	
+
+func _exit_tree():
+	if not enemy == null:	
+		enemy.queue_free()
+	pass
+
+func setup(new_enemy:PackedScene) -> void:
 	player_stats.health = player_ref.health
 	player_stats.max_health = player_ref.max_health
 	player_stats.honey = player_ref.max_honey/2
@@ -72,32 +78,44 @@ func _ready():
 	player_health.value = int(float(player_stats.health)/float(player_stats.max_health)*float(player_health.max_value))
 	player_honey_count.setup(player_stats.max_honey, player_stats.honey)
 	
-	honey_timer.start()
-
-func _exit_tree():
-	if not enemy == null:	
-		enemy.queue_free()
-	pass
-
-func setup(new_enemy:PackedScene) -> void:
 	enemy = new_enemy.instance()
 	enemy_pos.add_child(enemy)
 	enemy.show()
 	enemy_health.max_value = 1000
-	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	enemy_health.animate_value(bar_value,0.1)
 	
-	is_casting = false
+	#cleaning out any leftover visual data
+	player_spell = ""
+	player_spell_box.set_text(player_text_tags + player_spell)
+	enemy_spell_box.set_text("")
+	spellbook.close()
+	#spellbook.see_data(false)
+	
+	spell_timer.pause_timer()
+	honey_timer.pause_timer()
+	
+	is_casting = true
 	is_finished = false
 	
 	yield(get_tree().create_timer(2.0), "timeout")
 	next_spell()
 	spell_timer.unpause_timer()
 	spell_timer.start_timer()
+	honey_timer.unpause_timer()
+	honey_timer.start_timer()
 	next_player_spell()
+	
+	is_casting = false
 
 func cleanup() -> void:
+	is_finished = true
+	Engine.time_scale = 0.5
 	spell_timer.pause_timer()
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
+	Engine.time_scale = 1.0
+	print(enemy.get_health())
+	print(enemy_health.value)
 	if enemy.get_health() <= 0:
 		emit_signal("enemy_defeated")
 	elif player_stats.health <= 0:
@@ -105,7 +123,7 @@ func cleanup() -> void:
 
 #handle the keyboard input.
 func _unhandled_input(event) -> void:
-	if is_casting:
+	if is_casting or is_finished:
 		return
 	if event is InputEventKey and event.is_pressed():
 		if player_spell != null and not player_spell.empty() and event.scancode == KEY_BACKSPACE:
@@ -161,14 +179,11 @@ func spell(input:String) -> void:
 			player_spell_box.set_text(player_text_tags + player_spell)
 			next_player_spell()
 			anim.play(spell_position, enemy_target)
-			print(enemy_target.position)
 			is_casting = false
 			yield(anim, "hit")
 			enemy.flash_color(Color(1,0.1,0.1,1), 0.04, 2)
 			Globals.camera.shake(300, 0.1)
 			damage_enemy(player_spell_ref.get_damage())
-			print(enemy.get_health())
-			print(enemy_health.value)
 			if enemy.get_health() <= 0:
 				print("dead")
 				cleanup()
@@ -255,6 +270,8 @@ func damage_enemy(value:int) -> void:
 	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
 	enemy.damage(value)
 	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	print(enemy.get_health())
+	print(bar_value)
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
@@ -275,7 +292,6 @@ func _on_Timer_timeout() -> void:
 	var anim = enemy.get_spell_animation().instance()
 	add_child(anim)
 	anim.play(enemy_target, spell_position)
-	print(enemy_target.position)
 	yield(anim, "hit")
 	player_stats.damage(enemy.get_damage())
 	player.flash_color(Color(1,0,0,1))
