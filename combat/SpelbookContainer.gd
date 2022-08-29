@@ -26,7 +26,7 @@ func set_cost(text:String) -> void:
 func change_text_color(color:Color) -> void:
 	text_box.add_color_override("default_color", color)
 
-func new_spell(text:String, close_time : float = 0.2) -> void:
+func new_spell(text:String, close_time : float = 0.0) -> void:
 	var tween = create_tween()
 	var original_scale = book.scale
 	yield(tween.tween_property(book, "scale", Vector2(1.2,1.2), 0.07).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT), "finished")
@@ -36,7 +36,9 @@ func new_spell(text:String, close_time : float = 0.2) -> void:
 	book.play("closed")
 	book.scale += Vector2(0, 0.5)
 	tween = create_tween()
-	yield(tween.tween_property(book, "scale", original_scale, close_time).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
+	yield(tween.tween_property(book, "scale", original_scale, 0.1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
+	tween = create_tween()
+	yield(get_tree().create_timer(close_time), "timeout")
 	book.play("open")
 	shadow1.visible = true; shadow2.visible = true; honey_icon.visible = true
 	text_box.visible = true; cost_box.visible = true

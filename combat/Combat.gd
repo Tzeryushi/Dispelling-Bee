@@ -32,9 +32,11 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 
 var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
-enum CombatState {LOADING, PLAYING, VICTORY, DEFEAT, TRANSITION}
+enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
+var current_state
 
-var is_casting : bool = false
+var is_casting := false
+var is_finished := false
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
 var allowed_chars = {" ":" ","q":"q","w":"w","e":"e","r":"r","t":"t","y":"y","u":"u","i":"i","o":"o","p":"p",
@@ -59,9 +61,11 @@ signal player_defeated()
 
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
+	current_state = CombatState.LOADING
+	
 	player_stats.health = player_ref.health
 	player_stats.max_health = player_ref.max_health
-	player_stats.honey = player_ref.honey
+	player_stats.honey = player_ref.max_honey/2
 	player_stats.max_honey = player_ref.max_honey
 	
 	player_health.max_value = 1000
@@ -81,10 +85,23 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy.show()
 	enemy_health.max_value = 1000
 	enemy_health.value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
+	
+	is_casting = false
+	is_finished = false
+	
 	yield(get_tree().create_timer(2.0), "timeout")
 	next_spell()
+	spell_timer.unpause_timer()
 	spell_timer.start_timer()
 	next_player_spell()
+
+func cleanup() -> void:
+	spell_timer.pause_timer()
+	yield(get_tree().create_timer(3.0), "timeout")
+	if enemy.get_health() <= 0:
+		emit_signal("enemy_defeated")
+	elif player_stats.health <= 0:
+		emit_signal("player_defeated")
 
 #handle the keyboard input.
 func _unhandled_input(event) -> void:
@@ -126,7 +143,7 @@ func next_player_spell() -> void:
 	player_spell_box.set_text(player_text_tags + player_spell)
 
 #spell takes an input and formats it accordingly against the currently loaded enemy spell, and compares
-#TODO: update in the future to compare against loaded player spells!
+#TODO: update in the future to compare against loaded player spells! (maybe)
 func spell(input:String) -> void:
 	var p_spell = input.to_lower()
 	#var spell_index = player_spell_ref.has_spell(p_spell)
@@ -150,16 +167,13 @@ func spell(input:String) -> void:
 			enemy.flash_color(Color(1,0.1,0.1,1), 0.04, 2)
 			Globals.camera.shake(300, 0.1)
 			damage_enemy(player_spell_ref.get_damage())
-			if enemy_health.value <= 0:
-				#TODO: this is only so that fields that are deleted upon scene swap are not set
-				#Delete this once transitions are in place.
-				anim.queue_free()
-				return
-			else:
-				#this is a dirty audio buffer for sounds that continue to play after a spell "hits"
-				#consider refactoring in the future
-				yield(anim, "finished")
-				anim.queue_free()
+			print(enemy.get_health())
+			print(enemy_health.value)
+			if enemy.get_health() <= 0:
+				print("dead")
+				cleanup()
+			yield(anim, "finished")
+			anim.queue_free()
 		else:
 			#no honey
 			player_spell_box.flash_honey_notice()
@@ -244,8 +258,6 @@ func damage_enemy(value:int) -> void:
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
-	if enemy.get_health() <= 0:
-		emit_signal("enemy_defeated")
 		
 func reverse_string(text:String) -> String:
 	var rev_array = ""
@@ -279,7 +291,7 @@ func _on_Timer_timeout() -> void:
 		yield(anim, "finished")
 		anim.queue_free()
 	if player_stats.health <= 0:
-		emit_signal("player_defeated")
+		cleanup()
 		return
 	spell_timer.unpause_timer()
 	next_spell()
