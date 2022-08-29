@@ -169,6 +169,8 @@ func spell(input:String) -> void:
 			enemy_spell_box.dead_down_text()
 			player_stats.change_honey(enemy.get_drain())
 			next_spell()
+		else:
+			player_spell_box.dead_down_text()
 		player_spell = ""
 		player_spell_box.set_text(player_text_tags + player_spell)
 
@@ -252,6 +254,9 @@ func reverse_string(text:String) -> String:
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
+	spell_timer.pause_timer()
+	enemy_spell_box.pop_up_text()
+	enemy_spell_box.set_text(enemy_text_tags+"")
 	var anim = enemy.get_spell_animation().instance()
 	add_child(anim)
 	anim.play(enemy_target, spell_position)
@@ -273,6 +278,7 @@ func _on_Timer_timeout() -> void:
 	if player_stats.health <= 0:
 		emit_signal("player_defeated")
 		return
+	spell_timer.unpause_timer()
 	next_spell()
 
 func _on_CombatStats_health_changed(old_value, new_value) -> void:

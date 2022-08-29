@@ -7,7 +7,7 @@ export var bg_color : Color = Color (0,0,1,1)
 export var bubble_min = 100.0
 
 export var pop_text : PackedScene
-export var pop_jump_dist = 200.0
+export var pop_jump_dist = 250.0
 export var pop_scale = 2.0
 
 export var dead_text : PackedScene
@@ -36,10 +36,13 @@ func set_text(text:String) -> void:
 func pop_up_text() -> void:
 	var popper = pop_text.instance()
 	add_child(popper)
-	popper.rect_position = text_box.rect_position
+	popper.rect_size = text_box.rect_size
+	popper.bbcode_text = "[center]" + text_box.text
+	popper.rect_global_position = text_box.rect_global_position
+	
 	var tween = create_tween()
-	popper.bbcode_text = text_box.bbcode_text
 	var new_pos = popper.rect_position + Vector2(0, pop_jump_dist)
+	popper.add_color_override("default_color", Color(1,0,0,1))
 	yield(tween.parallel().tween_property(popper, "rect_position", new_pos, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
 	tween = create_tween()
 	yield(tween.tween_property(popper, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_OUT), "finished")
@@ -48,6 +51,7 @@ func pop_up_text() -> void:
 func dead_down_text() -> void:
 	var deader = dead_text.instance()
 	add_child(deader)
+	deader.rect_size = text_box.rect_size
 	deader.rect_position = text_box.rect_position
 	deader.bbcode_text = "[center]" + text_box.text
 	deader.add_color_override("default_color", Color(0.1,0.1,0.1,1.0))

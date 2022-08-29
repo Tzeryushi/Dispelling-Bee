@@ -372,6 +372,7 @@ bg_color = Color( 0.65098, 0.65098, 1, 1 )
 bubble_min = 200.0
 honey_notice = ExtResource( 41 )
 pop_text = ExtResource( 45 )
+dead_text = ExtResource( 46 )
 
 [node name="Bubble" type="Sprite" parent="GUI/PSContainer"]
 position = Vector2( 375, 135.5 )

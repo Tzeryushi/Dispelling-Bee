@@ -12,8 +12,10 @@ export var notice_jump_dist = 100.0
 export var notice_timer = 1.0
 
 export var pop_text : PackedScene
-export var pop_jump_dist = 200.0
+export var pop_jump_dist = 250.0
 export var pop_scale = 2.0
+
+export var dead_text : PackedScene
 
 var bubble_height
 var bubble_width
@@ -41,6 +43,7 @@ func set_text(text:String) -> void:
 func pop_up_text() -> void:
 	var popper = pop_text.instance()
 	add_child(popper)
+	popper.rect_size = text_box.rect_size
 	popper.rect_position = text_box.rect_position
 	var tween = create_tween()
 	popper.bbcode_text = text_box.bbcode_text
@@ -49,6 +52,17 @@ func pop_up_text() -> void:
 	tween = create_tween()
 	yield(tween.tween_property(popper, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_OUT), "finished")
 	popper.queue_free()
+
+func dead_down_text() -> void:
+	var deader = dead_text.instance()
+	add_child(deader)
+	deader.rect_size = text_box.rect_size
+	deader.rect_position = text_box.rect_position
+	deader.bbcode_text = "[center]" + text_box.text
+	deader.add_color_override("default_color", Color(0.1,0.1,0.1,1.0))
+	var tween = create_tween()
+	yield(tween.tween_property(deader, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_OUT), "finished")
+	deader.queue_free()
 
 func flash_honey_notice() -> void:
 	var notice = honey_notice.instance()
