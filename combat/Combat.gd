@@ -86,7 +86,7 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy_health.animate_value(bar_value,0.1)
 	
 	#cleaning out any leftover visual data
-	player_spell = ""
+	player_spell = "[rainbow]LOADING IN"
 	player_spell_box.set_text(player_text_tags + player_spell)
 	enemy_spell_box.set_text("")
 	spellbook.close()
@@ -106,19 +106,27 @@ func setup(new_enemy:PackedScene) -> void:
 	honey_timer.start_timer()
 	next_player_spell()
 	
+	player_spell = ""
+	player_spell_box.set_text(player_text_tags + player_spell)
 	is_casting = false
 
 func cleanup() -> void:
 	is_finished = true
+	var player_victory = false
+	if enemy.get_health() <= 0:
+		player_victory = true
+		player_spell = "[rainbow]PLAYER VICTORY! Temp buffer, 1.5"
+	elif player_stats.health <= 0:
+		player_victory = false
+		player_spell = "[rainbow]PLAYER DEFEAT! Temp buffer, 1.5"
+	player_spell_box.set_text(player_text_tags + player_spell)
 	Engine.time_scale = 0.5
 	spell_timer.pause_timer()
 	yield(get_tree().create_timer(1.5), "timeout")
 	Engine.time_scale = 1.0
-	print(enemy.get_health())
-	print(enemy_health.value)
-	if enemy.get_health() <= 0:
+	if player_victory:
 		emit_signal("enemy_defeated")
-	elif player_stats.health <= 0:
+	else:
 		emit_signal("player_defeated")
 
 #handle the keyboard input.
@@ -185,7 +193,6 @@ func spell(input:String) -> void:
 			Globals.camera.shake(300, 0.1)
 			damage_enemy(player_spell_ref.get_damage())
 			if enemy.get_health() <= 0:
-				print("dead")
 				cleanup()
 			yield(anim, "finished")
 			anim.queue_free()
@@ -270,8 +277,6 @@ func damage_enemy(value:int) -> void:
 	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
 	enemy.damage(value)
 	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
-	print(enemy.get_health())
-	print(bar_value)
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
@@ -296,16 +301,9 @@ func _on_Timer_timeout() -> void:
 	player_stats.damage(enemy.get_damage())
 	player.flash_color(Color(1,0,0,1))
 	Globals.camera.shake(500, 0.3)
-	if player_stats.health <= 0:
-		#TODO: this is only so that fields that are deleted upon scene swap are not set
-		#Delete this once transitions are in place.
-		anim.queue_free()
-		return
-	else:
-		#this is a dirty audio buffer for sounds that continue to play after a spell "hits"
-		#consider refactoring in the future
-		yield(anim, "finished")
-		anim.queue_free()
+	yield(anim, "finished")
+	anim.queue_free()
+	
 	if player_stats.health <= 0:
 		cleanup()
 		return
