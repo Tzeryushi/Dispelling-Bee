@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Death rattle..."
-solve = "elttar htaed..."
+name = "Skritch"
+solve = "hctirks"
 shake_tag = true
 wave_tag = false
 tornado_tag = false
 fade_tag = false
 rainbow_tag = false
 custom_tag = ""
-damage = 2
-drain = 2
-speed = 15.0
+damage = 1
+drain = 1
+speed = 7.0

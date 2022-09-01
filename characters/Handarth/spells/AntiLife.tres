@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Death rattle..."
-solve = "elttar htaed..."
+name = "Minor Anti-Life Gloomwave..."
+solve = "evawmoolg elif-itna ronim..."
 shake_tag = true
 wave_tag = false
 tornado_tag = false
 fade_tag = false
-rainbow_tag = false
+rainbow_tag = true
 custom_tag = ""
-damage = 2
-drain = 2
+damage = 3
+drain = 5
 speed = 15.0
