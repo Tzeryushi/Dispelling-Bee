@@ -280,14 +280,6 @@ func damage_enemy(value:int) -> void:
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
-		
-func reverse_string(text:String) -> String:
-	var rev_array = ""
-	var digit = text.length() - 1
-	for i in text:
-		rev_array += text.substr(digit, 1)
-		digit -= 1
-	return rev_array
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!

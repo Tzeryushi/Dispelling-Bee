@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Death rattle..."
+shake_tag = false
+wave_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 1
+drain = 1
+speed = 15.0
