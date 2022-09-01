@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://EasySpell.gd" type="Script" id=1]
+[ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=2]
+[ext_resource path="res://spells/easy/EasyProjectile.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=3]
+min_value = 0.02
+max_value = 5.46
+_data = [ Vector2( 0.00086505, 0.236933 ), 0.0, 0.0, 0, 0, Vector2( 1, 4.62546 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 1, 1, 1, 0, 1, 0.986328, 0.5, 1 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 40.1995
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 71.007
+
+[node name="EasySpell" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+width_curve = SubResource( 3 )
+default_color = Color( 1, 0.913725, 0.454902, 1 )
+gradient = SubResource( 4 )
+
+[node name="Projectile" type="Area2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="ProjectileSprite" type="Sprite" parent="Projectile"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
+shape = SubResource( 1 )
+
+[node name="EnemyCollision" type="Area2D" parent="."]
+position = Vector2( 130, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollision"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Projectile" to="." method="_on_Projectile_area_entered"]
