@@ -51,7 +51,7 @@ func _physics_process(delta) -> void:
 		time_out += delta
 
 func _play(attacker, defender) -> void:
-	projectile.position = attacker.position
+	projectile.position = attacker.get_global_position()
 	enemy.position = defender.get_global_position()
 	var direction = (enemy.position - projectile.position).normalized()
 	var dir_choice = randi()%2

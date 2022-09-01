@@ -13,25 +13,22 @@ func dict_pull(key:String) -> String:
 		return enemy_spells.list[current_spell][key]
 
 func get_text() -> String:
-	return dict_pull("Text")
+	return enemy_spells.get_text(current_spell)
 
 func get_tags() -> String:
-	return dict_pull("Tags")
+	return enemy_spells.get_tags(current_spell)
 
 func get_solve() -> String:
-	return dict_pull("Solve")
+	return enemy_spells.get_solve(current_spell)
 
 func get_drain() -> int:
-	return int(dict_pull("Drain"))
+	return enemy_spells.get_drain(current_spell)
 	
 func get_damage() -> int:
-	return int(dict_pull("Damage"))
+	return enemy_spells.get_damage(current_spell)
 	
 func get_speed() -> float:
-	return float(dict_pull("Speed"))/get_cast_speed()
-	
-func get_anim_index() -> int:
-	return int(dict_pull("Animation"))
+	return enemy_spells.get_speed(current_spell)
 
 func next_spell() -> void:
 	#implement specific behavior to get the next spell
@@ -42,8 +39,8 @@ func next_spell() -> void:
 		return
 	var next_spell = current_spell
 	while current_spell == next_spell:
-		next_spell = randi() % enemy_spells.list.size()
+		next_spell = randi() % enemy_spells.spell_list.size()
 	current_spell = next_spell
 
 func get_spell_animation() -> PackedScene:
-	return enemy_spells.anim_list[get_anim_index()]
+	return enemy_spells.get_spell_animation(current_spell)
