@@ -22,6 +22,7 @@ onready var player_honey_count = $GUI/HoneyCounter
 onready var honey_timer = $GUI/HoneyCounter/HoneyProgress
 onready var spellbook = $GUI/SpellbookContainer
 onready var spell_position = $Player/SpellPos
+onready var player_hit_position = $Player/HitPos
 
 #enemy nodes
 onready var enemy_spell_box = $GUI/ESContainer
@@ -288,7 +289,7 @@ func _on_Timer_timeout() -> void:
 	enemy_spell_box.set_text(enemy_text_tags+"")
 	var anim = enemy.get_spell_animation().instance()
 	add_child(anim)
-	anim.play(enemy_target, spell_position)
+	anim.play(enemy_target, player_hit_position)
 	yield(anim, "hit")
 	player_stats.damage(enemy.get_damage())
 	player.flash_color(Color(1,0,0,1))

@@ -287,6 +287,9 @@ data = {
 [node name="SpellPos" type="Position2D" parent="Player"]
 position = Vector2( 715, 700 )
 
+[node name="HitPos" type="Position2D" parent="Player"]
+position = Vector2( 360, 812 )
+
 [node name="EnemyLoad" type="Position2D" parent="."]
 position = Vector2( 1510, 542 )
 

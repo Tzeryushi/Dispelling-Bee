@@ -36,7 +36,7 @@ func _process(delta) -> void:
 func _physics_process(delta) -> void:
 	if float_out:
 		var direction = (enemy.position - projectile.position).normalized()
-		velocity += start_vector*init_decel*delta
+		velocity += start_vector * init_decel * delta
 		velocity += direction * spell_speed * delta
 		projectile.position += velocity * delta
 		time_out += delta
@@ -46,7 +46,7 @@ func _physics_process(delta) -> void:
 	if play_through:
 		var distance = (enemy.position - projectile.position).length()
 		var direction = (enemy.position - projectile.position).normalized()
-		velocity += (direction * spell_speed * delta)*(time_out*10)
+		velocity += (direction * spell_speed * delta)*(time_out*time_out*10)
 		projectile.position += velocity * delta
 		time_out += delta
 
