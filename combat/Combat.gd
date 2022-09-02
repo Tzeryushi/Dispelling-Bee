@@ -103,14 +103,6 @@ func setup(new_enemy:PackedScene) -> void:
 	
 	pause_gameplay()
 	
-	yield(get_tree().create_timer(2.0), "timeout")
-	next_spell()
-	spell_timer.unpause_timer()
-	spell_timer.start_timer()
-	honey_timer.unpause_timer()
-	honey_timer.start_timer()
-	next_player_spell()
-	
 	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
 	is_casting = false

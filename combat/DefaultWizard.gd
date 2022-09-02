@@ -34,7 +34,8 @@ func next_spell() -> void:
 	#implement specific behavior to get the next spell
 	#should I pass a reference to player stats in here? Food for thought.
 	if first_spell:
-		current_spell = first_spell_index
+		randomize()
+		current_spell = randi() % enemy_spells.spell_list.size()
 		first_spell = false
 		return
 	var next_spell = current_spell
