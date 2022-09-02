@@ -31,6 +31,9 @@ onready var spell_timer = $GUI/SpellTimer
 onready var enemy_pos = $EnemyLoad
 onready var enemy_target = $EnemyLoad/SpellTarget
 
+#GUI
+onready var gui = $GUI
+
 var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
 enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
@@ -50,6 +53,9 @@ var allowed_chars = {" ":" ","q":"q","w":"w","e":"e","r":"r","t":"t","y":"y","u"
 export var normal_color : Color = Color(1,1,1,1)
 export var correct_color : Color = Color (0,1,0,1)
 export var b_correct_color : Color = Color (1,0,1,1)
+
+export var player_enemy_trans_out : float = 400.0
+
 var player_text_tags = "[center][shake]"
 var enemy_text_tags = "[center]"
 var spellbook_tags = "[center][wave amp=100 freq=2]"
@@ -70,6 +76,8 @@ func _exit_tree():
 	pass
 
 func setup(new_enemy:PackedScene) -> void:
+	is_finished = false
+	
 	player_stats.health = player_ref.health
 	player_stats.max_health = player_ref.max_health
 	player_stats.honey = player_ref.max_honey/2
@@ -93,11 +101,7 @@ func setup(new_enemy:PackedScene) -> void:
 	spellbook.close()
 	#spellbook.see_data(false)
 	
-	spell_timer.pause_timer()
-	honey_timer.pause_timer()
-	
-	is_casting = true
-	is_finished = false
+	pause_gameplay()
 	
 	yield(get_tree().create_timer(2.0), "timeout")
 	next_spell()
@@ -109,6 +113,35 @@ func setup(new_enemy:PackedScene) -> void:
 	
 	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
+	is_casting = false
+
+#resources loaded in, start animations and begin game loop
+#this should begin as the scene transition dictates
+func startup() -> void:
+	gui.rect_position.y -= gui.rect_size.y
+	player.position.x -= player_enemy_trans_out
+	enemy_pos.position.x += player_enemy_trans_out
+	var tween = create_tween()
+	tween.tween_property(gui, "rect_position", Vector2(0,0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	yield(get_tree().create_timer(2.0), "timeout")
+	next_spell()
+	spell_timer.start_timer()
+	honey_timer.start_timer()
+	unpause_gameplay()
+	next_player_spell()
+
+#pauses timers and prevents player input
+func pause_gameplay() -> void:
+	spell_timer.pause_timer()
+	honey_timer.pause_timer()
+	is_casting = true
+
+#unpauses timers and allows player input	
+func unpause_gameplay() -> void:
+	spell_timer.unpause_timer()
+	honey_timer.unpause_timer()
 	is_casting = false
 
 func cleanup() -> void:
