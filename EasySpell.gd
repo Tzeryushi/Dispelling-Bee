@@ -18,6 +18,7 @@ var float_out = false
 var time_out = 0.0
 var accrue = Vector2.ZERO
 var start_vector = Vector2.ZERO
+var overvalue_pos = Vector2.ZERO
 
 var hit : bool = false
 
@@ -46,9 +47,12 @@ func _physics_process(delta) -> void:
 	if play_through:
 		var distance = (enemy.position - projectile.position).length()
 		var direction = (enemy.position - projectile.position).normalized()
-		velocity += (direction * spell_speed * delta)*(time_out*time_out*10)
+		velocity += (direction * spell_speed * delta)*(time_out*10)
 		projectile.position += velocity * delta
 		time_out += delta
+	if time_out > 1.5:
+		overvalue_pos = projectile.position
+		projectile.position = overvalue_pos.linear_interpolate(enemy.position, (time_out-1.5))
 
 func _play(attacker, defender) -> void:
 	projectile.position = attacker.get_global_position()

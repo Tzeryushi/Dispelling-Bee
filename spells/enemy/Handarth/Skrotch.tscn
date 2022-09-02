@@ -16,7 +16,7 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 0.986328, 0.5, 1 )
 radius = 40.1995
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 71.007
+radius = 100.005
 
 [node name="EasySpell" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,7 +36,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="EnemyCollision" type="Area2D" parent="."]
-position = Vector2( 130, 0 )
+position = Vector2( 171, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollision"]
 shape = SubResource( 2 )

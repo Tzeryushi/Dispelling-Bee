@@ -291,9 +291,10 @@ func _on_Timer_timeout() -> void:
 	add_child(anim)
 	anim.play(enemy_target, player_hit_position)
 	yield(anim, "hit")
-	player_stats.damage(enemy.get_damage())
-	player.flash_color(Color(1,0,0,1))
-	Globals.camera.shake(500, 0.3)
+	if !is_finished:
+		player_stats.damage(enemy.get_damage())
+		player.flash_color(Color(1,0,0,1))
+		Globals.camera.shake(500, 0.3)
 	yield(anim, "finished")
 	anim.queue_free()
 	
