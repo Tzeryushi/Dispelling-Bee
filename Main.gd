@@ -5,6 +5,8 @@ extends Node
 export(NodePath) var combat
 export(NodePath) var temp_menu
 
+onready var circle_transition = $CircleTransition
+
 func _ready():
 	combat = get_node(combat)
 	temp_menu = get_node(temp_menu)
@@ -15,9 +17,11 @@ func _exit_tree() -> void:
 	temp_menu.queue_free()
 
 func _on_Button_button_combat(enemy):
+	yield(circle_transition.transition_dark(0.5),"finished")
 	remove_child(temp_menu)
 	add_child(combat)
 	combat.setup(enemy)
+	yield(circle_transition.transition_out(0.5),"finished")
 	#transition
 	combat.startup()
 
