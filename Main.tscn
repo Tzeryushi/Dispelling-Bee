@@ -32,11 +32,11 @@ script = ExtResource( 2 )
 text = "Handarth"
 enemy_scene = ExtResource( 5 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
-
 [node name="CircleTransition" parent="." instance=ExtResource( 6 )]
 visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
 
 [connection signal="enemy_defeated" from="Combat" to="." method="_on_Combat_enemy_defeated"]
 [connection signal="player_defeated" from="Combat" to="." method="_on_Combat_player_defeated"]

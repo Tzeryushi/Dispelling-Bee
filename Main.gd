@@ -17,11 +17,14 @@ func _exit_tree() -> void:
 	temp_menu.queue_free()
 
 func _on_Button_button_combat(enemy):
-	yield(circle_transition.transition_dark(0.5),"finished")
+	circle_transition.transition_dark(1.0)
+	yield(circle_transition, "done")
+	#yield(circle_transition, "done")
 	remove_child(temp_menu)
 	add_child(combat)
 	combat.setup(enemy)
-	yield(circle_transition.transition_out(0.5),"finished")
+	circle_transition.transition_out(1.0)
+	yield(circle_transition, "done")
 	#transition
 	combat.startup()
 
