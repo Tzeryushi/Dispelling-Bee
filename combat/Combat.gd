@@ -40,6 +40,7 @@ enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
 var current_state
 
 var is_casting := false
+var enemy_casting := false
 var is_finished := false
 var player_spell = "" #current string input from player
 #TODO: handle unhandled input from symbols not supported by fonts
@@ -227,9 +228,10 @@ func spell(input:String) -> void:
 			player_spell_box.flash_honey_notice()
 			player_spell = ""
 			player_spell_box.set_text(player_text_tags + player_spell)
+			color_spells(player_spell)
 	else:
 		var e_spell = enemy.get_solve()
-		if p_spell == e_spell:
+		if p_spell == e_spell and !enemy_casting:
 			player_spell_box.pop_up_text()
 			enemy_spell_box.dead_down_text()
 			player_stats.change_honey(enemy.get_drain())
@@ -263,7 +265,7 @@ func color_spells(input:String) -> void:
 		if i != book_spell.substr(digit, 1):
 			b_match = false
 		digit += 1
-	if e_match:
+	if e_match and !enemy_casting:
 		if !e_spell_matching:
 			enemy_spell_box.change_text_color(correct_color)
 		#enemy_spell_box.set_text(enemy_text_tags + enemy.get_tags() + enemy.get_text().insert(e_spell.length()-p_spell.length(), "[color=#"+correct_color.to_html()+"]") + "[/color]")
@@ -285,7 +287,7 @@ func color_spells(input:String) -> void:
 			player_spell_box.change_text_color(b_correct_color)
 			player_text_tags = player_text_tags.replace("[rainbow]","")
 		b_spell_matching = true
-	if !e_match and e_spell_matching:
+	if !e_match and e_spell_matching and !enemy_casting:
 		#enemy_spell_box.set_text(enemy_text_tags+enemy.get_tags()+enemy.get_text())
 		enemy_spell_box.change_text_color(normal_color)
 		e_spell_matching = false
@@ -293,7 +295,7 @@ func color_spells(input:String) -> void:
 		#spellbook.set_text(spellbook_tags+player_spell_ref.get_spell_name())
 		spellbook.change_text_color(normal_color)
 		b_spell_matching = false
-	if !e_match and !b_match:
+	if (!e_match or enemy_casting) and !b_match:
 		player_spell_box.change_text_color(normal_color)
 		player_text_tags = player_text_tags.replace("[rainbow]","")
 
@@ -312,6 +314,9 @@ func _on_Timer_timeout() -> void:
 	spell_timer.pause_timer()
 	enemy_spell_box.pop_up_text()
 	enemy_spell_box.set_text(enemy_text_tags+"")
+	enemy_casting = true
+	color_spells(player_spell)
+	player_spell_box.set_text(player_text_tags + player_spell)
 	var anim = enemy.get_spell_animation().instance()
 	add_child(anim)
 	anim.play(enemy_target, player_hit_position)
@@ -321,6 +326,7 @@ func _on_Timer_timeout() -> void:
 		player.flash_color(Color(1,0,0,1))
 		Globals.camera.shake(500, 0.3)
 	yield(anim, "finished")
+	enemy_casting = false
 	anim.queue_free()
 	
 	if player_stats.health <= 0:

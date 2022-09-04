@@ -50,7 +50,7 @@ func _physics_process(delta) -> void:
 		velocity += (direction * spell_speed * delta)*(time_out*10)
 		projectile.position += velocity * delta
 		time_out += delta
-	if time_out > 1.5:
+	if time_out > 1.5 and projectile != null:
 		overvalue_pos = projectile.position
 		projectile.position = overvalue_pos.linear_interpolate(enemy.position, (time_out-1.5))
 
@@ -74,3 +74,4 @@ func _on_Projectile_area_entered(area):
 	float_out = false
 	play_through = false
 	projectile.queue_free()
+	projectile = null
