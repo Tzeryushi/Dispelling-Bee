@@ -32,7 +32,10 @@ script = ExtResource( 2 )
 text = "Handarth"
 enemy_scene = ExtResource( 5 )
 
-[node name="CircleTransition" parent="." instance=ExtResource( 6 )]
+[node name="Transition" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="CircleTransition" parent="Transition" instance=ExtResource( 6 )]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

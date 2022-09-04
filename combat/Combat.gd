@@ -54,7 +54,7 @@ export var normal_color : Color = Color(1,1,1,1)
 export var correct_color : Color = Color (0,1,0,1)
 export var b_correct_color : Color = Color (1,0,1,1)
 
-export var player_enemy_trans_out : float = 400.0
+export var player_enemy_trans_out : float = 500.0
 
 var player_text_tags = "[center][shake]"
 var enemy_text_tags = "[center]"
@@ -102,22 +102,22 @@ func setup(new_enemy:PackedScene) -> void:
 	#spellbook.see_data(false)
 	
 	pause_gameplay()
-	
-	player_spell = ""
-	player_spell_box.set_text(player_text_tags + player_spell)
 	is_casting = false
+	
+	gui.rect_position.y -= gui.rect_size.y
+	player.position.x -= player_enemy_trans_out
+	enemy_pos.position.x += player_enemy_trans_out
 
 #resources loaded in, start animations and begin game loop
 #this should begin as the scene transition dictates
 func startup() -> void:
-	gui.rect_position.y -= gui.rect_size.y
-	player.position.x -= player_enemy_trans_out
-	enemy_pos.position.x += player_enemy_trans_out
 	var tween = create_tween()
 	tween.tween_property(gui, "rect_position", Vector2(0,0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	yield(get_tree().create_timer(2.0), "timeout")
+	player_spell = ""
+	player_spell_box.set_text(player_text_tags + player_spell)
 	next_spell()
 	spell_timer.start_timer()
 	honey_timer.start_timer()
