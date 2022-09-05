@@ -319,6 +319,7 @@ func _on_Timer_timeout() -> void:
 	player_spell_box.set_text(player_text_tags + player_spell)
 	var anim = enemy.get_spell_animation().instance()
 	add_child(anim)
+	enemy.attack()
 	anim.play(enemy_target, player_hit_position)
 	yield(anim, "hit")
 	if !is_finished:

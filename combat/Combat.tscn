@@ -242,6 +242,7 @@ tracks/3/keys = {
 script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
+b_correct_color = Color( 0, 0.439216, 1, 1 )
 
 [node name="GuiMockup" type="Sprite" parent="."]
 visible = false
@@ -368,7 +369,7 @@ scroll_active = false
 [node name="PSContainer" type="Node2D" parent="GUI"]
 position = Vector2( 628, 622 )
 script = ExtResource( 12 )
-bg_color = Color( 0.65098, 0.65098, 1, 1 )
+bg_color = Color( 1, 1, 1, 1 )
 bubble_min = 200.0
 honey_notice = ExtResource( 41 )
 pop_text = ExtResource( 45 )

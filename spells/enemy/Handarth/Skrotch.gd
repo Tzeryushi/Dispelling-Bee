@@ -26,7 +26,7 @@ func _play(attacker, defender) -> void:
 	projectile.position = attacker.global_position
 	projectile.scale = Vector2(0,0)
 	tween.tween_property(projectile, "rotation", -20*PI, speed).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-	tween.parallel().tween_property(projectile, "scale", Vector2(1.0, 1.0), speed/5.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.parallel().tween_property(projectile, "scale", Vector2(0.8, 0.8), speed/4.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	yield(tween.parallel().tween_property(projectile, "position", defender.global_position, speed).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT),"finished")
 	emit_signal("hit")
 	hit = true

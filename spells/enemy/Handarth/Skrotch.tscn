@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://spells/enemy/Handarth/Skrotch.gd" type="Script" id=1]
 [ext_resource path="res://spells/enemy/Handarth/Scrotch.PNG" type="Texture" id=2]
-[ext_resource path="res://spells/easy/EasyProjectile.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=3]
 min_value = 0.02
@@ -12,11 +11,7 @@ _data = [ Vector2( 0.00086505, 0.236933 ), 0.0, 0.0, 0, 0, Vector2( 1, 4.62546 )
 [sub_resource type="Gradient" id=4]
 colors = PoolColorArray( 0.427451, 0.427451, 0.427451, 0.0941176, 0, 0, 0, 0.972549 )
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 40.1995
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 100.005
+[sub_resource type="CircleShape2D" id=5]
 
 [node name="Skrotch" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,18 +23,11 @@ default_color = Color( 0.145098, 0.145098, 0.145098, 1 )
 gradient = SubResource( 4 )
 
 [node name="Projectile" type="Area2D" parent="."]
-script = ExtResource( 3 )
 
-[node name="ProjectileSprite" type="Sprite" parent="Projectile"]
+[node name="Sprite" type="Sprite" parent="Projectile"]
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
-shape = SubResource( 1 )
-
-[node name="EnemyCollision" type="Area2D" parent="."]
-position = Vector2( 171, 0 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollision"]
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="Projectile" to="." method="_on_Projectile_area_entered"]

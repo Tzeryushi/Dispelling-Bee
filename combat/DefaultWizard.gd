@@ -1,5 +1,7 @@
 extends Enemy
 
+onready var sprite = $Sprite
+
 var first_spell = true
 var first_spell_index = 2
 
@@ -45,3 +47,6 @@ func next_spell() -> void:
 
 func get_spell_animation() -> PackedScene:
 	return enemy_spells.get_spell_animation(current_spell)
+	
+func attack() -> void:
+	sprite.attack()
