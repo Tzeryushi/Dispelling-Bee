@@ -217,7 +217,7 @@ func spell(input:String) -> void:
 			is_casting = false
 			yield(anim, "hit")
 			enemy.flash_color(Color(1,0.1,0.1,1), 0.04, 2)
-			Globals.camera.shake(300, 0.1)
+			Globals.camera.shake(730, 0.2)
 			damage_enemy(player_spell_ref.get_damage())
 			if enemy.get_health() <= 0:
 				cleanup()
@@ -325,7 +325,7 @@ func _on_Timer_timeout() -> void:
 	if !is_finished:
 		player_stats.damage(enemy.get_damage())
 		player.flash_color(Color(1,0,0,1))
-		Globals.camera.shake(500, 0.3)
+		Globals.camera.shake(1000, 0.3)
 	yield(anim, "finished")
 	enemy_casting = false
 	anim.queue_free()

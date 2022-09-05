@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -46,6 +46,8 @@
 [ext_resource path="res://combat/Player.gd" type="Script" id=44]
 [ext_resource path="res://GUI/PopText.tscn" type="PackedScene" id=45]
 [ext_resource path="res://GUI/DeadText.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Backgrounds/CombatBackground1.png" type="Texture" id=47]
+[ext_resource path="res://combat/CombatBackground.gd" type="Script" id=48]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -243,6 +245,16 @@ script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
 b_correct_color = Color( 0, 0.439216, 1, 1 )
+
+[node name="CombatBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 48 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CombatBackground"]
+motion_mirroring = Vector2( 2160, 1440 )
+
+[node name="Sprite" type="Sprite" parent="CombatBackground/ParallaxLayer"]
+position = Vector2( 1080, 720 )
+texture = ExtResource( 47 )
 
 [node name="GuiMockup" type="Sprite" parent="."]
 visible = false
