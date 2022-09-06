@@ -97,7 +97,7 @@ func setup(new_enemy:PackedScene) -> void:
 	enemy_health.animate_value(bar_value,0.1)
 	
 	#cleaning out any leftover visual data
-	player_spell = "[rainbow]LOADING IN"
+	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
 	enemy_spell_box.set_text("")
 	spellbook.close()

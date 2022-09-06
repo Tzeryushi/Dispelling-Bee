@@ -19,7 +19,6 @@ func _exit_tree() -> void:
 func _on_Button_button_combat(enemy):
 	circle_transition.transition_dark(0.7)
 	yield(circle_transition, "done")
-	#yield(circle_transition, "done")
 	remove_child(temp_menu)
 	add_child(combat)
 	combat.setup(enemy)
@@ -30,9 +29,19 @@ func _on_Button_button_combat(enemy):
 	combat.startup()
 
 func _on_Combat_enemy_defeated():
+	circle_transition.transition_dark(0.7)
+	yield(circle_transition, "done")
 	remove_child(combat)
 	add_child(temp_menu)
+	yield(get_tree().create_timer(0.5), "timeout")
+	circle_transition.transition_out(0.7)
+	yield(circle_transition, "done")
 
 func _on_Combat_player_defeated():
+	circle_transition.transition_dark(0.7)
+	yield(circle_transition, "done")
 	remove_child(combat)
 	add_child(temp_menu)
+	yield(get_tree().create_timer(0.5), "timeout")
+	circle_transition.transition_out(0.7)
+	yield(circle_transition, "done")
