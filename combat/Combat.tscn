@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=2]
@@ -48,6 +48,8 @@
 [ext_resource path="res://GUI/DeadText.tscn" type="PackedScene" id=46]
 [ext_resource path="res://Backgrounds/CombatBackground1.png" type="Texture" id=47]
 [ext_resource path="res://combat/CombatBackground.gd" type="Script" id=48]
+[ext_resource path="res://fonts/rimouski sb.otf" type="DynamicFontData" id=49]
+[ext_resource path="res://combat/ReadyMessage.gd" type="Script" id=50]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -128,7 +130,7 @@ animations = [ {
 size = 50
 outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 23 )
+font_data = ExtResource( 49 )
 
 [sub_resource type="DynamicFont" id=16]
 size = 70
@@ -240,6 +242,14 @@ tracks/3/keys = {
 "values": [ Vector2( 0.750001, 0.750001 ) ]
 }
 
+[sub_resource type="DynamicFont" id=19]
+size = 280
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 49 )
+
 [node name="Combat" type="Node2D"]
 script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
@@ -248,7 +258,7 @@ b_correct_color = Color( 0, 0.439216, 1, 1 )
 
 [node name="CombatBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 48 )
-color_override = Color( 0.537255, 0.537255, 0.537255, 1 )
+color_override = Color( 0.501961, 0.501961, 0.501961, 0.8 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CombatBackground"]
 motion_mirroring = Vector2( 2160, 1440 )
@@ -369,9 +379,9 @@ texture = ExtResource( 25 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]
 margin_left = 32.0
-margin_top = 114.0
+margin_top = 105.0
 margin_right = 667.0
-margin_bottom = 177.0
+margin_bottom = 191.0
 rect_clip_content = false
 size_flags_vertical = 0
 theme = ExtResource( 6 )
@@ -394,9 +404,9 @@ texture = ExtResource( 31 )
 
 [node name="PSpellText" type="RichTextLabel" parent="GUI/PSContainer"]
 margin_left = 153.0
-margin_top = 107.0
+margin_top = 98.0
 margin_right = 718.0
-margin_bottom = 170.0
+margin_bottom = 184.0
 rect_clip_content = false
 size_flags_vertical = 0
 theme = ExtResource( 6 )
@@ -527,6 +537,25 @@ scroll_active = false
 autoplay = "HoneyFloat"
 anims/HoneyFloat = SubResource( 17 )
 anims/RESET = SubResource( 18 )
+
+[node name="ReadyMessage" type="RichTextLabel" parent="GUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -599.5
+margin_top = -169.0
+margin_right = 599.5
+margin_bottom = 169.0
+rect_clip_content = false
+size_flags_vertical = 0
+custom_fonts/normal_font = SubResource( 19 )
+bbcode_enabled = true
+bbcode_text = "[center][wave][rainbow]Ready..."
+text = "Ready..."
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 50 )
 
 [node name="Camera" parent="." instance=ExtResource( 42 )]
 current = true

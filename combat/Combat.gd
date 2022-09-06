@@ -33,6 +33,7 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 
 #GUI
 onready var gui = $GUI
+onready var ready_message = $GUI/ReadyMessage
 
 var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
@@ -116,7 +117,9 @@ func startup() -> void:
 	tween.tween_property(gui, "rect_position", Vector2(0,0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
+	ready_message.ready_up(1.5)
+	yield(ready_message, "finished")
 	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
 	next_spell()
@@ -149,6 +152,7 @@ func cleanup() -> void:
 	player_spell_box.set_text(player_text_tags + player_spell)
 	Engine.time_scale = 0.5
 	spell_timer.pause_timer()
+	honey_timer.pause_timer()
 	yield(get_tree().create_timer(1.5), "timeout")
 	Engine.time_scale = 1.0
 	if player_victory:
