@@ -1,8 +1,41 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
+[ext_resource path="res://characters/Handarth/HandarthBody - Copy.PNG" type="Texture" id=3]
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float circle_size : hint_range(0.0, 1.05);
+uniform float screen_width;
+uniform float screen_height;
+
+uniform float outline_size : hint_range(0.0, 1.05);
+uniform vec4 outline_color : hint_color;
+ 
+void fragment() {
+	float ratio = screen_width / screen_height;
+	float dist = distance(vec2(0.5, 0.5), vec2(mix(0.5, UV.x, ratio), UV.y));
+	vec4 orig_color = texture(TEXTURE, UV);
+	COLOR.rgba = orig_color.rgba;
+	if (step(circle_size, dist) == 1.0) {
+		COLOR.a = 0.0;
+		if (step(outline_size, dist) == 0.0) {
+		COLOR.rgba = outline_color;
+		}
+	}
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/circle_size = 0.401
+shader_param/screen_width = 1.0
+shader_param/screen_height = 1.0
+shader_param/outline_size = 0.5
+shader_param/outline_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 
 [node name="TempMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -44,3 +77,9 @@ margin_bottom = 915.0
 size_flags_vertical = 3
 text = "Hat 2"
 script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 608, 847 )
+scale = Vector2( 0.76, 0.76 )
+texture = ExtResource( 3 )
