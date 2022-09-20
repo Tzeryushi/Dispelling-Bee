@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://combat/Combat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://PlayerData.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://TempMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://characters/Handarth/Handarth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/CircleTransition.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TitleScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://TitleScreen.gd" type="Script" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -20,6 +22,7 @@ glow_high_quality = true
 script = ExtResource( 3 )
 combat = NodePath("Combat")
 temp_menu = NodePath("TempMenu")
+title_screen = NodePath("TitleScreen")
 
 [node name="PlayerData" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -31,6 +34,9 @@ script = ExtResource( 2 )
 [node name="Button3" parent="TempMenu/Control/VBoxContainer" index="2"]
 text = "Handarth"
 enemy_scene = ExtResource( 5 )
+
+[node name="TitleScreen" parent="." instance=ExtResource( 7 )]
+script = ExtResource( 8 )
 
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 10
@@ -46,5 +52,6 @@ environment = SubResource( 1 )
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button2" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button3" to="." method="_on_Button_button_combat"]
+[connection signal="game_start" from="TitleScreen" to="." method="_on_TitleScreen_game_start"]
 
 [editable path="TempMenu"]
