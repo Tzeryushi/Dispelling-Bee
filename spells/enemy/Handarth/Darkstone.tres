@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://spells/enemy/Handarth/Skrotch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Darkstone"
+solve = "enotskrad"
+shake_tag = true
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 1
+drain = 1
+speed = 7.0
+animation = ExtResource( 1 )

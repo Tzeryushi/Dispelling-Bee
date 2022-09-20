@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://spells/enemy/Handarth/MegaPulse.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+name = "Sinister pulse..."
+solve = "eslup retsinis..."
+shake_tag = false
+wave_tag = true
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 2
+drain = 2
+speed = 15.0
+animation = ExtResource( 1 )
