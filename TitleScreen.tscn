@@ -8,7 +8,7 @@
 
 [node name="Title" type="Sprite" parent="."]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
-position = Vector2( 960, 397 )
+position = Vector2( 964, 397 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 size_change = 0.1

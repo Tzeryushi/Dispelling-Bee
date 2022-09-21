@@ -23,6 +23,6 @@ func _start_tween() -> void:
 
 func _start_tween2() -> void:
 	var tween = create_tween()
-	yield(tween.parallel().tween_property(self, "rotation_degrees", rotate, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK),"finished")
+	yield(tween.parallel().tween_property(self, "rotation_degrees", rotate, time).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE),"finished")
 	rotate = -rotate
 	_start_tween2()
