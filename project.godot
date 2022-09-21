@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "DefaultWizardSprite",
+"language": "GDScript",
+"path": "res://combat/DefaultWizardSprite.gd"
+}, {
+"base": "Node2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://combat/Enemy.gd"
@@ -50,6 +55,7 @@ _global_script_classes=[ {
 "path": "res://spells/SpellModel.gd"
 } ]
 _global_script_class_icons={
+"DefaultWizardSprite": "",
 "Enemy": "",
 "EnemySpell": "",
 "EnemySpells": "",

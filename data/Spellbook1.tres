@@ -1,11 +1,17 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=11 format=2]
 
 [ext_resource path="res://data/PlayerSpells.gd" type="Script" id=1]
 [ext_resource path="res://spells/easy/Fizzio.tres" type="Resource" id=2]
 [ext_resource path="res://spells/easy/PewpewSpell.tres" type="Resource" id=3]
 [ext_resource path="res://spells/easy/Shavaha.tres" type="Resource" id=4]
+[ext_resource path="res://spells/easy/Ezumizum.tres" type="Resource" id=5]
+[ext_resource path="res://spells/easy/Moutimam.tres" type="Resource" id=6]
+[ext_resource path="res://spells/easy/Aluhaga.tres" type="Resource" id=7]
+[ext_resource path="res://spells/easy/Dundandon.tres" type="Resource" id=8]
+[ext_resource path="res://spells/easy/Pastaposta.tres" type="Resource" id=9]
+[ext_resource path="res://spells/easy/Crashacra.tres" type="Resource" id=10]
 
 [resource]
 script = ExtResource( 1 )
 first_spell_index = 2
-spell_list = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+spell_list = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 9 ) ]
