@@ -104,7 +104,6 @@ func setup(new_enemy:PackedScene) -> void:
 	#spellbook.see_data(false)
 	
 	pause_gameplay()
-	is_casting = false
 	
 	gui.rect_position.y -= gui.rect_size.y
 	player.position.x -= player_enemy_trans_out
@@ -170,6 +169,9 @@ func _unhandled_input(event) -> void:
 			color_spells(player_spell)
 			if player_spell != null:
 				player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
+		elif player_spell.empty() and event.scancode == KEY_ENTER:
+			if spellbook.refresh():
+				next_player_spell()
 		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()): #checking list of allowed keys
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			player_spell = player_spell + key_typed
