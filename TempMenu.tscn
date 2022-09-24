@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
 [ext_resource path="res://characters/Handarth/HandarthBody - Copy.PNG" type="Texture" id=3]
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MenuButtons.tres" type="Theme" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -35,7 +36,7 @@ shader_param/circle_size = 0.401
 shader_param/screen_width = 1.0
 shader_param/screen_height = 1.0
 shader_param/outline_size = 0.5
-shader_param/outline_color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+shader_param/outline_color = Color( 0, 0, 0, 1 )
 
 [node name="TempMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -71,15 +72,17 @@ script = ExtResource( 2 )
 enemy_scene = ExtResource( 4 )
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer"]
+modulate = Color( 1, 0.6, 0.6, 1 )
 margin_top = 623.0
 margin_right = 400.0
 margin_bottom = 915.0
 size_flags_vertical = 3
-text = "Hat 2"
+theme = ExtResource( 5 )
+text = "Handarth"
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 608, 847 )
-scale = Vector2( 0.76, 0.76 )
+position = Vector2( 734, 763 )
+scale = Vector2( 0.55, 0.55 )
 texture = ExtResource( 3 )
