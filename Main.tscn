@@ -32,7 +32,6 @@ script = ExtResource( 2 )
 [node name="TempMenu" parent="." instance=ExtResource( 4 )]
 
 [node name="Button3" parent="TempMenu/Control/VBoxContainer" index="2"]
-text = "Handarth"
 enemy_scene = ExtResource( 5 )
 
 [node name="TitleScreen" parent="." instance=ExtResource( 7 )]
