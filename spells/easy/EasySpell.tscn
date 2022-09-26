@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://EasySpell.gd" type="Script" id=1]
 [ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=2]
-[ext_resource path="res://spells/easy/EasyProjectile.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=3]
 min_value = 0.02
@@ -27,7 +26,6 @@ default_color = Color( 1, 0.913725, 0.454902, 1 )
 gradient = SubResource( 4 )
 
 [node name="Projectile" type="Area2D" parent="."]
-script = ExtResource( 3 )
 
 [node name="ProjectileSprite" type="Sprite" parent="Projectile"]
 texture = ExtResource( 2 )

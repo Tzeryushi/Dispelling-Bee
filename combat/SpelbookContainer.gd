@@ -52,16 +52,17 @@ func open() -> void:
 	book.position = book_origin
 	see_data(true)
 	
-func new_spell(text:String, close_time : float = 0.0) -> void:
+func new_spell(text:String, cost:String = "1", close_time : float = 0.01) -> void:
 	var tween = create_tween()
 	var original_scale = book.scale
 	yield(tween.tween_property(book, "scale", Vector2(1.2,1.2), 0.07).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT), "finished")
 	close()
+	set_cost(cost)
 	set_text(text)
 	book.scale += Vector2(0, 0.5)
 	tween = create_tween()
 	yield(tween.tween_property(book, "scale", original_scale, 0.1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
-	tween = create_tween()
+#	tween = create_tween()
 	yield(get_tree().create_timer(close_time), "timeout")
 	open()
 	

@@ -11,7 +11,6 @@ export var big_time := 0.4
 
 func _play(attacker, defender) -> void:
 	var tween_1 = create_tween()
-	var tween_2 = create_tween()
 	var ring_1 = spell_ring.instance()
 	add_child(ring_1)
 	ring_1.position = (attacker.get_global_position() - Vector2(135, 40))
@@ -34,9 +33,10 @@ func _play(attacker, defender) -> void:
 	tween_1.tween_property(ring_2, "scale", small_ring_tiny, small_time*1.5)
 	
 	tween_1.parallel().tween_property(ring_3, "visible", true, 0.0001)
-	yield(tween_1.tween_property(ring_3, "scale", big_ring_big/2, big_time/2), "finished")
-	tween_1.parallel().tween_property(ring_3, "modulate:a", 0.0, big_time)
+	tween_1.tween_property(ring_3, "modulate:a", 0.0, big_time)
+	yield(tween_1.parallel().tween_property(ring_3, "scale", big_ring_big/2, big_time/2), "finished")
 	emit_signal("hit")
+	tween_1 = create_tween()
 	tween_1.tween_property(ring_3, "scale", big_ring_big, big_time/2)
 	#tween_1.parallel().tween_property(ring_3, "modulate:a", 0.0, big_time/2)
 	

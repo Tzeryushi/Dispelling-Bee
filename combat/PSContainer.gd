@@ -45,9 +45,9 @@ func pop_up_text() -> void:
 	add_child(popper)
 	popper.rect_size = text_box.rect_size
 	popper.rect_position = text_box.rect_position
-	var tween = create_tween()
 	popper.bbcode_text = text_box.bbcode_text
 	var new_pos = popper.rect_position + Vector2(0, -pop_jump_dist)
+	var tween = create_tween()
 	yield(tween.parallel().tween_property(popper, "rect_position", new_pos, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
 	tween = create_tween()
 	yield(tween.tween_property(popper, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_OUT), "finished")

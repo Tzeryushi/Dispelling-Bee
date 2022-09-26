@@ -20,5 +20,7 @@ func ready_up(time:float) -> void:
 	tween.tween_property(self, "rect_scale", Vector2(1.0,1.0), time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	yield(tween.parallel().tween_property(self, "rect_position", ideal_position, time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC),"finished")
 	emit_signal("finished")
-	tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
+	var tween2 = create_tween()
+	yield(tween2.tween_property(self, "modulate:a", 0.0, 0.3), "finished")
+	var moob = "mood"
+	tween.kill()

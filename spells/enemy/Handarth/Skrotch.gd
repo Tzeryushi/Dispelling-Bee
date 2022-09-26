@@ -1,7 +1,6 @@
 extends SpellAnimation
 
 onready var projectile = $Projectile
-onready var enemy = $EnemyCollision
 onready var line = $Line2D
 
 export var trail_length = 10

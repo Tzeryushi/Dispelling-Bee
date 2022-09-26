@@ -6,7 +6,10 @@ export(NodePath) var combat
 export(NodePath) var temp_menu
 export(NodePath) var title_screen
 
+var is_transition := false
+
 onready var circle_transition = $Transition/CircleTransition
+
 
 func _ready():
 	combat = get_node(combat)
@@ -39,13 +42,18 @@ func _on_Combat_player_defeated():
 	_transition(combat, temp_menu)
 	
 func _transition(unload:Node, to_load:Node) -> void:
-	circle_transition.transition_dark(0.7)
-	yield(circle_transition, "done")
-	remove_child(unload)
-	add_child(to_load)
-	yield(get_tree().create_timer(0.5), "timeout")
-	circle_transition.transition_out(0.7)
-	yield(circle_transition, "done")
+	if is_transition:
+		return
+	else:
+		is_transition = true
+		circle_transition.transition_dark(0.7)
+		yield(circle_transition, "done")
+		remove_child(unload)
+		add_child(to_load)
+		yield(get_tree().create_timer(0.5), "timeout")
+		circle_transition.transition_out(0.7)
+		yield(circle_transition, "done")
+		is_transition = false
 
 func _on_TitleScreen_game_start():
 	_transition(title_screen, temp_menu)

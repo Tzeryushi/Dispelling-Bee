@@ -29,5 +29,3 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
 shape = SubResource( 5 )
-
-[connection signal="area_entered" from="Projectile" to="." method="_on_Projectile_area_entered"]
