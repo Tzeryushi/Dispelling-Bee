@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=1]
 [ext_resource path="res://art/title.PNG" type="Texture" id=2]
 [ext_resource path="res://TitleAnimation.gd" type="Script" id=3]
+[ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=4]
+[ext_resource path="res://characters/Apicurio.png" type="Texture" id=5]
+[ext_resource path="res://characters/Hillbeetle/Hillbeetle.PNG" type="Texture" id=6]
 
 [node name="TitleScreen" type="Node2D"]
+
+[node name="HandarthBody" type="Sprite" parent="."]
+position = Vector2( 106, 106 )
+rotation = 2.42617
+scale = Vector2( 0.796243, 0.796243 )
+texture = ExtResource( 4 )
+
+[node name="Apicurio" type="Sprite" parent="."]
+position = Vector2( 1615, 812 )
+scale = Vector2( 0.667, 0.667 )
+texture = ExtResource( 5 )
+
+[node name="Hillbeetle" type="Sprite" parent="."]
+position = Vector2( 1733, 111 )
+rotation = -2.53455
+scale = Vector2( 0.791226, 0.791226 )
+texture = ExtResource( 6 )
 
 [node name="Title" type="Sprite" parent="."]
 modulate = Color( 1.2, 1.2, 1.2, 1 )

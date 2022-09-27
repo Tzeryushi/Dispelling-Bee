@@ -1,7 +1,7 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
-[ext_resource path="res://characters/ApicurioBattle.PNG" type="Texture" id=2]
+[ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
 [ext_resource path="res://combat/ESContainer.gd" type="Script" id=3]
 [ext_resource path="res://GUI/enemyGUI/EnemyHealthEmpty.png" type="Texture" id=4]
 [ext_resource path="res://GUI/enemyGUI/EnemyHPMarker.png" type="Texture" id=5]
@@ -50,6 +50,9 @@
 [ext_resource path="res://combat/CombatBackground.gd" type="Script" id=48]
 [ext_resource path="res://fonts/rimouski sb.otf" type="DynamicFontData" id=49]
 [ext_resource path="res://combat/ReadyMessage.gd" type="Script" id=50]
+[ext_resource path="res://characters/Apicurio/ApiLowerArm.PNG" type="Texture" id=51]
+[ext_resource path="res://characters/Apicurio/ApiWandCast.PNG" type="Texture" id=52]
+[ext_resource path="res://characters/Apicurio/ApiWandHeld.PNG" type="Texture" id=53]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -289,8 +292,21 @@ position = Vector2( -276, -24 )
 texture = ExtResource( 40 )
 
 [node name="PlayerImage" type="Sprite" parent="Player/Pos"]
-position = Vector2( -262, -284 )
+position = Vector2( -266, -284 )
 texture = ExtResource( 2 )
+
+[node name="ApiWandCast" type="Sprite" parent="Player/Pos/PlayerImage"]
+visible = false
+position = Vector2( 271, -142 )
+texture = ExtResource( 52 )
+
+[node name="ApiLowerArm" type="Sprite" parent="Player/Pos/PlayerImage"]
+position = Vector2( 210, 107 )
+texture = ExtResource( 51 )
+
+[node name="ApiWandHeld" type="Sprite" parent="Player/Pos/PlayerImage"]
+position = Vector2( 205, -102 )
+texture = ExtResource( 53 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Pos"]
 
