@@ -266,7 +266,7 @@ color_override = Color( 0.501961, 0.501961, 0.501961, 0.8 )
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CombatBackground"]
 motion_mirroring = Vector2( 2160, 1440 )
 
-[node name="Sprite" type="Sprite" parent="CombatBackground/ParallaxLayer"]
+[node name="Background" type="Sprite" parent="CombatBackground/ParallaxLayer"]
 position = Vector2( 1080, 720 )
 texture = ExtResource( 47 )
 

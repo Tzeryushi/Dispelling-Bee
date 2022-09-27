@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://EasySpell.gd" type="Script" id=1]
 [ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=2]
+[ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art/particles/smallStar.png" type="Texture" id=4]
 
 [sub_resource type="Curve" id=3]
 min_value = 0.02
@@ -14,11 +16,30 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 0.986328, 0.5, 1 )
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.1995
 
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 32.19
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 426.76
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 6 )
+color = Color( 0.913725, 0.85098, 0.521569, 1 )
+
 [sub_resource type="CircleShape2D" id=2]
 radius = 71.007
 
 [node name="EasySpell" type="Node2D"]
 script = ExtResource( 1 )
+hit_particles = ExtResource( 3 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width_curve = SubResource( 3 )
@@ -32,6 +53,12 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
 shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="Projectile"]
+amount = 14
+local_coords = false
+process_material = SubResource( 7 )
+texture = ExtResource( 4 )
 
 [node name="EnemyCollision" type="Area2D" parent="."]
 position = Vector2( 130, 0 )

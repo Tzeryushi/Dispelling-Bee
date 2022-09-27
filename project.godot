@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://combat/EnemyStats.gd"
 }, {
+"base": "Node",
+"class": "ParticleAnimation",
+"language": "GDScript",
+"path": "res://art/particles/Particle.gd"
+}, {
 "base": "Resource",
 "class": "PlayerSpells",
 "language": "GDScript",
@@ -60,6 +65,7 @@ _global_script_class_icons={
 "EnemySpell": "",
 "EnemySpells": "",
 "EnemyStats": "",
+"ParticleAnimation": "",
 "PlayerSpells": "",
 "PlayerStats": "",
 "SpellAnimation": "",

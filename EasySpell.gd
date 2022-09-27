@@ -4,7 +4,7 @@ onready var projectile = $Projectile
 onready var enemy = $EnemyCollision
 onready var line = $Line2D
 
-export var trail_length = 25
+export var trail_length = 15
 
 export var spell_speed : float = 5000.0
 export var start_speed: float = 3500.0
@@ -21,6 +21,7 @@ var start_vector = Vector2.ZERO
 var overvalue_pos = Vector2.ZERO
 
 var hit : bool = false
+var particle_playing = false
 
 func _process(delta) -> void:
 	if !hit:
@@ -28,7 +29,7 @@ func _process(delta) -> void:
 		line.add_point(point)
 		while line.get_point_count() > trail_length:
 			line.remove_point(0)
-	if line.get_point_count() == 0:
+	if line.get_point_count() == 0 and particle_playing == false:
 		emit_signal("finished")
 		queue_free()
 	elif hit:
@@ -70,8 +71,16 @@ func _play(attacker, defender) -> void:
 
 func _on_Projectile_area_entered(area):
 	emit_signal("hit")
+	var part = hit_particles.instance()
+	add_child(part)
+	part.position = projectile.position
+	part.play()
+	particle_playing = true
 	hit = true
 	float_out = false
 	play_through = false
 	projectile.queue_free()
 	projectile = null
+	yield(part,"finished")
+	part.queue_free()
+	particle_playing = false

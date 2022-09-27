@@ -2,6 +2,8 @@ extends Node
 
 class_name SpellAnimation
 
+export var hit_particles : PackedScene
+
 signal hit
 signal finished
 

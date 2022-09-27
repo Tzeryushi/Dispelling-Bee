@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=1]
 [ext_resource path="res://art/title.PNG" type="Texture" id=2]
@@ -6,8 +6,21 @@
 [ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=4]
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=5]
 [ext_resource path="res://characters/Hillbeetle/Hillbeetle.PNG" type="Texture" id=6]
+[ext_resource path="res://Backgrounds/BG2.png" type="Texture" id=7]
+[ext_resource path="res://TitleBackground.gd" type="Script" id=8]
 
 [node name="TitleScreen" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource( 8 )
+speed = 150.0
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2160, 1440 )
+
+[node name="Background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1080, 720 )
+texture = ExtResource( 7 )
 
 [node name="HandarthBody" type="Sprite" parent="."]
 position = Vector2( 106, 106 )
