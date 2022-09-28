@@ -3,6 +3,7 @@ extends SpellAnimation
 onready var projectile = $Projectile
 onready var enemy = $EnemyCollision
 onready var line = $Line2D
+onready var hit_sound = $HitPop
 
 export var trail_length = 15
 
@@ -33,7 +34,8 @@ func _process(delta) -> void:
 		emit_signal("finished")
 		queue_free()
 	elif hit:
-		line.remove_point(0)
+		if line.get_point_count() != 0:
+			line.remove_point(0)
 
 func _physics_process(delta) -> void:
 	if float_out:
@@ -71,16 +73,21 @@ func _play(attacker, defender) -> void:
 
 func _on_Projectile_area_entered(area):
 	emit_signal("hit")
+	
 	var part = hit_particles.instance()
 	add_child(part)
 	part.position = projectile.position
 	part.play()
 	particle_playing = true
+	
+	hit_sound.play()
+	
 	hit = true
 	float_out = false
 	play_through = false
 	projectile.queue_free()
 	projectile = null
+	
 	yield(part,"finished")
 	part.queue_free()
 	particle_playing = false

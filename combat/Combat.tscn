@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -53,6 +53,143 @@
 [ext_resource path="res://characters/Apicurio/ApiLowerArm.PNG" type="Texture" id=51]
 [ext_resource path="res://characters/Apicurio/ApiWandCast.PNG" type="Texture" id=52]
 [ext_resource path="res://characters/Apicurio/ApiWandHeld.PNG" type="Texture" id=53]
+
+[sub_resource type="Animation" id=20]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("LowerHand:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("WandHand:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -266, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath(".:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -284, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "idle"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("LowerHand:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 22, -0.25, 0, 0.1, -22.4983, 0, -0.25, 0, 0.25, 0, 22, -0.1, -22.2291, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("WandHand:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 22, -0.25, 0, 0.1, -22.2084, 0, -0.25, 0, 0.25, 0, 22, -0.1, -22.3699, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.1, -0.0202137, 0.98, -0.2, 0.000115991, 0.2, 0.000115991, 1, -0.1, -0.0202137, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath(".:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -266, -0.25, 0, 0.25, 0, -266, -0.25, 0, 0.25, 0, -266, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath(".:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -284, -0.25, 0, 0.1, 4.98413, -279, -0.2, -0.0195923, 0.2, -0.0195923, -284, -0.1, 4.95511, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/idle/node = SubResource( 22 )
+states/idle/position = Vector2( 574.333, 83 )
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
@@ -295,36 +432,37 @@ texture = ExtResource( 40 )
 position = Vector2( -266, -284 )
 texture = ExtResource( 2 )
 
-[node name="ApiWandCast" type="Sprite" parent="Player/Pos/PlayerImage"]
+[node name="WandHand" type="Position2D" parent="Player/Pos/PlayerImage"]
+position = Vector2( 120, 15 )
+
+[node name="ApiWandCast" type="Sprite" parent="Player/Pos/PlayerImage/WandHand"]
 visible = false
-position = Vector2( 271, -142 )
+position = Vector2( 151, -157 )
 texture = ExtResource( 52 )
 
-[node name="ApiLowerArm" type="Sprite" parent="Player/Pos/PlayerImage"]
-position = Vector2( 210, 107 )
-texture = ExtResource( 51 )
-
-[node name="ApiWandHeld" type="Sprite" parent="Player/Pos/PlayerImage"]
-position = Vector2( 205, -102 )
+[node name="ApiWandHeld" type="Sprite" parent="Player/Pos/PlayerImage/WandHand"]
+position = Vector2( 85, -117 )
 texture = ExtResource( 53 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Pos"]
+[node name="LowerHand" type="Position2D" parent="Player/Pos/PlayerImage"]
+position = Vector2( 142, 104 )
 
-[node name="AnimationTreePlayer" type="AnimationTreePlayer" parent="Player/Pos"]
-master_player = NodePath("../AnimationPlayer")
-data = {
-"active": false,
-"connections": [  ],
-"master": NodePath("../AnimationPlayer"),
-"nodes": [ {
-"id": "out",
-"position": Vector2( 40, 40 ),
-"type": "output"
-} ]
-}
+[node name="ApiLowerArm" type="Sprite" parent="Player/Pos/PlayerImage/LowerHand"]
+position = Vector2( 68, 3 )
+texture = ExtResource( 51 )
+
+[node name="ApiAnimations" type="AnimationPlayer" parent="Player/Pos/PlayerImage"]
+anims/RESET = SubResource( 20 )
+anims/idle = SubResource( 21 )
+
+[node name="ApiAnimationTree" type="AnimationTree" parent="Player/Pos/PlayerImage"]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../ApiAnimations")
+active = true
+parameters/playback = SubResource( 24 )
 
 [node name="SpellPos" type="Position2D" parent="Player"]
-position = Vector2( 715, 700 )
+position = Vector2( 755, 495 )
 
 [node name="HitPos" type="Position2D" parent="Player"]
 position = Vector2( 360, 812 )
@@ -554,6 +692,7 @@ anims/HoneyFloat = SubResource( 17 )
 anims/RESET = SubResource( 18 )
 
 [node name="ReadyMessage" type="RichTextLabel" parent="GUI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

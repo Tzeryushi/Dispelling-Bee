@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://EasySpell.gd" type="Script" id=1]
 [ext_resource path="res://GUI/playerGUI/LittleHoney.png" type="Texture" id=2]
 [ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://art/particles/smallStar.png" type="Texture" id=4]
+[ext_resource path="res://audio/pop.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Curve" id=3]
 min_value = 0.02
@@ -65,5 +66,8 @@ position = Vector2( 130, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCollision"]
 shape = SubResource( 2 )
+
+[node name="HitPop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="area_entered" from="Projectile" to="." method="_on_Projectile_area_entered"]
