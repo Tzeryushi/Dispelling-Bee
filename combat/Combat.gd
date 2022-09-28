@@ -129,12 +129,14 @@ func startup() -> void:
 
 #pauses timers and prevents player input
 func pause_gameplay() -> void:
+	player.pause()
 	spell_timer.pause_timer()
 	honey_timer.pause_timer()
 	is_casting = true
 
 #unpauses timers and allows player input	
 func unpause_gameplay() -> void:
+	player.idle_loop()
 	spell_timer.unpause_timer()
 	honey_timer.unpause_timer()
 	is_casting = false
@@ -214,6 +216,7 @@ func spell(input:String) -> void:
 			player_spell_box.pop_up_text()
 			#charge player and damage enemy
 			player_stats.change_honey(-cost)
+			player.attack()
 			var anim = player_spell_ref.spell_list[player_spell_ref.has_spell(p_spell)].animation.instance()
 			add_child(anim)
 			player_spell = ""
