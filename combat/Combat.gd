@@ -35,6 +35,9 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 onready var gui = $GUI
 onready var ready_message = $GUI/ReadyMessage
 
+#Sound
+onready var combat_audio = $CombatAudio
+
 var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
 enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
@@ -176,6 +179,7 @@ func _unhandled_input(event) -> void:
 				next_player_spell()
 		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()): #checking list of allowed keys
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
+			combat_audio.play_speech(key_typed)
 			player_spell = player_spell + key_typed
 			color_spells(player_spell)
 			if player_spell != null:
