@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -53,6 +53,7 @@
 [ext_resource path="res://characters/Apicurio/ApiLowerArm.PNG" type="Texture" id=51]
 [ext_resource path="res://characters/Apicurio/ApiWandCast.PNG" type="Texture" id=52]
 [ext_resource path="res://characters/Apicurio/ApiWandHeld.PNG" type="Texture" id=53]
+[ext_resource path="res://combat/CombatAudio.gd" type="Script" id=54]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -909,6 +910,11 @@ script = ExtResource( 43 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.588235 )
+
+[node name="CombatAudio" type="Node" parent="."]
+script = ExtResource( 54 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CombatAudio"]
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]

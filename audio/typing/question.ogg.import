@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/question.ogg-d62847e280d915b6f8298d548e84d22b.oggstr"
+
+[deps]
+
+source_file="res://audio/typing/question.ogg"
+dest_files=[ "res://.import/question.ogg-d62847e280d915b6f8298d548e84d22b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

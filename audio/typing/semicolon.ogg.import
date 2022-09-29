@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/semicolon.ogg-e90ce9daf80fa9041403d09e20d8084e.oggstr"
+
+[deps]
+
+source_file="res://audio/typing/semicolon.ogg"
+dest_files=[ "res://.import/semicolon.ogg-e90ce9daf80fa9041403d09e20d8084e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

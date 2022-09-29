@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/underscore.ogg-53d0ffee316ffda6ac38e61f3cfa7c89.oggstr"
+
+[deps]
+
+source_file="res://audio/typing/underscore.ogg"
+dest_files=[ "res://.import/underscore.ogg-53d0ffee316ffda6ac38e61f3cfa7c89.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
