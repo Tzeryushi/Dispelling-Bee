@@ -26,18 +26,24 @@ func _play(attacker, defender) -> void:
 	ring_3.scale = Vector2(0.0001, 0.0001)
 	ring_3.visible = false
 	tween_1.tween_property(ring_1, "scale", (small_ring_size+small_ring_tiny)/2, small_time/2)
+	tween_1.parallel().tween_callback($LittleRing, "play")
 	tween_1.tween_property(ring_1, "scale", small_ring_tiny, small_time/2)
 	tween_1.parallel().tween_property(ring_2, "visible", true, 0.0001)
 	tween_1.parallel().tween_property(ring_2, "scale", small_ring_tiny, small_time)
+	tween_1.parallel().tween_callback($LittleRing2, "play")
 	
 	tween_1.tween_property(ring_2, "scale", small_ring_tiny, small_time*1.5)
-	
 	tween_1.parallel().tween_property(ring_3, "visible", true, 0.0001)
 	tween_1.tween_property(ring_3, "modulate:a", 0.0, big_time)
+	tween_1.parallel().tween_callback($BigRing, "play")
 	yield(tween_1.parallel().tween_property(ring_3, "scale", big_ring_big/2, big_time/2), "finished")
 	emit_signal("hit")
+	$Hit.play()
 	tween_1 = create_tween()
 	tween_1.tween_property(ring_3, "scale", big_ring_big, big_time/2)
 	#tween_1.parallel().tween_property(ring_3, "modulate:a", 0.0, big_time/2)
-	
+	if $BigRing.playing:
+		yield($BigRing, "finished")
+	if $Hit.playing:
+		yield($Hit,"finished")
 	emit_signal("finished")

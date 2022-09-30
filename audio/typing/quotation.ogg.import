@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/quotation.ogg-584bef2ab0d5c2e8c92f14f6cbc63705.oggstr"
+
+[deps]
+
+source_file="res://audio/typing/quotation.ogg"
+dest_files=[ "res://.import/quotation.ogg-584bef2ab0d5c2e8c92f14f6cbc63705.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

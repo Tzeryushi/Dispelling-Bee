@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://spells/enemy/Handarth/Skrotch.gd" type="Script" id=1]
 [ext_resource path="res://spells/enemy/Handarth/Scrotch.PNG" type="Texture" id=2]
+[ext_resource path="res://audio/handarth/shikishik.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio/handarth/wewawewo.ogg" type="AudioStream" id=4]
+[ext_resource path="res://audio/handarth/skoosh.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Curve" id=3]
 min_value = 0.02
@@ -29,3 +32,12 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
 shape = SubResource( 5 )
+
+[node name="Shiki" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Propagate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )

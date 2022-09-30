@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/shikishik.ogg-b10d9ac020a13a1d3565e814ebcd6ba5.oggstr"
+
+[deps]
+
+source_file="res://audio/handarth/shikishik.ogg"
+dest_files=[ "res://.import/shikishik.ogg-b10d9ac020a13a1d3565e814ebcd6ba5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

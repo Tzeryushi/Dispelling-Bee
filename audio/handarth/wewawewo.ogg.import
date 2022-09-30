@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/wewawewo.ogg-155ac363df71313547409f438ff8bb3c.oggstr"
+
+[deps]
+
+source_file="res://audio/handarth/wewawewo.ogg"
+dest_files=[ "res://.import/wewawewo.ogg-155ac363df71313547409f438ff8bb3c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

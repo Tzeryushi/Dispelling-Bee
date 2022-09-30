@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/apostrophe.ogg-bc81b5049383203d2942c896318fc452.oggstr"
+
+[deps]
+
+source_file="res://audio/typing/apostrophe.ogg"
+dest_files=[ "res://.import/apostrophe.ogg-bc81b5049383203d2942c896318fc452.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

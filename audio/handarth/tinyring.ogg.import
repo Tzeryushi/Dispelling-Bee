@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/tinyring.ogg-547e2a0d220f2346a2c363a397b8258f.oggstr"
+
+[deps]
+
+source_file="res://audio/handarth/tinyring.ogg"
+dest_files=[ "res://.import/tinyring.ogg-547e2a0d220f2346a2c363a397b8258f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

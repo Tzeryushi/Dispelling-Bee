@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ouch_short.ogg-992fb12bc83f8565fa78776d71068e20.oggstr"
+
+[deps]
+
+source_file="res://audio/handarth/ouch_short.ogg"
+dest_files=[ "res://.import/ouch_short.ogg-992fb12bc83f8565fa78776d71068e20.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

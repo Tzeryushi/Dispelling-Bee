@@ -15,6 +15,8 @@ func lookup_and_queue(key:String) -> bool:
 		key = "colon"
 	elif key == "/" or key == "\\":
 		key = "slash"
+	elif key == "\"":
+		key = "quotation"
 	
 	if speech_bank.has(key):
 		speech_bank[key].play()
