@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/battleGroovin.ogg-c79d296fd9124b64c643bc9bddedb6d3.oggstr"
+
+[deps]
+
+source_file="res://audio/soundtrack/battleGroovin.ogg"
+dest_files=[ "res://.import/battleGroovin.ogg-c79d296fd9124b64c643bc9bddedb6d3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=12.8
