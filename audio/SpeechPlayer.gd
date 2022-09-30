@@ -5,10 +5,10 @@ export var speech_bank : Dictionary
 func _ready() -> void:
 	for i in get_children():
 		speech_bank[i.name] = i
-		print(i.name)
 
 func lookup_and_queue(key:String) -> bool:
 	#unsupported node names
+	key = key.to_lower()
 	if key == ".":
 		key = "period"
 	elif key == ":":

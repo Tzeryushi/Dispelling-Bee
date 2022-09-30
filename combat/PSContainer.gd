@@ -5,6 +5,7 @@ onready var bubble = $Bubble
 
 export var bg_color : Color = Color (0,0,1,1)
 export var bubble_min = 100.0
+export var max_chars : int = 30
 
 export var honey_notice : PackedScene
 export var notice_init = Vector2(131, 25)
@@ -29,6 +30,13 @@ func _ready() -> void:
 	bubble_width = bubble.texture.get_width()
 	bubble.position = Vector2(get_parent().get_position().x + (bubble_width/2), get_parent().get_position().y+(bubble_height/2))
 #	bubble.rect_size.x = text_width + 200
+
+func full_text(addition:String) -> bool:
+	var my_font = text_box.get_font("normal_font")
+	var add = text_box.text+addition
+	if my_font.get_string_size(add).x > 1600.0 or my_font.get_wordwrap_string_size(add, text_box.rect_size.x).y > 255:
+		return true
+	return false
 
 func set_text(text:String) -> void:
 	text_box.bbcode_text = text

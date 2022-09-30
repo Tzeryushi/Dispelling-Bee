@@ -180,10 +180,11 @@ func _unhandled_input(event) -> void:
 		elif allowed_chars.has(PoolByteArray([event.unicode]).get_string_from_utf8()): #checking list of allowed keys
 			var key_typed = PoolByteArray([event.unicode]).get_string_from_utf8()
 			combat_audio.play_speech(key_typed)
-			player_spell = player_spell + key_typed
-			color_spells(player_spell)
-			if player_spell != null:
-				player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
+			if !player_spell_box.full_text(key_typed):
+				player_spell = player_spell + key_typed
+				color_spells(player_spell)
+				if player_spell != null:
+					player_spell_box.set_text(player_text_tags + player_spell) #player_text_tags
 		if event.is_action_pressed("ui_accept"):
 			#TODO: Animation for casts, and backfires.
 			spell(player_spell)
