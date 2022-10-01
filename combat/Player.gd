@@ -22,3 +22,8 @@ func idle_loop() -> void:
 func pause() -> void:
 	api_animation.stop(true)
 	#api_animation_state.travel("RESET")
+
+
+func _on_CombatStats_health_changed(old_value, new_value):
+	if old_value > new_value:
+		$Oof.play()

@@ -106,6 +106,8 @@ func setup(new_enemy:PackedScene) -> void:
 	spellbook.close()
 	#spellbook.see_data(false)
 	
+	##TODO: set up BGM loading
+	
 	pause_gameplay()
 	
 	gui.rect_position.y -= gui.rect_size.y
@@ -132,7 +134,9 @@ func startup() -> void:
 
 #pauses timers and prevents player input
 func pause_gameplay() -> void:
+	#TODO: lower BGM or stop?
 	player.pause()
+	combat_audio.pause_bgm()
 	spell_timer.pause_timer()
 	honey_timer.pause_timer()
 	is_casting = true
@@ -140,6 +144,7 @@ func pause_gameplay() -> void:
 #unpauses timers and allows player input	
 func unpause_gameplay() -> void:
 	player.idle_loop()
+	combat_audio.play_bgm()
 	spell_timer.unpause_timer()
 	honey_timer.unpause_timer()
 	is_casting = false

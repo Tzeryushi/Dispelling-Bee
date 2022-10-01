@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -56,6 +56,7 @@
 [ext_resource path="res://combat/CombatAudio.gd" type="Script" id=54]
 [ext_resource path="res://audio/SpeechPlayer.tscn" type="PackedScene" id=55]
 [ext_resource path="res://audio/soundtrack/battleGroovin.ogg" type="AudioStream" id=56]
+[ext_resource path="res://audio/apicurio/oof.ogg" type="AudioStream" id=57]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -652,6 +653,9 @@ position = Vector2( 755, 495 )
 [node name="HitPos" type="Position2D" parent="Player"]
 position = Vector2( 360, 812 )
 
+[node name="Oof" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource( 57 )
+
 [node name="EnemyLoad" type="Position2D" parent="."]
 position = Vector2( 1510, 542 )
 
@@ -923,6 +927,7 @@ stream = ExtResource( 56 )
 volume_db = -13.803
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
+[connection signal="health_changed" from="Player/CombatStats" to="Player" method="_on_CombatStats_health_changed"]
 [connection signal="honey_changed" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_changed"]
 [connection signal="honey_not_enough" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_not_enough"]
 [connection signal="honey_overfill" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_overfill"]
