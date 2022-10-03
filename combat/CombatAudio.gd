@@ -16,6 +16,9 @@ func play_speech(key:String) -> bool:
 		return true
 	return false
 
+func set_bgm(player:AudioStreamPlayer) -> void:
+	loaded_bgm = player
+
 func reset_bgm() -> void:
 	loaded_bgm.play(0.0)
 
