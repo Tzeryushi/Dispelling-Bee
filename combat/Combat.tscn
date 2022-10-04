@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://audio/SpeechPlayer.tscn" type="PackedScene" id=55]
 [ext_resource path="res://audio/soundtrack/battleGroovin.ogg" type="AudioStream" id=56]
 [ext_resource path="res://audio/apicurio/oof.ogg" type="AudioStream" id=57]
+[ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=58]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -578,6 +579,7 @@ font_data = ExtResource( 49 )
 script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
+particle_array = [ ExtResource( 58 ) ]
 b_correct_color = Color( 0, 0.439216, 1, 1 )
 
 [node name="CombatBackground" type="ParallaxBackground" parent="."]

@@ -29,7 +29,7 @@ func _on_Button_button_combat(enemy):
 	remove_child(temp_menu)
 	add_child(combat)
 	combat.setup(enemy)
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(combat, "setup_finished")
 	circle_transition.transition_out(0.7)
 	yield(circle_transition, "done")
 	#transition

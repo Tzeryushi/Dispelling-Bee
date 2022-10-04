@@ -11,6 +11,7 @@ extends Node2D
 #TODO: load stats dynamically - won't necessarily be the same file in the future
 export var player_ref : Resource
 export var player_spell_ref : Resource
+export(Array, PackedScene) var particle_array
 
 #player nodes
 onready var player = $Player
@@ -70,6 +71,9 @@ var b_spell_matching = false	#if the current player spell matches a portion of t
 signal dispelled()
 signal enemy_defeated()
 signal player_defeated()
+signal particles_loaded()
+signal setup_finished()
+
 
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
@@ -106,13 +110,18 @@ func setup(new_enemy:PackedScene) -> void:
 	spellbook.close()
 	#spellbook.see_data(false)
 	
-	##TODO: set up BGM loading
-	
-	pause_gameplay()
-	
 	gui.rect_position.y -= gui.rect_size.y
 	player.position.x -= player_enemy_trans_out
 	enemy_pos.position.x += player_enemy_trans_out
+	
+	pause_gameplay()
+	
+	#preload particles
+	preload_particles()
+	yield(self, "particles_loaded")
+	##TODO: set up BGM loading
+	
+	emit_signal("setup_finished")
 
 #resources loaded in, start animations and begin game loop
 #this should begin as the scene transition dictates
@@ -327,6 +336,17 @@ func damage_enemy(value:int) -> void:
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
 	#TODO: win condition checking must sanitize any yields for animations and field updates first
+
+func preload_particles() -> void:
+	var instances = []
+	for i in particle_array:
+		instances.append(i.instance())
+		add_child(instances[-1])
+		instances[-1].play()
+	yield(get_tree().create_timer(1.0), "timeout")
+	for i in instances:
+		i.queue_free()
+	emit_signal("particles_loaded")
 
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
