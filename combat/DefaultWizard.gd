@@ -50,3 +50,10 @@ func get_spell_animation() -> PackedScene:
 	
 func attack() -> void:
 	sprite.attack()
+
+func hurt() -> void:
+	$OuchShort.play()
+	#TODO: hurt animation. Tweens?
+
+func _on_EnemyStats_damaged():
+	hurt() # Replace with function body.

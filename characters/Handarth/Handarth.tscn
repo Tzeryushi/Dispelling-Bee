@@ -252,12 +252,6 @@ health = 15
 max_life = 15
 cast_speed = 2.0
 
-[node name="Ouch" type="AudioStreamPlayer" parent="EnemyStats" index="0"]
-stream = ExtResource( 19 )
-
-[node name="OuchShort" type="AudioStreamPlayer" parent="EnemyStats" index="1"]
-stream = ExtResource( 18 )
-
 [node name="EnemySpells" parent="." index="1"]
 script = ExtResource( 4 )
 spell_list = [ ExtResource( 7 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 16 ) ]
@@ -295,3 +289,11 @@ texture = ExtResource( 3 )
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+
+[node name="Ouch" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 19 )
+
+[node name="OuchShort" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 18 )
+
+[connection signal="damaged" from="EnemyStats" to="." method="_on_EnemyStats_damaged"]
