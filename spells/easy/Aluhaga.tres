@@ -5,8 +5,18 @@
 
 [resource]
 script = ExtResource( 1 )
+name_list = {
+"Alulhaga": "aluhaga",
+"Crashacra": "crashacra",
+"Elblagio": "elblagio",
+"Havacada": "havacada",
+"Moutimam": "moutimam",
+"Pastaposta": "pastaposta",
+"Pew-pew": "pew-pew"
+}
 name = "Aluhaga"
 solve = "aluhaga"
 damage = 1
 cost = 3
 animation = ExtResource( 2 )
+weight = 3

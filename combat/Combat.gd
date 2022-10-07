@@ -135,11 +135,11 @@ func startup() -> void:
 	yield(ready_message, "finished")
 	player_spell = ""
 	player_spell_box.set_text(player_text_tags + player_spell)
+	next_player_spell()
 	next_spell()
 	spell_timer.start_timer()
 	honey_timer.start_timer()
 	unpause_gameplay()
-	next_player_spell()
 
 #pauses timers and prevents player input
 func pause_gameplay() -> void:

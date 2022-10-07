@@ -5,8 +5,14 @@
 
 [resource]
 script = ExtResource( 1 )
+name_list = {
+"Ezumizum": "ezumizum",
+"Fizzio": "fizzio",
+"Nozobanum": "nozobanum"
+}
 name = "Fizzio"
 solve = "fizzio"
 damage = 2
 cost = 4
 animation = ExtResource( 2 )
+weight = 3
