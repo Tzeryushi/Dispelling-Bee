@@ -14,12 +14,14 @@ export var spell_refresh_decay : float = 0.5
 
 var text_origin : Vector2
 var book_origin : Vector2
+var book_orig_scale: Vector2
 var cached_text : String
 var refresh_percent : float = 0.0
 
 func _ready() -> void:
 	text_origin = Vector2(text_box.get_position().x, text_box.get_position().y + (text_box.rect_size.y/2))
 	book_origin = book.position
+	book_orig_scale = book.scale
 	
 func _process(delta) -> void:
 	refresh_percent = clamp(refresh_percent-(spell_refresh_decay*delta), 0.0, 1.0)
@@ -54,24 +56,22 @@ func open() -> void:
 	
 func new_spell(text:String, cost:String = "1", close_time : float = 0.01) -> void:
 	var tween = create_tween()
-	var original_scale = book.scale
 	yield(tween.tween_property(book, "scale", Vector2(1.2,1.2), 0.07).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT), "finished")
 	close()
 	set_cost(cost)
 	set_text(text)
 	book.scale += Vector2(0, 0.5)
 	tween = create_tween()
-	yield(tween.tween_property(book, "scale", original_scale, 0.1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
+	yield(tween.tween_property(book, "scale", book_orig_scale, 0.1).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
 #	tween = create_tween()
 	yield(get_tree().create_timer(close_time), "timeout")
 	open()
 	
 func book_pulse() -> void:
 	var tween = create_tween()
-	var original_scale = book.scale
 	yield(tween.tween_property(book, "scale", Vector2(1.1,1.1), 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT), "finished")
 	tween = create_tween()
-	yield(tween.tween_property(book, "scale", original_scale, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN), "finished")
+	yield(tween.tween_property(book, "scale", book_orig_scale, 0.1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN), "finished")
 
 func refresh() -> bool:
 	book_pulse()

@@ -19,4 +19,4 @@ solve = "aluhaga"
 damage = 1
 cost = 3
 animation = ExtResource( 2 )
-weight = 3
+weight = 6
