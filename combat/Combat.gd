@@ -73,7 +73,8 @@ signal enemy_defeated()
 signal player_defeated()
 signal particles_loaded()
 signal setup_finished()
-
+signal start_dialogue(path)
+signal dialogue_ended()
 
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
@@ -131,6 +132,8 @@ func startup() -> void:
 	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	yield(get_tree().create_timer(1.0), "timeout")
+	emit_signal("start_dialogue", "res://dialogue/Handarth/Handarth1.json")
+	yield(self, "dialogue_ended")
 	ready_message.ready_up(1.5)
 	yield(ready_message, "finished")
 	player_spell = ""
@@ -348,6 +351,12 @@ func preload_particles() -> void:
 		i.queue_free()
 	emit_signal("particles_loaded")
 
+func finish_dialogue() -> void:
+	#after passing to main for dialogue, will emit this signal
+	#this allows the code to functionally yield to itself, though technically it's
+	#yielding to the parent node anyways
+	emit_signal("dialogue_ended")
+
 func _on_Timer_timeout() -> void:
 	#TODO: Update with damage and so on - subject to change!
 	spell_timer.pause_timer()
@@ -383,3 +392,4 @@ func _on_CombatStats_health_changed(old_value, new_value) -> void:
 
 func _on_HoneyTimer_timeout():
 	player_stats.change_honey(1)
+

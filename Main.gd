@@ -5,16 +5,19 @@ extends Node
 export(NodePath) var combat
 export(NodePath) var temp_menu
 export(NodePath) var title_screen
+export(NodePath) var dialogue
+
+onready var player_data = $PlayerData
 
 var is_transition := false
 
 onready var circle_transition = $Transition/CircleTransition
 
-
 func _ready():
 	combat = get_node(combat)
 	temp_menu = get_node(temp_menu)
 	title_screen = get_node(title_screen)
+	dialogue = get_node(dialogue)
 	remove_child(combat)
 	remove_child(temp_menu)
 
@@ -27,7 +30,7 @@ func _on_Button_button_combat(enemy):
 	circle_transition.transition_dark(0.7)
 	yield(circle_transition, "done")
 	remove_child(temp_menu)
-	add_child(combat)
+	add_child_below_node(player_data, combat)
 	combat.setup(enemy)
 	yield(combat, "setup_finished")
 	circle_transition.transition_out(0.7)
@@ -57,3 +60,8 @@ func _transition(unload:Node, to_load:Node) -> void:
 
 func _on_TitleScreen_game_start():
 	_transition(title_screen, temp_menu)
+
+func _on_Combat_start_dialogue(path):
+	dialogue.start_dialogue(path)
+	yield(dialogue, "finished")
+	combat.finish_dialogue()

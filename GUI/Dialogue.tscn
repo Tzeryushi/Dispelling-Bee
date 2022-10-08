@@ -57,6 +57,14 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
 
 [node name="Portrait" type="Sprite" parent="."]
 position = Vector2( 279, 645 )
@@ -114,12 +122,13 @@ scroll_active = false
 [node name="TypeTimer" type="Timer" parent="DialogueBox"]
 
 [node name="NextPrompt" type="Polygon2D" parent="DialogueBox"]
-position = Vector2( -441.026, 358 )
+position = Vector2( -441.026, 364.809 )
 scale = Vector2( 1.3864, 1 )
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( 1338.74, -139.095, 1369.75, -69.0947, 1400.77, -139.095, 1369.03, -107.095 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox/NextPrompt"]
 autoplay = "bump"
+reset_on_save = false
 anims/RESET = SubResource( 3 )
 anims/bump = SubResource( 4 )
