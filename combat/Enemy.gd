@@ -25,6 +25,13 @@ func get_damage() -> int:
 func get_speed() -> float:
 	return -1.0
 
+func get_intro_id() -> String:
+	return "BasicMonster0"
+func get_defeat_id() -> String:
+	return "BasicMonster1"
+func get_victory_id() -> String:
+	return "BasicMonster2"
+
 func next_spell() -> void:
 	#implement specific behavior to get the next spell
 	#should I pass a reference to player stats in here? Food for thought.

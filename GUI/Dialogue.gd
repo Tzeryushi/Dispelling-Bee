@@ -7,6 +7,8 @@ onready var speaker_name = $DialogueBox/Name
 onready var type_timer = $DialogueBox/TypeTimer
 
 export var text_speed = 0.06
+export var dialogue_dir : String = "res://dialogue/"
+export var default_file : String = "Default0.json"
 
 var dialogue : Array
 var text_num := 0
@@ -33,13 +35,13 @@ func _input(event):
 			else:
 				dialogue_text.visible_characters = dialogue_text.text.length()
 			
-func start_dialogue(path:String) -> void:
+func start_dialogue(identifier:String) -> void:
 	text_num = 0
 	text_done = false
 	active = true
 	visible = true
 	type_timer.wait_time = text_speed
-	dialogue = load_dialogue(path)
+	dialogue = load_dialogue(_find_dialogue(identifier))
 	next_text(dialogue[text_num])
 	text_num += 1
 
@@ -81,3 +83,11 @@ func next_text(data) -> void:
 func close_out() -> void:
 	arrow.visible = false
 	visible = false
+	
+func _find_dialogue(identifier:String) -> String:
+	var dir = Directory.new()
+	if dir.open(dialogue_dir) == OK:
+		var _filename = identifier + ".json"
+		if dir.file_exists(_filename):
+			return dialogue_dir + _filename
+	return dialogue_dir + default_file

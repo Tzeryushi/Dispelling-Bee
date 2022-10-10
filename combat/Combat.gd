@@ -39,7 +39,7 @@ onready var ready_message = $GUI/ReadyMessage
 #Sound
 onready var combat_audio = $CombatAudio
 
-var enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
+var enemy : Enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
 
 enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
 var current_state
@@ -132,7 +132,7 @@ func startup() -> void:
 	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	yield(get_tree().create_timer(1.0), "timeout")
-	emit_signal("start_dialogue", "res://dialogue/Handarth/Handarth1.json")
+	emit_signal("start_dialogue", enemy.get_intro_id())
 	yield(self, "dialogue_ended")
 	ready_message.ready_up(1.5)
 	yield(ready_message, "finished")
@@ -177,8 +177,12 @@ func cleanup() -> void:
 	yield(get_tree().create_timer(1.5), "timeout")
 	Engine.time_scale = 1.0
 	if player_victory:
+		emit_signal("start_dialogue", enemy.get_victory_id())
+		yield(self, "dialogue_ended")
 		emit_signal("enemy_defeated")
 	else:
+		emit_signal("start_dialogue", enemy.get_defeat_id())
+		yield(self, "dialogue_ended")
 		emit_signal("player_defeated")
 
 #handle the keyboard input.
