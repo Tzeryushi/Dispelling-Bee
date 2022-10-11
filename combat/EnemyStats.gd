@@ -5,6 +5,7 @@ class_name EnemyStats
 export var health : int = 5
 export var max_life : int = 10
 export var cast_speed : float = 1.0 #a multiplier based on circumstance
+export var enemy_name : String = "BasicMonster"
 
 signal damaged
 
@@ -27,3 +28,6 @@ func get_max_health() -> int:
 
 func get_cast_speed() -> float:
 	return cast_speed
+
+func get_enemy_name() -> String:
+	return enemy_name

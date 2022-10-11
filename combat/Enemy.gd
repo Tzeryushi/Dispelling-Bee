@@ -11,7 +11,9 @@ onready var image = $Sprite
 var current_spell = 0
 var default_spell = {"Text":"Oops...", "Tags":"[tornado]", "Solve":"spoo...", "Damage":1, "Drain":1, "Speed":15}
 
-
+func get_enemy_name() -> String:
+	return enemy_stats.get_enemy_name()
+	
 func get_text() -> String:
 	return "Not implemented"
 func get_tags() -> String:
@@ -26,11 +28,11 @@ func get_speed() -> float:
 	return -1.0
 
 func get_intro_id() -> String:
-	return "BasicMonster0"
+	return get_enemy_name()+"0"
 func get_defeat_id() -> String:
-	return "BasicMonster1"
+	return get_enemy_name()+"1"
 func get_victory_id() -> String:
-	return "BasicMonster2"
+	return get_enemy_name()+"2"
 
 func next_spell() -> void:
 	#implement specific behavior to get the next spell
