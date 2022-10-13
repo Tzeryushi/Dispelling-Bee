@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name_list = {
+"Deadrot branding...": "gnidnarb tordaed..."
 }
 name = "Deadrot branding..."
 solve = "gnidnarb tordaed..."
@@ -19,3 +20,4 @@ damage = 2
 drain = 3
 speed = 16.0
 animation = ExtResource( 1 )
+weight = 3

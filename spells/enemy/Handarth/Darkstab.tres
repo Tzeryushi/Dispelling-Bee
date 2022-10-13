@@ -5,6 +5,12 @@
 
 [resource]
 script = ExtResource( 2 )
+name_list = {
+"Darkstab": "batskrad",
+"Darksting": "gnitskrad",
+"Darkstone": "enotskrad",
+"Darkstun": "nutskrad"
+}
 name = "Darkstab"
 solve = "batskrad"
 shake_tag = true
@@ -17,3 +23,4 @@ damage = 1
 drain = 2
 speed = 7.0
 animation = ExtResource( 1 )
+weight = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://combat/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://combat/DefaultWizardSpells.gd" type="Script" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://spells/enemy/Handarth/FadingStrike.tres" type="Resource" id=6]
 [ext_resource path="res://spells/enemy/Handarth/DeathRattle.tres" type="Resource" id=7]
 [ext_resource path="res://combat/DefaultWizardSprite.gd" type="Script" id=8]
+[ext_resource path="res://spells/enemy/Handarth/SinisterPulse.tres" type="Resource" id=9]
+[ext_resource path="res://spells/enemy/Handarth/Skrotch.tres" type="Resource" id=10]
+[ext_resource path="res://spells/enemy/Handarth/Darkstab.tres" type="Resource" id=11]
+[ext_resource path="res://spells/enemy/Handarth/EntrappingNightmare.tres" type="Resource" id=12]
 
 [node name="DefaultWizard" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -17,7 +21,7 @@ health = 3
 
 [node name="EnemySpells" parent="." index="1"]
 script = ExtResource( 2 )
-spell_list = [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ) ]
+spell_list = [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 9 ) ]
 anim_list = [ ExtResource( 4 ) ]
 
 [node name="Sprite" parent="." index="2"]

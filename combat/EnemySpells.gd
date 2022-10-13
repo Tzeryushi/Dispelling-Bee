@@ -5,10 +5,12 @@ class_name EnemySpells
 export(Array, Resource) var spell_list
 export(Array, PackedScene) var anim_list
 
-func get_text(index:int) -> String:
-	return spell_list[index].name
-func get_solve(index:int) -> String:
-	return spell_list[index].solve
+func get_text(index:int, tag:String) -> String:
+	return tag
+func get_solve(index:int, tag:String) -> String:
+	print(index)
+	print(tag)
+	return spell_list[index].name_list[tag]
 func get_tags(index:int) -> String:
 	var final = ""
 	if spell_list[index].shake_tag:
