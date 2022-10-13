@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
+name_list = {
+}
 name = "Darkstone"
 solve = "enotskrad"
 shake_tag = true

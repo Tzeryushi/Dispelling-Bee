@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
+name_list = {
+}
 name = "Scratch"
 solve = "hctarcs"
 shake_tag = true

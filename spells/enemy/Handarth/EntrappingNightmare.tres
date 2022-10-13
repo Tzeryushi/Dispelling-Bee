@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
+name_list = {
+}
 name = "Entrapping nightmare..."
 solve = "eramthgin gnippartne..."
 shake_tag = false

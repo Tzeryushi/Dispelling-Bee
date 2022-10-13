@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource( 2 )
+name_list = {
+}
 name = "Sinister pulse..."
 solve = "eslup retsinis..."
 shake_tag = false
