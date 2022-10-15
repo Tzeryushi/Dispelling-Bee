@@ -3,7 +3,7 @@ extends Enemy
 onready var sprite = $Sprite
 
 var first_spell = true
-var first_spell_index = 3
+var first_spell_index = 0
 
 var spell_key = ""
 

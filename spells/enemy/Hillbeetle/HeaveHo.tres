@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+[ext_resource path="res://spells/enemy/Hillbeetle/HeaveHo.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+"Heave-ho!": "oh-evaeh!"
+}
+name = "Heave-ho!"
+solve = "oh-evaeh!"
+shake_tag = false
+wave_tag = true
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 1
+drain = 2
+speed = 3.0
+animation = ExtResource( 2 )
+weight = 3

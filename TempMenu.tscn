@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
 [ext_resource path="res://characters/Handarth/HandarthBody - Copy.PNG" type="Texture" id=3]
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MenuButtons.tres" type="Theme" id=5]
+[ext_resource path="res://characters/Hillbeetle/Hillbeetle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -56,12 +57,14 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Button" type="Button" parent="Control/VBoxContainer"]
+modulate = Color( 0.564706, 1, 0.6, 1 )
 margin_right = 400.0
 margin_bottom = 291.0
 size_flags_vertical = 3
 theme = ExtResource( 5 )
-text = "Hat"
+text = "Hillbeetle"
 script = ExtResource( 2 )
+enemy_scene = ExtResource( 6 )
 
 [node name="Button2" type="Button" parent="Control/VBoxContainer"]
 margin_top = 311.0
@@ -69,7 +72,7 @@ margin_right = 400.0
 margin_bottom = 603.0
 size_flags_vertical = 3
 theme = ExtResource( 5 )
-text = "Hillbeetle"
+text = "Not Hat"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 4 )
 
