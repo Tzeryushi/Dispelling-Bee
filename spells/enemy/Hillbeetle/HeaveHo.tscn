@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://art/particles/star.png" type="Texture" id=1]
 [ext_resource path="res://spells/enemy/Hillbeetle/HeaveHo.gd" type="Script" id=2]
+[ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -10,6 +11,7 @@ _data = {
 
 [node name="HeaveHo" type="Node2D"]
 script = ExtResource( 2 )
+hit_particles = ExtResource( 3 )
 
 [node name="AnimationPath" type="Path2D" parent="."]
 curve = SubResource( 1 )

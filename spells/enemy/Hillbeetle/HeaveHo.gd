@@ -2,8 +2,16 @@ extends SpellAnimation
 
 onready var ball_path := $AnimationPath
 onready var ball_follow := $AnimationPath/Follow
+onready var dirtball := $AnimationPath/Follow/DirtBall
 
+export var dirtball_accel : float = -25.0
+
+var dirtball_rot_velocity : float = 0
 var animation_curve : Curve2D
+
+func _process(delta) -> void:
+	dirtball_rot_velocity += dirtball_accel * delta
+	dirtball.rotation += dirtball_rot_velocity * delta
 
 func _play(attacker, defender) -> void:
 	animation_curve = Curve2D.new()
@@ -18,5 +26,13 @@ func _play(attacker, defender) -> void:
 	tween.tween_property(ball_follow, "unit_offset", 1.0, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	yield(tween, "finished")
 	emit_signal("hit")
+	
+	dirtball.visible = false
+	var part = hit_particles.instance()
+	add_child(part)
+	part.position = defender.global_position
+	part.play()
+	yield(part,"finished")
+	part.queue_free()
 	emit_signal("finished")
 	queue_free()
