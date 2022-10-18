@@ -1,10 +1,11 @@
-extends Control
+extends Node2D
 
-onready var arrow = $DialogueBox/NextPrompt
-onready var portrait = $Portrait
-onready var dialogue_text = $DialogueBox/Text
-onready var speaker_name = $DialogueBox/Name
-onready var type_timer = $DialogueBox/TypeTimer
+onready var dialogue_area = $DialogueArea
+onready var arrow = $DialogueArea/DialogueBox/NextPrompt
+onready var portrait = $DialogueArea/Portrait
+onready var dialogue_text = $DialogueArea/DialogueBox/Text
+onready var speaker_name = $DialogueArea/DialogueBox/Name
+onready var type_timer = $DialogueArea/DialogueBox/TypeTimer
 
 export var text_speed = 0.06
 export var dialogue_dir : String = "res://dialogue/"
@@ -19,7 +20,8 @@ signal finished()
 
 func _ready() -> void:
 	arrow.visible = false
-	visible = false
+	
+	dialogue_area.visible = false
 
 func _input(event):
 	if active:
@@ -39,7 +41,7 @@ func start_dialogue(identifier:String) -> void:
 	text_num = 0
 	text_done = false
 	active = true
-	visible = true
+	dialogue_area.visible = true
 	type_timer.wait_time = text_speed
 	dialogue = load_dialogue(_find_dialogue(identifier))
 	next_text(dialogue[text_num])
@@ -82,7 +84,7 @@ func next_text(data) -> void:
 
 func close_out() -> void:
 	arrow.visible = false
-	visible = false
+	dialogue_area.visible = false
 	
 func _find_dialogue(identifier:String) -> String:
 	var dir = Directory.new()

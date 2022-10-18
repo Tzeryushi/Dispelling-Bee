@@ -121,6 +121,7 @@ hue_variation = 0.24
 hue_variation_random = 0.23
 
 [node name="PowParticle" type="Node2D"]
+z_index = 5
 script = ExtResource( 5 )
 boom_time = 0.2
 

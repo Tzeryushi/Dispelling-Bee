@@ -39,6 +39,7 @@ color = Color( 0.913725, 0.85098, 0.521569, 1 )
 radius = 71.007
 
 [node name="EasySpell" type="Node2D"]
+z_index = 5
 script = ExtResource( 1 )
 hit_particles = ExtResource( 3 )
 

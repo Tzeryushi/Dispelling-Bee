@@ -53,26 +53,24 @@ tracks/0/keys = {
 "values": [ Vector2( -441.026, 358 ), Vector2( -441.026, 372 ), Vector2( -441.026, 358 ) ]
 }
 
-[node name="Dialogue" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Dialogue" type="Node2D"]
+z_index = 10
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_horizontal_guides_": [  ]
-}
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="DialogueArea" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="DialogueArea"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.352941 )
 
-[node name="Portrait" type="Sprite" parent="."]
+[node name="Portrait" type="Sprite" parent="DialogueArea"]
 position = Vector2( 279, 645 )
 rotation = 3.14159
 scale = Vector2( 0.525089, -0.525089 )
 texture = ExtResource( 1 )
 
-[node name="DialogueBox" type="NinePatchRect" parent="."]
+[node name="DialogueBox" type="NinePatchRect" parent="DialogueArea"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -87,7 +85,7 @@ patch_margin_top = 90
 patch_margin_right = 90
 patch_margin_bottom = 90
 
-[node name="Text" type="RichTextLabel" parent="DialogueBox"]
+[node name="Text" type="RichTextLabel" parent="DialogueArea/DialogueBox"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -103,7 +101,7 @@ bbcode_text = "Some example text to [color=red][shake]test out[/shake][/color] w
 text = "Some example text to test out what  the current default output will display! We want to be able to deliver about 3 lines of decent dialogue before requiring a scroll entry."
 scroll_active = false
 
-[node name="Name" type="RichTextLabel" parent="DialogueBox"]
+[node name="Name" type="RichTextLabel" parent="DialogueArea/DialogueBox"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -726.5
@@ -119,15 +117,15 @@ text = "Name Example
 "
 scroll_active = false
 
-[node name="TypeTimer" type="Timer" parent="DialogueBox"]
+[node name="TypeTimer" type="Timer" parent="DialogueArea/DialogueBox"]
 
-[node name="NextPrompt" type="Polygon2D" parent="DialogueBox"]
+[node name="NextPrompt" type="Polygon2D" parent="DialogueArea/DialogueBox"]
 position = Vector2( -441.026, 364.809 )
 scale = Vector2( 1.3864, 1 )
 color = Color( 1, 0, 0, 1 )
 polygon = PoolVector2Array( 1338.74, -139.095, 1369.75, -69.0947, 1400.77, -139.095, 1369.03, -107.095 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox/NextPrompt"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueArea/DialogueBox/NextPrompt"]
 autoplay = "bump"
 reset_on_save = false
 anims/RESET = SubResource( 3 )
