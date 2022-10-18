@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 2 )
 name_list = {
+"Corspecraft wave...": "evaw tfarcepsroc...",
 "Deadrot branding...": "gnidnarb tordaed..."
 }
 name = "Deadrot branding..."

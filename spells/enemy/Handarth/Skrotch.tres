@@ -23,4 +23,4 @@ damage = 1
 drain = 2
 speed = 7.0
 animation = ExtResource( 1 )
-weight = 3
+weight = 8

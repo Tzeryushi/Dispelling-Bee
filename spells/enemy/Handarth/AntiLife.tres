@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource( 2 )
 name_list = {
-"Anti-life Gloomwave..": "evawmoolg efil-itna..."
+"Anti-life Gloomwave..": "evawmoolg efil-itna...",
+"Consuming darkhunger...": "regnuhkard gnimusnoc..."
 }
 name = "Anti-Life Gloomwave..."
 solve = "evawmoolg efil-itna..."

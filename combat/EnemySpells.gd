@@ -8,8 +8,6 @@ export(Array, PackedScene) var anim_list
 func get_text(index:int, tag:String) -> String:
 	return tag
 func get_solve(index:int, tag:String) -> String:
-	print(index)
-	print(tag)
 	return spell_list[index].name_list[tag]
 func get_tags(index:int) -> String:
 	var final = ""

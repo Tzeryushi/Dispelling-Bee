@@ -176,6 +176,7 @@ func cleanup() -> void:
 	honey_timer.pause_timer()
 	yield(get_tree().create_timer(1.5), "timeout")
 	Engine.time_scale = 1.0
+	pause_gameplay()
 	if player_victory:
 		emit_signal("start_dialogue", enemy.get_victory_id())
 		yield(self, "dialogue_ended")

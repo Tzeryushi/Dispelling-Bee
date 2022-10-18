@@ -89,10 +89,8 @@ func next_spell() -> void:
 	current_spell = _get_weighted_index()
 
 	var new_key = enemy_spells.spell_list[current_spell].get_random_key()
-	print(new_key)
 	if enemy_spells.spell_list[current_spell].name_list.size() > 1:
 		while new_key == spell_key:
-			print(new_key)
 			new_key = enemy_spells.spell_list[current_spell].get_random_key()
 	spell_key = new_key
 
