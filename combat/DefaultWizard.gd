@@ -72,7 +72,6 @@ func next_spell() -> void:
 #		next_spell = randi() % enemy_spells.spell_list.size()
 #	current_spell = next_spell
 	
-	
 	if first_spell:
 		if first_spell_index >= 0:
 			current_spell = first_spell_index
@@ -104,8 +103,10 @@ func attack2() -> void:
 	sprite.attack2()
 
 func hurt() -> void:
-	$OuchShort.play()
+	#$OuchShort.play()
+	sprite.hurt()
 	#TODO: hurt animation. Tweens?
 
 func _on_EnemyStats_damaged():
 	hurt() # Replace with function body.
+	print("oauch")

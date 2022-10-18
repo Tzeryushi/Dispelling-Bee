@@ -26,3 +26,5 @@ anim_list = [ ExtResource( 4 ) ]
 
 [node name="Sprite" parent="." index="2"]
 script = ExtResource( 8 )
+
+[connection signal="damaged" from="EnemyStats" to="." method="_on_EnemyStats_damaged"]

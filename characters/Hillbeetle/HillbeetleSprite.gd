@@ -9,3 +9,8 @@ func attack() -> void:
 
 func attack2() -> void:
 	pass
+
+func hurt() -> void:
+	player.play("Hurt")
+	yield(player, "animation_finished")
+	player.play("Idle")
