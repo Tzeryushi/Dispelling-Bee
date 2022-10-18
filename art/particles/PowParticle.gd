@@ -27,3 +27,13 @@ func play() -> void:
 	flash.emitting = true
 	boom.emitting = true
 	booming = true
+
+func stop() -> void:
+	start = false
+	booming = false
+	stars.emitting = false
+	needles.emitting = false
+	flash.emitting = false
+	boom.emitting = false
+	boom_delta = 0
+	emit_signal("finished")
