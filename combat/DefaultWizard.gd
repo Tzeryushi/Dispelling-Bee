@@ -99,6 +99,9 @@ func get_spell_animation() -> PackedScene:
 	
 func attack() -> void:
 	sprite.attack()
+	
+func attack2() -> void:
+	sprite.attack2()
 
 func hurt() -> void:
 	$OuchShort.play()

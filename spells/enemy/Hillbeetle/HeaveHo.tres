@@ -21,3 +21,4 @@ drain = 2
 speed = 3.0
 animation = ExtResource( 2 )
 weight = 3
+attack_animation = 0

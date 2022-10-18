@@ -63,5 +63,8 @@ func flash_color(color:Color, flash_time = 0.05, flashes = 2) -> void:
 func attack() -> void:
 	pass
 
+func attack2() -> void:
+	pass
+
 func hurt() -> void:
 	pass

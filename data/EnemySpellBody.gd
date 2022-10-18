@@ -16,6 +16,7 @@ export var drain : int = 1
 export var speed : float = 15
 export var animation : PackedScene
 export var weight: int = 3
+export var attack_animation : int = 0
 
 func get_random_key() -> String:
 	var keys = name_list.keys()
