@@ -31,10 +31,12 @@ orbit_velocity_random = 0.0
 color_ramp = SubResource( 4 )
 
 [node name="DirtSpinParticle" type="Node2D"]
-z_index = 5
+z_index = 4
+z_as_relative = false
 script = ExtResource( 1 )
 
 [node name="Dirt" type="Particles2D" parent="."]
+emitting = false
 speed_scale = 3.06
 local_coords = false
 process_material = SubResource( 5 )

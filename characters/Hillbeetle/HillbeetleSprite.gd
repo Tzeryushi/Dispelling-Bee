@@ -1,7 +1,11 @@
 extends DefaultWizardSprite
 
+onready var player = $Pos/AnimationPlayer
+
 func attack() -> void:
-	pass
+	player.play("Attack")
+	yield(player, "animation_finished")
+	player.play("Idle")
 
 func attack2() -> void:
 	pass
