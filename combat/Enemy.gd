@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Enemy
 
+export var flags : Resource
+
 #Implement spell cycle and damagers here
 #Extend this script on child nodes to specify behavior
 onready var enemy_stats = $EnemyStats
@@ -28,6 +30,11 @@ func get_speed() -> float:
 	return -1.0
 
 func get_intro_id() -> String:
+	match flags.enemy_flags[get_enemy_name()]:
+		1:
+			return get_enemy_name()+"3"
+		2:
+			return get_enemy_name()+"4"
 	return get_enemy_name()+"0"
 func get_defeat_id() -> String:
 	return get_enemy_name()+"1"

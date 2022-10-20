@@ -49,7 +49,6 @@ visible = false
 environment = SubResource( 1 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 9 )]
-visible = false
 
 [connection signal="enemy_defeated" from="Combat" to="." method="_on_Combat_enemy_defeated"]
 [connection signal="player_defeated" from="Combat" to="." method="_on_Combat_player_defeated"]
