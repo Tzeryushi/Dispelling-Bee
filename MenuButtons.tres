@@ -39,7 +39,7 @@ margin_bottom = 46.38
 modulate_color = Color( 0.764706, 0.764706, 0.764706, 1 )
 
 [resource]
-Button/colors/font_color = Color( 1, 0.564706, 0.564706, 1 )
+Button/colors/font_color = Color( 1, 0.972549, 0.972549, 1 )
 Button/fonts/font = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )
 Button/styles/normal = SubResource( 1 )
