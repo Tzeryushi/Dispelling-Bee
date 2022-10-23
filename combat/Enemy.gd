@@ -67,11 +67,13 @@ func flash_color(color:Color, flash_time = 0.05, flashes = 2) -> void:
 		tween.tween_property(image, "modulate", color, flash_time).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 		tween.tween_property(image, "modulate", Color(1,1,1,1), flash_time).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
+#animation funcs
 func attack() -> void:
 	pass
-
 func attack2() -> void:
 	pass
-
 func hurt() -> void:
 	pass
+func dispelled() -> void:
+	pass
+

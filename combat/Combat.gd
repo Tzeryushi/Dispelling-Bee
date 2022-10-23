@@ -266,12 +266,15 @@ func spell(input:String) -> void:
 			player_spell_box.set_text(player_text_tags + player_spell)
 			color_spells(player_spell)
 	else:
+		#check enemy spell
 		var e_spell = enemy.get_solve()
 		if p_spell == e_spell and !enemy_casting:
+			#dispel
 			player_spell_box.pop_up_text()
 			enemy_spell_box.dead_down_text()
 			player_stats.change_honey(enemy.get_drain())
-			next_spell()
+			enemy.dispelled()
+			next_spell() #next enemy spell
 		else:
 			player_spell_box.dead_down_text()
 		player_spell = ""

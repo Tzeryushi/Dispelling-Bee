@@ -97,16 +97,17 @@ func get_spell_animation() -> PackedScene:
 	return enemy_spells.get_spell_animation(current_spell)
 	
 func attack() -> void:
-	sprite.attack()
-	
+	if enemy_spells.get_animation_index(current_spell) == 1:
+		attack2()
+	else:
+		sprite.attack()
 func attack2() -> void:
 	sprite.attack2()
-
 func hurt() -> void:
 	#$OuchShort.play()
 	sprite.hurt()
-	#TODO: hurt animation. Tweens?
+func dispelled() -> void:
+	sprite.dispelled()
 
 func _on_EnemyStats_damaged():
-	hurt() # Replace with function body.
-	print("oauch")
+	hurt()

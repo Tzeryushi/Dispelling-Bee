@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
-"Heave-ho!": "oh-evaeh!"
+"Heave-ho!": "oh-evaeh!",
+"One-two!": "owt-eno!"
 }
 name = "Heave-ho!"
 solve = "oh-evaeh!"
@@ -18,7 +19,7 @@ rainbow_tag = false
 custom_tag = ""
 damage = 1
 drain = 2
-speed = 3.0
+speed = 10.0
 animation = ExtResource( 2 )
 weight = 3
 attack_animation = 0

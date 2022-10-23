@@ -8,9 +8,16 @@ func attack() -> void:
 	player.play("Idle")
 
 func attack2() -> void:
-	pass
+	player.play("Attack2Cast")
+	yield(player, "animation_finished")
+	player.play("Idle")
 
 func hurt() -> void:
 	player.play("Hurt")
+	yield(player, "animation_finished")
+	player.play("Idle")
+
+func dispelled() -> void:
+	player.play("Dispelled")
 	yield(player, "animation_finished")
 	player.play("Idle")

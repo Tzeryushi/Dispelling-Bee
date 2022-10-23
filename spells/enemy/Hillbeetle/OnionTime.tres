@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+}
+name = "Manifest Onion!"
+solve = "noino tsefinam!"
+shake_tag = true
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = true
+custom_tag = "[tornado radius=1]"
+damage = 3
+drain = 1
+speed = 18.0
+weight = 3
+attack_animation = 1
