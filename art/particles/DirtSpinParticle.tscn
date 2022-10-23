@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://DirtSpinParticle.gd" type="Script" id=1]
+[ext_resource path="res://art/particles/DirtSpinParticle.gd" type="Script" id=1]
 [ext_resource path="res://art/particles/Dirt Particle.PNG" type="Texture" id=2]
 
 [sub_resource type="Curve" id=1]

@@ -3,7 +3,7 @@
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
 [ext_resource path="res://characters/Handarth/HandarthBody - Copy.PNG" type="Texture" id=3]
-[ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/Handarth/Handarth.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MenuButtons.tres" type="Theme" id=5]
 [ext_resource path="res://characters/Hillbeetle/Hillbeetle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://characters/Hillbeetle/HillbeetleiCON.png" type="Texture" id=7]
@@ -146,7 +146,7 @@ focus_neighbour_right = NodePath("../Button3")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
-text = "Not Hat"
+text = "Symmantis"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 4 )
 

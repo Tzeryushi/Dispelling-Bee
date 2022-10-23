@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=2]
@@ -163,19 +163,173 @@ shader_param/amount = 0.0
 shader_param/outline_width = 0.0
 shader_param/outline_color = Color( 1, 1, 1, 1 )
 
+[sub_resource type="Animation" id=9]
+resource_name = "Dispelled"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image/HandPivot2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.58, 0.75 ),
+"transitions": PoolRealArray( 0.5, 3.36358, 3.36358, 1 ),
+"update": 0,
+"values": [ Vector2( 73.4867, 56.2633 ), Vector2( 177.543, 112.131 ), Vector2( 177.543, 112.131 ), Vector2( 73.4867, 56.2633 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image/HandPivot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.75 ),
+"transitions": PoolRealArray( 0.5, 3.36358, 3.36358, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/HandPivot1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.75 ),
+"transitions": PoolRealArray( 0.5, 3.36358, 3.36358, 1 ),
+"update": 0,
+"values": [ Vector2( -117.119, 59.708 ), Vector2( -158.877, 242.411 ), Vector2( -158.877, 242.411 ), Vector2( -117.119, 59.708 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image/HandPivot1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.75 ),
+"transitions": PoolRealArray( 0.5, 3.36358, 3.36358, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Image:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.16, 0.75 ),
+"transitions": PoolRealArray( 0.5, 3.36358, 3.36358, 1 ),
+"update": 0,
+"values": [ Vector2( 18, -258 ), Vector2( 76, -245 ), Vector2( 76, -245 ), Vector2( 18, -258 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Image:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.75 ),
+"transitions": PoolRealArray( 0.5, 0.594603, 3.36358, 1 ),
+"update": 0,
+"values": [ 0.0, 19.1628, -18.5, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Hurt"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 18, -258 ), Vector2( 85, -257 ), Vector2( 18, -258 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ 0.0, -8.14611, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/HandPivot2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 73.4867, 56.2633 ), Vector2( 31.7795, -39.0226 ), Vector2( 73.4867, 56.2633 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image/HandPivot2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Image/HandPivot1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( -117.119, 59.708 ), Vector2( -73.9102, -33.3313 ), Vector2( -117.119, 59.708 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Image/HandPivot1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0 ]
+}
+
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
 length = 10.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Image:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 5, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"transitions": PoolRealArray( -2, -2, 1 ),
 "update": 0,
 "values": [ Vector2( 18, -258 ), Vector2( 18, -285 ), Vector2( 18, -258 ) ]
 }
@@ -242,6 +396,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 73.4867, 56.2633 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Image/HandPivot2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Image/HandPivot1:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Handarth" instance=ExtResource( 1 )]
 
@@ -286,6 +476,8 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Sprite/Pos" index="1"]
 autoplay = "Idle"
+anims/Dispelled = SubResource( 9 )
+anims/Hurt = SubResource( 10 )
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
@@ -294,5 +486,3 @@ stream = ExtResource( 19 )
 
 [node name="OuchShort" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 18 )
-
-[connection signal="damaged" from="EnemyStats" to="." method="_on_EnemyStats_damaged"]
