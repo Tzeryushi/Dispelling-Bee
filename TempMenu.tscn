@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://MenuTitleAnimation.gd" type="Script" id=9]
 [ext_resource path="res://TitleBackground.gd" type="Script" id=10]
 [ext_resource path="res://Backgrounds/BG2.png" type="Texture" id=11]
+
+[sub_resource type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -38,14 +43,16 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/circle_size = 0.445
+shader_param/circle_size = 0.46
 shader_param/screen_width = 1.0
 shader_param/screen_height = 1.0
 shader_param/outline_size = 0.5
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
+[sub_resource type="CanvasItemMaterial" id=6]
+
 [sub_resource type="DynamicFont" id=3]
-size = 120
+size = 140
 outline_size = 11
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -75,15 +82,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -612.5
-margin_top = 134.5
-margin_right = 612.5
-margin_bottom = 391.5
-custom_constants/separation = 20
+margin_left = -751.0
+margin_top = 135.0
+margin_right = 751.0
+margin_bottom = 392.0
+custom_constants/separation = 60
 alignment = 1
 
 [node name="Button" type="Button" parent="Control/VBoxContainer"]
-margin_right = 395.0
+material = SubResource( 5 )
+margin_right = 460.0
 margin_bottom = 257.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -92,7 +100,7 @@ text = "Hillbeetle"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 6 )
 
-[node name="Sprite2" type="TextureRect" parent="Control/VBoxContainer/Button"]
+[node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Button"]
 material = SubResource( 2 )
 anchor_left = 0.5
 anchor_right = 0.5
@@ -103,9 +111,25 @@ margin_bottom = 92.5
 texture = ExtResource( 7 )
 stretch_mode = 4
 
+[node name="Center" type="Control" parent="Control/VBoxContainer/Button"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Arrow" type="Polygon2D" parent="Control/VBoxContainer/Button/Center"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Control/VBoxContainer/Button/Center/Arrow"]
+material = SubResource( 6 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
 [node name="Button2" type="Button" parent="Control/VBoxContainer"]
-margin_left = 415.0
-margin_right = 810.0
+margin_left = 520.0
+margin_right = 981.0
 margin_bottom = 257.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -114,7 +138,7 @@ text = "Not Hat"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 4 )
 
-[node name="Sprite3" type="TextureRect" parent="Control/VBoxContainer/Button2"]
+[node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Button2"]
 material = SubResource( 2 )
 anchor_left = 0.5
 anchor_right = 0.5
@@ -125,9 +149,25 @@ margin_bottom = 92.5
 texture = ExtResource( 3 )
 stretch_mode = 4
 
+[node name="Center" type="Control" parent="Control/VBoxContainer/Button2"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Arrow" type="Polygon2D" parent="Control/VBoxContainer/Button2/Center"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Control/VBoxContainer/Button2/Center/Arrow"]
+material = SubResource( 6 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
 [node name="Button3" type="Button" parent="Control/VBoxContainer"]
-margin_left = 830.0
-margin_right = 1225.0
+margin_left = 1041.0
+margin_right = 1502.0
 margin_bottom = 257.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -148,14 +188,30 @@ margin_bottom = -36.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
+[node name="Center" type="Control" parent="Control/VBoxContainer/Button3"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+
+[node name="Arrow" type="Polygon2D" parent="Control/VBoxContainer/Button3/Center"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Control/VBoxContainer/Button3/Center/Arrow"]
+material = SubResource( 6 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
 [node name="Title" type="RichTextLabel" parent="Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -486.0
-margin_top = 153.0
-margin_right = 486.0
-margin_bottom = 299.0
-rect_pivot_offset = Vector2( 486, 73 )
+margin_left = -573.0
+margin_top = 142.0
+margin_right = 573.0
+margin_bottom = 312.0
+rect_pivot_offset = Vector2( 573, 85 )
 rect_clip_content = false
 size_flags_horizontal = 3
 custom_fonts/normal_font = SubResource( 3 )
