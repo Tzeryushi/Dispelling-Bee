@@ -4,6 +4,8 @@ class_name SpellAnimation
 
 export var hit_particles : PackedScene
 
+#all SpellAnimation derived nodes NEED to have both the
+#hit and finished signals! This is CRUCIAL.
 signal hit
 signal finished
 

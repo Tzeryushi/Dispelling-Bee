@@ -25,7 +25,6 @@ rotation = -2.53485
 [node name="DirtSpinParticle" parent="AnimationPath/Follow" instance=ExtResource( 4 )]
 position = Vector2( 6.63965, -0.956665 )
 rotation = -3.72491
-scale = Vector2( 1, 1 )
 
 [node name="DirtBall" type="Sprite" parent="AnimationPath/Follow"]
 texture = ExtResource( 1 )
