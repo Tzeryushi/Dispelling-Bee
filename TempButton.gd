@@ -12,14 +12,18 @@ func _ready() :
 	connect("pressed", self, "_button_pressed")
 	connect("mouse_entered", self, "_hover_in")
 	connect("mouse_exited", self, "_hover_out")
+	connect("focus_entered", self, "_hover_in")
+	connect("focus_exited", self, "_hover_out")
 	#sprite.texture = image
 	arrow.visible = false
 	
 func _button_pressed() -> void:
+	
 	emit_signal("button_combat", enemy_scene)
 
 func _hover_in() -> void:
 	arrow.visible = true
+	grab_focus()
 
 func _hover_out() -> void:
 	arrow.visible = false

@@ -27,6 +27,9 @@ func _exit_tree() -> void:
 	title_screen.queue_free()
 
 func _on_Button_button_combat(enemy):
+	if is_transition:
+		return
+	is_transition = true
 	circle_transition.transition_dark(0.7)
 	yield(circle_transition, "done")
 	remove_child(temp_menu)
@@ -37,6 +40,7 @@ func _on_Button_button_combat(enemy):
 	yield(circle_transition, "done")
 	#transition
 	combat.startup()
+	is_transition = false
 
 func _on_Combat_enemy_defeated():
 	_transition(combat, temp_menu)
