@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://MenuTitleAnimation.gd" type="Script" id=9]
 [ext_resource path="res://TitleBackground.gd" type="Script" id=10]
 [ext_resource path="res://Backgrounds/BG2.png" type="Texture" id=11]
+[ext_resource path="res://BackCircleDraw.gd" type="Script" id=12]
 
 [sub_resource type="Shader" id=4]
 
@@ -101,6 +102,8 @@ theme = ExtResource( 5 )
 text = "Hillbeetle"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 6 )
+back_color = Color( 0, 0, 0, 0.501961 )
+back_alt_color = Color( 0.211765, 0.8, 0, 0.501961 )
 
 [node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Button"]
 material = SubResource( 2 )
@@ -112,6 +115,11 @@ margin_right = 175.0
 margin_bottom = 92.5
 texture = ExtResource( 7 )
 stretch_mode = 4
+
+[node name="BackCircle" type="Node2D" parent="Control/VBoxContainer/Button/Sprite"]
+position = Vector2( 175, 175 )
+z_index = -1
+script = ExtResource( 12 )
 
 [node name="Center" type="Control" parent="Control/VBoxContainer/Button"]
 anchor_left = 0.5
@@ -153,6 +161,11 @@ margin_bottom = 92.5
 texture = ExtResource( 3 )
 stretch_mode = 4
 
+[node name="BackCircle" type="Node2D" parent="Control/VBoxContainer/Button2/Sprite"]
+position = Vector2( 175, 175 )
+z_index = -1
+script = ExtResource( 12 )
+
 [node name="Center" type="Control" parent="Control/VBoxContainer/Button2"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -180,6 +193,7 @@ size_flags_vertical = 3
 theme = ExtResource( 5 )
 text = "Handarth"
 script = ExtResource( 2 )
+back_alt_color = Color( 0.8, 0, 0, 0.501961 )
 
 [node name="Sprite" type="TextureRect" parent="Control/VBoxContainer/Button3"]
 material = SubResource( 2 )
@@ -193,6 +207,11 @@ margin_right = 175.0
 margin_bottom = -36.0
 texture = ExtResource( 3 )
 stretch_mode = 4
+
+[node name="BackCircle" type="Node2D" parent="Control/VBoxContainer/Button3/Sprite"]
+position = Vector2( 175, 175 )
+z_index = -1
+script = ExtResource( 12 )
 
 [node name="Center" type="Control" parent="Control/VBoxContainer/Button3"]
 anchor_left = 0.5
