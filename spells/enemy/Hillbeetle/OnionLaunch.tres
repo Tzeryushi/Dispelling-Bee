@@ -1,25 +1,26 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
-[ext_resource path="res://spells/enemy/Hillbeetle/HeaveHo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spells/enemy/Hillbeetle/OnionLaunch.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name_list = {
-"Heave-ho!": "oh-evaeh!",
-"One-two!": "owt-eno!"
+"Onionata!": "atanoino!",
+"Onionious!": "suoinoino!",
+"Oniononon!": "nononoino!"
 }
-name = "Heave-ho!"
-solve = "oh-evaeh!"
+name = "Onion Launch"
+solve = "hcnual noino"
 shake_tag = false
 wave_tag = true
 tornado_tag = false
 fade_tag = false
 rainbow_tag = false
 custom_tag = ""
-damage = 1
-drain = 2
-speed = 13.0
+damage = 2
+drain = 3
+speed = 15.0
 animation = ExtResource( 2 )
 weight = 3
 attack_animation = 0
