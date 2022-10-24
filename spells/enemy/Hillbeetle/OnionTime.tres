@@ -15,10 +15,10 @@ wave_tag = false
 tornado_tag = false
 fade_tag = false
 rainbow_tag = true
-custom_tag = "[tornado radius=2]"
+custom_tag = "[tornado radius=6]"
 damage = 3
-drain = 1
-speed = 18.0
+drain = 3
+speed = 20.0
 animation = ExtResource( 2 )
 weight = 1
 attack_animation = 1

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Poptext.gd" type="Script" id=1]
+[ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=2]
+
+[node name="Poptext" type="RichTextLabel"]
+margin_right = 536.0
+margin_bottom = 86.0
+rect_clip_content = false
+theme = ExtResource( 2 )
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource( 1 )

@@ -35,6 +35,7 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 #GUI
 onready var gui = $GUI
 onready var ready_message = $GUI/ReadyMessage
+onready var damage_popup = $GUI/DamagePopup
 
 #Sound
 onready var combat_audio = $CombatAudio
@@ -343,6 +344,7 @@ func damage_enemy(value:int) -> void:
 	#could have probably passed back new health through damage function, huh?
 	#this is to avoid signal wackiness with instanced enemies - I'll figure that out later
 	enemy.damage(value)
+	damage_popup.popup(-abs(value), enemy_target.global_position)
 	var bar_value = int((float(enemy.get_health())/float(enemy.get_max_health()))*enemy_health.max_value)
 	#enemy_health.value = enemy.get_health()
 	enemy_health.animate_value(bar_value, 1.0)
@@ -379,7 +381,9 @@ func _on_Timer_timeout() -> void:
 	anim.play(enemy_target, player_hit_position)
 	yield(anim, "hit")
 	if !is_finished:
-		player_stats.damage(enemy.get_damage())
+		var dmg = enemy.get_damage()
+		player_stats.damage(dmg)
+		damage_popup.popup(-abs(dmg), player_hit_position.global_position)
 		player.flash_color(Color(1,0,0,1))
 		Globals.camera.shake(1000, 0.3)
 	yield(anim, "finished")

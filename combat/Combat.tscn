@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -58,6 +58,8 @@
 [ext_resource path="res://audio/soundtrack/battleGroovin.ogg" type="AudioStream" id=56]
 [ext_resource path="res://audio/apicurio/oof.ogg" type="AudioStream" id=57]
 [ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=58]
+[ext_resource path="res://combat/DamagePopup.gd" type="Script" id=59]
+[ext_resource path="res://GUI/damagepop/Poptext.tscn" type="PackedScene" id=60]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -901,6 +903,10 @@ text = "Ready..."
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 50 )
+
+[node name="DamagePopup" type="Node2D" parent="GUI"]
+script = ExtResource( 59 )
+pop_scene = ExtResource( 60 )
 
 [node name="Camera" parent="." instance=ExtResource( 42 )]
 current = true
