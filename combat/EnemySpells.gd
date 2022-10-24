@@ -33,3 +33,5 @@ func get_spell_animation(index:int) -> PackedScene:
 	return spell_list[index].animation
 func get_animation_index(index:int) -> int:
 	return spell_list[index].attack_animation
+func spell_channeled(index:int) -> bool:
+	return spell_list[index].channel

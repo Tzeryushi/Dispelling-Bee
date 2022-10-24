@@ -21,3 +21,8 @@ func dispelled() -> void:
 	player.play("Dispelled")
 	yield(player, "animation_finished")
 	player.play("Idle")
+
+func channel() -> void:
+	player.play("Attack2")
+	yield(player, "animation_finished")
+	player.play("Attack2Channel")

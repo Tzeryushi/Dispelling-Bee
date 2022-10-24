@@ -24,3 +24,4 @@ speed = 15.0
 animation = ExtResource( 2 )
 weight = 3
 attack_animation = 0
+channel = false

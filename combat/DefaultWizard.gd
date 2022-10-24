@@ -92,6 +92,8 @@ func next_spell() -> void:
 		while new_key == spell_key:
 			new_key = enemy_spells.spell_list[current_spell].get_random_key()
 	spell_key = new_key
+	if enemy_spells.spell_channeled(current_spell):
+		channel()
 
 func get_spell_animation() -> PackedScene:
 	return enemy_spells.get_spell_animation(current_spell)
@@ -108,6 +110,9 @@ func hurt() -> void:
 	sprite.hurt()
 func dispelled() -> void:
 	sprite.dispelled()
+	
+func channel() -> void:
+	sprite.channel()
 
 func _on_EnemyStats_damaged():
 	hurt()

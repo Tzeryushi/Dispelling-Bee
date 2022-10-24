@@ -76,4 +76,5 @@ func hurt() -> void:
 	pass
 func dispelled() -> void:
 	pass
-
+func channel() -> void:
+	pass
