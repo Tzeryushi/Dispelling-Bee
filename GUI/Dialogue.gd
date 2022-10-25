@@ -7,9 +7,13 @@ onready var dialogue_text = $DialogueArea/DialogueBox/Text
 onready var speaker_name = $DialogueArea/DialogueBox/Name
 onready var type_timer = $DialogueArea/DialogueBox/TypeTimer
 
+onready var api_icon = $DialogueArea/ApiPortrait
+onready var enemy_icon = $DialogueArea/EnemyPortrait
+
 export var text_speed = 0.06
 export var dialogue_dir : String = "res://dialogue/"
 export var default_file : String = "Default0.json"
+export var default_icon : Texture
 
 var dialogue : Array
 var text_num := 0
@@ -19,8 +23,9 @@ var active := false
 signal finished()
 
 func _ready() -> void:
+	api_icon.visible = false
+	enemy_icon.visible = false
 	arrow.visible = false
-	
 	dialogue_area.visible = false
 
 func _input(event):
@@ -71,6 +76,19 @@ func next_text(data) -> void:
 	arrow.visible = false
 	text_done = false
 	speaker_name.bbcode_text = data["Name"]
+	if data["Name"] == "Apicurio":
+		api_icon.visible = true
+		enemy_icon.visible = false
+	else:
+		api_icon.visible = false
+		#set enemy icon
+		var tex = default_icon
+		var dir = Directory.new()
+		if dir.open(dialogue_dir) == OK:
+			if dir.file_exists(data["Name"]+".PNG"):
+				tex = load(dialogue_dir+data["Name"]+".PNG")
+		enemy_icon.texture = tex
+		enemy_icon.visible = true
 	dialogue_text.bbcode_text = data["Text"]
 	
 	dialogue_text.visible_characters = 0

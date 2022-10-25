@@ -20,6 +20,6 @@ damage = 3
 drain = 3
 speed = 20.0
 animation = ExtResource( 2 )
-weight = 12
+weight = 1
 attack_animation = 1
 channel = true
