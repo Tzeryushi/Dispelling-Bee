@@ -14,6 +14,7 @@ export var text_speed = 0.06
 export var dialogue_dir : String = "res://dialogue/"
 export var default_file : String = "Default0.json"
 export var default_icon : Texture
+export(Array, Texture) var enemy_icons 
 
 var dialogue : Array
 var text_num := 0
@@ -83,10 +84,8 @@ func next_text(data) -> void:
 		api_icon.visible = false
 		#set enemy icon
 		var tex = default_icon
-		var dir = Directory.new()
-		if dir.open(dialogue_dir) == OK:
-			if dir.file_exists(data["Name"]+".PNG"):
-				tex = load(dialogue_dir+data["Name"]+".PNG")
+		if data.has("Icon"):
+			tex = enemy_icons[data["Icon"]]
 		enemy_icon.texture = tex
 		enemy_icon.visible = true
 	dialogue_text.bbcode_text = data["Text"]
