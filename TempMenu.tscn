@@ -15,12 +15,12 @@
 [ext_resource path="res://art/GreenCheck.png" type="Texture" id=13]
 [ext_resource path="res://data/Player_Global_Flags.tres" type="Resource" id=14]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=7]
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+shader = SubResource( 7 )
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 uniform float circle_size : hint_range(0.0, 1.05);
@@ -45,7 +45,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = SubResource( 8 )
 shader_param/circle_size = 0.46
 shader_param/screen_width = 1.0
 shader_param/screen_height = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/ApiBackside.PNG" type="Texture" id=2]
@@ -60,6 +60,7 @@
 [ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=58]
 [ext_resource path="res://combat/DamagePopup.gd" type="Script" id=59]
 [ext_resource path="res://GUI/damagepop/Poptext.tscn" type="PackedScene" id=60]
+[ext_resource path="res://GUI/PauseMenu/MenuButton.tscn" type="PackedScene" id=61]
 
 [sub_resource type="Animation" id=20]
 length = 0.001
@@ -915,7 +916,6 @@ current = true
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
 pause_mode = 2
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 43 )
@@ -924,6 +924,18 @@ script = ExtResource( 43 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.588235 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -181.0
+margin_top = -357.0
+margin_right = 182.0
+margin_bottom = 357.0
+
+[node name="MenuButton" parent="CanvasLayer/Pause/ColorRect/VBoxContainer" instance=ExtResource( 61 )]
 
 [node name="CombatAudio" type="Node" parent="."]
 script = ExtResource( 54 )

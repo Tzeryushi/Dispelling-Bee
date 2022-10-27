@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://art/GreenCheck.png" type="Texture" id=1]
+[ext_resource path="res://MenuButtons.tres" type="Theme" id=2]
+[ext_resource path="res://GUI/PauseMenu/MenuButton.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+[node name="MenuButton" type="Button"]
+material = SubResource( 5 )
+margin_right = 363.0
+margin_bottom = 714.0
+focus_neighbour_left = NodePath("../Button3")
+focus_neighbour_right = NodePath("../Button2")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Hillbeetle"
+script = ExtResource( 3 )
+
+[node name="Center" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+
+[node name="Arrow" type="Polygon2D" parent="Center"]
+rotation = 1.5708
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Center/Arrow"]
+material = SubResource( 6 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="GreenCheck" type="Sprite" parent="."]
+visible = false
+position = Vector2( 425, -1 )
+scale = Vector2( 0.783101, 0.783101 )
+texture = ExtResource( 1 )
