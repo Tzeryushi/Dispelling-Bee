@@ -1,16 +1,16 @@
 [
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Guh...fine, thief-sneak. Onion is yours."},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"Guh...fine, you win. You're clearly better. My onion is yours."},
 	{"Name":"Apicurio", "Text":"What? I don't want your onion. I just want you to stop using magic irresponsibly!"},
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Shwa?"},
-	{"Name":"Apicurio", "Text":"All your plant-growing magic is wreaking serious havoc on the magical weave!"},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"Irresponsibly? My love isn't-"},
+	{"Name":"Apicurio", "Text":"All your plant-growing magic is wreaking [wave]serious[/wave] havoc on the magical weave!"},
 	{"Name":"Apicurio", "Text":"Didn't you think it was strange that your onion had become a nexus of magical power?"},
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Weh? Necksus? I just gift onion big love. You try murder great tryst, tyrant."},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"Wuh? Necksus? I just bestowed upon my onion the gift of love, kisses, and sweet nothings."},
 	{"Name":"Apicurio", "Text":"..."},
 	{"Name":"Hillbeetle", "Icon":0, "Text":"..."},
 	{"Name":"Apicurio", "Text":"Alright, well, whatever. Just please stop filling your crops up with magical energy. Or I'll come back."},
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Onion..."},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"My onion isn't just-"},
 	{"Name":"Apicurio", "Text":"And I'll eat your onion."},
 	{"Name":"Hillbeetle", "Icon":0, "Text":"Aah!"},
-	{"Name":"Hillbeetle","Icon":0, "Text":"Fine. Less love. I behave."},
-	{"Name":"Apicurio", "Text":"You'd better!"}
+	{"Name":"Hillbeetle","Icon":0, "Text":"Fine. Less affection. Didn't know you worked for the LOVE POLICE. Sheesh."},
+	{"Name":"Apicurio", "Text":"Right. Good. I don't want to have to come back here."}
 ]

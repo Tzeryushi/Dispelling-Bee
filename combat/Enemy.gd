@@ -67,6 +67,13 @@ func flash_color(color:Color, flash_time = 0.05, flashes = 2) -> void:
 		tween.tween_property(image, "modulate", color, flash_time).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 		tween.tween_property(image, "modulate", Color(1,1,1,1), flash_time).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
+func get_winstate() -> int:
+	return flags.enemy_flags[get_enemy_name()]
+
+func set_winstate(value:int) -> void:
+	if value > 0 and value < 3:
+		flags.enemy_flags[get_enemy_name()] = value
+
 #animation funcs
 func attack() -> void:
 	pass

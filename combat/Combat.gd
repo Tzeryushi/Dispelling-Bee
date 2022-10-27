@@ -180,10 +180,13 @@ func cleanup() -> void:
 	pause_gameplay()
 	if player_victory:
 		emit_signal("start_dialogue", enemy.get_victory_id())
+		enemy.set_winstate(2)
 		yield(self, "dialogue_ended")
 		emit_signal("enemy_defeated")
 	else:
 		emit_signal("start_dialogue", enemy.get_defeat_id())
+		if enemy.get_winstate() == 0:
+			enemy.set_winstate(1)
 		yield(self, "dialogue_ended")
 		emit_signal("player_defeated")
 
