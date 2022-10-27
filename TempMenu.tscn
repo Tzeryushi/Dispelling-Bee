@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://TitleBackground.gd" type="Script" id=10]
 [ext_resource path="res://Backgrounds/BG2.png" type="Texture" id=11]
 [ext_resource path="res://BackCircleDraw.gd" type="Script" id=12]
+[ext_resource path="res://art/GreenCheck.png" type="Texture" id=13]
+[ext_resource path="res://data/Player_Global_Flags.tres" type="Resource" id=14]
 
 [sub_resource type="Shader" id=4]
 
@@ -62,6 +64,7 @@ font_data = ExtResource( 8 )
 
 [node name="TempMenu" type="Node2D"]
 script = ExtResource( 1 )
+flags = ExtResource( 14 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 10 )
@@ -137,6 +140,12 @@ scale = Vector2( 0.711111, 0.711111 )
 color = Color( 0.313726, 0.784314, 0.784314, 1 )
 polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
 
+[node name="GreenCheck" type="Sprite" parent="Control/VBoxContainer/Button"]
+visible = false
+position = Vector2( 425, -1 )
+scale = Vector2( 0.783101, 0.783101 )
+texture = ExtResource( 13 )
+
 [node name="Button2" type="Button" parent="Control/VBoxContainer"]
 margin_left = 520.0
 margin_right = 981.0
@@ -181,6 +190,12 @@ material = SubResource( 6 )
 scale = Vector2( 0.711111, 0.711111 )
 color = Color( 0.313726, 0.784314, 0.784314, 1 )
 polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="GreenCheck" type="Sprite" parent="Control/VBoxContainer/Button2"]
+visible = false
+position = Vector2( 425, -1 )
+scale = Vector2( 0.783101, 0.783101 )
+texture = ExtResource( 13 )
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer"]
 margin_left = 1041.0
@@ -228,6 +243,12 @@ material = SubResource( 6 )
 scale = Vector2( 0.711111, 0.711111 )
 color = Color( 0.313726, 0.784314, 0.784314, 1 )
 polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="GreenCheck" type="Sprite" parent="Control/VBoxContainer/Button3"]
+visible = false
+position = Vector2( 425, -1 )
+scale = Vector2( 0.783101, 0.783101 )
+texture = ExtResource( 13 )
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 anchor_left = 0.5

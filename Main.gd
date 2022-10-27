@@ -44,9 +44,11 @@ func _on_Button_button_combat(enemy):
 
 func _on_Combat_enemy_defeated():
 	_transition(combat, temp_menu)
+	temp_menu.focus_update()
 
 func _on_Combat_player_defeated():
 	_transition(combat, temp_menu)
+	temp_menu.focus_update()
 	
 func _transition(unload:Node, to_load:Node) -> void:
 	if is_transition:
@@ -64,6 +66,7 @@ func _transition(unload:Node, to_load:Node) -> void:
 
 func _on_TitleScreen_game_start():
 	_transition(title_screen, temp_menu)
+	temp_menu.focus_update()
 
 func _on_Combat_start_dialogue(path):
 	dialogue.start_dialogue(path)

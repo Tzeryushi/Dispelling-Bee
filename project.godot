@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "SpellModel",
 "language": "GDScript",
 "path": "res://spells/SpellModel.gd"
+}, {
+"base": "Node2D",
+"class": "TempMenu",
+"language": "GDScript",
+"path": "res://TempMenu.gd"
 } ]
 _global_script_class_icons={
 "DefaultWizardSprite": "",
@@ -75,7 +80,8 @@ _global_script_class_icons={
 "PlayerSpells": "",
 "PlayerStats": "",
 "SpellAnimation": "",
-"SpellModel": ""
+"SpellModel": "",
+"TempMenu": ""
 }
 
 [application]

@@ -5,6 +5,7 @@ signal button_combat(enemy)
 onready var arrow := $Center
 onready var sprite := $Sprite
 onready var back_circle := $Sprite/BackCircle
+onready var check := $GreenCheck
 
 #export(Texture) var image
 export(PackedScene) var enemy_scene = preload("res://combat/HatWizard.tscn")
