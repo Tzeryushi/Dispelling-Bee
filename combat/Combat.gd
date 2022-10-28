@@ -142,6 +142,8 @@ func startup() -> void:
 	yield(get_tree().create_timer(1.0), "timeout")
 	emit_signal("start_dialogue", enemy.get_intro_id())
 	yield(self, "dialogue_ended")
+	if is_finished == true:
+		return
 	ready_message.ready_up(1.5)
 	yield(ready_message, "finished")
 	player_spell = ""
@@ -418,6 +420,8 @@ func _on_HoneyTimer_timeout():
 func _p_selected(id) -> void:
 	match id:
 		"back_to_menu":
+			is_finished = true
+			pause_gameplay()
 			emit_signal("back_to_menu")
 		"resume":
 			return

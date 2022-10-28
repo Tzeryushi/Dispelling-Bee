@@ -53,6 +53,8 @@ func _on_Combat_player_defeated():
 	combat_to_menu()
 	
 func _on_Combat_back_to_menu():
+	if dialogue.active == true:
+		dialogue.force_end()
 	combat_to_menu()
 	
 func _transition(unload:Node, to_load:Node) -> void:

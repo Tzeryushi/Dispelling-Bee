@@ -99,6 +99,11 @@ func next_text(data) -> void:
 	text_done = true
 	arrow.visible = true
 
+func force_end() -> void:
+	emit_signal("finished")
+	active = false
+	close_out()
+
 func close_out() -> void:
 	arrow.visible = false
 	dialogue_area.visible = false
