@@ -50,8 +50,10 @@ environment = SubResource( 1 )
 
 [node name="Dialogue" parent="." instance=ExtResource( 9 )]
 
+[connection signal="back_to_menu" from="Combat" to="." method="_on_Combat_back_to_menu"]
 [connection signal="enemy_defeated" from="Combat" to="." method="_on_Combat_enemy_defeated"]
 [connection signal="player_defeated" from="Combat" to="." method="_on_Combat_player_defeated"]
+[connection signal="request_quit" from="Combat" to="." method="_on_Combat_request_quit"]
 [connection signal="start_dialogue" from="Combat" to="." method="_on_Combat_start_dialogue"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button2" to="." method="_on_Button_button_combat"]

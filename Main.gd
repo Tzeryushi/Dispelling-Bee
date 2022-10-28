@@ -26,6 +26,10 @@ func _exit_tree() -> void:
 	temp_menu.queue_free()
 	title_screen.queue_free()
 
+func combat_to_menu():
+	_transition(combat, temp_menu)
+	temp_menu.focus_update()
+
 func _on_Button_button_combat(enemy):
 	if is_transition:
 		return
@@ -43,12 +47,13 @@ func _on_Button_button_combat(enemy):
 	is_transition = false
 
 func _on_Combat_enemy_defeated():
-	_transition(combat, temp_menu)
-	temp_menu.focus_update()
+	combat_to_menu()
 
 func _on_Combat_player_defeated():
-	_transition(combat, temp_menu)
-	temp_menu.focus_update()
+	combat_to_menu()
+	
+func _on_Combat_back_to_menu():
+	combat_to_menu()
 	
 func _transition(unload:Node, to_load:Node) -> void:
 	if is_transition:
@@ -72,3 +77,6 @@ func _on_Combat_start_dialogue(path):
 	dialogue.start_dialogue(path)
 	yield(dialogue, "finished")
 	combat.finish_dialogue()
+
+func _on_Combat_request_quit():
+	get_tree().quit()

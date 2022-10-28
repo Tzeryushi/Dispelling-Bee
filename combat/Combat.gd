@@ -36,6 +36,7 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 onready var gui = $GUI
 onready var ready_message = $GUI/ReadyMessage
 onready var damage_popup = $GUI/DamagePopup
+onready var pause_menu = $CanvasLayer/Pause
 
 #Sound
 onready var combat_audio = $CombatAudio
@@ -72,6 +73,8 @@ var b_spell_matching = false	#if the current player spell matches a portion of t
 signal dispelled()
 signal enemy_defeated()
 signal player_defeated()
+signal back_to_menu()
+signal request_quit()
 signal particles_loaded()
 signal setup_finished()
 signal start_dialogue(path)
@@ -80,6 +83,10 @@ signal dialogue_ended()
 func _ready():
 	#TODO: is it better to just handle this all from the resource? consult.
 	current_state = CombatState.LOADING
+	
+	#connecting signals to buttons
+	for button in pause_menu.container.get_children():
+		button.connect("select", self, "_p_selected")
 
 func _exit_tree():
 	if not enemy == null:	
@@ -408,3 +415,11 @@ func _on_CombatStats_health_changed(old_value, new_value) -> void:
 func _on_HoneyTimer_timeout():
 	player_stats.change_honey(1)
 
+func _p_selected(id) -> void:
+	match id:
+		"back_to_menu":
+			emit_signal("back_to_menu")
+		"resume":
+			return
+		"exit":
+			emit_signal("request_quit")
