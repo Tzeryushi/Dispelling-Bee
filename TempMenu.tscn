@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://BackCircleDraw.gd" type="Script" id=12]
 [ext_resource path="res://art/GreenCheck.png" type="Texture" id=13]
 [ext_resource path="res://data/Player_Global_Flags.tres" type="Resource" id=14]
+[ext_resource path="res://GUI/PauseMenu/MenuButton.tscn" type="PackedScene" id=15]
+[ext_resource path="res://combat/Pause.gd" type="Script" id=16]
 
 [sub_resource type="Shader" id=7]
 
@@ -267,3 +269,43 @@ text = "Choose a Battle!"
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 16 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -233.0
+margin_top = -236.0
+margin_right = 234.0
+margin_bottom = 236.0
+custom_constants/separation = 30
+
+[node name="MenuButton" parent="CanvasLayer/Pause/ColorRect/VBoxContainer" instance=ExtResource( 15 )]
+margin_right = 467.0
+margin_bottom = 221.0
+focus_neighbour_top = NodePath("../MenuButton3")
+text = "Resume"
+signal_string = "resume"
+
+[node name="MenuButton3" parent="CanvasLayer/Pause/ColorRect/VBoxContainer" instance=ExtResource( 15 )]
+margin_top = 251.0
+margin_right = 467.0
+margin_bottom = 472.0
+focus_neighbour_bottom = NodePath("../MenuButton")
+text = "Exit Game"
+signal_string = "exit"

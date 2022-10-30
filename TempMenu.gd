@@ -3,11 +3,15 @@ extends Node2D
 class_name TempMenu
 
 onready var container = $Control/VBoxContainer
+onready var pause = $CanvasLayer/Pause
 
 export var flags : Resource
 
-func _enter_tree():
-	pass
+signal request_quit
+
+func _ready() -> void:
+	for button in pause.container.get_children():
+		button.connect("select", self, "_p_selected")
 	
 func _input(event) -> void:
 	if !is_focused():
@@ -26,3 +30,10 @@ func focus_update() -> void:
 			button.check.visible = true
 		else:
 			button.check.visible = false
+
+func _p_selected(id) -> void:
+	match id:
+		"resume":
+			return
+		"exit":
+			emit_signal("request_quit")

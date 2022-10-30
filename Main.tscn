@@ -55,6 +55,7 @@ environment = SubResource( 1 )
 [connection signal="player_defeated" from="Combat" to="." method="_on_Combat_player_defeated"]
 [connection signal="request_quit" from="Combat" to="." method="_on_Combat_request_quit"]
 [connection signal="start_dialogue" from="Combat" to="." method="_on_Combat_start_dialogue"]
+[connection signal="request_quit" from="TempMenu" to="." method="_on_Combat_request_quit"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button2" to="." method="_on_Button_button_combat"]
 [connection signal="button_combat" from="TempMenu/Control/VBoxContainer/Button3" to="." method="_on_Button_button_combat"]

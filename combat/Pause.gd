@@ -12,7 +12,6 @@ func _input(event) -> void:
 		pause_unpause()
 
 func pause_unpause() -> void:
-	print("trigger")
 	var new_state = not get_tree().paused
 	get_tree().paused = new_state
 	if new_state:
