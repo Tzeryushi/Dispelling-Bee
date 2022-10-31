@@ -83,7 +83,22 @@ func flash_honey_notice() -> void:
 	tween = create_tween()
 	yield(tween.tween_property(notice, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_OUT), "finished")
 	notice.queue_free()
-	
+
+func flash_full_notice() -> void:
+	var notice = honey_notice.instance()
+	add_child(notice)
+	move_child(notice, 0)
+	notice.bbcode_text = "[center][wave amp=75 freq=10][color=#0022ee]Honey is full!!"
+	notice.rect_position = notice_init
+	var tween = create_tween()
+	var new_pos = notice.rect_position + Vector2(0, -notice_jump_dist)
+	yield(tween.tween_property(notice, "rect_position", new_pos, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT), "finished")
+	tween = create_tween()
+	yield(tween.tween_property(notice, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_OUT), "finished")
+	notice.queue_free()
 
 func change_text_color(color:Color) -> void:
 	text_box.add_color_override("default_color", color)
+
+func _on_HoneyCounter_honey_filled():
+	flash_full_notice()

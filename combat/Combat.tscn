@@ -781,6 +781,11 @@ margin_right = 808.0
 margin_bottom = 1057.0
 script = ExtResource( 10 )
 
+[node name="FlashHoney" type="Sprite" parent="GUI/HoneyCounter"]
+visible = false
+position = Vector2( 62, 63 )
+texture = ExtResource( 32 )
+
 [node name="HoneyProgress" type="TextureProgress" parent="GUI/HoneyCounter"]
 margin_left = -29.0
 margin_top = -17.0
@@ -978,4 +983,5 @@ volume_db = -13.803
 [connection signal="honey_not_enough" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_not_enough"]
 [connection signal="honey_overfill" from="Player/CombatStats" to="GUI/HoneyCounter" method="_on_CombatStats_honey_overfill"]
 [connection signal="timeout" from="GUI/SpellTimer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="honey_filled" from="GUI/HoneyCounter" to="GUI/PSContainer" method="_on_HoneyCounter_honey_filled"]
 [connection signal="timeout" from="GUI/HoneyCounter/HoneyProgress/HoneyTimer" to="." method="_on_HoneyTimer_timeout"]
