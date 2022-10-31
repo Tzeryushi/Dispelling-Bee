@@ -51,13 +51,14 @@ func shake() -> void:
 	animation_state.travel("Shake")
 
 func flash() -> void:
-	print("what?")
 	flash_honey.visible = true
 	flash_honey.scale = Vector2(1.0, 1.0)
-	flash_honey.modulate.a = 8.0
+	flash_honey.modulate.a = 2.0
 	var tween := create_tween()
-	tween.tween_property(flash_honey, "scale", Vector2(1.0,1.0), 0.7).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(flash_honey, "modulate:a", 0.0, 0.7)
+	tween.tween_property(flash_honey, "scale", Vector2(5.0,5.0), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(flash_honey, "modulate:a", 0.0, 0.5)
+	yield(tween, "finished")
+	flash_honey.visible = false
 
 func _on_CombatStats_honey_changed(_old_value, new_value):
 	#received from CombatStats
