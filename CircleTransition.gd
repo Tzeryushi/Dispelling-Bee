@@ -7,6 +7,7 @@ var circle_value : float = 1.05
 
 func transition_out(time:float) -> void:
 	visible = true
+	$Out.play()
 	var tween = create_tween()
 	circle_change(0.0)
 	yield(tween.tween_method(self, "circle_change", 0.0, 1.05, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART),"finished")
@@ -15,6 +16,7 @@ func transition_out(time:float) -> void:
 
 func transition_dark(time:float) -> void:
 	visible = true
+	$In.play()
 	var tween = create_tween()
 	circle_change(1.05)
 	yield(tween.tween_method(self, "circle_change", 1.05, 0.0, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUART),"finished")
