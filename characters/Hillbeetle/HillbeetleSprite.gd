@@ -26,3 +26,11 @@ func channel() -> void:
 	player.play("Attack2")
 	yield(player, "animation_finished")
 	player.play("Attack2Channel")
+
+func lose() -> void:
+	player.play("LoseBegin")
+	yield(player, "animation_finished")
+	player.play("LoseLoop")
+	
+func win() -> void:
+	pass

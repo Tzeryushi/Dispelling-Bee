@@ -177,6 +177,7 @@ func cleanup() -> void:
 	if enemy.get_health() <= 0:
 		player_victory = true
 		player_spell = "[rainbow]PLAYER VICTORY! Temp buffer, 1.5"
+		enemy.lose()
 	elif player_stats.health <= 0:
 		player_victory = false
 		player_spell = "[rainbow]PLAYER DEFEAT! Temp buffer, 1.5"

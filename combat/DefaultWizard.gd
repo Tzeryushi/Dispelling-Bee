@@ -110,9 +110,12 @@ func hurt() -> void:
 	sprite.hurt()
 func dispelled() -> void:
 	sprite.dispelled()
-	
 func channel() -> void:
 	sprite.channel()
+func lose() -> void:
+	sprite.lose()
+func win() -> void:
+	sprite.win()
 
 func _on_EnemyStats_damaged():
 	hurt()

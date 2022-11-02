@@ -85,3 +85,7 @@ func dispelled() -> void:
 	pass
 func channel() -> void:
 	pass
+func lose() -> void:
+	pass
+func win() -> void:
+	pass
