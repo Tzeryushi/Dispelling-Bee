@@ -1,14 +1,13 @@
 [
 	{"Name":"Apicurio", "Text":"Where have I gone off to? This area seems pretty rural for the home of a great wizard..."},
-	{"Name":"Some guy", "Icon":0, "Text":"Who going? What you do? Get!"},
-	{"Name":"Apicurio", "Text":"Oh hello, I'm looking for a wizard by the name of the Great Hillbeetle!"},
-	{"Name":"Apicurio", "Text":"You wouldn't know who that is, would you?"},
-	{"Name":"Some guy", "Icon":0, "Text":"Maybe maybe. Who it? Why you try a know?"},
+	{"Name":"Some guy", "Icon":0, "Text":"Who's there? What're you doing? Get off my property! Get goin'! Get!"},
+	{"Name":"Apicurio", "Text":"Oh hello, sorry, I'm just looking for a wizard by the name of the Great Hillbeetle! You wouldn't know who that is, would you?"},
+	{"Name":"Some guy", "Icon":0, "Text":"Hmm...maybe, maybe. Who's askin'? Why do you need to know?"},
 	{"Name":"Apicurio", "Text":"Well, the Hillbeetle has been accused by the High Queen of using their magic irresponsibly. I've been sent in to clean up their act!"},
-	{"Name":"Some jerk", "Icon":0, "Text":"Ah, I watch. You attempt get to fresh! Whisk away great journey of sweat!"},
-	{"Name":"Apicurio", "Text":"What?"},
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Yes, watched your ego well. Make pains for this great crop! I Hillbeetle! Great of magic wizard!"},
-	{"Name":"Apicurio", "Text":"Oof. In hindsight this was painfully obvious, considering the context, the battle screen setting..."},
-	{"Name":"Hillbeetle", "Icon":0, "Text":"Hush-hush, sneak! I bury you deep! Fertilizer for my onion! Take this! Dirt fling!"},
+	{"Name":"Some jerk", "Icon":0, "Text":"Ah, I get it. You dang honey cops are tryin' ta swoop in on the fruits of my labor! Steal the treasures of my sweat!"},
+	{"Name":"Apicurio", "Text":". . . what?"},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"Yes, I get it now. But I'm not gonna just roll over! I made suffered for this yield! Have at you! Hillbeetle will see you done!"},
+	{"Name":"Apicurio", "Text":"Ah. In hindsight this was pretty obvious, considering the context, the battle screen setting, your face on the combat button..."},
+	{"Name":"Hillbeetle", "Icon":0, "Text":"Quiet now, thief! I'll bury you deep, and you'll be fertilizer for my precious onion! Take this! [shake]Pocket dirt![/shake]"},
 	{"Name":"Apicurio", "Text":"Oh stop it, you're gonna fill up my pollen baskets! Fine. Time to do my job!"}
 ]
