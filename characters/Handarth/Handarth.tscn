@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Handarth/HandarthBody.PNG" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://characters/Handarth/HandPivot2.gd" type="Script" id=6]
 [ext_resource path="res://spells/enemy/Handarth/AntiLife.tres" type="Resource" id=7]
 [ext_resource path="res://spells/enemy/Handarth/FadingStrike.tres" type="Resource" id=8]
+[ext_resource path="res://art/shaders/chromatic.gdshader" type="Shader" id=9]
+[ext_resource path="res://art/shaders/PixelFade.gdshader" type="Shader" id=10]
 [ext_resource path="res://spells/enemy/Handarth/Skrotch.tres" type="Resource" id=11]
 [ext_resource path="res://spells/enemy/Handarth/DeathRattle.tres" type="Resource" id=12]
 [ext_resource path="res://characters/Handarth/HandarthSprite.gd" type="Script" id=13]
@@ -17,147 +19,26 @@
 [ext_resource path="res://spells/enemy/Handarth/DeadrotBranding.tres" type="Resource" id=17]
 [ext_resource path="res://audio/handarth/ouch_short.ogg" type="AudioStream" id=18]
 [ext_resource path="res://audio/handarth/ouch.ogg" type="AudioStream" id=19]
-
-[sub_resource type="Shader" id=7]
-code = "shader_type canvas_item;
-
-uniform float outline_width = 2.0;
-uniform vec4 outline_color: hint_color;
-
-void fragment() {
-	vec4 col = texture(TEXTURE, UV);
-	vec2 ps = TEXTURE_PIXEL_SIZE;
-	float a;
-	float maxa = col.a;
-	float mina = col.a;
-
-	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	COLOR = mix(col, outline_color, maxa - mina);
-}"
+[ext_resource path="res://characters/Handarth/splotchyNoise.tres" type="Texture" id=20]
+[ext_resource path="res://art/noise/splotchyNormal.tres" type="Texture" id=21]
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
-shader_param/outline_width = 0.0
-shader_param/outline_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform bool apply = true;
-uniform float amount = 1.0;
-uniform sampler2D offset_texture : hint_white;
-
-uniform float outline_width = 2.0;
-uniform vec4 outline_color: hint_color;
-
-void fragment() {
-	vec4 texture_color = texture(TEXTURE, UV);
-	vec2 ps = TEXTURE_PIXEL_SIZE;
-	float a;
-	float maxa = texture_color.a;
-	float mina = texture_color.a;
-	
-	vec4 color = texture_color;
-	
-	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-	
-	color = mix(color, outline_color, maxa - mina);
-	
-	if (apply == true) {
-		float adjusted_amount = amount * texture(offset_texture, UV).r / 100.0;
-		color.r = texture(TEXTURE, vec2(UV.x + adjusted_amount, UV.y)).r;
-		color.g = texture(TEXTURE, UV).g;
-		color.b = texture(TEXTURE, vec2(UV.x - adjusted_amount, UV.y)).b;
-	}
-	
-	COLOR = color;
-}"
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/progress = 0.0
+shader_param/strength = 1.0
+shader_param/noise_tex_normal = ExtResource( 21 )
+shader_param/noise_tex = ExtResource( 20 )
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+shader = ExtResource( 9 )
 shader_param/apply = true
 shader_param/amount = 0.0
 shader_param/outline_width = 0.0
 shader_param/outline_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform bool apply = true;
-uniform float amount = 1.0;
-uniform sampler2D offset_texture : hint_white;
-
-uniform float outline_width = 2.0;
-uniform vec4 outline_color: hint_color;
-
-void fragment() {
-	vec4 texture_color = texture(TEXTURE, UV);
-	vec2 ps = TEXTURE_PIXEL_SIZE;
-	float a;
-	float maxa = texture_color.a;
-	float mina = texture_color.a;
-	
-	vec4 color = texture_color;
-	
-	a = texture(TEXTURE, UV + vec2(0.0, -outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(0.0, outline_width) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(-outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-
-	a = texture(TEXTURE, UV + vec2(outline_width, 0.0) * ps).a;
-	maxa = max(a, maxa);
-	mina = min(a, mina);
-	
-	color = mix(color, outline_color, maxa - mina);
-	
-	if (apply == true) {
-		float adjusted_amount = amount * texture(offset_texture, UV).r / 100.0;
-		color.r = texture(TEXTURE, vec2(UV.x + adjusted_amount, UV.y)).r;
-		color.g = texture(TEXTURE, UV).g;
-		color.b = texture(TEXTURE, vec2(UV.x - adjusted_amount, UV.y)).b;
-	}
-	
-	COLOR = color;
-}"
-
 [sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+shader = ExtResource( 9 )
 shader_param/apply = true
 shader_param/amount = 0.0
 shader_param/outline_width = 0.0
@@ -357,6 +238,70 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 73.4867, 56.2633 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image:material:shader_param/progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.058, 0.0, 0.088, 0.0, 0.032, 0.0, 0.088, 0.0, 0.058, 0.0 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "LoseStart"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Image/HandPivot1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -117.119, 59.708 ), Vector2( -357.099, 177.976 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Image/HandPivot2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 73.4867, 56.2633 ), Vector2( 378.916, 119.416 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Image/HandPivot1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2, 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Image/HandPivot2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 2, 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -432,6 +377,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Image/HandPivot1:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Image/HandPivot2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Image:material:shader_param/progress")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Handarth" instance=ExtResource( 1 )]
 
@@ -479,6 +460,7 @@ autoplay = "Idle"
 anims/Dispelled = SubResource( 9 )
 anims/Hurt = SubResource( 10 )
 anims/Idle = SubResource( 1 )
+anims/LoseStart = SubResource( 15 )
 anims/RESET = SubResource( 2 )
 
 [node name="Ouch" type="AudioStreamPlayer" parent="." index="3"]

@@ -16,5 +16,9 @@ func attack() -> void:
 	tween.tween_property(self, "position", initial, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.parallel().tween_method(self, "set_abb", 5.0, 0.0, 0.6).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
+func slow_rotation(time:float=2.0) -> void:
+	var tween = create_tween()
+	tween.tween_property(self, "rotation_speed", 0.0, time).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+
 func set_abb(value:float) -> void:
 	hand.material.set_shader_param("amount", value)
