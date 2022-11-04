@@ -6,8 +6,16 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
+"Dirt dirt!": "trid trid!",
+"Dross toss!": "ssot ssord!",
 "Heave-ho!": "oh-evaeh!",
-"One-two!": "owt-eno!"
+"Hi-yah ha!": "ah hay-ih!",
+"Muck chuck!": "kcuhc kcum!",
+"Mud flood!": "doolf dum!",
+"One-two!": "owt-eno!",
+"Pow pum pop!": "pop mup wop!",
+"Sediment!": "tnemides!",
+"Sod the clod!": "dolc eht dos!"
 }
 name = "Heave-ho!"
 solve = "oh-evaeh!"
