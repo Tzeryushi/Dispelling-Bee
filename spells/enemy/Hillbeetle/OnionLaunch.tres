@@ -6,7 +6,13 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
+"No onions?": "snoino on?",
+"Oi onion!": "noino io!",
+"Onion on in!": "ni no noino!",
+"Onionade!": "edanoino!",
+"Onionado!": "odanoino!",
 "Onionata!": "atanoino!",
+"Onionatum!": "mutanoino!",
 "Onionious!": "suoinoino!",
 "Oniononon!": "nononoino!"
 }
@@ -22,6 +28,6 @@ damage = 2
 drain = 3
 speed = 15.0
 animation = ExtResource( 2 )
-weight = 3
+weight = 5
 attack_animation = 0
 channel = false
