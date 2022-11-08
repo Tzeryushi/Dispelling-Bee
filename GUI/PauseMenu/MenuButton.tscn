@@ -21,11 +21,11 @@ text = "Hillbeetle"
 script = ExtResource( 3 )
 
 [node name="Center" type="Control" parent="."]
+visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
 
 [node name="Arrow" type="Polygon2D" parent="Center"]
-visible = false
 rotation = 1.5708
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )

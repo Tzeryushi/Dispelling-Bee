@@ -11,12 +11,12 @@ func flash_color(color:Color, flash_time = 0.05, flashes = 2) -> void:
 
 func attack() -> void:
 	#api_animation_state.travel("casting")
-	api_animation.play("casting")
-	api_animation.queue("idle")
+	api_animation.play("Attack")
+	api_animation.queue("Idle")
 	
 func idle_loop() -> void:
 	#api_animation_state.travel("idle")
-	api_animation.play("idle")
+	api_animation.play("Idle")
 
 func pause() -> void:
 	api_animation.stop(true)
