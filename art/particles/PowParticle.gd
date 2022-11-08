@@ -36,4 +36,3 @@ func stop() -> void:
 	flash.emitting = false
 	boom.emitting = false
 	boom_delta = 0
-	emit_signal("finished")

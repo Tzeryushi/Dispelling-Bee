@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -67,6 +67,8 @@
 [ext_resource path="res://characters/Apicurio/TopForearm.PNG" type="Texture" id=65]
 [ext_resource path="res://characters/Apicurio/WandHand.PNG" type="Texture" id=66]
 [ext_resource path="res://characters/Apicurio/BottomHand.PNG" type="Texture" id=67]
+[ext_resource path="res://art/particles/DispelParticle.tscn" type="PackedScene" id=68]
+[ext_resource path="res://art/particles/DirtSpinParticle.tscn" type="PackedScene" id=69]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Attack"
@@ -267,8 +269,8 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id=23]
 resource_name = "Dispel"
-length = 0.3
-step = 0.05
+length = 0.4
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("NormalFace:visible")
 tracks/0/interp = 1
@@ -324,7 +326,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 2, 0.5, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 0.0, 0.0 ]
@@ -336,10 +338,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
-"transitions": PoolRealArray( 2, 2, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3, 0.35 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 1, 1 ),
 "update": 0,
-"values": [ -17.054, -31.2022, 24.5783, -17.054 ]
+"values": [ -17.054, -31.2022, 46.6457, 43.6901, -17.054 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("UpperArm:rotation_degrees")
@@ -348,10 +350,10 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.25 ),
-"transitions": PoolRealArray( 2, 2, 1, 1 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3, 0.35 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 1, 1 ),
 "update": 0,
-"values": [ 11.3739, 37.4426, -44.8218, 11.3739 ]
+"values": [ 11.3739, 37.4426, -58.1731, -17.4495, 11.3739 ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("LowerArm/BottomHand:rotation_degrees")
@@ -360,7 +362,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ 0.842547, 50.5621, 0.842547 ]
@@ -372,7 +374,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ 13.1641, -25.9896, 13.1641 ]
@@ -384,7 +386,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ -101.205, -157.525, -101.205 ]
@@ -396,7 +398,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ 108.968, 140.239, 108.968 ]
@@ -408,7 +410,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ 116.517, 146.398, 116.517 ]
@@ -420,7 +422,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 0.5, 1 ),
 "update": 0,
 "values": [ -87.4281, -159.342, -87.4281 ]
@@ -432,7 +434,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.3, 0.4 ),
 "transitions": PoolRealArray( 2, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 13.9645, -27.8347, -27.8347, 84.9256, 13.9645 ]
@@ -444,7 +446,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 2, 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( -266, -284 ), Vector2( -266, -271.75 ), Vector2( -266, -291.25 ), Vector2( -266, -284 ) ]
@@ -456,10 +458,24 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"times": PoolRealArray( 0, 0.05, 0.15, 0.4 ),
 "transitions": PoolRealArray( 2, 2, 0.5, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.964544 ), Vector2( 1, 1.02098 ), Vector2( 1, 1 ) ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath("UpperArm/TopForearm/WandHand/DispelParticle")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -1069,7 +1085,7 @@ font_data = ExtResource( 49 )
 script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
-particle_array = [ ExtResource( 58 ) ]
+particle_array = [ ExtResource( 58 ), ExtResource( 69 ), ExtResource( 68 ) ]
 b_correct_color = Color( 0, 0.439216, 1, 1 )
 
 [node name="CombatBackground" type="ParallaxBackground" parent="."]
@@ -1120,7 +1136,7 @@ __meta__ = {
 
 [node name="TopForearm" type="Sprite" parent="Player/Pos/PlayerImage/UpperArm"]
 position = Vector2( 81, 56 )
-rotation = -0.297649
+rotation = -0.297648
 texture = ExtResource( 65 )
 offset = Vector2( 29, -40 )
 __meta__ = {
@@ -1142,6 +1158,10 @@ rotation = -3.36818
 __meta__ = {
 "_edit_bone_": true
 }
+
+[node name="DispelParticle" parent="Player/Pos/PlayerImage/UpperArm/TopForearm/WandHand" instance=ExtResource( 68 )]
+position = Vector2( -9.65991, -212.367 )
+scale = Vector2( 1, 1 )
 
 [node name="LowerArm" type="Sprite" parent="Player/Pos/PlayerImage"]
 position = Vector2( 135, 106 )
