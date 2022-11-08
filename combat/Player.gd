@@ -22,6 +22,9 @@ func pause() -> void:
 	api_animation.stop(true)
 	#api_animation_state.travel("RESET")
 
+func dispel() -> void:
+	api_animation.play("Dispel")
+	api_animation.queue("Idle")
 
 func _on_CombatStats_health_changed(old_value, new_value):
 	if old_value > new_value:

@@ -288,6 +288,7 @@ func spell(input:String) -> void:
 			enemy_spell_box.dead_down_text()
 			player_stats.change_honey(enemy.get_drain())
 			enemy.dispelled()
+			player.dispel()
 			next_spell() #next enemy spell
 		else:
 			player_spell_box.dead_down_text()
