@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speech_bank : Dictionary
+var speech_bank : Dictionary
 
 func _ready() -> void:
 	for i in get_children():

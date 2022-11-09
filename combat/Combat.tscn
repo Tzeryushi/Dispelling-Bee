@@ -1161,7 +1161,6 @@ __meta__ = {
 
 [node name="DispelParticle" parent="Player/Pos/PlayerImage/UpperArm/TopForearm/WandHand" instance=ExtResource( 68 )]
 position = Vector2( -9.65991, -212.367 )
-scale = Vector2( 1, 1 )
 
 [node name="LowerArm" type="Sprite" parent="Player/Pos/PlayerImage"]
 position = Vector2( 135, 106 )
