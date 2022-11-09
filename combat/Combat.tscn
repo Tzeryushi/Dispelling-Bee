@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -55,7 +55,7 @@
 [ext_resource path="res://characters/Apicurio/Normal Face.PNG" type="Texture" id=53]
 [ext_resource path="res://combat/CombatAudio.gd" type="Script" id=54]
 [ext_resource path="res://audio/SpeechPlayer.tscn" type="PackedScene" id=55]
-[ext_resource path="res://audio/soundtrack/battleGroovin.ogg" type="AudioStream" id=56]
+[ext_resource path="res://audio/soundtrack/victory.ogg" type="AudioStream" id=56]
 [ext_resource path="res://audio/apicurio/oof.ogg" type="AudioStream" id=57]
 [ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=58]
 [ext_resource path="res://combat/DamagePopup.gd" type="Script" id=59]
@@ -70,6 +70,7 @@
 [ext_resource path="res://art/particles/DispelParticle.tscn" type="PackedScene" id=68]
 [ext_resource path="res://art/particles/DirtSpinParticle.tscn" type="PackedScene" id=69]
 [ext_resource path="res://audio/pause.ogg" type="AudioStream" id=70]
+[ext_resource path="res://audio/notice.ogg" type="AudioStream" id=71]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Attack"
@@ -1449,6 +1450,10 @@ texture_under = ExtResource( 33 )
 texture_over = ExtResource( 19 )
 texture_progress = ExtResource( 37 )
 
+[node name="Notice" type="AudioStreamPlayer" parent="GUI/HoneyCounter"]
+stream = ExtResource( 71 )
+volume_db = -9.007
+
 [node name="SpellbookContainer" type="Node2D" parent="GUI"]
 position = Vector2( 1469, 584 )
 script = ExtResource( 24 )
@@ -1595,7 +1600,7 @@ script = ExtResource( 54 )
 
 [node name="Groovin" type="AudioStreamPlayer" parent="CombatAudio"]
 stream = ExtResource( 56 )
-volume_db = -13.803
+volume_db = -6.916
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="health_changed" from="Player/CombatStats" to="Player" method="_on_CombatStats_health_changed"]

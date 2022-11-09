@@ -51,6 +51,7 @@ func shake() -> void:
 	animation_state.travel("Shake")
 
 func flash() -> void:
+	$Notice.play()
 	flash_honey.visible = true
 	flash_honey.scale = Vector2(1.0, 1.0)
 	flash_honey.modulate.a = 2.0
