@@ -29,6 +29,7 @@ func _button_pressed() -> void:
 func _hover_in() -> void:
 	arrow.visible = true
 	back_circle.set_and_draw(back_alt_color)
+	$Plink.play()
 	grab_focus()
 
 func _hover_out() -> void:

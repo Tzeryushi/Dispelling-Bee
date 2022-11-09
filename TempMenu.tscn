@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://data/Player_Global_Flags.tres" type="Resource" id=14]
 [ext_resource path="res://GUI/PauseMenu/MenuButton.tscn" type="PackedScene" id=15]
 [ext_resource path="res://combat/Pause.gd" type="Script" id=16]
+[ext_resource path="res://audio/pause.ogg" type="AudioStream" id=17]
+[ext_resource path="res://audio/select.ogg" type="AudioStream" id=18]
 
 [sub_resource type="Shader" id=7]
 
@@ -148,6 +150,9 @@ position = Vector2( 425, -1 )
 scale = Vector2( 0.783101, 0.783101 )
 texture = ExtResource( 13 )
 
+[node name="Plink" type="AudioStreamPlayer" parent="Control/VBoxContainer/Button"]
+stream = ExtResource( 18 )
+
 [node name="Button2" type="Button" parent="Control/VBoxContainer"]
 margin_left = 520.0
 margin_right = 981.0
@@ -198,6 +203,9 @@ visible = false
 position = Vector2( 425, -1 )
 scale = Vector2( 0.783101, 0.783101 )
 texture = ExtResource( 13 )
+
+[node name="Plink" type="AudioStreamPlayer" parent="Control/VBoxContainer/Button2"]
+stream = ExtResource( 18 )
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer"]
 margin_left = 1041.0
@@ -251,6 +259,9 @@ visible = false
 position = Vector2( 425, -1 )
 scale = Vector2( 0.783101, 0.783101 )
 texture = ExtResource( 13 )
+
+[node name="Plink" type="AudioStreamPlayer" parent="Control/VBoxContainer/Button3"]
+stream = ExtResource( 18 )
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 anchor_left = 0.5
@@ -309,3 +320,6 @@ margin_bottom = 472.0
 focus_neighbour_bottom = NodePath("../MenuButton")
 text = "Exit Game"
 signal_string = "exit"
+
+[node name="Plonk" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
+stream = ExtResource( 17 )

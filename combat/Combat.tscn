@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -69,6 +69,7 @@
 [ext_resource path="res://characters/Apicurio/BottomHand.PNG" type="Texture" id=67]
 [ext_resource path="res://art/particles/DispelParticle.tscn" type="PackedScene" id=68]
 [ext_resource path="res://art/particles/DirtSpinParticle.tscn" type="PackedScene" id=69]
+[ext_resource path="res://audio/pause.ogg" type="AudioStream" id=70]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Attack"
@@ -1583,6 +1584,9 @@ focus_neighbour_top = NodePath("../MenuButton2")
 focus_neighbour_bottom = NodePath("../MenuButton")
 text = "Exit Game"
 signal_string = "exit"
+
+[node name="Plonk" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
+stream = ExtResource( 70 )
 
 [node name="CombatAudio" type="Node" parent="."]
 script = ExtResource( 54 )

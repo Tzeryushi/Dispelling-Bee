@@ -16,4 +16,5 @@ func pause_unpause() -> void:
 	get_tree().paused = new_state
 	if new_state:
 		$ColorRect/VBoxContainer/MenuButton.grab_focus()
+		$Plonk.play()
 	visible = new_state
