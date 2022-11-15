@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -55,7 +55,6 @@
 [ext_resource path="res://characters/Apicurio/Normal Face.PNG" type="Texture" id=53]
 [ext_resource path="res://combat/CombatAudio.gd" type="Script" id=54]
 [ext_resource path="res://audio/SpeechPlayer.tscn" type="PackedScene" id=55]
-[ext_resource path="res://audio/soundtrack/banjofight.ogg" type="AudioStream" id=56]
 [ext_resource path="res://audio/apicurio/oof.ogg" type="AudioStream" id=57]
 [ext_resource path="res://art/particles/PowParticle.tscn" type="PackedScene" id=58]
 [ext_resource path="res://combat/DamagePopup.gd" type="Script" id=59]
@@ -1597,10 +1596,6 @@ stream = ExtResource( 70 )
 script = ExtResource( 54 )
 
 [node name="SpeechPlayer" parent="CombatAudio" instance=ExtResource( 55 )]
-
-[node name="Groovin" type="AudioStreamPlayer" parent="CombatAudio"]
-stream = ExtResource( 56 )
-volume_db = 2.038
 
 [connection signal="health_changed" from="Player/CombatStats" to="." method="_on_CombatStats_health_changed"]
 [connection signal="health_changed" from="Player/CombatStats" to="Player" method="_on_CombatStats_health_changed"]

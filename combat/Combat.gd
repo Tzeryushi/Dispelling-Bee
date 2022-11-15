@@ -152,13 +152,15 @@ func startup() -> void:
 	next_spell()
 	spell_timer.start_timer()
 	honey_timer.start_timer()
+	#TODO: Load in BGM per enemy
+	SoundtrackManager.play(SoundtrackManager.THEME.BATTLE1)
 	unpause_gameplay()
 
 #pauses timers and prevents player input
 func pause_gameplay() -> void:
 	#TODO: lower BGM or stop?
 	player.pause()
-	combat_audio.pause_bgm()
+	SoundtrackManager.stop()
 	spell_timer.pause_timer()
 	honey_timer.pause_timer()
 	is_casting = true
@@ -166,7 +168,7 @@ func pause_gameplay() -> void:
 #unpauses timers and allows player input	
 func unpause_gameplay() -> void:
 	player.idle_loop()
-	combat_audio.play_bgm()
+	SoundtrackManager.resume()
 	spell_timer.unpause_timer()
 	honey_timer.unpause_timer()
 	is_casting = false
@@ -189,10 +191,12 @@ func cleanup() -> void:
 	Engine.time_scale = 1.0
 	pause_gameplay()
 	if player_victory:
+		SoundtrackManager.play(SoundtrackManager.THEME.VICTORY)
 		emit_signal("start_dialogue", enemy.get_victory_id())
 		enemy.set_winstate(2)
 		yield(self, "dialogue_ended")
 		emit_signal("enemy_defeated")
+		SoundtrackManager.stop()
 	else:
 		emit_signal("start_dialogue", enemy.get_defeat_id())
 		if enemy.get_winstate() == 0:
