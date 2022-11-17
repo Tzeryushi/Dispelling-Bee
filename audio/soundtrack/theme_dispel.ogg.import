@@ -12,4 +12,4 @@ dest_files=[ "res://.import/theme_dispel.ogg-97b8001781854977ea9693f7439da5b5.og
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=1.713
