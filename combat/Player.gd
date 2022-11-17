@@ -24,6 +24,7 @@ func pause() -> void:
 
 func dispel() -> void:
 	api_animation.play("Dispel")
+	$Dispel.play()
 	api_animation.queue("Idle")
 
 func _on_CombatStats_health_changed(old_value, new_value):

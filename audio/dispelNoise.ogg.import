@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dispelNoise.ogg-f538d399798c501856a3d25976aaf359.oggstr"
+
+[deps]
+
+source_file="res://audio/dispelNoise.ogg"
+dest_files=[ "res://.import/dispelNoise.ogg-f538d399798c501856a3d25976aaf359.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
