@@ -6,6 +6,7 @@ onready var container = $Control/VBoxContainer
 onready var pause = $CanvasLayer/Pause
 
 export var flags : Resource
+var theme = SoundtrackManager.THEME.MENU
 
 signal request_quit
 

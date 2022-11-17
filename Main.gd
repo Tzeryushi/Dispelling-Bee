@@ -20,6 +20,7 @@ func _ready():
 	dialogue = get_node(dialogue)
 	remove_child(combat)
 	remove_child(temp_menu)
+	SoundtrackManager.play(title_screen.theme)
 
 func _exit_tree() -> void:
 	combat.queue_free()
@@ -34,6 +35,7 @@ func _on_Button_button_combat(enemy):
 	if is_transition:
 		return
 	is_transition = true
+	SoundtrackManager.stop()
 	circle_transition.transition_dark(0.7)
 	yield(circle_transition, "done")
 	remove_child(temp_menu)
@@ -62,6 +64,7 @@ func _transition(unload:Node, to_load:Node) -> void:
 		return
 	else:
 		is_transition = true
+		SoundtrackManager.stop()
 		circle_transition.transition_dark(0.7)
 		yield(circle_transition, "done")
 		remove_child(unload)
@@ -69,6 +72,7 @@ func _transition(unload:Node, to_load:Node) -> void:
 		yield(get_tree().create_timer(0.5), "timeout")
 		circle_transition.transition_out(0.7)
 		yield(circle_transition, "done")
+		SoundtrackManager.play(to_load.theme)
 		is_transition = false
 
 func _on_TitleScreen_game_start():

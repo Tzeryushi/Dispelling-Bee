@@ -8,6 +8,8 @@ enum THEME {
 
 #dictionary to store all soundtracks with enum key
 var track_list = {
+	THEME.TITLE:preload("res://audio/soundtrack/theme_dispel.ogg"),
+	THEME.MENU:preload("res://audio/soundtrack/theme_dispel.ogg"),
 	THEME.INTRO:preload("res://audio/soundtrack/handarth_intro.ogg"),
 	THEME.BATTLE1:preload("res://audio/soundtrack/banjofight.ogg"),
 	THEME.BATTLE3:preload("res://audio/soundtrack/battleGroovin.ogg"),

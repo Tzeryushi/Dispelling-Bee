@@ -140,6 +140,7 @@ func startup() -> void:
 	tween.parallel().tween_property(player, "position", Vector2(player.position.x+player_enemy_trans_out, player.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.parallel().tween_property(enemy_pos, "position", Vector2(enemy_pos.position.x-player_enemy_trans_out, enemy_pos.position.y), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	yield(get_tree().create_timer(1.0), "timeout")
+	SoundtrackManager.play(SoundtrackManager.THEME.INTRO)
 	emit_signal("start_dialogue", enemy.get_intro_id())
 	yield(self, "dialogue_ended")
 	if is_finished == true:
