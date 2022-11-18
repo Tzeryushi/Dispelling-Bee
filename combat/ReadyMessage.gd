@@ -8,12 +8,12 @@ signal finished
 func _ready() -> void:
 	screen_resolution = OS.get_screen_size()#Vector2(Globals.get("display/width"),Globals.get("display/height"))
 	ideal_position = rect_position
-	rect_scale = Vector2(0.0,0.0)
-	rect_position = screen_resolution/2.0
+#	rect_scale = Vector2(0.0,0.0)
+#	rect_position = screen_resolution/2.0
 
 func ready_up(time:float) -> void:
+	rect_position = ideal_position + Vector2(rect_size.x/2.0, rect_size.y/2.0)
 	rect_scale = Vector2(0.0,0.0)
-	rect_position = screen_resolution/2.0
 	modulate.a = 1.0
 	visible = true
 	var tween = create_tween()
