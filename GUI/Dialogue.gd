@@ -2,7 +2,6 @@ extends Node2D
 
 onready var dialogue_area = $DialogueArea
 onready var arrow = $DialogueArea/DialogueBox/NextPrompt
-onready var portrait = $DialogueArea/Portrait
 onready var dialogue_text = $DialogueArea/DialogueBox/Text
 onready var speaker_name = $DialogueArea/DialogueBox/Name
 onready var type_timer = $DialogueArea/DialogueBox/TypeTimer

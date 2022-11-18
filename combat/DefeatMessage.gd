@@ -1,14 +1,13 @@
 extends RichTextLabel
 
-var screen_resolution = Vector2.ZERO
-var ideal_position = Vector2.ZERO
+var ideal_position := Vector2.ZERO
 
 signal finished
 
 func _ready() -> void:
 	ideal_position = rect_position
 
-func ready_up(time:float) -> void:
+func float_msg(time:float) -> void:
 	rect_position = ideal_position + Vector2(rect_size.x/2.0, rect_size.y/2.0)
 	rect_scale = Vector2(0.0,0.0)
 	modulate.a = 1.0

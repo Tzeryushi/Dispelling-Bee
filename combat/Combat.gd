@@ -35,6 +35,8 @@ onready var enemy_target = $EnemyLoad/SpellTarget
 #GUI
 onready var gui = $GUI
 onready var ready_message = $GUI/ReadyMessage
+onready var victory_message = $GUI/VictoryMessage
+onready var defeat_message = $GUI/DefeatMessage
 onready var damage_popup = $GUI/DamagePopup
 onready var pause_menu = $CanvasLayer/Pause
 
@@ -179,11 +181,11 @@ func cleanup() -> void:
 	var player_victory = false
 	if enemy.get_health() <= 0:
 		player_victory = true
-		player_spell = "[rainbow]PLAYER VICTORY! Temp buffer, 1.5"
+		#player_spell = "[rainbow]PLAYER VICTORY! Temp buffer, 1.5"
 		enemy.lose()
 	elif player_stats.health <= 0:
 		player_victory = false
-		player_spell = "[rainbow]PLAYER DEFEAT! Temp buffer, 1.5"
+		#player_spell = "[rainbow]PLAYER DEFEAT! Temp buffer, 1.5"
 	player_spell_box.set_text(player_text_tags + player_spell)
 	Engine.time_scale = 0.5
 	spell_timer.pause_timer()
@@ -193,12 +195,16 @@ func cleanup() -> void:
 	pause_gameplay()
 	if player_victory:
 		SoundtrackManager.play(SoundtrackManager.THEME.VICTORY)
+		victory_message.float_msg(1.8)
+		yield(victory_message, "finished")
 		emit_signal("start_dialogue", enemy.get_victory_id())
 		enemy.set_winstate(2)
 		yield(self, "dialogue_ended")
 		emit_signal("enemy_defeated")
 		SoundtrackManager.stop()
 	else:
+		defeat_message.float_msg(2.0)
+		yield(defeat_message, "finished")
 		emit_signal("start_dialogue", enemy.get_defeat_id())
 		if enemy.get_winstate() == 0:
 			enemy.set_winstate(1)

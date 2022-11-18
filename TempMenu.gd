@@ -25,7 +25,8 @@ func is_focused() -> bool:
 	return false
 
 func focus_update() -> void:
-	$Control/VBoxContainer/Button.grab_focus()
+	if $Control/VBoxContainer/Button.is_inside_tree():
+		$Control/VBoxContainer/Button.grab_focus()
 	for button in container.get_children():
 		if flags.enemy_flags[button.text] == 2:
 			button.check.visible = true

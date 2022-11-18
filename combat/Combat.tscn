@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -71,6 +71,8 @@
 [ext_resource path="res://art/particles/DirtSpinParticle.tscn" type="PackedScene" id=69]
 [ext_resource path="res://audio/pause.ogg" type="AudioStream" id=70]
 [ext_resource path="res://audio/notice.ogg" type="AudioStream" id=71]
+[ext_resource path="res://combat/VictoryMessage.gd" type="Script" id=72]
+[ext_resource path="res://combat/DefeatMessage.gd" type="Script" id=73]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Attack"
@@ -1535,6 +1537,46 @@ text = "Ready..."
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 50 )
+
+[node name="VictoryMessage" type="RichTextLabel" parent="GUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -599.5
+margin_top = -169.0
+margin_right = 599.5
+margin_bottom = 169.0
+rect_clip_content = false
+size_flags_vertical = 0
+custom_fonts/normal_font = SubResource( 19 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=70][rainbow]VICTORY!"
+text = "VICTORY!"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 72 )
+
+[node name="DefeatMessage" type="RichTextLabel" parent="GUI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -599.5
+margin_top = -169.0
+margin_right = 599.5
+margin_bottom = 169.0
+rect_clip_content = false
+size_flags_vertical = 0
+custom_fonts/normal_font = SubResource( 19 )
+bbcode_enabled = true
+bbcode_text = "[center][color=gray]Defeat..."
+text = "Defeat..."
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 73 )
 
 [node name="DamagePopup" type="Node2D" parent="GUI"]
 script = ExtResource( 59 )
