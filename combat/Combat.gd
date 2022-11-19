@@ -203,7 +203,7 @@ func cleanup() -> void:
 		emit_signal("enemy_defeated")
 		SoundtrackManager.stop()
 	else:
-		defeat_message.float_msg(2.0)
+		defeat_message.float_msg(1.0, 1.0)
 		yield(defeat_message, "finished")
 		emit_signal("start_dialogue", enemy.get_defeat_id())
 		if enemy.get_winstate() == 0:

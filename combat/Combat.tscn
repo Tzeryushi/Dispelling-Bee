@@ -1568,6 +1568,7 @@ margin_left = -599.5
 margin_top = -169.0
 margin_right = 599.5
 margin_bottom = 169.0
+rect_pivot_offset = Vector2( 599.5, 169 )
 rect_clip_content = false
 size_flags_vertical = 0
 custom_fonts/normal_font = SubResource( 19 )
