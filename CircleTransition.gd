@@ -1,6 +1,5 @@
 extends ColorRect
 
-signal finished
 signal done
 
 var circle_value : float = 1.05
