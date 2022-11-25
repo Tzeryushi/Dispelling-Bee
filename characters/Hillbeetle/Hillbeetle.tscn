@@ -1879,6 +1879,7 @@ tracks/36/keys = {
 [node name="Hillbeetle" instance=ExtResource( 1 )]
 
 [node name="EnemyStats" parent="." index="0"]
+health = 10
 enemy_name = "Hillbeetle"
 
 [node name="EnemySpells" parent="." index="1"]
