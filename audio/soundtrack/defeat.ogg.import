@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/defeat.ogg-ef57fec1cabd64673b590155cf41370f.oggstr"
+
+[deps]
+
+source_file="res://audio/soundtrack/defeat.ogg"
+dest_files=[ "res://.import/defeat.ogg-ef57fec1cabd64673b590155cf41370f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

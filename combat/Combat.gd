@@ -203,13 +203,15 @@ func cleanup() -> void:
 		emit_signal("enemy_defeated")
 		SoundtrackManager.stop()
 	else:
-		defeat_message.float_msg(1.0, 1.0)
+		SoundtrackManager.play(SoundtrackManager.THEME.LOSS)
+		defeat_message.float_msg(1.8, 1.0)
 		yield(defeat_message, "finished")
 		emit_signal("start_dialogue", enemy.get_defeat_id())
 		if enemy.get_winstate() == 0:
 			enemy.set_winstate(1)
 		yield(self, "dialogue_ended")
 		emit_signal("player_defeated")
+		SoundtrackManager.stop()
 
 #handle the keyboard input.
 func _unhandled_input(event) -> void:

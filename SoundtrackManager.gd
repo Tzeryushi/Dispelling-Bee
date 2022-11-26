@@ -12,8 +12,10 @@ var track_list = {
 	THEME.MENU:preload("res://audio/soundtrack/theme_dispel.ogg"),
 	THEME.INTRO:preload("res://audio/soundtrack/handarth_intro.ogg"),
 	THEME.BATTLE1:preload("res://audio/soundtrack/banjofight.ogg"),
+	THEME.BATTLE2:preload("res://audio/soundtrack/banjofight.ogg"),
 	THEME.BATTLE3:preload("res://audio/soundtrack/battleGroovin.ogg"),
-	THEME.VICTORY:preload("res://audio/soundtrack/victory.ogg")
+	THEME.VICTORY:preload("res://audio/soundtrack/victory.ogg"),
+	THEME.LOSS:preload("res://audio/soundtrack/defeat.ogg")
 }
 
 var loaded_theme : int = THEME.INTRO
