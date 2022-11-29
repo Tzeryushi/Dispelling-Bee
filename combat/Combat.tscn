@@ -1122,6 +1122,7 @@ position = Vector2( 600, 1080 )
 
 [node name="BigShadow" type="Sprite" parent="Player/Pos"]
 position = Vector2( -276, -24 )
+z_index = -3
 texture = ExtResource( 40 )
 
 [node name="PlayerImage" type="Sprite" parent="Player/Pos"]
@@ -1289,6 +1290,7 @@ position = Vector2( 1510, 542 )
 
 [node name="BigShadow" type="Sprite" parent="EnemyLoad"]
 scale = Vector2( 0.619048, 0.619048 )
+z_index = -3
 texture = ExtResource( 40 )
 
 [node name="SpellTarget" type="Position2D" parent="EnemyLoad"]

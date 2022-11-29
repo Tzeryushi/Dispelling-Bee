@@ -1,9 +1,9 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
 [ext_resource path="res://characters/Handarth/HandarthBody - Copy.PNG" type="Texture" id=3]
-[ext_resource path="res://characters/Handarth/Handarth.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/Symmantis/Symmantis.tscn" type="PackedScene" id=4]
 [ext_resource path="res://MenuButtons.tres" type="Theme" id=5]
 [ext_resource path="res://characters/Hillbeetle/Hillbeetle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://characters/Hillbeetle/HillbeetleiCON.png" type="Texture" id=7]
@@ -18,6 +18,7 @@
 [ext_resource path="res://combat/Pause.gd" type="Script" id=16]
 [ext_resource path="res://audio/pause.ogg" type="AudioStream" id=17]
 [ext_resource path="res://audio/select.ogg" type="AudioStream" id=18]
+[ext_resource path="res://characters/Symmantis/SymmantisIcon.png" type="Texture" id=19]
 
 [sub_resource type="Shader" id=7]
 
@@ -175,7 +176,7 @@ margin_left = -175.0
 margin_top = -257.5
 margin_right = 175.0
 margin_bottom = 92.5
-texture = ExtResource( 3 )
+texture = ExtResource( 19 )
 stretch_mode = 4
 
 [node name="BackCircle" type="Node2D" parent="Control/VBoxContainer/Button2/Sprite"]
