@@ -13,7 +13,9 @@ func attack2() -> void:
 	player.play("Idle")
 
 func hurt() -> void:
-	pass
+	player.play("Hurt")
+	yield(player, "animation_finished")
+	player.play("Idle")
 
 func dispelled() -> void:
 	pass
