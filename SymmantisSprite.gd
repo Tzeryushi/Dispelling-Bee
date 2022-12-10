@@ -10,9 +10,9 @@ func attack() -> void:
 		yield(player, "animation_finished")
 		player.play("Idle")
 	else:
-		player.play("Attack")
+		player.play("OffAttack")
 		yield(player, "animation_finished")
-		player.play("Idle")
+		player.play("OffKilterIdle")
 	
 func attack2() -> void:
 	player.play("Attack")
@@ -40,9 +40,17 @@ func dispelled() -> void:
 		player.play("Idle")
 
 func channel() -> void:
-	player.play("OffKilterStart")
-	yield(player, "animation_finished")
-	player.play("OffKilterIdle")
+	print(symmetric)
+	if symmetric:
+		player.play("IdleSwitch")
+		yield(player, "animation_finished")
+		player.play("Idle")
+	else:
+		player.play("OffKilterStart")
+		yield(player, "animation_finished")
+		player.play("AfterAttackShift")
+		yield(player, "animation_finished")
+		player.play("OffKilterIdle")
 
 func swap_mode() -> void:
 	symmetric = !symmetric
@@ -52,6 +60,9 @@ func swap_mode() -> void:
 	else:
 		#right eye rotates at different speed
 		$Pos/Body/Head/PupilR.change_rot_speed(0.6)
+		
+func get_mode() -> bool:
+	return symmetric
 
 func lose() -> void:
 	pass
