@@ -1,21 +1,22 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+[ext_resource path="res://spells/enemy/Handarth/Skrotch.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name_list = {
-"A nut for a jar of tuna": "anut fo raj a rof tun a",
-"Do geese see god?": "dog ees eseeg od?",
-"Do not start at rats to nod": "don ot star ta trats ton od",
-"Goddesses so pay a possessed dog": "god dessessop a yap os sesseddog",
+"Anut fo raj a rof tun a": "a nut for a jar of tuna",
+"Dog ees eseeg od?": "do geese see god?",
+"Don ot star ta trats ton od": "do not start at rats to nod",
+"God dessessop a yap os sesseddog": "goddesses so pay a possessed dog",
 "Live on time emit no evil": "live on time emit no evil",
-"No word no bond row on": "no wor dnob on drow on",
-"Oozy rat in a sanitary zoo.": "ooz yratinas a ni tar yzoo.",
+"No wor dnob on drow on": "no word no bond row on",
+"Ooz yratinas a ni tar yzoo.": "oozy rat in a sanitary zoo.",
 "Repel evil as a live leper": "repel evil a sa live leper",
-"Stressed was I ere I saw desserts": "stressed was I ere I saw desserts",
-"Too bad I hid a boot!": "toob a dih i dab oot!",
-"Was it a car or a cat I saw?": "was i tac a ro rac a ti saw?"
+"Stressed was I ere I saw desserts": "stressed was i ere i saw desserts",
+"Toob a dih I dab oot!": "too bad i hid a boot!",
+"Was I tac a ro rac a ti saw?": "was it a car or a cat i saw?"
 }
 name = "Palindromus"
 solve = ""
@@ -27,7 +28,8 @@ rainbow_tag = false
 custom_tag = ""
 damage = 3
 drain = 2
-speed = 15.0
+speed = 20.0
+animation = ExtResource( 2 )
 weight = 3
 attack_animation = 0
 channel = false

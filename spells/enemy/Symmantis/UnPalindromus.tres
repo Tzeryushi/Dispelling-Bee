@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+"A nut fir a jar of tuna!": "anut fo raj a rif tun a!",
+"De border bard's drowsy swords drab red-robed": "debor-der bard sdrows ysword s'drab redrob ed",
+"Drab as a fool as a loaf as a bard": "drab a sa faol a sa loof a sa bard",
+"Drawn inward we freer few drawn onward": "drawno nward wef reerf ew drawni nward",
+"Never a feet too far even": "neve raf oot teef a reven",
+"No it is open no one position": "noitisop eno on nepo si ti on",
+"No lemons no melon smell": "llems nolem on snomel on",
+"Pull up I pull up if I pull up": "pu llup i fi pu llup i pu llup",
+"Rats love on no evil star": "rats live on no evol star",
+"Regards a mere mad rager": "regar dam erem a sdrager",
+"Repel evil is a live leper!": "repel evil a si live leper!"
+}
+name = "Un Palindromus"
+solve = ""
+shake_tag = false
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 1
+drain = 1
+speed = 15.0
+weight = 3
+attack_animation = 0
+channel = false

@@ -1339,6 +1339,7 @@ texture = ExtResource( 21 )
 
 [node name="ESContainer" type="Node2D" parent="GUI"]
 position = Vector2( 378, 107 )
+z_index = 1
 script = ExtResource( 3 )
 bg_color = Color( 1, 1, 1, 1 )
 bubble_min = 200.0
@@ -1347,6 +1348,7 @@ dead_text = ExtResource( 46 )
 
 [node name="Bubble" type="Sprite" parent="GUI/ESContainer"]
 position = Vector2( 414, 147 )
+z_index = -1
 texture = ExtResource( 25 )
 
 [node name="ESpellText" type="RichTextLabel" parent="GUI/ESContainer"]

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+"Arcadacorbracadacra!": "arcadacarbrocadacra!",
+"Fuba sha nin ahs abnuf!": "funba sha nin ahs abuf!",
+"Gurp lut in ni tlu prug?": "gurp ult in ni tul prug?",
+"Hkud lagonogul dukh!": "hkud lugonogal dukh!",
+"Htuigust oro tsugiuht": "thuigust oro tsugiuth",
+"Plugnat mo i nom tangulp": "plugnat mon i om tangulp",
+"Tanus itap utu pat sunat": "tanus tap utu pati sunat",
+"Thulilioiluiluht?": "thuliulioililuht?",
+"Torpi tharath iprot": "torpi htaraht iprot",
+"Watharon ispsi ronahtaw...": "wathanor ispsi norahtaw...",
+"watharon ispsi ronahtaw": "wathanor ispsi norahtaw"
+}
+name = ""
+solve = ""
+shake_tag = false
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 1
+drain = 1
+speed = 20.0
+weight = 3
+attack_animation = 0
+channel = false
