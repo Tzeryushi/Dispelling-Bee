@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+"Grate rebilthicus uciht li beretarg!": "gratereb il thicu sucihtliber etarg!",
+"Ushun arvenu ges tigi tseg unevran uhsu!": "ushu narvenu gest igit seg unevra nuhsu!"
+}
+name = "Power Sym"
+solve = ""
+shake_tag = true
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = true
+custom_tag = ""
+damage = 1
+drain = 1
+speed = 20.0
+weight = 3
+attack_animation = 0
+channel = false

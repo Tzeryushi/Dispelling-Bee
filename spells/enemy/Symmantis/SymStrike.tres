@@ -1,0 +1,38 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name_list = {
+"Abuorisirouba": "abuorisirouba",
+"Ahtun-ik fekef ki-nutha": "ahtun-ik fekef ki-nutha",
+"Amoro gog oroma?": "amoro gog oroma?",
+"Behner intni renheb?": "behner intni renheb?",
+"Dast reviver tsad...": "dast reviver tsad...",
+"Denec ractotcar cened.": "denec ractotcar cened.",
+"Elgec entne cegle!": "elgec entne cegle!",
+"Eretcactere!": "eretcactere!",
+"Ethellianaillehte!": "ethellianaillehte!",
+"Lecto rasar otcel...": "lecto rasar otcel...",
+"Mothunanuhtom!": "mothun a nuhtom!",
+"Nomoris tu a ut siromon": "nomoris tu a ut siromon",
+"Omorgon nogromo": "omorgon nogromo",
+"Pacriga shimihs agircap": "pacriga shimihs agircap",
+"Raberus unu surebar!": "raberus unu surebar!",
+"Utchark unu krahctu!": "utchark unu krahctu!"
+}
+name = ""
+solve = ""
+shake_tag = false
+wave_tag = false
+tornado_tag = false
+fade_tag = false
+rainbow_tag = false
+custom_tag = ""
+damage = 2
+drain = 1
+speed = 8.0
+weight = 3
+attack_animation = 0
+channel = false

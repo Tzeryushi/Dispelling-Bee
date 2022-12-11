@@ -35,9 +35,9 @@ func dispelled() -> void:
 		yield(player, "animation_finished")
 		player.play("Idle")
 	else:
-		player.play("Hurt")
+		player.play("OffHurt")
 		yield(player, "animation_finished")
-		player.play("Idle")
+		player.play("OffKilterIdle")
 
 func channel() -> void:
 	print(symmetric)
@@ -47,8 +47,6 @@ func channel() -> void:
 		player.play("Idle")
 	else:
 		player.play("OffKilterStart")
-		yield(player, "animation_finished")
-		player.play("AfterAttackShift")
 		yield(player, "animation_finished")
 		player.play("OffKilterIdle")
 

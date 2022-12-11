@@ -1426,7 +1426,7 @@ fill_mode = 3
 script = ExtResource( 22 )
 
 [node name="HoneyTimer" type="Timer" parent="GUI/HoneyCounter/HoneyProgress"]
-wait_time = 5.0
+wait_time = 8.0
 
 [node name="Count" type="Label" parent="GUI/HoneyCounter"]
 margin_right = 124.0
