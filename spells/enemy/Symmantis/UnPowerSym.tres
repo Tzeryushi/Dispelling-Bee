@@ -1,22 +1,26 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+[ext_resource path="res://spells/enemy/Handarth/Skrotch.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name_list = {
+"Rasalisk emet farit mem traf teme ksilasar!": "rasalisk emet fart mem tiraf teme ksilasar!",
+"Techn tsiwt plem vorprov melp tsiwi nhcet!": "techn iwist plem vorprov melp twist nhcet!"
 }
 name = ""
 solve = ""
-shake_tag = false
+shake_tag = true
 wave_tag = false
 tornado_tag = false
 fade_tag = false
-rainbow_tag = false
+rainbow_tag = true
 custom_tag = ""
-damage = 1
-drain = 1
-speed = 15.0
-weight = 3
+damage = 5
+drain = 3
+speed = 27.0
+animation = ExtResource( 2 )
+weight = 1
 attack_animation = 0
 channel = false

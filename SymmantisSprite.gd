@@ -1,6 +1,7 @@
 extends DefaultWizardSprite
 
 onready var player = $Pos/AnimationPlayer
+onready var swap_se = $SwapNoise
 
 var symmetric := true
 
@@ -52,6 +53,7 @@ func channel() -> void:
 
 func swap_mode() -> void:
 	symmetric = !symmetric
+	swap_se.play()
 	if symmetric:
 		#set eye rotation to match with other eye
 		$Pos/Body/Head/PupilR.change_rot_speed(1.0)

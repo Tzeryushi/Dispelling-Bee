@@ -1,6 +1,7 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
+[ext_resource path="res://spells/enemy/Handarth/Skrotch.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
@@ -20,14 +21,15 @@ name_list = {
 name = ""
 solve = ""
 shake_tag = false
-wave_tag = false
+wave_tag = true
 tornado_tag = false
 fade_tag = false
 rainbow_tag = false
 custom_tag = ""
-damage = 1
+damage = 2
 drain = 1
-speed = 20.0
-weight = 3
+speed = 17.0
+animation = ExtResource( 2 )
+weight = 5
 attack_animation = 0
 channel = false

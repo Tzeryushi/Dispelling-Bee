@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://combat/DefaultWizard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SymmantisSprite.gd" type="Script" id=2]
@@ -28,11 +28,13 @@
 [ext_resource path="res://characters/Symmantis/AntennaeL.PNG" type="Texture" id=26]
 [ext_resource path="res://characters/Symmantis/Symmantis.gd" type="Script" id=27]
 [ext_resource path="res://combat/DefaultWizardSpells.gd" type="Script" id=28]
-[ext_resource path="res://spells/enemy/Handarth/Darkstab.tres" type="Resource" id=29]
-[ext_resource path="res://spells/enemy/Handarth/Skrotch.tres" type="Resource" id=30]
+[ext_resource path="res://audio/whisk.ogg" type="AudioStream" id=29]
+[ext_resource path="res://spells/enemy/Symmantis/UnPalindromus.tres" type="Resource" id=30]
 [ext_resource path="res://spells/enemy/Symmantis/PowerSym.tres" type="Resource" id=31]
 [ext_resource path="res://spells/enemy/Symmantis/Palindromus.tres" type="Resource" id=32]
 [ext_resource path="res://spells/enemy/Symmantis/SymStrike.tres" type="Resource" id=33]
+[ext_resource path="res://spells/enemy/Symmantis/UnSymStrike.tres" type="Resource" id=34]
+[ext_resource path="res://spells/enemy/Symmantis/UnPowerSym.tres" type="Resource" id=35]
 
 [sub_resource type="Animation" id=10]
 resource_name = "AfterAttackShift"
@@ -4091,7 +4093,7 @@ enemy_name = "Symmantis"
 
 [node name="AsymSpells" type="Node" parent="." index="1"]
 script = ExtResource( 28 )
-spell_list = [ ExtResource( 29 ), ExtResource( 30 ) ]
+spell_list = [ ExtResource( 30 ), ExtResource( 35 ), ExtResource( 34 ) ]
 
 [node name="EnemySpells" parent="." index="2"]
 spell_list = [ ExtResource( 32 ), ExtResource( 31 ), ExtResource( 33 ) ]
@@ -4482,3 +4484,6 @@ anims/OffHurt = SubResource( 7 )
 anims/OffKilterIdle = SubResource( 6 )
 anims/OffKilterStart = SubResource( 5 )
 anims/RESET = SubResource( 2 )
+
+[node name="SwapNoise" type="AudioStreamPlayer" parent="Sprite" index="1"]
+stream = ExtResource( 29 )
