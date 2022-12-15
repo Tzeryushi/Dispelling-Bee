@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://combat/SpellTheme1.tres" type="Theme" id=1]
 [ext_resource path="res://art/title.PNG" type="Texture" id=2]
@@ -8,6 +8,37 @@
 [ext_resource path="res://characters/Hillbeetle/Hillbeetle.PNG" type="Texture" id=6]
 [ext_resource path="res://Backgrounds/BG2.png" type="Texture" id=7]
 [ext_resource path="res://TitleBackground.gd" type="Script" id=8]
+[ext_resource path="res://characters/Symmantis/Symmantis.PNG" type="Texture" id=9]
+[ext_resource path="res://characters/Handarth/HandarthHand.PNG" type="Texture" id=10]
+[ext_resource path="res://characters/ApicurioBattle.PNG" type="Texture" id=11]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 line_color : hint_color = vec4(1);
+uniform float line_thickness : hint_range(0, 10) = 1.0;
+
+void fragment() {
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	float outline = texture(TEXTURE, UV + vec2(-size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, 0)).a;
+	outline += texture(TEXTURE, UV + vec2(0, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(-size.x, -size.y)).a;
+	outline += texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
+	outline = min(outline, 1.0);
+	
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = mix(color, line_color, outline - color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 5.0
 
 [node name="TitleScreen" type="Node2D"]
 
@@ -22,22 +53,46 @@ motion_mirroring = Vector2( 2160, 1440 )
 position = Vector2( 1080, 720 )
 texture = ExtResource( 7 )
 
-[node name="HandarthBody" type="Sprite" parent="."]
-position = Vector2( 106, 106 )
-rotation = 2.42617
-scale = Vector2( 0.796243, 0.796243 )
-texture = ExtResource( 4 )
-
 [node name="Apicurio" type="Sprite" parent="."]
-position = Vector2( 1615, 812 )
-scale = Vector2( 0.667, 0.667 )
+material = SubResource( 2 )
+position = Vector2( 1628, 889 )
+scale = Vector2( 0.858822, 0.858822 )
 texture = ExtResource( 5 )
 
+[node name="HandarthBody" type="Sprite" parent="."]
+position = Vector2( 145, 148 )
+rotation = 2.35619
+z_index = -1
+texture = ExtResource( 4 )
+
+[node name="HandarthHand" type="Sprite" parent="HandarthBody"]
+position = Vector2( -166, 90 )
+texture = ExtResource( 10 )
+
+[node name="HandarthHand2" type="Sprite" parent="HandarthBody"]
+position = Vector2( 120, 89 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 10 )
+
+[node name="Symmantis" type="Sprite" parent="."]
+position = Vector2( 990, 7 )
+rotation = -3.14159
+scale = Vector2( 1.29898, 1.29898 )
+z_index = -1
+texture = ExtResource( 9 )
+
 [node name="Hillbeetle" type="Sprite" parent="."]
-position = Vector2( 1733, 111 )
-rotation = -2.53455
-scale = Vector2( 0.791226, 0.791226 )
+position = Vector2( 1738, 81 )
+rotation = -2.31066
+scale = Vector2( 1.22989, 1.22989 )
+z_index = -1
 texture = ExtResource( 6 )
+region_rect = Rect2( 0, 2, 1, 0 )
+
+[node name="ApicurioBattle" type="Sprite" parent="."]
+visible = false
+position = Vector2( 308, 875 )
+texture = ExtResource( 11 )
 
 [node name="Title" type="Sprite" parent="."]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
