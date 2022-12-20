@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://data/EnemySpellBody.gd" type="Script" id=1]
-[ext_resource path="res://spells/enemy/Symmantis/SymSlash.tscn" type="PackedScene" id=2]
+[ext_resource path="res://spells/enemy/Symmantis/PowerSym.tscn" type="PackedScene" id=2]
 
 [resource]
 script = ExtResource( 1 )
