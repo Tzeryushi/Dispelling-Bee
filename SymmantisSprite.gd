@@ -65,7 +65,10 @@ func get_mode() -> bool:
 	return symmetric
 
 func lose() -> void:
-	pass
+	$Pos/Body/Head/PupilR.change_rot_speed(0.6)
+	player.play("Lose")
+	yield(player, "animation_finished")
+	player.play("LoseLoop")
 	
 func win() -> void:
 	pass
