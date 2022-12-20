@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/Apicurio.png" type="Texture" id=1]
 [ext_resource path="res://GUI/DialogueBox.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://GUI/Dialogue.gd" type="Script" id=4]
 [ext_resource path="res://characters/Hillbeetle/HillbeetleiCON.png" type="Texture" id=5]
 [ext_resource path="res://characters/Hillbeetle/HillbeetleLeft.png" type="Texture" id=6]
+[ext_resource path="res://dialogue/Handarth.png" type="Texture" id=7]
+[ext_resource path="res://dialogue/Symmantis.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -59,7 +61,7 @@ tracks/0/keys = {
 z_index = 10
 script = ExtResource( 4 )
 default_icon = ExtResource( 5 )
-enemy_icons = [ ExtResource( 6 ) ]
+enemy_icons = [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ]
 
 [node name="DialogueArea" type="CanvasLayer" parent="."]
 

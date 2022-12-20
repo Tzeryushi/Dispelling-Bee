@@ -1,4 +1,4 @@
 [
 	{"Name":"Apicurio", "Text":"It sure is dark in here..."},
-	{"Name":"Idiot", "Text":"[shake]Fuck you, Mack![/shake]"}
+	{"Name":"Idiot", "Icon":2, "Text":"[shake]Fuck you, Mack![/shake]"}
 ]
