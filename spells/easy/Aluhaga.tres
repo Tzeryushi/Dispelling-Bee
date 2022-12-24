@@ -7,11 +7,13 @@
 script = ExtResource( 1 )
 name_list = {
 "Alulhaga": "aluhaga",
+"Bep bap bop": "bep bap bop",
 "Crashacra": "crashacra",
 "Elblagio": "elblagio",
 "Havacada": "havacada",
 "Moutimam": "moutimam",
 "Pastaposta": "pastaposta",
+"Pelolero": "pelolero",
 "Pew-pew": "pew-pew"
 }
 name = "Aluhaga"

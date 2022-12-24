@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
+"Bevadacaro": "bevadacaro",
 "Ezumizum": "ezumizum",
 "Fizzio": "fizzio",
 "Nozobanum": "nozobanum"

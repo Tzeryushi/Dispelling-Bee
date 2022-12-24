@@ -1,12 +1,12 @@
 [
 	{"Name":"Symmantis", "Icon":1, "Text":"I moan, 'Live on, O evil Naomi!'"},
-	{"Name":"Apicurio", "Text":"Phew...your spells are a mouthful! No wonder they're wrecking the weave."},
+	{"Name":"Apicurio", "Text":"Phew . . . your spells are a mouthful! No wonder they're wrecking the weave."},
 	{"Name":"Symmantis", "Icon":1, "Text":"Rise, sir lapdog! Revolt, lover! God, pal, rise, sir!"},
 	{"Name":"Apicurio", "Text":"Listen bud, I've got no problem with you getting up to whatever it is you do around here, as long as you stop pulling so much energy to cast your peculiar spells!"},
 	{"Name":"Apicurio", "Text":"As long as you stop causing problems for everyone else, I won't need to come and thrash you again."},
 	{"Name":"Symmantis", "Icon":1, "Text":"Sis, Sargasso moss a grass is."},
 	{"Name":"Apicurio", "Text":". . ."},
-	{"Name":"Symmantis", "Text":"Nella won't set a test now, Allen."},
+	{"Name":"Symmantis", "Icon":1, "Text":"Nella won't set a test now, Allen."},
 	{"Name":"Apicurio", "Text":"Just behave or I'll be back."},
 	{"Name":"Symmantis", "Icon":1, "Text":"O gnats, tango!"}
 ]
