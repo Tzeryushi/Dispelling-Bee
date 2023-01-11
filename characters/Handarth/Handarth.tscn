@@ -415,6 +415,7 @@ tracks/8/keys = {
 }
 
 [node name="Handarth" instance=ExtResource( 1 )]
+track = 4
 
 [node name="EnemyStats" parent="." index="0"]
 health = 15

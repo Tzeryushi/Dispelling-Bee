@@ -12,10 +12,21 @@ var track_list = {
 	THEME.MENU:preload("res://audio/soundtrack/theme_dispel.ogg"),
 	THEME.INTRO:preload("res://audio/soundtrack/handarth_intro.ogg"),
 	THEME.BATTLE1:preload("res://audio/soundtrack/banjofight.ogg"),
-	THEME.BATTLE2:preload("res://audio/soundtrack/banjofight.ogg"),
-	THEME.BATTLE3:preload("res://audio/soundtrack/battleGroovin.ogg"),
+	THEME.BATTLE2:preload("res://audio/soundtrack/battleGroovin.ogg"),
+	THEME.BATTLE3:preload("res://audio/soundtrack/jigglin.ogg"),
 	THEME.VICTORY:preload("res://audio/soundtrack/victory.ogg"),
 	THEME.LOSS:preload("res://audio/soundtrack/defeat.ogg")
+}
+
+const TRACK_HINT: Dictionary = {
+	TITLE = THEME.TITLE, # equivalent to: "APPLE": APPLE
+	MENU = THEME.MENU,
+	INTRO = THEME.INTRO,
+	BATTLE1 = THEME.BATTLE1,
+	BATTLE2 = THEME.BATTLE2,
+	BATTLE3 = THEME.BATTLE3,
+	VICTORY = THEME.VICTORY,
+	LOSS = THEME.LOSS
 }
 
 var loaded_theme : int = THEME.INTRO

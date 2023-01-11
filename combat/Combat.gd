@@ -156,7 +156,8 @@ func startup() -> void:
 	spell_timer.start_timer()
 	honey_timer.start_timer()
 	#TODO: Load in BGM per enemy
-	SoundtrackManager.play(SoundtrackManager.THEME.BATTLE1)
+	#SoundtrackManager.play(SoundtrackManager.THEME.BATTLE1)
+	enemy.play_enemy_music()
 	unpause_gameplay()
 
 #pauses timers and prevents player input
