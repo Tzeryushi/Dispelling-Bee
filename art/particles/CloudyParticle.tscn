@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://CloudyParticle.gd" type="Script" id=1]
+[ext_resource path="res://art/particles/cloudparticle.tres" type="Material" id=2]
+[ext_resource path="res://art/particles/smoke (2).PNG" type="Texture" id=3]
+[ext_resource path="res://art/particles/smoke (3).PNG" type="Texture" id=4]
+[ext_resource path="res://art/particles/smoke (4).PNG" type="Texture" id=5]
+[ext_resource path="res://art/particles/smoke (1).PNG" type="Texture" id=6]
+
+[node name="CloudyParticle" type="Node2D"]
+script = ExtResource( 1 )
+cloud_time = 30.0
+
+[node name="Cloud" type="Particles2D" parent="."]
+position = Vector2( 725, 250 )
+z_index = 7
+emitting = false
+amount = 14
+process_material = ExtResource( 2 )
+texture = ExtResource( 6 )
+
+[node name="Cloud2" type="Particles2D" parent="."]
+position = Vector2( 725, 250 )
+z_index = 7
+emitting = false
+amount = 14
+process_material = ExtResource( 2 )
+texture = ExtResource( 3 )
+
+[node name="Cloud3" type="Particles2D" parent="."]
+position = Vector2( 725, 250 )
+z_index = 7
+emitting = false
+amount = 14
+process_material = ExtResource( 2 )
+texture = ExtResource( 4 )
+
+[node name="Cloud4" type="Particles2D" parent="."]
+position = Vector2( 725, 250 )
+z_index = 7
+emitting = false
+amount = 14
+process_material = ExtResource( 2 )
+texture = ExtResource( 5 )

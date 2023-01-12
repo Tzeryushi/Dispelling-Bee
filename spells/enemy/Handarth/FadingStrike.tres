@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource( 2 )
 name_list = {
+"Blighted strike...": "ekirts dethgilb...",
 "Fading strike...": "ekirts gnidaf...",
-"Lifeless strike...": "ekirts sselefil..."
+"Lifeless strike...": "ekirts sselefil...",
+"Viletouch strike...": "ekirts hcuoteliv..."
 }
 name = "Fading strike..."
 solve = "ekirts gnidaf..."

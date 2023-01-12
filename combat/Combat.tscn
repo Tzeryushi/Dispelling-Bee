@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://combat/Combat.gd" type="Script" id=1]
 [ext_resource path="res://characters/Apicurio/CastingFace.PNG" type="Texture" id=2]
@@ -73,6 +73,7 @@
 [ext_resource path="res://audio/notice.ogg" type="AudioStream" id=71]
 [ext_resource path="res://combat/VictoryMessage.gd" type="Script" id=72]
 [ext_resource path="res://combat/DefeatMessage.gd" type="Script" id=73]
+[ext_resource path="res://art/particles/CloudyParticle.tscn" type="PackedScene" id=74]
 
 [sub_resource type="Animation" id=22]
 resource_name = "Attack"
@@ -1089,7 +1090,7 @@ font_data = ExtResource( 49 )
 script = ExtResource( 1 )
 player_ref = ExtResource( 9 )
 player_spell_ref = ExtResource( 14 )
-particle_array = [ ExtResource( 58 ), ExtResource( 69 ), ExtResource( 68 ) ]
+particle_array = [ ExtResource( 58 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 74 ) ]
 b_correct_color = Color( 0, 0.439216, 1, 1 )
 
 [node name="CombatBackground" type="ParallaxBackground" parent="."]

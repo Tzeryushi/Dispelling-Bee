@@ -1,0 +1,23 @@
+[gd_resource type="ParticlesMaterial" load_steps=3 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.552914 ), 0.0, 10.8754, 0, 0, Vector2( 0.147817, 0.994632 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.2629, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[resource]
+emission_shape = 2
+emission_box_extents = Vector3( 375, 150, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 143.46
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 1.3
+scale_random = 0.49
+scale_curve = SubResource( 2 )
+color = Color( 0.258824, 0.258824, 0.258824, 0.858824 )

@@ -5,10 +5,31 @@ onready var hand_1 = $Pos/Image/HandPivot1
 onready var hand_2 = $Pos/Image/HandPivot2
 onready var player := $Pos/AnimationPlayer
 
+export var cloud_particle : PackedScene
+
+var particle
+var is_cloudy := false
+
 func attack() -> void:
 	hand_1.attack()
 	hand_2.attack()
 
+func attack2() -> void:
+	hand_1.attack()
+	hand_2.attack()
+	#make the poof thing go brr
+	if is_cloudy:
+		if is_instance_valid(particle):
+			particle.queue_free()
+	else:
+		is_cloudy = true
+	particle = cloud_particle.instance()
+	add_child(particle)
+	particle.set_global_position(Vector2(0.0,0.0))
+	particle.play()
+	yield(particle, "finished")
+	is_cloudy = false
+	
 func hurt() -> void:
 	player.play("Hurt")
 	yield(player, "animation_finished")

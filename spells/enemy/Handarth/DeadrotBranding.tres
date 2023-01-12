@@ -7,7 +7,8 @@
 script = ExtResource( 2 )
 name_list = {
 "Corspecraft wave...": "evaw tfarcepsroc...",
-"Deadrot branding...": "gnidnarb tordaed..."
+"Deadrot branding...": "gnidnarb tordaed...",
+"Pulsing hunger...": "regnuh gnislup..."
 }
 name = "Deadrot branding..."
 solve = "gnidnarb tordaed..."
