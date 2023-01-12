@@ -4870,7 +4870,7 @@ track_num = 3
 base_switch_percent = 0.5
 
 [node name="EnemyStats" parent="." index="0"]
-health = 1
+health = 20
 max_life = 20
 enemy_name = "Symmantis"
 

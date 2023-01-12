@@ -421,7 +421,7 @@ track_num = 4
 
 [node name="EnemyStats" parent="." index="0"]
 health = 25
-max_life = 15
+max_life = 25
 cast_speed = 2.0
 enemy_name = "Handarth"
 
