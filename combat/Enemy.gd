@@ -3,7 +3,8 @@ extends Node2D
 class_name Enemy
 
 export var flags : Resource
-export(SoundtrackManager.TRACK_HINT) var track: int = SoundtrackManager.THEME.BATTLE2
+export var track_num : int = 0
+#export(SoundtrackManager.TRACK_HINT) var track: int = SoundtrackManager.THEME.BATTLE2
 
 #Implement spell cycle and damagers here
 #Extend this script on child nodes to specify behavior
@@ -76,7 +77,8 @@ func set_winstate(value:int) -> void:
 		flags.enemy_flags[get_enemy_name()] = value
 
 func play_enemy_music() -> void:
-	SoundtrackManager.play(track)
+	SoundtrackManager.play(track_num)
+	pass
 
 #animation funcs
 func attack() -> void:

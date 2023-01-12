@@ -92,8 +92,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://Globals.gd"
 SoundtrackManager="*res://SoundtrackManager.tscn"
+Globals="*res://Globals.gd"
 
 [display]
 

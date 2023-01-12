@@ -4866,6 +4866,7 @@ script = ExtResource( 27 )
 __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
+track_num = 3
 base_switch_percent = 0.5
 
 [node name="EnemyStats" parent="." index="0"]
