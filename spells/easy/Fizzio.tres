@@ -7,10 +7,19 @@
 script = ExtResource( 1 )
 name_list = {
 "Bevadacaro": "bevadacaro",
+"Choochooboo": "choochooboo",
 "Ezumizum": "ezumizum",
+"Fastdastu": "fastdastu",
+"Fenistro": "fenistro",
 "Fizzio": "fizzio",
+"Hillopyhop": "hillopyhop",
 "Nozobanum": "nozobanum",
-"Utuugolgo": "utuugolgo"
+"Puladulago": "puladulago",
+"Stunisrunis": "stunisrunis",
+"Utuugolgo": "utuugolgo",
+"Vestrumpum": "vestrumpum",
+"Wumbowam": "wumbowam",
+"Yuragurabu": "yuragurabu"
 }
 name = "Fizzio"
 solve = "fizzio"
