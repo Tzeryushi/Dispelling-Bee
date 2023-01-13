@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
-"Alulhaga": "aluhaga",
+"Aluhaga": "aluhaga",
 "Bep bap bop": "bep bap bop",
 "Crashacra": "crashacra",
 "Elblagio": "elblagio",

@@ -59,6 +59,12 @@ position = Vector2( 1628, 889 )
 scale = Vector2( 0.858822, 0.858822 )
 texture = ExtResource( 5 )
 
+[node name="Apicurio2" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 292, 889 )
+scale = Vector2( -0.859, 0.859 )
+texture = ExtResource( 5 )
+
 [node name="HandarthBody" type="Sprite" parent="."]
 position = Vector2( 145, 148 )
 rotation = 2.35619
@@ -96,7 +102,7 @@ texture = ExtResource( 11 )
 
 [node name="Title" type="Sprite" parent="."]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
-position = Vector2( 964, 397 )
+position = Vector2( 964, 479 )
 texture = ExtResource( 2 )
 script = ExtResource( 3 )
 size_change = 0.1
