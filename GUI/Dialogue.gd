@@ -9,7 +9,7 @@ onready var type_timer = $DialogueArea/DialogueBox/TypeTimer
 onready var api_icon = $DialogueArea/ApiPortrait
 onready var enemy_icon = $DialogueArea/EnemyPortrait
 
-export var text_speed = 0.03
+export var text_speed = 0.06
 export var dialogue_dir : String = "res://dialogue/"
 export var default_file : String = "Default0.json"
 export var default_icon : Texture
