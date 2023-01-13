@@ -96,6 +96,21 @@ patch_margin_top = 90
 patch_margin_right = 90
 patch_margin_bottom = 90
 
+[node name="DialogueBox2" type="NinePatchRect" parent="DialogueArea/DialogueBox"]
+modulate = Color( 1, 0.945098, 0.737255, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -769.5
+margin_top = -331.0
+margin_right = 769.5
+texture = ExtResource( 2 )
+patch_margin_left = 90
+patch_margin_top = 90
+patch_margin_right = 90
+patch_margin_bottom = 90
+
 [node name="Text" type="RichTextLabel" parent="DialogueArea/DialogueBox"]
 anchor_left = 0.5
 anchor_top = 1.0

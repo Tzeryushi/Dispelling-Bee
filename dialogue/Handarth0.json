@@ -1,4 +1,11 @@
 [
-	{"Name":"Apicurio", "Text":"It sure is dark in here..."},
-	{"Name":"Idiot", "Icon":2, "Text":"[shake]Fuck you, Mack![/shake]"}
+	{"Name":"Apicurio", "Text":"Hello? Anyone here?"},
+	{"Name":"Unknown", "Icon":2, "Text":"[shake]. . .[/shake]"},
+	{"Name":"Apicurio", "Text":"Oh, hi, I'm here on behalf of the queen; your name is Handarth, right?"},
+	{"Name":"Handarth", "Icon":2, "Text":"[shake]. . .[/shake]"},
+	{"Name":"Apicurio", "Text":"Cool, great . . . it says here you've been 'extracting the magic from others and leaving them as lifeless husks,' would you know anything about that?"},
+	{"Name":"Handarth", "Icon":2, "Text":"[shake]. . .[/shake]"},
+	{"Name":"Apicurio", "Text":"Right, right . . . okay, so, I guess I have to beat you up now? To stop you?"},
+	{"Name":"Handarth", "Icon":2, "Text":"[shake]. . .[/shake]"},
+	{"Name":"Apicurio", "Text":"Fantastic, great, wonderful, time to fight now!"}
 ]
