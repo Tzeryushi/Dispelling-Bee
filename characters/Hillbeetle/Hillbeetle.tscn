@@ -1880,7 +1880,8 @@ tracks/36/keys = {
 track_num = 2
 
 [node name="EnemyStats" parent="." index="0"]
-health = 10
+health = 15
+max_life = 15
 enemy_name = "Hillbeetle"
 
 [node name="EnemySpells" parent="." index="1"]
