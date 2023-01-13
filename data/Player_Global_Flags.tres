@@ -6,6 +6,6 @@
 script = ExtResource( 1 )
 enemy_flags = {
 "Handarth": 0,
-"Hillbeetle": 1,
+"Hillbeetle": 0,
 "Symmantis": 0
 }
