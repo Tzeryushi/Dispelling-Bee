@@ -100,7 +100,7 @@ func setup(new_enemy:PackedScene) -> void:
 	
 	player_stats.health = player_ref.health
 	player_stats.max_health = player_ref.max_health
-	player_stats.honey = player_ref.max_honey/2
+	player_stats.honey = player_ref.max_honey/4
 	player_stats.max_honey = player_ref.max_honey
 	
 	player_health.max_value = 1000
