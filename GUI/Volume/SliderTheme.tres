@@ -1,0 +1,33 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://GUI/Volume/Slider2.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Volume/sliderBar.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Volume/slider.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 305, 37 )
+margin_left = 10.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+modulate_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 305, 37 )
+margin_left = 12.0
+margin_right = 12.0
+margin_top = 12.0
+margin_bottom = 12.0
+modulate_color = Color( 1, 0.960784, 0.682353, 1 )
+
+[resource]
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_highlight = ExtResource( 3 )
+HSlider/styles/grabber_area = SubResource( 4 )
+HSlider/styles/grabber_area_highlight = SubResource( 2 )
+HSlider/styles/slider = SubResource( 3 )

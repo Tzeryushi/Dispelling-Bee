@@ -1,24 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://fonts/rimouski sb.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://art/particles/boom.png" type="Texture" id=2]
+[ext_resource path="res://GUI/Volume/SliderTheme.tres" type="Theme" id=2]
 [ext_resource path="res://GUI/Volume/VolumeSlider.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 42
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
+extra_spacing_bottom = -10
 font_data = ExtResource( 1 )
 
-[sub_resource type="Theme" id=2]
-
 [node name="Volume" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="."]
-margin_right = 328.0
-margin_bottom = 78.0
+margin_right = 305.0
+margin_bottom = 84.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 anchor_right = 1.0
@@ -27,10 +27,12 @@ margin_bottom = 24.0
 alignment = 1
 
 [node name="VolumeLabel" type="RichTextLabel" parent="Control/VBoxContainer"]
-margin_top = 20.0
-margin_right = 328.0
-margin_bottom = 61.0
+modulate = Color( 1, 0.847059, 0.384314, 1 )
+margin_right = 305.0
+margin_bottom = 42.0
 rect_clip_content = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Volume"
@@ -38,25 +40,29 @@ text = "Volume"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_top = 65.0
-margin_right = 328.0
-margin_bottom = 81.0
+margin_top = 46.0
+margin_right = 305.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="Sprite" type="Sprite" parent="Control/VBoxContainer/HBoxContainer"]
-position = Vector2( 20, 7 )
-scale = Vector2( 0.282609, 0.282609 )
-texture = ExtResource( 2 )
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 40.0
-margin_right = 328.0
-margin_bottom = 16.0
+margin_right = 305.0
+margin_bottom = 62.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
 [node name="VolumeSlider" type="HSlider" parent="Control/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 288.0
-margin_bottom = 16.0
-theme = SubResource( 2 )
-script = ExtResource( 3 )
+margin_top = 5.0
+margin_right = 305.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+min_value = -50.0
+max_value = 0.0
+value = -25.0
+scrollable = false
+
+[connection signal="value_changed" from="Control/VBoxContainer/HBoxContainer/VBoxContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]

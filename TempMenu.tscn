@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://audio/pause.ogg" type="AudioStream" id=17]
 [ext_resource path="res://audio/select.ogg" type="AudioStream" id=18]
 [ext_resource path="res://characters/Symmantis/SymmantisIcon.png" type="Texture" id=19]
+[ext_resource path="res://GUI/Volume/Volume.tscn" type="PackedScene" id=20]
 
 [sub_resource type="Shader" id=7]
 
@@ -327,3 +328,6 @@ signal_string = "exit"
 
 [node name="Plonk" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
 stream = ExtResource( 17 )
+
+[node name="Volume" parent="." instance=ExtResource( 20 )]
+position = Vector2( 36, 44 )
