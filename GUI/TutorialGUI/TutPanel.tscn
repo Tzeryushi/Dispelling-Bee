@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI/DialogueBox.png" type="Texture" id=1]
+[ext_resource path="res://fonts/rimouski sb.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://GUI/TutorialGUI/Screens/vsHill1.png" type="Texture" id=3]
+[ext_resource path="res://GUI/TutorialGUI/TutPanel.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 31
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+[node name="TutPanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 130.0
+margin_top = 73.0
+margin_right = -130.0
+margin_bottom = -73.0
+script = ExtResource( 4 )
+
+[node name="Backing" type="NinePatchRect" parent="."]
+modulate = Color( 1, 0.956863, 0.784314, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+patch_margin_left = 45
+patch_margin_top = 45
+patch_margin_right = 45
+patch_margin_bottom = 45
+
+[node name="Shadow" type="Polygon2D" parent="."]
+position = Vector2( 242.555, 127 )
+scale = Vector2( 0.595371, 0.59537 )
+color = Color( 0, 0, 0, 0.580392 )
+polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 532.269, 1920, 617.084, 1920, 1080, 0, 1080 )
+
+[node name="VsHill1" type="Sprite" parent="."]
+position = Vector2( 830, 434.187 )
+scale = Vector2( 0.395293, 0.395293 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+margin_left = 44.0
+margin_top = 33.0
+margin_right = -44.0
+margin_bottom = 132.0
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]How to Play"
+text = "How to Play"
+scroll_active = false
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+margin_left = 43.0
+margin_top = 776.0
+margin_right = -45.0
+margin_bottom = 896.0
+rect_clip_content = false
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Welcome to Dispelling Bee! You play as Apicurio, a Spelling Bee sent forth by the Spelling Queen to bring wizards abusing their magic to justice! By helping Apicurio defeat three different wizards, you will bring peace to the realm and also potentially get her a promotion, which she could really use right now, honestly."
+text = "Welcome to Dispelling Bee! You play as Apicurio, a Spelling Bee sent forth by the Spelling Queen to bring wizards abusing their magic to justice! By helping Apicurio defeat three different wizards, you will bring peace to the realm and also potentially get her a promotion, which she could really use right now, honestly."
+scroll_active = false
+
+[node name="Arrow" type="Polygon2D" parent="."]
+position = Vector2( 1528, 434.187 )
+rotation = 1.57079
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Arrow"]
+material = SubResource( 3 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="."]
+position = Vector2( 132, 434.187 )
+rotation = 4.71238
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Arrow2"]
+material = SubResource( 3 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
