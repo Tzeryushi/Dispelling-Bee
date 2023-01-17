@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/TutorialGUI/Tutorial.gd" type="Script" id=2]
@@ -16,7 +16,11 @@ Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 5 )
 Button/styles/pressed = SubResource( 6 )
 
+[sub_resource type="StyleBoxEmpty" id=9]
+
 [sub_resource type="CanvasItemMaterial" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=10]
 
 [node name="Tutorial" type="Node2D"]
 position = Vector2( 960, 540 )
@@ -52,6 +56,7 @@ rect_pivot_offset = Vector2( 45, 90.5 )
 focus_neighbour_left = NodePath("../LeftButton")
 focus_neighbour_right = NodePath("../LeftButton")
 theme = SubResource( 7 )
+custom_styles/focus = SubResource( 9 )
 
 [node name="Arrow" type="Polygon2D" parent="GUI/RightButton"]
 position = Vector2( 45, 90.487 )
@@ -75,6 +80,7 @@ rect_pivot_offset = Vector2( 45, 90.5 )
 focus_neighbour_left = NodePath("../RightButton")
 focus_neighbour_right = NodePath("../RightButton")
 theme = SubResource( 7 )
+custom_styles/focus = SubResource( 10 )
 
 [node name="Arrow" type="Polygon2D" parent="GUI/LeftButton"]
 position = Vector2( 45, 90.487 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -21,11 +21,18 @@
 [ext_resource path="res://characters/Symmantis/SymmantisIcon.png" type="Texture" id=19]
 [ext_resource path="res://GUI/Volume/Volume.tscn" type="PackedScene" id=20]
 [ext_resource path="res://GUI/TutorialGUI/Tutorial.tscn" type="PackedScene" id=21]
+[ext_resource path="res://GUI/TutorialGUI/HowToPlayIcon.png" type="Texture" id=22]
+[ext_resource path="res://GUI/TutorialGUI/HowToPlayHover.png" type="Texture" id=23]
+[ext_resource path="res://GUI/TutorialGUI/HowToPlayPressed.png" type="Texture" id=24]
+[ext_resource path="res://TutorialButton.gd" type="Script" id=25]
+[ext_resource path="res://GUI/MainMenuButtonGroup.tres" type="ButtonGroup" id=26]
 
 [sub_resource type="Shader" id=7]
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 7 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -110,6 +117,8 @@ focus_neighbour_right = NodePath("../Button2")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
+custom_styles/focus = SubResource( 9 )
+group = ExtResource( 26 )
 text = "Hillbeetle"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 6 )
@@ -167,6 +176,8 @@ focus_neighbour_right = NodePath("../Button3")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
+custom_styles/focus = SubResource( 9 )
+group = ExtResource( 26 )
 text = "Symmantis"
 script = ExtResource( 2 )
 enemy_scene = ExtResource( 4 )
@@ -222,6 +233,8 @@ focus_neighbour_right = NodePath("../Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 5 )
+custom_styles/focus = SubResource( 9 )
+group = ExtResource( 26 )
 text = "Handarth"
 script = ExtResource( 2 )
 back_alt_color = Color( 0.8, 0, 0, 0.501961 )
@@ -288,6 +301,40 @@ fit_content_height = true
 scroll_active = false
 script = ExtResource( 9 )
 
+[node name="TutorialButton" type="TextureButton" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -273.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = 273.0
+focus_neighbour_left = NodePath("../VBoxContainer/Button3")
+focus_neighbour_top = NodePath("../VBoxContainer/Button3")
+focus_neighbour_right = NodePath("../VBoxContainer/Button")
+focus_neighbour_bottom = NodePath("../VBoxContainer/Button3")
+group = ExtResource( 26 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 24 )
+texture_hover = ExtResource( 23 )
+texture_focused = ExtResource( 23 )
+script = ExtResource( 25 )
+
+[node name="Arrow" type="Polygon2D" parent="Control/TutorialButton"]
+position = Vector2( 111.5, 265 )
+scale = Vector2( 0.655556, 0.655556 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Arrow2" type="Polygon2D" parent="Control/TutorialButton/Arrow"]
+material = SubResource( 6 )
+scale = Vector2( 0.711111, 0.711111 )
+color = Color( 0.313726, 0.784314, 0.784314, 1 )
+polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
+
+[node name="Plink" type="AudioStreamPlayer" parent="Control/TutorialButton"]
+stream = ExtResource( 18 )
+volume_db = -9.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause" type="Control" parent="CanvasLayer"]
@@ -332,4 +379,6 @@ signal_string = "exit"
 stream = ExtResource( 17 )
 
 [node name="Volume" parent="." instance=ExtResource( 20 )]
-position = Vector2( 36, 44 )
+position = Vector2( 36, 97 )
+
+[connection signal="pressed" from="Control/TutorialButton" to="." method="_on_TutorialButton_pressed"]
