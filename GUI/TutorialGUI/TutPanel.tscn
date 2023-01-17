@@ -27,6 +27,7 @@ margin_left = 130.0
 margin_top = 73.0
 margin_right = -130.0
 margin_bottom = -73.0
+mouse_filter = 2
 script = ExtResource( 4 )
 
 [node name="Shadow" type="Polygon2D" parent="."]
@@ -47,6 +48,7 @@ margin_top = 33.0
 margin_right = -44.0
 margin_bottom = 132.0
 rect_clip_content = false
+mouse_filter = 2
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]How to Play"
