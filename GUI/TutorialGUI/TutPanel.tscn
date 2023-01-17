@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://GUI/DialogueBox.png" type="Texture" id=1]
 [ext_resource path="res://fonts/rimouski sb.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://GUI/TutorialGUI/Screens/vsHill1.png" type="Texture" id=3]
 [ext_resource path="res://GUI/TutorialGUI/TutPanel.gd" type="Script" id=4]
@@ -21,19 +20,6 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="Theme" id=7]
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = SubResource( 5 )
-Button/styles/pressed = SubResource( 6 )
-
-[sub_resource type="CanvasItemMaterial" id=3]
-
 [node name="TutPanel" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,16 +28,6 @@ margin_top = 73.0
 margin_right = -130.0
 margin_bottom = -73.0
 script = ExtResource( 4 )
-
-[node name="Backing" type="NinePatchRect" parent="."]
-modulate = Color( 1, 0.956863, 0.784314, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 1 )
-patch_margin_left = 45
-patch_margin_top = 45
-patch_margin_right = 45
-patch_margin_bottom = 45
 
 [node name="Shadow" type="Polygon2D" parent="."]
 position = Vector2( 242.555, 127 )
@@ -92,59 +68,3 @@ bbcode_enabled = true
 bbcode_text = "Welcome to Dispelling Bee! You play as Apicurio, a Spelling Bee sent forth by the Spelling Queen to bring wizards abusing their magic to justice! By helping Apicurio defeat three different wizards, you will bring peace to the realm and also potentially get her a promotion, which she could really use right now, honestly."
 text = "Welcome to Dispelling Bee! You play as Apicurio, a Spelling Bee sent forth by the Spelling Queen to bring wizards abusing their magic to justice! By helping Apicurio defeat three different wizards, you will bring peace to the realm and also potentially get her a promotion, which she could really use right now, honestly."
 scroll_active = false
-
-[node name="RightButton" type="Button" parent="."]
-margin_left = 1483.0
-margin_top = 343.7
-margin_right = 1573.0
-margin_bottom = 524.7
-rect_pivot_offset = Vector2( 45, 90.5 )
-focus_neighbour_left = NodePath("../LeftButton")
-focus_neighbour_right = NodePath("../LeftButton")
-theme = SubResource( 7 )
-
-[node name="Arrow" type="Polygon2D" parent="RightButton"]
-position = Vector2( 45, 90.487 )
-rotation = 1.57079
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
-
-[node name="Arrow2" type="Polygon2D" parent="RightButton/Arrow"]
-material = SubResource( 3 )
-scale = Vector2( 0.711111, 0.711111 )
-color = Color( 0.313726, 0.784314, 0.784314, 1 )
-polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
-
-[node name="LeftButton" type="Button" parent="."]
-margin_left = 87.0
-margin_top = 343.7
-margin_right = 177.0
-margin_bottom = 524.7
-rect_rotation = 180.0
-rect_pivot_offset = Vector2( 45, 90.5 )
-focus_neighbour_left = NodePath("../RightButton")
-focus_neighbour_right = NodePath("../RightButton")
-theme = SubResource( 7 )
-
-[node name="Arrow" type="Polygon2D" parent="LeftButton"]
-position = Vector2( 45, 90.487 )
-rotation = 1.57079
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
-
-[node name="Arrow2" type="Polygon2D" parent="LeftButton/Arrow"]
-material = SubResource( 3 )
-scale = Vector2( 0.711111, 0.711111 )
-color = Color( 0.313726, 0.784314, 0.784314, 1 )
-polygon = PoolVector2Array( -90, 45, 0, -45, 90, 45, 0, 30 )
-
-[connection signal="focus_entered" from="RightButton" to="." method="_on_RightButton_focus_entered"]
-[connection signal="focus_exited" from="RightButton" to="." method="_on_RightButton_focus_exited"]
-[connection signal="mouse_entered" from="RightButton" to="." method="_on_RightButton_mouse_entered"]
-[connection signal="mouse_exited" from="RightButton" to="." method="_on_RightButton_mouse_exited"]
-[connection signal="pressed" from="RightButton" to="." method="_on_RightButton_pressed"]
-[connection signal="focus_entered" from="LeftButton" to="." method="_on_LeftButton_focus_entered"]
-[connection signal="focus_exited" from="LeftButton" to="." method="_on_LeftButton_focus_exited"]
-[connection signal="mouse_entered" from="LeftButton" to="." method="_on_LeftButton_mouse_entered"]
-[connection signal="mouse_exited" from="LeftButton" to="." method="_on_LeftButton_mouse_exited"]
-[connection signal="pressed" from="LeftButton" to="." method="_on_LeftButton_pressed"]

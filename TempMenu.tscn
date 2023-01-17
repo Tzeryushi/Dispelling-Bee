@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://audio/select.ogg" type="AudioStream" id=18]
 [ext_resource path="res://characters/Symmantis/SymmantisIcon.png" type="Texture" id=19]
 [ext_resource path="res://GUI/Volume/Volume.tscn" type="PackedScene" id=20]
+[ext_resource path="res://GUI/TutorialGUI/Tutorial.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Shader" id=7]
 
@@ -71,6 +72,7 @@ font_data = ExtResource( 8 )
 [node name="TempMenu" type="Node2D"]
 script = ExtResource( 1 )
 flags = ExtResource( 14 )
+tutorial_scene = ExtResource( 21 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 10 )

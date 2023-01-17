@@ -68,6 +68,11 @@ _global_script_classes=[ {
 "class": "TempMenu",
 "language": "GDScript",
 "path": "res://TempMenu.gd"
+}, {
+"base": "Control",
+"class": "TutPanel",
+"language": "GDScript",
+"path": "res://GUI/TutorialGUI/TutPanel.gd"
 } ]
 _global_script_class_icons={
 "DefaultWizardSprite": "",
@@ -81,7 +86,8 @@ _global_script_class_icons={
 "PlayerStats": "",
 "SpellAnimation": "",
 "SpellModel": "",
-"TempMenu": ""
+"TempMenu": "",
+"TutPanel": ""
 }
 
 [application]
