@@ -38,10 +38,13 @@ func focus_update() -> void:
 	if $Control/VBoxContainer/Button.is_inside_tree():
 		$Control/VBoxContainer/Button.grab_focus()
 	for button in container.get_children():
+		button.set_clear(flags.enemy_flags[button.text+"Time"])
 		if flags.enemy_flags[button.text] == 2:
 			button.check.visible = true
+			button.clear.visible = true
 		else:
 			button.check.visible = false
+			button.clear.visible = false
 
 func _p_selected(id) -> void:
 	match id:

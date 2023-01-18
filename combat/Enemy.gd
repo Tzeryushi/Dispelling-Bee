@@ -76,6 +76,10 @@ func set_winstate(value:int) -> void:
 	if value > 0 and value < 3:
 		flags.enemy_flags[get_enemy_name()] = value
 
+func set_best_time(value:int) -> void:
+	if flags.enemy_flags[get_enemy_name()+"Time"] == 0 or value < flags.enemy_flags[get_enemy_name()+"Time"]:
+		flags.enemy_flags[get_enemy_name()+"Time"] = value
+
 func play_enemy_music() -> void:
 	SoundtrackManager.play(track_num)
 	pass

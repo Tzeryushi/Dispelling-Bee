@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -68,6 +68,15 @@ shader_param/outline_size = 0.5
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="CanvasItemMaterial" id=6]
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -5
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 140
@@ -177,6 +186,24 @@ texture = ExtResource( 13 )
 stream = ExtResource( 18 )
 volume_db = -9.0
 
+[node name="Clear" type="RichTextLabel" parent="Control/VBoxContainer/Button"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
+margin_top = 164.0
+margin_right = 269.0
+margin_bottom = 240.0
+rect_clip_content = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#00a5cf]Clear Time:
+[rainbow]00:00:00"
+text = "Clear Time:
+00:00:00"
+fit_content_height = true
+
 [node name="Button2" type="Button" parent="Control/VBoxContainer"]
 margin_left = 520.0
 margin_right = 981.0
@@ -233,6 +260,24 @@ texture = ExtResource( 13 )
 [node name="Plink" type="AudioStreamPlayer" parent="Control/VBoxContainer/Button2"]
 stream = ExtResource( 18 )
 volume_db = -9.0
+
+[node name="Clear" type="RichTextLabel" parent="Control/VBoxContainer/Button2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
+margin_top = 164.0
+margin_right = 269.0
+margin_bottom = 240.0
+rect_clip_content = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#00a5cf]Clear Time:
+[rainbow]00:00:00"
+text = "Clear Time:
+00:00:00"
+fit_content_height = true
 
 [node name="Button3" type="Button" parent="Control/VBoxContainer"]
 margin_left = 1041.0
@@ -292,6 +337,24 @@ texture = ExtResource( 13 )
 [node name="Plink" type="AudioStreamPlayer" parent="Control/VBoxContainer/Button3"]
 stream = ExtResource( 18 )
 volume_db = -9.0
+
+[node name="Clear" type="RichTextLabel" parent="Control/VBoxContainer/Button3"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -36.0
+margin_top = 164.0
+margin_right = 269.0
+margin_bottom = 240.0
+rect_clip_content = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+custom_fonts/normal_font = SubResource( 11 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#00a5cf]Clear Time:
+[rainbow]00:00:00"
+text = "Clear Time:
+00:00:00"
+fit_content_height = true
 
 [node name="Title" type="RichTextLabel" parent="Control"]
 anchor_left = 0.5

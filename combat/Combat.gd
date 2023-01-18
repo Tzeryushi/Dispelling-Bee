@@ -82,7 +82,7 @@ var b_spell_matching = false	#if the current player spell matches a portion of t
 var battle_start_time : int = 0
 var battle_end_time : int = 0
 var completion_default : String = "[center][wave freq=2][color=#e9d985]Clear Time:[/color] [rainbow]"
-var last_complete_time : String = ""
+var last_complete_time : int = 5999999
 
 #signals, used within class or by main scene
 signal dispelled()
@@ -213,13 +213,16 @@ func cleanup() -> void:
 	Engine.time_scale = 1.0
 	pause_gameplay()
 	if player_victory:
-		last_complete_time = _msec_to_string((battle_end_time-battle_start_time))
-		victory_message.set_time_msg(completion_default + last_complete_time)
+		#get complete time, set on victory message
+		last_complete_time = battle_end_time - battle_start_time
+		victory_message.set_time_msg(completion_default + _msec_to_string(last_complete_time))
+		
 		SoundtrackManager.play(SoundtrackManager.THEME.VICTORY)
 		victory_message.float_msg(1.8)
 		yield(victory_message, "finished")
 		emit_signal("start_dialogue", enemy.get_victory_id())
 		enemy.set_winstate(2)
+		enemy.set_best_time(last_complete_time)
 		yield(self, "dialogue_ended")
 		emit_signal("enemy_defeated")
 		SoundtrackManager.stop()
@@ -465,8 +468,8 @@ func _p_selected(id) -> void:
 			emit_signal("request_quit")
 			
 func _msec_to_string(value:int) -> String:
-	if value >= 6000999:
-		return "99:60:999"
+	if value >= 5999999:
+		return "99:59:999"
 	var total : String
 	var msecs = value%1000
 	var secs = (value%(60*1000))/1000
