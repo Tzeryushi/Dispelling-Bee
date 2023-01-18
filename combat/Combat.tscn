@@ -1552,6 +1552,7 @@ scroll_active = false
 script = ExtResource( 50 )
 
 [node name="VictoryMessage" type="RichTextLabel" parent="GUI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1570,7 +1571,7 @@ fit_content_height = true
 scroll_active = false
 script = ExtResource( 72 )
 
-[node name="Completion Time" type="RichTextLabel" parent="GUI/VictoryMessage"]
+[node name="CompletionTime" type="RichTextLabel" parent="GUI/VictoryMessage"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

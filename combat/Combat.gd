@@ -43,11 +43,14 @@ onready var pause_menu = $CanvasLayer/Pause
 #Sound
 onready var combat_audio = $CombatAudio
 
-var enemy : Enemy #Passes ref from calling scene. TODO: MUST CHANGE! Needs error checking.
+#enemy object. super important!
+var enemy : Enemy #Passes ref from calling scene.
 
+#unused combat state.
 enum CombatState {LOADING, PLAYING, ENDING, TRANSITION}
 var current_state
 
+#casting state booleans, used by various checks in async functions
 var is_casting := false
 var enemy_casting := false
 var is_finished := false
@@ -60,26 +63,36 @@ var allowed_chars = {" ":" ","q":"q","w":"w","e":"e","r":"r","t":"t","y":"y","u"
 "F":"F","G":"G","H":"H","J":"J","K":"K","L":"L","Z":"Z","X":"X","C":"C","V":"V","B":"B","N":"N","M":"M",
 "1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","0":"0"}
 
+#typing colors
 export var normal_color : Color = Color(1,1,1,1)
 export var correct_color : Color = Color (0,1,0,1)
 export var b_correct_color : Color = Color (1,0,1,1)
 
+#time for transition, exported
 export var player_enemy_trans_out : float = 500.0
 
+#tags for spell box text
 var player_text_tags = "[center][shake]"
 var enemy_text_tags = "[center]"
 var spellbook_tags = "[center][wave amp=100 freq=2]"
 var e_spell_matching = false	#if the current player spell matches a portion of the enemy spell
 var b_spell_matching = false	#if the current player spell matches a portion of the book spell
 
+#completion time variables
+var battle_start_time : int = 0
+var battle_end_time : int = 0
+var completion_default : String = "[center][wave freq=2][color=#e9d985]Clear Time:[/color] [rainbow]"
+var last_complete_time : String = ""
+
+#signals, used within class or by main scene
 signal dispelled()
 signal enemy_defeated()
 signal player_defeated()
-signal back_to_menu()
-signal request_quit()
+signal back_to_menu()	#main scene
+signal request_quit()	#main scene
 signal particles_loaded()
 signal setup_finished()
-signal start_dialogue(path)
+signal start_dialogue(path)	#main scene
 signal dialogue_ended()
 
 func _ready():
@@ -155,10 +168,14 @@ func startup() -> void:
 	next_spell()
 	spell_timer.start_timer()
 	honey_timer.start_timer()
-	#TODO: Load in BGM per enemy
+	
+	#loads in enemy music
 	#SoundtrackManager.play(SoundtrackManager.THEME.BATTLE1)
 	enemy.play_enemy_music()
 	unpause_gameplay()
+	
+	#battle start point
+	battle_start_time = OS.get_ticks_msec()
 
 #pauses timers and prevents player input
 func pause_gameplay() -> void:
@@ -178,6 +195,7 @@ func unpause_gameplay() -> void:
 	is_casting = false
 
 func cleanup() -> void:
+	battle_end_time = OS.get_ticks_msec()
 	is_finished = true
 	var player_victory = false
 	if enemy.get_health() <= 0:
@@ -195,6 +213,8 @@ func cleanup() -> void:
 	Engine.time_scale = 1.0
 	pause_gameplay()
 	if player_victory:
+		last_complete_time = _msec_to_string((battle_end_time-battle_start_time))
+		victory_message.set_time_msg(completion_default + last_complete_time)
 		SoundtrackManager.play(SoundtrackManager.THEME.VICTORY)
 		victory_message.float_msg(1.8)
 		yield(victory_message, "finished")
@@ -443,3 +463,13 @@ func _p_selected(id) -> void:
 			return
 		"exit":
 			emit_signal("request_quit")
+			
+func _msec_to_string(value:int) -> String:
+	if value >= 6000999:
+		return "99:60:999"
+	var total : String
+	var msecs = value%1000
+	var secs = (value%(60*1000))/1000
+	var mins = (value/(60*1000))%100
+	total = "%02d:%02d:%03d" % [mins, secs, msecs]
+	return total

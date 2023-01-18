@@ -45,7 +45,7 @@ group = SubResource( 2 )
 group = SubResource( 2 )
 enemy_scene = ExtResource( 5 )
 
-[node name="TutorialButton" parent="TempMenu/Control" index="2"]
+[node name="TutorialButton" parent="TempMenu/Control" index="3"]
 group = SubResource( 2 )
 
 [node name="TitleScreen" parent="." instance=ExtResource( 7 )]

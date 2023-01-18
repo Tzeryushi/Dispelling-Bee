@@ -1,5 +1,7 @@
 extends RichTextLabel
 
+onready var complete_text := $CompletionTime
+
 var ideal_position := Vector2.ZERO
 
 signal finished
@@ -21,3 +23,6 @@ func float_msg(time:float) -> void:
 	var moob = "mood"
 	tween.kill()
 	visible = false
+
+func set_time_msg(value:String) -> void:
+	complete_text.bbcode_text = value
