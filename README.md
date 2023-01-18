@@ -14,7 +14,6 @@ Attention must also be paid to the accessibility of the game, as speedy typing i
 ## Assets:
 - RPG Battle screen-esque system
 - This is time-based, not turn-based.
-- Interactable overworld as mechanism for entering battles
 - Enemies (function as “levels” in essence), at least 3
 - These enemies should vary in word complexity
 - Time permitting, unique elements, such as obscuring the words, can be added
@@ -29,11 +28,6 @@ The player interacts with an enemy in the overworld. This ultimately sends them 
 Engagement results from juggling defense and offense as the player must weigh the risks of time and their personal resources. Skilled players will be able to maximize their offense by dispelling only when more honey is needed, while relaxed players may take their time in battles by playing defensively and waiting for slow-casting spells to mount an offense.
 
 After a win state, where the player reduces the enemy’s health to 0, the game will return to the overworld and an avenue of progression to the next battle will be opened.
-
-## Overworld:
-At its core, this will simply function as a system to progress and lead the player from battle to battle. The point will be to keep the player engaged with dialogue, as Dispelling Bee is a game built on a gimmicky premise. Without a world and “story” to engage the player, there will be significantly less intrigue and impetus for the player to interact with the world until the game’s completion.
-
-Enemies should provide dialogue upon first meeting them and upon both victory and failure states. Enemy personalities should ideally be centered around the types of spells they cast and the gameplay they provide, to queue the player somewhat on what to expect.
 
 ## Spellbook:
 The spellbook refers to the spells that players are given the option to cast in battle. These are basically dictionaries that contain a number of phrases that are randomly selected from and provided as prompts to the player to type out during gameplay.
