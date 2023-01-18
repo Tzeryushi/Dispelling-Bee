@@ -9,7 +9,7 @@ onready var tut_button = $Control/TutorialButton
 export var flags : Resource
 export var tutorial_scene : PackedScene
 var theme = SoundtrackManager.THEME.MENU
-var tutorial_window
+var tutorial_window : Tutorial
 var tut_focus : bool = false
 
 
@@ -57,6 +57,7 @@ func open_tutorial() -> void:
 	tutorial_window = tutorial_scene.instance()
 	add_child(tutorial_window)
 	tut_focus = true
-	
-func close_tutorial() -> void:
+	yield(tutorial_window, "closed")
 	tut_focus = false
+	disconnect("closed", tutorial_window, "close_tutorial")
+	tutorial_window.queue_free()

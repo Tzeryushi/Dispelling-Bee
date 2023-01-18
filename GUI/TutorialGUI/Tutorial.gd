@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Tutorial
+
 export(Array, PackedScene) var panels
 export var shift_amount : float = 1000.0
 export var shift_time : float = 1.0
@@ -11,6 +13,8 @@ onready var gui := $GUI
 
 var current_panel : TutPanel
 var panel_number : int
+
+signal closed
 
 #animate opening
 #contain all separate tutpanel packedscenes
@@ -36,7 +40,10 @@ func _ready() -> void:
 
 func _close() -> void:
 	#animation to disappear
-	pass
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2(0.01, 0.01), 0.5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	yield(tween, "finished")
+	emit_signal("closed")
 
 func is_focused() -> bool:
 	#checks if the tutorial panel (as opposed to the main menu) has focus or not
@@ -118,8 +125,5 @@ func _on_RightButton_pressed():
 func _on_LeftButton_pressed():
 	next_scene(false)
 
-
-
-
 func _on_ExitButton_pressed():
-	pass # Replace with function body.
+	_close()

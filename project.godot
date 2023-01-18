@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "TutPanel",
 "language": "GDScript",
 "path": "res://GUI/TutorialGUI/TutPanel.gd"
+}, {
+"base": "Node2D",
+"class": "Tutorial",
+"language": "GDScript",
+"path": "res://GUI/TutorialGUI/Tutorial.gd"
 } ]
 _global_script_class_icons={
 "DefaultWizardSprite": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "SpellAnimation": "",
 "SpellModel": "",
 "TempMenu": "",
-"TutPanel": ""
+"TutPanel": "",
+"Tutorial": ""
 }
 
 [application]

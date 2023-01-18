@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -75,6 +75,15 @@ outline_size = 11
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 42
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -10
 font_data = ExtResource( 8 )
 
 [node name="TempMenu" type="Node2D"]
@@ -302,13 +311,31 @@ fit_content_height = true
 scroll_active = false
 script = ExtResource( 9 )
 
+[node name="VolumeLabel" type="RichTextLabel" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 646.0
+margin_top = -508.0
+margin_right = 951.0
+margin_bottom = -466.0
+rect_clip_content = false
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.15
+custom_fonts/normal_font = SubResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#00a5cf]How to Play"
+text = "How to Play"
+fit_content_height = true
+
 [node name="TutorialButton" type="TextureButton" parent="Control"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -273.0
-margin_top = 50.0
+margin_top = 85.0
 margin_right = -50.0
-margin_bottom = 273.0
+margin_bottom = 308.0
 focus_neighbour_left = NodePath("../VBoxContainer/Button3")
 focus_neighbour_top = NodePath("../VBoxContainer/Button3")
 focus_neighbour_right = NodePath("../VBoxContainer/Button")
@@ -381,6 +408,6 @@ signal_string = "exit"
 stream = ExtResource( 17 )
 
 [node name="Volume" parent="." instance=ExtResource( 20 )]
-position = Vector2( 36, 97 )
+position = Vector2( 36, 35 )
 
 [connection signal="pressed" from="Control/TutorialButton" to="." method="_on_TutorialButton_pressed"]

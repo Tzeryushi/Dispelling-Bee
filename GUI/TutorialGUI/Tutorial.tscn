@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/TutorialGUI/Tutorial.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel3.tscn" type="PackedScene" id=17]
 [ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel4.tscn" type="PackedScene" id=18]
 [ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel5.tscn" type="PackedScene" id=19]
+[ext_resource path="res://GUI/TutorialGUI/Panels/TutPanel6.tscn" type="PackedScene" id=20]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -34,7 +35,7 @@ Button/styles/pressed = SubResource( 6 )
 [node name="Tutorial" type="Node2D"]
 position = Vector2( 960, 540 )
 script = ExtResource( 2 )
-panels = [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ) ]
+panels = [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ]
 shift_amount = 2000.0
 shift_time = 0.5
 
@@ -137,3 +138,4 @@ volume_db = -9.0
 
 [connection signal="pressed" from="GUI/RightButton" to="." method="_on_RightButton_pressed"]
 [connection signal="pressed" from="GUI/LeftButton" to="." method="_on_LeftButton_pressed"]
+[connection signal="pressed" from="GUI/ExitButton" to="." method="_on_ExitButton_pressed"]

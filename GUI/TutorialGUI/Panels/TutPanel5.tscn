@@ -8,6 +8,10 @@
 [node name="VsHill1" parent="." index="1"]
 texture = ExtResource( 2 )
 
+[node name="Title" parent="." index="2"]
+bbcode_text = "[center]Dispelling Continued"
+text = "Dispelling Continued"
+
 [node name="Text" parent="." index="3"]
 bbcode_text = "Take that! When dispelling, it's important to know that while letter case doesn't count, punctuation does! If your enemy's spell has punctuation at the end, [wave]you must type the same punctuation [color=#DC143C]AT THE END[/color] of your own spell as well![/wave] When your dispel is perfect and ready to cast, it will gain [rainbow]rainbow colors.[/rainbow]"
 text = "Take that! When dispelling, it's important to know that while letter case doesn't count, punctuation does! If your enemy's spell has punctuation at the end, you must type the same punctuation AT THE END of your own spell as well! When your dispel is perfect and ready to cast, it will gain rainbow colors."
