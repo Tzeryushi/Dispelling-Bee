@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://TempMenu.gd" type="Script" id=1]
 [ext_resource path="res://TempButton.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://TutorialButton.gd" type="Script" id=25]
 [ext_resource path="res://GUI/MainMenuButtonGroup.tres" type="ButtonGroup" id=26]
 [ext_resource path="res://GUI/TutorialGUI/HowToPlayIconBit.png" type="BitMap" id=27]
+[ext_resource path="res://GUI/EndingScreen/EndingScreen.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Shader" id=7]
 
@@ -99,6 +100,7 @@ font_data = ExtResource( 8 )
 script = ExtResource( 1 )
 flags = ExtResource( 14 )
 tutorial_scene = ExtResource( 21 )
+ending_scene = ExtResource( 28 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 10 )

@@ -8,10 +8,13 @@ onready var tut_button = $Control/TutorialButton
 
 export var flags : Resource
 export var tutorial_scene : PackedScene
+export var ending_scene: PackedScene
+
 var theme = SoundtrackManager.THEME.MENU
 var tutorial_window : Tutorial
 var tut_focus : bool = false
-
+var ending_window : Ending
+var ending_focus : bool = false
 
 signal request_quit
 
@@ -20,11 +23,14 @@ func _ready() -> void:
 		button.connect("select", self, "_p_selected")
 	
 func _input(event) -> void:
-	if !is_focused() and !tut_focus:
+	if !is_focused() and !tut_focus and !ending_focus:
 		$Control/VBoxContainer/Button.grab_focus()
 	elif tut_focus:
 		if !tutorial_window.is_focused():
 			tutorial_window.get_focus()
+	elif ending_focus:
+		if !ending_window.is_focused():
+			ending_window.get_focus()
 	
 func is_focused() -> bool:
 	for button in container.get_children():
@@ -37,14 +43,20 @@ func is_focused() -> bool:
 func focus_update() -> void:
 	if $Control/VBoxContainer/Button.is_inside_tree():
 		$Control/VBoxContainer/Button.grab_focus()
+	
+	var all_done = true
 	for button in container.get_children():
 		button.set_clear(flags.enemy_flags[button.text+"Time"])
 		if flags.enemy_flags[button.text] == 2:
 			button.check.visible = true
 			button.clear.visible = true
 		else:
+			all_done = false
 			button.check.visible = false
 			button.clear.visible = false
+	if all_done and !flags.enemy_flags["EndingSeen"]:
+		open_ending()
+		flags.enemy_flags["EndingSeen"] = true
 
 func _p_selected(id) -> void:
 	match id:
@@ -62,5 +74,13 @@ func open_tutorial() -> void:
 	tut_focus = true
 	yield(tutorial_window, "closed")
 	tut_focus = false
-	disconnect("closed", tutorial_window, "close_tutorial")
 	tutorial_window.queue_free()
+
+func open_ending() -> void:
+	ending_window = ending_scene.instance()
+	add_child(ending_window)
+	ending_focus = true
+	yield(ending_window, "closed")
+	ending_focus = false
+	ending_window.queue_free()
+	pass
