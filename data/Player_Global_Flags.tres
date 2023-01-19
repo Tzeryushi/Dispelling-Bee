@@ -6,10 +6,10 @@
 script = ExtResource( 1 )
 enemy_flags = {
 "EndingSeen": false,
-"Handarth": 2,
+"Handarth": 0,
 "HandarthTime": 5999999,
-"Hillbeetle": 2,
+"Hillbeetle": 0,
 "HillbeetleTime": 5999999,
-"Symmantis": 2,
+"Symmantis": 0,
 "SymmantisTime": 5999999
 }

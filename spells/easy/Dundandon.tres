@@ -6,11 +6,14 @@
 [resource]
 script = ExtResource( 1 )
 name_list = {
+"Bib aficulum": "bib aficulum",
 "Donabeska": "donabeska",
 "Dundandon": "dundandon",
+"Garaivina": "garaivina",
 "Govniborda": "govniborda",
 "Illipildo": "illipildo",
 "Krabapdalp": "krabapdalp",
+"Patashto": "patashto",
 "Seppetto": "seppetto",
 "Shavaha": "shavaha",
 "Shimmeron": "shimmeron",
