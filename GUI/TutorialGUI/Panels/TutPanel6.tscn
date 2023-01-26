@@ -13,7 +13,7 @@ bbcode_text = "[center]Miscellanea"
 text = "Miscellanea"
 
 [node name="Text" parent="." index="3"]
-bbcode_text = "It's important to prioritize your actions based on your resources. If you have a lot of [color=#e9d985]honey[/color] and high [color=#077c59]hit points,[/color] it go on the offensive! You don't always need to dispel every one of your opponent's attacks.
+bbcode_text = "It's important to prioritize your actions based on your resources. If you have a lot of [color=#e9d985]honey[/color] and high [color=#077c59]hit points,[/color] go on the offensive! You don't always need to dispel every one of your opponent's attacks.
 Extra Tip: if you don't like the current spell in your [color=#00a5cf]spellbook,[/color] you can refresh it by tappping [wave]ENTER[/wave] three times."
-text = "It's important to prioritize your actions based on your resources. If you have a lot of honey and high hit points, it go on the offensive! You don't always need to dispel every one of your opponent's attacks.
+text = "It's important to prioritize your actions based on your resources. If you have a lot of honey and high hit points, go on the offensive! You don't always need to dispel every one of your opponent's attacks.
 Extra Tip: if you don't like the current spell in your spellbook, you can refresh it by tappping ENTER three times."
